@@ -79,17 +79,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(ProjectDir)..\..\c\include;C:\Repos\hcp\c\include;$(IncludePath)</IncludePath>
-    <OutDir>$(ProjectDir)\..\..\bin\$(Configuration)\$(Platform)</OutDir>
+    <OutDir>$(ProjectDir)\..\..\bin\$(Configuration)\x64</OutDir>
+    <TargetName>hcp-ni-debug-x64</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(ProjectDir)..\..\c\include;C:\Repos\hcp\c\include;$(IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)\..\..\bin\$(Configuration)\x86</OutDir>
+    <TargetName>hcp-ni-release-x86</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(ProjectDir)..\..\c\include;C:\Repos\hcp\c\include;$(IncludePath)</IncludePath>
-    <OutDir>$(ProjectDir)\..\..\bin\$(Configuration)\$(Platform)</OutDir>
+    <OutDir>$(ProjectDir)\..\..\bin\$(Configuration)\x64</OutDir>
+    <TargetName>hcp-ni-release-x64</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

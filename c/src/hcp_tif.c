@@ -97,7 +97,7 @@ static hcp_Int hcp_ParseTIFHeader(hcp_tString* pCommand, hcp_tCommandHeader* pHe
 static hcp_Int hcp_ParseArgumentName(hcp_tString* pArguments, hcp_tParameterSet* pParameters, hcp_tParameter** ppResult);
 static hcp_Int hcp_LoadProtocol(hcp_tState* pState, cJSON* pObject, hcp_tProtocol* pProtocol);
 static hcp_Int hcp_ParseArgumentValue(hcp_tString* pValue, hcp_tParameter* pParameter);
-static hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter);
+static hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter, hcp_Int32 ExpectedLength);
 static hcp_Int hcp_ParseByteArray(hcp_tString* pValue, hcp_tParameter* pParameter);
 static void hcp_IgnoreSpace(hcp_tString* pString);
 
@@ -268,29 +268,46 @@ hcp_Int hcp_ParseArgumentName(hcp_tString* pArguments, hcp_tParameterSet* pParam
 	return HCP_NOERROR;
 }
 
-hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter) {
+hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter, hcp_Int32 ExpectedLength) {
+	hcp_Boolean quoteStart = HCP_FALSE;
 	// if the first sign is a " lets skip it
 	if (pValue->length > 0 && *pValue->value == '\"') {
 		pValue->value++;
 		pValue->length--;
+		quoteStart = HCP_TRUE;
 	}
 
 	hcp_Char* end = pValue->value;
 	hcp_Char* start = pValue->value;
 	hcp_Boolean terminated = HCP_FALSE;
 
-	while (pValue->length > 0) {
-		if (*pValue->value == '\"') {
+	if (quoteStart == HCP_TRUE) {
+		while (pValue->length > 0) {
+			if (*pValue->value == '\"') {
+				pValue->value++;
+				pValue->length--;
+				terminated = HCP_TRUE;
+				break;
+			}
+
+			end = pValue->value;
+
 			pValue->value++;
 			pValue->length--;
-			terminated = HCP_TRUE;
-			break;
 		}
+	}
+	else {
+		while (pValue->length > 0) {
+			if (*pValue->value == ',' || *pValue->value == ')') {
+				terminated = HCP_TRUE;
+				break;
+			}
 
-		end = pValue->value;
+			end = pValue->value;
 
-		pValue->value++;
-		pValue->length--;
+			pValue->value++;
+			pValue->length--;
+		}
 	}
 
 	if (terminated == HCP_FALSE) {
@@ -391,15 +408,15 @@ hcp_Int hcp_ParseDigitValue(hcp_tString* pValue, hcp_tParameter* pParameter) {
 hcp_Int hcp_ParseArgumentValue(hcp_tString* pValue, hcp_tParameter* pParameter) {
 	hcp_Int error = HCP_NOERROR;
 
-	hcp_IgnoreSpace(pValue);
-
 	if (pParameter->template_->type == HCP_BLOB_ID) {
+		hcp_IgnoreSpace(pValue);
 		error = hcp_ParseByteArray(pValue, pParameter);
-	} else if (*pValue->value == '"') {
+	} else if (pParameter->template_->type == HCP_STRING_ID) {
 		// parse string element
-		error = hcp_ParseStringValue(pValue, pParameter);
+		error = hcp_ParseStringValue(pValue, pParameter, pParameter->template_->length);
 	}
 	else if (hcp_IsDigit(*pValue->value) == HCP_TRUE) {
+		hcp_IgnoreSpace(pValue);
 		error = hcp_ParseDigitValue(pValue, pParameter);
 	}
 	else {

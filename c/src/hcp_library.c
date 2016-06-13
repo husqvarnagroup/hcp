@@ -371,8 +371,9 @@ extern hcp_Int hcp_BytesToUint16(const hcp_tBlob* pSource, const hcp_Size_t Offs
 		}
 	}
 	else if (Endianess == HCP_LITTLEENDIAN) {
-		position = 8 * byteSize;
 		hcp_Size_t i = byteSize - 1;
+		position = 8 * i;
+
 
 		do {
 			*Number |= source[i] << position;
@@ -404,8 +405,9 @@ extern hcp_Int hcp_BytesToInt16(const hcp_tBlob* pSource, const hcp_Size_t Offse
 		}
 	}
 	else if (Endianess == HCP_LITTLEENDIAN) {
-		position = 8 * byteSize;
 		hcp_Size_t i = byteSize - 1;
+		position = 8 * i;
+
 
 		do {
 			*Number |= source[i] << position;
@@ -437,8 +439,9 @@ extern hcp_Int hcp_BytesToUint32(const hcp_tBlob* pSource, const hcp_Size_t Offs
 		}
 	}
 	else if (Endianess == HCP_LITTLEENDIAN) {
-		position = 8 * byteSize;
 		hcp_Size_t i = byteSize - 1;
+		position = 8 * i;
+
 
 		do {
 			*Number |= source[i] << position;
@@ -470,8 +473,9 @@ extern hcp_Int hcp_BytesToInt32(const hcp_tBlob* pSource, const hcp_Size_t Offse
 		}
 	}
 	else if (Endianess == HCP_LITTLEENDIAN) {
-		position = 8 * byteSize;
 		hcp_Size_t i = byteSize - 1;
+		position = 8 * i;
+
 
 		do {
 			*Number |= source[i] << position;
@@ -503,8 +507,8 @@ extern hcp_Int hcp_BytesToUint64(const hcp_tBlob* pSource, const hcp_Size_t Offs
 		}
 	}
 	else if (Endianess == HCP_LITTLEENDIAN) {
-		position = 8 * byteSize;
 		hcp_Size_t i = byteSize - 1;
+		position = 8 * i;
 
 		do {
 			*Number |= source[i] << position;
@@ -536,8 +540,8 @@ extern hcp_Int hcp_BytesToInt64(const hcp_tBlob* pSource, const hcp_Size_t Offse
 		}
 	}
 	else if (Endianess == HCP_LITTLEENDIAN) {
-		position = 8 * byteSize;
 		hcp_Size_t i = byteSize - 1;
+		position = 8 * i;
 
 		do {
 			*Number |= source[i] << position;
@@ -798,10 +802,10 @@ hcp_Int HCP_CALL hcp_AppendParameters(hcp_tRuntime* R, hcp_tBlob* pDestination, 
 		case HCP_INT16_ID: {
 			error = hcp_Int16ToBytes(parameter->value.i16, pDestination, Endianess);
 		}break;
+		case HCP_UNIXTIME_ID:
 		case HCP_UINT32_ID: {
 			error = hcp_Uint32ToBytes(parameter->value.u32, pDestination, Endianess);
 		}break;
-		case HCP_UNIXTIME_ID:
 		case HCP_INT32_ID: {
 			error = hcp_Int32ToBytes(parameter->value.i32, pDestination, Endianess);
 		}break;
@@ -834,6 +838,9 @@ hcp_Int HCP_CALL hcp_AppendParameters(hcp_tRuntime* R, hcp_tBlob* pDestination, 
 		} break;
 		case HCP_BLOB_ID: {
 			error = hcp_AppendBlob(&parameter->value.blb, pDestination);
+		} break;
+		case HCP_SIMPLEVERSION_ID: {
+			error = hcp_Uint16ToBytes(parameter->value.i16, pDestination, Endianess);
 		} break;
 		default: {
 			error = HCP_INVALIDTYPEID;
@@ -928,34 +935,31 @@ hcp_Int HCP_CALL hcp_BytesToParameters(hcp_tRuntime* R, const hcp_tBlob* pSource
 					}
 				}
 				else {
-					typeSize = parameter->template_->length;
+					hcp_Int32 templateLength = parameter->template_->length;
 					hcp_Char* str = (hcp_Char*)((hcp_Size_t)pSource->value + Offset + bytesRead);
 					hcp_tString* pString = &parameter->value.str;
 
 					// fixed size
-					if (typeSize > 0) {
+					if (templateLength > 0) {
 						// the string may contain \0 in which case 
 						// the specified length is not valid...
 						pString->zeroTerm = HCP_FALSE;
+						pString->length = templateLength;
 
-						// the string may start with zeroes...
 						hcp_Int32 end = 0;
 
-						pString->length = typeSize;
-
-						for (hcp_Int32 end = 0; end < (hcp_Int32)typeSize; end++) {
+						for (hcp_Int32 end = 0; end < (hcp_Int32)templateLength; end++) {
 							if (str[end] == 0) {
-								str[end] = ' ';
-								//pString->length = (++end) + 1; // eh?
-								//pString->zeroTerm = HCP_TRUE;
-								//break;
+								pString->length = end;
+								pString->zeroTerm = HCP_TRUE;
+								break;
 							}
 						}
 
 						pString->value = str;
 					}
 					// zero-terminated
-					else if (typeSize == 0) {
+					else if (templateLength == 0) {
 						pString->length = R->szStrLen((hcp_szStr)str);
 						pString->value = str;
 						pString->zeroTerm = HCP_TRUE;
@@ -965,12 +969,14 @@ hcp_Int HCP_CALL hcp_BytesToParameters(hcp_tRuntime* R, const hcp_tBlob* pSource
 					else {
 						pString->length = pSource->length - Offset;
 						pString->value = str;
+						pString->zeroTerm = HCP_FALSE;
 
-						if (pString->length > 0 && pString->value[pString->length - 1] == 0) {
-							pString->zeroTerm = HCP_TRUE;
-						}
-						else {
-							pString->zeroTerm = HCP_FALSE;
+						for (hcp_Int32 end = 0; end < pString->length; end++) {
+							if (str[end] == 0) {
+								pString->length = end;
+								pString->zeroTerm = HCP_TRUE;
+								break;
+							}
 						}
 					}
 					// move past the string
