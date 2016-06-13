@@ -83,7 +83,7 @@
     <TargetExt>.node</TargetExt>
     <IncludePath>$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
-    <LibraryPath>$(NODE_ROOT)\$(Configuration);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>$(NODE_ROOT)\$(Platform)\$(Configuration);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -99,7 +99,7 @@
     <TargetExt>.node</TargetExt>
     <IncludePath>$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
-    <LibraryPath>$(NODE_ROOT)\$(Configuration);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>$(NODE_ROOT)\$(Platform)\$(Configuration);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

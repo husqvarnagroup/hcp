@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="..\..\test.js" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\hcp_node.h">
@@ -26,8 +27,5 @@
     <ClCompile Include="..\..\src\hcp_node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\test.js" />
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 
 #include <node.h>
 #include <uv.h>
+#include <string>
 #include "hcp_error.c"
 #include "cJSON.c"
 #include "hcp_library.c"
@@ -208,12 +209,12 @@ size_t HcpState::decode(const size_t CodecId, const unsigned char* source, const
 				value = v8::ArrayBuffer::New(isolate, blob.value, blob.length);
 			} break;
 			case HCP_SIMPLEVERSION_ID: {
-				auto version = p->value.blb.value;
+				auto version = &p->value.u16;
 					std::string str;
 
-					str.append(1, ((char)(48 + (char)version[0])));
+					str.append(std::to_string((char)version[0]));
 					str.append(".");
-					str.append(1, ((char)(48 + (char)version[1])));
+					str.append(std::to_string((char)version[1]));
 
 					value = v8::String::NewFromUtf8(isolate, str.c_str());
 			}

@@ -1,89 +1,22 @@
 var hcp = require('./hcp');
 hcp.init('./codecs');
 
-var testParams = [
-            {
-                name: "l",
-                type: "ascii",
-                length: "8",
-                value: '"Cake Pie"'
-            },
-            {
-                name : "a",
-                type: "uint8",
-                value : "255"
-            },
-            {
-                name: "b",
-                type: "sint8",
-                value: "127"
-            },
-            {
-                name: "c",
-                type: "uint16",
-                value: "1"
-            },
-            {
-                name: "d",
-                type: "sint16",
-                value: "2"
-            },
-            {
-                name: "e",
-                type: "uint32",
-                value: "3"
-            },
-            {
-                name: "f",
-                type: "sint32",
-                value: "4"
-            },
-             {
-                 name: "g",
-                 type: "uint64",
-                 value: "5"
-             },
-            {
-                name: "h",
-                type: "sint64",
-                value: "6"
-            }
-];
+let model = hcp.loadModel(JSON.stringify(require('C:/Repos/hcprobotics/models/AMG3-Debug.json')));
+let codec = hcp.newCodec('amg3', model);
 
-var model = hcp.loadModel(JSON.stringify({
-    methods: [
-        {
-            command: 'pong',
-            family: 'ping',
-            inParams: testParams,
-            outParams: testParams,
-            protocol: []
-        }
-    ]
-}));
+let requestBuffer = new ArrayBuffer(1024);
+let requestSize = hcp.encode(codec, 'DeviceInformation.GetMowerInformation()', requestBuffer, 1024);
 
-var codec = hcp.newCodec(hcp.getLibraries()[0], model);
-console.log('codec: ' + codec + ' heap: ' + hcp.heapSize());
+let responseData = '02 17 29 00 0A 08 00 07 1F 05 07 00 68 1F 00 06 33 1F 00 06 00 CE FE 8A 09 7B C4 8F 56 07 14 08 9F 7C 60 56 80 96 3B 09 00 00 00 00 A6 03 '.split(' ').map(
+    (value, index) => { return parseInt(value, 16); });
 
-var outputBuffer = new ArrayBuffer(1024);
+let responseBuffer = new ArrayBuffer(responseData.length);
+let responseView = new Uint8Array(responseBuffer);
 
-var request = testParams.reduce((prev, curr, index, arr) => {
-    if (index < arr.length - 1) {
-        return prev + curr.name + ':' + curr.value + ',';
-    }
+responseData.forEach((value, index) => {
+    responseView[index] = value;
+});
 
-    return prev + curr.name + ':' + curr.value + ')';
-}, 'ping.pong(');
+let response = hcp.decode(codec, responseBuffer, responseData.length);
 
-console.log(request);
-
-var outputBufferSize = hcp.encode(codec, request, outputBuffer);
-console.log(JSON.stringify(hcp.decode(codec, outputBuffer, outputBufferSize)));
-
-
-
-
-// clean up
-hcp.closeCodec(codec);
-console.log('heap: ' + hcp.heapSize());
-
+console.log(response.result);
