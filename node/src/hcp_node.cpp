@@ -1,15 +1,15 @@
-#include "hcp_node.h"
+#include "../include/hcp_node.h"
 
 #include <node.h>
 #include <uv.h>
 #include <string>
-#include "hcp_error.c"
-#include "cJSON.c"
-#include "hcp_library.c"
-#include "hcp_runtime.c"
-#include "hcp_string.c"
-#include "hcp_tif.c"
-#include "hcp_vector.c"
+#include "../../c/src/hcp_error.c"
+#include "../../c/src/cJSON.c"
+#include "../../c/src/hcp_library.c"
+#include "../../c/src/hcp_runtime.c"
+#include "../../c/src/hcp_string.c"
+#include "../../c/src/hcp_tif.c"
+#include "../../c/src/hcp_vector.c"
 
 using hcp::HcpState;
 using v8::Exception;
