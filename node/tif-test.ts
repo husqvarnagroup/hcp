@@ -1,9 +1,6 @@
 type tIDigitalInput_PinIndex = Number;
 type tIDigitalOutput_PinIndex = Number;
 type tLinkManagerPortId = Number;
-/** Cake */
-type foo = tLinkManagerPortId;
-type cake = tLinkManagerPortId;
 type tILinkManagerLinkId = Number;
 type tDrivingSettings_DrivePastWire = Number;
 
@@ -250,119 +247,135 @@ export namespace Authentication {
 		currentPIN: Number
 	}
 
-	export function GetRequestAccessI(codec : any, args : tInGetRequestAccess): Promise<Number> {
+	export function GetRequestAccessI(handle : any, args : tInGetRequestAccess): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Authentication.GetRequestAccess(accesslevel: ' + __args.accesslevel+ ')');
+			return handle.codec.send('Authentication.GetRequestAccess(accesslevel: ' + __args.accesslevel+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetRequestAccess(codec : any, accesslevel: Number): Promise<Number> {
-		return GetRequestAccessI(codec, {
+	export function GetRequestAccess(handle : any, accesslevel: Number): Promise<Number> {
+		return GetRequestAccessI(handle, {
 				accesslevel: accesslevel
 		});
 	}
 
-	export function SetSignedResponseI(codec : any, args : tInSetSignedResponse): Promise<Number> {
+	export function SetSignedResponseI(handle : any, args : tInSetSignedResponse): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Authentication.SetSignedResponse(sres: ' + __args.sres+ ')');
+			return handle.codec.send('Authentication.SetSignedResponse(sres: ' + __args.sres+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSignedResponse(codec : any, sres: Number): Promise<Number> {
-		return SetSignedResponseI(codec, {
+	export function SetSignedResponse(handle : any, sres: Number): Promise<Number> {
+		return SetSignedResponseI(handle, {
 				sres: sres
 		});
 	}
 
-	export function EnterPinCodeI(codec : any, args : tInEnterPinCode): Promise<Number> {
+	export function EnterPinCodeI(handle : any, args : tInEnterPinCode): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Authentication.EnterPinCode(accessLevel: ' + __args.accessLevel+ ',currentPIN: ' + __args.currentPIN+ ')');
+			return handle.codec.send('Authentication.EnterPinCode(accessLevel: ' + __args.accessLevel+ ',currentPIN: ' + __args.currentPIN+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function EnterPinCode(codec : any, accessLevel: Number, currentPIN: Number): Promise<Number> {
-		return EnterPinCodeI(codec, {
+	export function EnterPinCode(handle : any, accessLevel: Number, currentPIN: Number): Promise<Number> {
+		return EnterPinCodeI(handle, {
 				accessLevel: accessLevel,
 				currentPIN: currentPIN
 		});
 	}
 
-	export function RequestAccessI(codec : any, args : tInRequestAccess): Promise<Number> {
+	export function RequestAccessI(handle : any, args : tInRequestAccess): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Authentication.RequestAccess(accessLevel: ' + __args.accessLevel+ ')');
+			return handle.codec.send('Authentication.RequestAccess(accessLevel: ' + __args.accessLevel+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function RequestAccess(codec : any, accessLevel: Number): Promise<Number> {
-		return RequestAccessI(codec, {
+	export function RequestAccess(handle : any, accessLevel: Number): Promise<Number> {
+		return RequestAccessI(handle, {
 				accessLevel: accessLevel
 		});
 	}
 
-	export function SignedResponseI(codec : any, args : tInSignedResponse): Promise<Number> {
+	export function SignedResponseI(handle : any, args : tInSignedResponse): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Authentication.SignedResponse(signedResponse: ' + __args.signedResponse+ ')');
+			return handle.codec.send('Authentication.SignedResponse(signedResponse: ' + __args.signedResponse+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SignedResponse(codec : any, signedResponse: Number): Promise<Number> {
-		return SignedResponseI(codec, {
+	export function SignedResponse(handle : any, signedResponse: Number): Promise<Number> {
+		return SignedResponseI(handle, {
 				signedResponse: signedResponse
 		});
 	}
 
-	export function GetCurrentAccess(codec : any): Promise<Number> {
+	export function GetCurrentAccess(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Authentication.GetCurrentAccess()');
+			return handle.codec.send('Authentication.GetCurrentAccess()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPin1(codec : any): Promise<Number> {
+	export function GetPin1(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Authentication.GetPin1()');
+			return handle.codec.send('Authentication.GetPin1()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TemporaryLoginI(codec : any, args : tInTemporaryLogin): Promise<Number> {
+	export function TemporaryLoginI(handle : any, args : tInTemporaryLogin): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Authentication.TemporaryLogin(accessLevel: ' + __args.accessLevel+ ',currentPIN: ' + __args.currentPIN+ ')');
+			return handle.codec.send('Authentication.TemporaryLogin(accessLevel: ' + __args.accessLevel+ ',currentPIN: ' + __args.currentPIN+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TemporaryLogin(codec : any, accessLevel: Number, currentPIN: Number): Promise<Number> {
-		return TemporaryLoginI(codec, {
+	export function TemporaryLogin(handle : any, accessLevel: Number, currentPIN: Number): Promise<Number> {
+		return TemporaryLoginI(handle, {
 				accessLevel: accessLevel,
 				currentPIN: currentPIN
 		});
@@ -381,11 +394,13 @@ export namespace StatusCommands {
 		hostmsg: Number
 	}
 
-	export function GetCurrentStatusKeepAlive(codec : any): Promise<tOutGetCurrentStatusKeepAlive> {
+	export function GetCurrentStatusKeepAlive(handle : any): Promise<tOutGetCurrentStatusKeepAlive> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('StatusCommands.GetCurrentStatusKeepAlive()');
+			return handle.codec.send('StatusCommands.GetCurrentStatusKeepAlive()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetCurrentStatusKeepAlive>((res,reject) => { reject(error);});
 		}
@@ -394,11 +409,13 @@ export namespace StatusCommands {
 
 export namespace Command {
 
-	export function NAK(codec : any): Promise<Number> {
+	export function NAK(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Command.NAK()');
+			return handle.codec.send('Command.NAK()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
@@ -527,270 +544,300 @@ export namespace SoftwareUpdate {
 		data: Number
 	}
 
-	export function MainSWI(codec : any, args : tInMainSW): Promise<Number> {
+	export function MainSWI(handle : any, args : tInMainSW): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.MainSW(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.MainSW(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function MainSW(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return MainSWI(codec, {
+	export function MainSW(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return MainSWI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function MainBootSwI(codec : any, args : tInMainBootSw): Promise<Number> {
+	export function MainBootSwI(handle : any, args : tInMainBootSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.MainBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.MainBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function MainBootSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return MainBootSwI(codec, {
+	export function MainBootSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return MainBootSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function SlaveBootSwI(codec : any, args : tInSlaveBootSw): Promise<Number> {
+	export function SlaveBootSwI(handle : any, args : tInSlaveBootSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.SlaveBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.SlaveBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SlaveBootSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return SlaveBootSwI(codec, {
+	export function SlaveBootSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return SlaveBootSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function SlaveSwI(codec : any, args : tInSlaveSw): Promise<Number> {
+	export function SlaveSwI(handle : any, args : tInSlaveSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.SlaveSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.SlaveSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SlaveSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return SlaveSwI(codec, {
+	export function SlaveSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return SlaveSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function MmiSwI(codec : any, args : tInMmiSw): Promise<Number> {
+	export function MmiSwI(handle : any, args : tInMmiSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.MmiSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.MmiSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function MmiSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return MmiSwI(codec, {
+	export function MmiSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return MmiSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function MmiBootSwI(codec : any, args : tInMmiBootSw): Promise<Number> {
+	export function MmiBootSwI(handle : any, args : tInMmiBootSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.MmiBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.MmiBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function MmiBootSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return MmiBootSwI(codec, {
+	export function MmiBootSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return MmiBootSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function UltrasonicSwI(codec : any, args : tInUltrasonicSw): Promise<Number> {
+	export function UltrasonicSwI(handle : any, args : tInUltrasonicSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.UltrasonicSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.UltrasonicSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function UltrasonicSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return UltrasonicSwI(codec, {
+	export function UltrasonicSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return UltrasonicSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function UltrasonicBootSwI(codec : any, args : tInUltrasonicBootSw): Promise<Number> {
+	export function UltrasonicBootSwI(handle : any, args : tInUltrasonicBootSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.UltrasonicBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.UltrasonicBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function UltrasonicBootSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return UltrasonicBootSwI(codec, {
+	export function UltrasonicBootSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return UltrasonicBootSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function TrackerSwI(codec : any, args : tInTrackerSw): Promise<Number> {
+	export function TrackerSwI(handle : any, args : tInTrackerSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.TrackerSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.TrackerSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TrackerSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return TrackerSwI(codec, {
+	export function TrackerSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return TrackerSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function TrackerBootSwI(codec : any, args : tInTrackerBootSw): Promise<Number> {
+	export function TrackerBootSwI(handle : any, args : tInTrackerBootSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.TrackerBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.TrackerBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TrackerBootSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return TrackerBootSwI(codec, {
+	export function TrackerBootSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return TrackerBootSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function SetAddressSpaceI(codec : any, args : tInSetAddressSpace): Promise<Number> {
+	export function SetAddressSpaceI(handle : any, args : tInSetAddressSpace): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.SetAddressSpace(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.SetAddressSpace(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetAddressSpace(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return SetAddressSpaceI(codec, {
+	export function SetAddressSpace(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return SetAddressSpaceI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function ProgramDataI(codec : any, args : tInProgramData): Promise<Number> {
+	export function ProgramDataI(handle : any, args : tInProgramData): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.ProgramData(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.ProgramData(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ProgramData(codec : any, address: Number, length: Number, data: Uint8Array): Promise<Number> {
-		return ProgramDataI(codec, {
+	export function ProgramData(handle : any, address: Number, length: Number, data: Uint8Array): Promise<Number> {
+		return ProgramDataI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function VerifyChSumAndRestartI(codec : any, args : tInVerifyChSumAndRestart): Promise<Number> {
+	export function VerifyChSumAndRestartI(handle : any, args : tInVerifyChSumAndRestart): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.VerifyChSumAndRestart(address: ' + __args.address+ ',length: ' + __args.length+ ',chsum: ' + __args.chsum+ ')');
+			return handle.codec.send('SoftwareUpdate.VerifyChSumAndRestart(address: ' + __args.address+ ',length: ' + __args.length+ ',chsum: ' + __args.chsum+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function VerifyChSumAndRestart(codec : any, address: Number, length: Number, chsum: Number): Promise<Number> {
-		return VerifyChSumAndRestartI(codec, {
+	export function VerifyChSumAndRestart(handle : any, address: Number, length: Number, chsum: Number): Promise<Number> {
+		return VerifyChSumAndRestartI(handle, {
 				address: address,
 				length: length,
 				chsum: chsum
 		});
 	}
 
-	export function JumpToBootSwI(codec : any, args : tInJumpToBootSw): Promise<Number> {
+	export function JumpToBootSwI(handle : any, args : tInJumpToBootSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.JumpToBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.JumpToBootSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function JumpToBootSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return JumpToBootSwI(codec, {
+	export function JumpToBootSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return JumpToBootSwI(handle, {
 				address: address,
 				length: length,
 				data: data
 		});
 	}
 
-	export function FlashBootSwFromLoaderSwI(codec : any, args : tInFlashBootSwFromLoaderSw): Promise<Number> {
+	export function FlashBootSwFromLoaderSwI(handle : any, args : tInFlashBootSwFromLoaderSw): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SoftwareUpdate.FlashBootSwFromLoaderSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('SoftwareUpdate.FlashBootSwFromLoaderSw(address: ' + __args.address+ ',length: ' + __args.length+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function FlashBootSwFromLoaderSw(codec : any, address: Number, length: Number, data: Number): Promise<Number> {
-		return FlashBootSwFromLoaderSwI(codec, {
+	export function FlashBootSwFromLoaderSw(handle : any, address: Number, length: Number, data: Number): Promise<Number> {
+		return FlashBootSwFromLoaderSwI(handle, {
 				address: address,
 				length: length,
 				data: data
@@ -1305,28 +1352,32 @@ export namespace SystemSettings {
 		configChangeCount: Number
 	}
 
-	export function GetCommunicationBoardAPN(codec : any): Promise<tOutGetCommunicationBoardAPN> {
+	export function GetCommunicationBoardAPN(handle : any): Promise<tOutGetCommunicationBoardAPN> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetCommunicationBoardAPN()');
+			return handle.codec.send('SystemSettings.GetCommunicationBoardAPN()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetCommunicationBoardAPN>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetCommunicationBoardAPNI(codec : any, args : tInSetCommunicationBoardAPN): Promise<tOutSetCommunicationBoardAPN> {
+	export function SetCommunicationBoardAPNI(handle : any, args : tInSetCommunicationBoardAPN): Promise<tOutSetCommunicationBoardAPN> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetCommunicationBoardAPN(pincode: ' + __args.pincode+ ',apn: ' + __args.apn+ ',username: ' + __args.username+ ',password: ' + __args.password+ ')');
+			return handle.codec.send('SystemSettings.SetCommunicationBoardAPN(pincode: ' + __args.pincode+ ',apn: ' + __args.apn+ ',username: ' + __args.username+ ',password: ' + __args.password+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetCommunicationBoardAPN>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetCommunicationBoardAPN(codec : any, pincode: Number, apn: String, username: String, password: String): Promise<tOutSetCommunicationBoardAPN> {
-		return SetCommunicationBoardAPNI(codec, {
+	export function SetCommunicationBoardAPN(handle : any, pincode: Number, apn: String, username: String, password: String): Promise<tOutSetCommunicationBoardAPN> {
+		return SetCommunicationBoardAPNI(handle, {
 				pincode: pincode,
 				apn: apn,
 				username: username,
@@ -1334,68 +1385,76 @@ export namespace SystemSettings {
 		});
 	}
 
-	export function GetCommunicationBoardReportIntervalI(codec : any, args : tInGetCommunicationBoardReportInterval): Promise<Number> {
+	export function GetCommunicationBoardReportIntervalI(handle : any, args : tInGetCommunicationBoardReportInterval): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetCommunicationBoardReportInterval(commandinitiator: ' + __args.commandinitiator+ ')');
+			return handle.codec.send('SystemSettings.GetCommunicationBoardReportInterval(commandinitiator: ' + __args.commandinitiator+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCommunicationBoardReportInterval(codec : any, commandinitiator: Number): Promise<Number> {
-		return GetCommunicationBoardReportIntervalI(codec, {
+	export function GetCommunicationBoardReportInterval(handle : any, commandinitiator: Number): Promise<Number> {
+		return GetCommunicationBoardReportIntervalI(handle, {
 				commandinitiator: commandinitiator
 		});
 	}
 
-	export function SetCommunicationBoardReportIntervalI(codec : any, args : tInSetCommunicationBoardReportInterval): Promise<Number> {
+	export function SetCommunicationBoardReportIntervalI(handle : any, args : tInSetCommunicationBoardReportInterval): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetCommunicationBoardReportInterval(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',interval: ' + __args.interval+ ')');
+			return handle.codec.send('SystemSettings.SetCommunicationBoardReportInterval(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',interval: ' + __args.interval+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetCommunicationBoardReportInterval(codec : any, commandinitiator: Number, pincode: Number, interval: Number): Promise<Number> {
-		return SetCommunicationBoardReportIntervalI(codec, {
+	export function SetCommunicationBoardReportInterval(handle : any, commandinitiator: Number, pincode: Number, interval: Number): Promise<Number> {
+		return SetCommunicationBoardReportIntervalI(handle, {
 				commandinitiator: commandinitiator,
 				pincode: pincode,
 				interval: interval
 		});
 	}
 
-	export function GetCommunicationBoardSettingsI(codec : any, args : tInGetCommunicationBoardSettings): Promise<Number> {
+	export function GetCommunicationBoardSettingsI(handle : any, args : tInGetCommunicationBoardSettings): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetCommunicationBoardSettings(commandinitiator: ' + __args.commandinitiator+ ')');
+			return handle.codec.send('SystemSettings.GetCommunicationBoardSettings(commandinitiator: ' + __args.commandinitiator+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCommunicationBoardSettings(codec : any, commandinitiator: Number): Promise<Number> {
-		return GetCommunicationBoardSettingsI(codec, {
+	export function GetCommunicationBoardSettings(handle : any, commandinitiator: Number): Promise<Number> {
+		return GetCommunicationBoardSettingsI(handle, {
 				commandinitiator: commandinitiator
 		});
 	}
 
-	export function SetCommunicationBoardSettingsI(codec : any, args : tInSetCommunicationBoardSettings): Promise<Number> {
+	export function SetCommunicationBoardSettingsI(handle : any, args : tInSetCommunicationBoardSettings): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetCommunicationBoardSettings(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',trackerpowermode: ' + __args.trackerpowermode+ ',disablecominterface: ' + __args.disablecominterface+ ')');
+			return handle.codec.send('SystemSettings.SetCommunicationBoardSettings(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',trackerpowermode: ' + __args.trackerpowermode+ ',disablecominterface: ' + __args.disablecominterface+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetCommunicationBoardSettings(codec : any, commandinitiator: Number, pincode: Number, trackerpowermode: Number, disablecominterface: Number): Promise<Number> {
-		return SetCommunicationBoardSettingsI(codec, {
+	export function SetCommunicationBoardSettings(handle : any, commandinitiator: Number, pincode: Number, trackerpowermode: Number, disablecominterface: Number): Promise<Number> {
+		return SetCommunicationBoardSettingsI(handle, {
 				commandinitiator: commandinitiator,
 				pincode: pincode,
 				trackerpowermode: trackerpowermode,
@@ -1403,34 +1462,38 @@ export namespace SystemSettings {
 		});
 	}
 
-	export function GetGeofenceI(codec : any, args : tInGetGeofence): Promise<tOutGetGeofence> {
+	export function GetGeofenceI(handle : any, args : tInGetGeofence): Promise<tOutGetGeofence> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetGeofence(commandinitiator: ' + __args.commandinitiator+ ')');
+			return handle.codec.send('SystemSettings.GetGeofence(commandinitiator: ' + __args.commandinitiator+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetGeofence>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGeofence(codec : any, commandinitiator: Number): Promise<tOutGetGeofence> {
-		return GetGeofenceI(codec, {
+	export function GetGeofence(handle : any, commandinitiator: Number): Promise<tOutGetGeofence> {
+		return GetGeofenceI(handle, {
 				commandinitiator: commandinitiator
 		});
 	}
 
-	export function SetGeofenceI(codec : any, args : tInSetGeofence): Promise<tOutSetGeofence> {
+	export function SetGeofenceI(handle : any, args : tInSetGeofence): Promise<tOutSetGeofence> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetGeofence(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',northsouth: ' + __args.northsouth+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',eastwest: ' + __args.eastwest+ ',altitude: ' + __args.altitude+ ')');
+			return handle.codec.send('SystemSettings.SetGeofence(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',northsouth: ' + __args.northsouth+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',eastwest: ' + __args.eastwest+ ',altitude: ' + __args.altitude+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetGeofence>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGeofence(codec : any, commandinitiator: Number, pincode: Number, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, northsouth: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, eastwest: Number, altitude: Number): Promise<tOutSetGeofence> {
-		return SetGeofenceI(codec, {
+	export function SetGeofence(handle : any, commandinitiator: Number, pincode: Number, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, northsouth: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, eastwest: Number, altitude: Number): Promise<tOutSetGeofence> {
+		return SetGeofenceI(handle, {
 				commandinitiator: commandinitiator,
 				pincode: pincode,
 				latitudedegree: latitudedegree,
@@ -1445,34 +1508,38 @@ export namespace SystemSettings {
 		});
 	}
 
-	export function GetGeofenceSensitivityI(codec : any, args : tInGetGeofenceSensitivity): Promise<tOutGetGeofenceSensitivity> {
+	export function GetGeofenceSensitivityI(handle : any, args : tInGetGeofenceSensitivity): Promise<tOutGetGeofenceSensitivity> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetGeofenceSensitivity(commandinitiator: ' + __args.commandinitiator+ ')');
+			return handle.codec.send('SystemSettings.GetGeofenceSensitivity(commandinitiator: ' + __args.commandinitiator+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetGeofenceSensitivity>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGeofenceSensitivity(codec : any, commandinitiator: Number): Promise<tOutGetGeofenceSensitivity> {
-		return GetGeofenceSensitivityI(codec, {
+	export function GetGeofenceSensitivity(handle : any, commandinitiator: Number): Promise<tOutGetGeofenceSensitivity> {
+		return GetGeofenceSensitivityI(handle, {
 				commandinitiator: commandinitiator
 		});
 	}
 
-	export function SetGeofenceSensitivityI(codec : any, args : tInSetGeofenceSensitivity): Promise<tOutSetGeofenceSensitivity> {
+	export function SetGeofenceSensitivityI(handle : any, args : tInSetGeofenceSensitivity): Promise<tOutSetGeofenceSensitivity> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetGeofenceSensitivity(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',sesitivity: ' + __args.sesitivity+ ',geofenceradius: ' + __args.geofenceradius+ ',timeoutside: ' + __args.timeoutside+ ')');
+			return handle.codec.send('SystemSettings.SetGeofenceSensitivity(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',sesitivity: ' + __args.sesitivity+ ',geofenceradius: ' + __args.geofenceradius+ ',timeoutside: ' + __args.timeoutside+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetGeofenceSensitivity>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGeofenceSensitivity(codec : any, commandinitiator: Number, pincode: Number, sesitivity: Number, geofenceradius: Number, timeoutside: Number): Promise<tOutSetGeofenceSensitivity> {
-		return SetGeofenceSensitivityI(codec, {
+	export function SetGeofenceSensitivity(handle : any, commandinitiator: Number, pincode: Number, sesitivity: Number, geofenceradius: Number, timeoutside: Number): Promise<tOutSetGeofenceSensitivity> {
+		return SetGeofenceSensitivityI(handle, {
 				commandinitiator: commandinitiator,
 				pincode: pincode,
 				sesitivity: sesitivity,
@@ -1481,90 +1548,102 @@ export namespace SystemSettings {
 		});
 	}
 
-	export function GetTrackerDNSName(codec : any): Promise<tOutGetTrackerDNSName> {
+	export function GetTrackerDNSName(handle : any): Promise<tOutGetTrackerDNSName> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetTrackerDNSName()');
+			return handle.codec.send('SystemSettings.GetTrackerDNSName()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTrackerDNSName>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrackerDNSNameI(codec : any, args : tInSetTrackerDNSName): Promise<tOutSetTrackerDNSName> {
+	export function SetTrackerDNSNameI(handle : any, args : tInSetTrackerDNSName): Promise<tOutSetTrackerDNSName> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetTrackerDNSName(pin: ' + __args.pin+ ',port: ' + __args.port+ ',dnsname: ' + __args.dnsname+ ')');
+			return handle.codec.send('SystemSettings.SetTrackerDNSName(pin: ' + __args.pin+ ',port: ' + __args.port+ ',dnsname: ' + __args.dnsname+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTrackerDNSName>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrackerDNSName(codec : any, pin: Number, port: Number, dnsname: String): Promise<tOutSetTrackerDNSName> {
-		return SetTrackerDNSNameI(codec, {
+	export function SetTrackerDNSName(handle : any, pin: Number, port: Number, dnsname: String): Promise<tOutSetTrackerDNSName> {
+		return SetTrackerDNSNameI(handle, {
 				pin: pin,
 				port: port,
 				dnsname: dnsname
 		});
 	}
 
-	export function GetComBoardSecondDNSName(codec : any): Promise<tOutGetComBoardSecondDNSName> {
+	export function GetComBoardSecondDNSName(handle : any): Promise<tOutGetComBoardSecondDNSName> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetComBoardSecondDNSName()');
+			return handle.codec.send('SystemSettings.GetComBoardSecondDNSName()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetComBoardSecondDNSName>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetComBoardSecondDNSNameI(codec : any, args : tInSetComBoardSecondDNSName): Promise<tOutSetComBoardSecondDNSName> {
+	export function SetComBoardSecondDNSNameI(handle : any, args : tInSetComBoardSecondDNSName): Promise<tOutSetComBoardSecondDNSName> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetComBoardSecondDNSName(pin: ' + __args.pin+ ',port: ' + __args.port+ ',dnsname: ' + __args.dnsname+ ')');
+			return handle.codec.send('SystemSettings.SetComBoardSecondDNSName(pin: ' + __args.pin+ ',port: ' + __args.port+ ',dnsname: ' + __args.dnsname+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetComBoardSecondDNSName>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetComBoardSecondDNSName(codec : any, pin: Number, port: Number, dnsname: String): Promise<tOutSetComBoardSecondDNSName> {
-		return SetComBoardSecondDNSNameI(codec, {
+	export function SetComBoardSecondDNSName(handle : any, pin: Number, port: Number, dnsname: String): Promise<tOutSetComBoardSecondDNSName> {
+		return SetComBoardSecondDNSNameI(handle, {
 				pin: pin,
 				port: port,
 				dnsname: dnsname
 		});
 	}
 
-	export function GetTrackerPhonenumberI(codec : any, args : tInGetTrackerPhonenumber): Promise<void> {
+	export function GetTrackerPhonenumberI(handle : any, args : tInGetTrackerPhonenumber): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetTrackerPhonenumber(commandinitiator: ' + __args.commandinitiator+ ')');
+			return handle.codec.send('SystemSettings.GetTrackerPhonenumber(commandinitiator: ' + __args.commandinitiator+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTrackerPhonenumber(codec : any, commandinitiator: Number): Promise<void> {
-		return GetTrackerPhonenumberI(codec, {
+	export function GetTrackerPhonenumber(handle : any, commandinitiator: Number): Promise<void> {
+		return GetTrackerPhonenumberI(handle, {
 				commandinitiator: commandinitiator
 		});
 	}
 
-	export function SetTrackerPhonenumberI(codec : any, args : tInSetTrackerPhonenumber): Promise<void> {
+	export function SetTrackerPhonenumberI(handle : any, args : tInSetTrackerPhonenumber): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetTrackerPhonenumber(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',phonenumberindex: ' + __args.phonenumberindex+ ',phonenumber: ' + __args.phonenumber+ ')');
+			return handle.codec.send('SystemSettings.SetTrackerPhonenumber(commandinitiator: ' + __args.commandinitiator+ ',pincode: ' + __args.pincode+ ',phonenumberindex: ' + __args.phonenumberindex+ ',phonenumber: ' + __args.phonenumber+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrackerPhonenumber(codec : any, commandinitiator: Number, pincode: Number, phonenumberindex: Number, phonenumber: String): Promise<void> {
-		return SetTrackerPhonenumberI(codec, {
+	export function SetTrackerPhonenumber(handle : any, commandinitiator: Number, pincode: Number, phonenumberindex: Number, phonenumber: String): Promise<void> {
+		return SetTrackerPhonenumberI(handle, {
 				commandinitiator: commandinitiator,
 				pincode: pincode,
 				phonenumberindex: phonenumberindex,
@@ -1572,240 +1651,282 @@ export namespace SystemSettings {
 		});
 	}
 
-	export function GetTime(codec : any): Promise<tOutGetTime> {
+	export function GetTime(handle : any): Promise<tOutGetTime> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetTime()');
+			return handle.codec.send('SystemSettings.GetTime()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTime>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetDate(codec : any): Promise<tOutGetDate> {
+	export function GetDate(handle : any): Promise<tOutGetDate> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetDate()');
+			return handle.codec.send('SystemSettings.GetDate()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetDate>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMmiSettings(codec : any): Promise<tOutGetMmiSettings> {
+	export function GetMmiSettings(handle : any): Promise<tOutGetMmiSettings> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetMmiSettings()');
+			return handle.codec.send('SystemSettings.GetMmiSettings()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetMmiSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSoundSettings(codec : any): Promise<tOutGetSoundSettings> {
+	export function GetSoundSettings(handle : any): Promise<tOutGetSoundSettings> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetSoundSettings()');
+			return handle.codec.send('SystemSettings.GetSoundSettings()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetSoundSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSecuritySettings(codec : any): Promise<tOutGetSecuritySettings> {
+	export function GetSecuritySettings(handle : any): Promise<tOutGetSecuritySettings> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetSecuritySettings()');
+			return handle.codec.send('SystemSettings.GetSecuritySettings()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetSecuritySettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetUserSettings(codec : any): Promise<tOutGetUserSettings> {
+	export function GetUserSettings(handle : any): Promise<tOutGetUserSettings> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetUserSettings()');
+			return handle.codec.send('SystemSettings.GetUserSettings()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetUserSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetDemoMode(codec : any): Promise<Number> {
+	export function GetDemoMode(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetDemoMode()');
+			return handle.codec.send('SystemSettings.GetDemoMode()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetLoopDetection(codec : any): Promise<Number> {
+	export function GetLoopDetection(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetLoopDetection()');
+			return handle.codec.send('SystemSettings.GetLoopDetection()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetLoopPeriodTime(codec : any): Promise<Number> {
+	export function GetLoopPeriodTime(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetLoopPeriodTime()');
+			return handle.codec.send('SystemSettings.GetLoopPeriodTime()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPin(codec : any): Promise<Number> {
+	export function GetPin(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetPin()');
+			return handle.codec.send('SystemSettings.GetPin()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPin2(codec : any): Promise<Number> {
+	export function GetPin2(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetPin2()');
+			return handle.codec.send('SystemSettings.GetPin2()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPinSecurityCode(codec : any): Promise<String> {
+	export function GetPinSecurityCode(handle : any): Promise<String> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetPinSecurityCode()');
+			return handle.codec.send('SystemSettings.GetPinSecurityCode()', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPin2SecurityCode(codec : any): Promise<String> {
+	export function GetPin2SecurityCode(handle : any): Promise<String> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetPin2SecurityCode()');
+			return handle.codec.send('SystemSettings.GetPin2SecurityCode()', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetEcoMode(codec : any): Promise<Number> {
+	export function GetEcoMode(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetEcoMode()');
+			return handle.codec.send('SystemSettings.GetEcoMode()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCuttingHeight(codec : any): Promise<tOutGetCuttingHeight> {
+	export function GetCuttingHeight(handle : any): Promise<tOutGetCuttingHeight> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetCuttingHeight()');
+			return handle.codec.send('SystemSettings.GetCuttingHeight()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetCuttingHeight>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetHeadlightEnabled(codec : any): Promise<Number> {
+	export function GetHeadlightEnabled(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetHeadlightEnabled()');
+			return handle.codec.send('SystemSettings.GetHeadlightEnabled()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetUserSettingsNameI(codec : any, args : tInGetUserSettingsName): Promise<tOutGetUserSettingsName> {
+	export function GetUserSettingsNameI(handle : any, args : tInGetUserSettingsName): Promise<tOutGetUserSettingsName> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetUserSettingsName(userSettingsIndex: ' + __args.userSettingsIndex+ ')');
+			return handle.codec.send('SystemSettings.GetUserSettingsName(userSettingsIndex: ' + __args.userSettingsIndex+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetUserSettingsName>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetUserSettingsName(codec : any, userSettingsIndex: Number): Promise<tOutGetUserSettingsName> {
-		return GetUserSettingsNameI(codec, {
+	export function GetUserSettingsName(handle : any, userSettingsIndex: Number): Promise<tOutGetUserSettingsName> {
+		return GetUserSettingsNameI(handle, {
 				userSettingsIndex: userSettingsIndex
 		});
 	}
 
-	export function GetTimestampLastReminder(codec : any): Promise<Number> {
+	export function GetTimestampLastReminder(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetTimestampLastReminder()');
+			return handle.codec.send('SystemSettings.GetTimestampLastReminder()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetConfigChangeCounterI(codec : any, args : tInGetConfigChangeCounter): Promise<tOutGetConfigChangeCounter> {
+	export function GetConfigChangeCounterI(handle : any, args : tInGetConfigChangeCounter): Promise<tOutGetConfigChangeCounter> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.GetConfigChangeCounter(deviceTypeGroup: ' + __args.deviceTypeGroup+ ',deviceType: ' + __args.deviceType+ ',configChangeCount: ' + __args.configChangeCount+ ')');
+			return handle.codec.send('SystemSettings.GetConfigChangeCounter(deviceTypeGroup: ' + __args.deviceTypeGroup+ ',deviceType: ' + __args.deviceType+ ',configChangeCount: ' + __args.configChangeCount+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetConfigChangeCounter>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetConfigChangeCounter(codec : any, deviceTypeGroup: Number, deviceType: Number, configChangeCount: Number): Promise<tOutGetConfigChangeCounter> {
-		return GetConfigChangeCounterI(codec, {
+	export function GetConfigChangeCounter(handle : any, deviceTypeGroup: Number, deviceType: Number, configChangeCount: Number): Promise<tOutGetConfigChangeCounter> {
+		return GetConfigChangeCounterI(handle, {
 				deviceTypeGroup: deviceTypeGroup,
 				deviceType: deviceType,
 				configChangeCount: configChangeCount
 		});
 	}
 
-	export function SetTimeI(codec : any, args : tInSetTime): Promise<tOutSetTime> {
+	export function SetTimeI(handle : any, args : tInSetTime): Promise<tOutSetTime> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetTime(hour: ' + __args.hour+ ',minute: ' + __args.minute+ ',second: ' + __args.second+ ')');
+			return handle.codec.send('SystemSettings.SetTime(hour: ' + __args.hour+ ',minute: ' + __args.minute+ ',second: ' + __args.second+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTime>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTime(codec : any, hour: Number, minute: Number, second: Number): Promise<tOutSetTime> {
-		return SetTimeI(codec, {
+	export function SetTime(handle : any, hour: Number, minute: Number, second: Number): Promise<tOutSetTime> {
+		return SetTimeI(handle, {
 				hour: hour,
 				minute: minute,
 				second: second
 		});
 	}
 
-	export function SetDateI(codec : any, args : tInSetDate): Promise<tOutSetDate> {
+	export function SetDateI(handle : any, args : tInSetDate): Promise<tOutSetDate> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetDate(year: ' + __args.year+ ',month: ' + __args.month+ ',date: ' + __args.date+ ',dateTimeFormat: ' + __args.dateTimeFormat+ ')');
+			return handle.codec.send('SystemSettings.SetDate(year: ' + __args.year+ ',month: ' + __args.month+ ',date: ' + __args.date+ ',dateTimeFormat: ' + __args.dateTimeFormat+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetDate>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDate(codec : any, year: Number, month: Number, date: Number, dateTimeFormat: Number): Promise<tOutSetDate> {
-		return SetDateI(codec, {
+	export function SetDate(handle : any, year: Number, month: Number, date: Number, dateTimeFormat: Number): Promise<tOutSetDate> {
+		return SetDateI(handle, {
 				year: year,
 				month: month,
 				date: date,
@@ -1813,18 +1934,20 @@ export namespace SystemSettings {
 		});
 	}
 
-	export function SetMmiSettingsI(codec : any, args : tInSetMmiSettings): Promise<tOutSetMmiSettings> {
+	export function SetMmiSettingsI(handle : any, args : tInSetMmiSettings): Promise<tOutSetMmiSettings> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetMmiSettings(language_LCID: ' + __args.language_LCID+ ',messageLevel: ' + __args.messageLevel+ ',userMmiOptions: ' + __args.userMmiOptions+ ',country: ' + __args.country+ ',timeZone: ' + __args.timeZone+ ',systemMmiOptions: ' + __args.systemMmiOptions+ ')');
+			return handle.codec.send('SystemSettings.SetMmiSettings(language_LCID: ' + __args.language_LCID+ ',messageLevel: ' + __args.messageLevel+ ',userMmiOptions: ' + __args.userMmiOptions+ ',country: ' + __args.country+ ',timeZone: ' + __args.timeZone+ ',systemMmiOptions: ' + __args.systemMmiOptions+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetMmiSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMmiSettings(codec : any, language_LCID: Number, messageLevel: Number, userMmiOptions: Number, country: Number, timeZone: Number, systemMmiOptions: Number): Promise<tOutSetMmiSettings> {
-		return SetMmiSettingsI(codec, {
+	export function SetMmiSettings(handle : any, language_LCID: Number, messageLevel: Number, userMmiOptions: Number, country: Number, timeZone: Number, systemMmiOptions: Number): Promise<tOutSetMmiSettings> {
+		return SetMmiSettingsI(handle, {
 				language_LCID: language_LCID,
 				messageLevel: messageLevel,
 				userMmiOptions: userMmiOptions,
@@ -1834,36 +1957,40 @@ export namespace SystemSettings {
 		});
 	}
 
-	export function SetSoundSettingsI(codec : any, args : tInSetSoundSettings): Promise<tOutSetSoundSettings> {
+	export function SetSoundSettingsI(handle : any, args : tInSetSoundSettings): Promise<tOutSetSoundSettings> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetSoundSettings(keypadSound: ' + __args.keypadSound+ ',operationSound: ' + __args.operationSound+ ',startupSound: ' + __args.startupSound+ ')');
+			return handle.codec.send('SystemSettings.SetSoundSettings(keypadSound: ' + __args.keypadSound+ ',operationSound: ' + __args.operationSound+ ',startupSound: ' + __args.startupSound+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetSoundSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSoundSettings(codec : any, keypadSound: Number, operationSound: Number, startupSound: Number): Promise<tOutSetSoundSettings> {
-		return SetSoundSettingsI(codec, {
+	export function SetSoundSettings(handle : any, keypadSound: Number, operationSound: Number, startupSound: Number): Promise<tOutSetSoundSettings> {
+		return SetSoundSettingsI(handle, {
 				keypadSound: keypadSound,
 				operationSound: operationSound,
 				startupSound: startupSound
 		});
 	}
 
-	export function SetSecuritySettingsI(codec : any, args : tInSetSecuritySettings): Promise<tOutSetSecuritySettings> {
+	export function SetSecuritySettingsI(handle : any, args : tInSetSecuritySettings): Promise<tOutSetSecuritySettings> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetSecuritySettings(currentPIN1: ' + __args.currentPIN1+ ',alarmTime: ' + __args.alarmTime+ ',timeLockInterval: ' + __args.timeLockInterval+ ',securityFunctions: ' + __args.securityFunctions+ ')');
+			return handle.codec.send('SystemSettings.SetSecuritySettings(currentPIN1: ' + __args.currentPIN1+ ',alarmTime: ' + __args.alarmTime+ ',timeLockInterval: ' + __args.timeLockInterval+ ',securityFunctions: ' + __args.securityFunctions+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetSecuritySettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSecuritySettings(codec : any, currentPIN1: Number, alarmTime: Number, timeLockInterval: Number, securityFunctions: Number): Promise<tOutSetSecuritySettings> {
-		return SetSecuritySettingsI(codec, {
+	export function SetSecuritySettings(handle : any, currentPIN1: Number, alarmTime: Number, timeLockInterval: Number, securityFunctions: Number): Promise<tOutSetSecuritySettings> {
+		return SetSecuritySettingsI(handle, {
 				currentPIN1: currentPIN1,
 				alarmTime: alarmTime,
 				timeLockInterval: timeLockInterval,
@@ -1871,226 +1998,254 @@ export namespace SystemSettings {
 		});
 	}
 
-	export function StoreUserSettingsI(codec : any, args : tInStoreUserSettings): Promise<tOutStoreUserSettings> {
+	export function StoreUserSettingsI(handle : any, args : tInStoreUserSettings): Promise<tOutStoreUserSettings> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.StoreUserSettings(userSettingsIndex: ' + __args.userSettingsIndex+ ')');
+			return handle.codec.send('SystemSettings.StoreUserSettings(userSettingsIndex: ' + __args.userSettingsIndex+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutStoreUserSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function StoreUserSettings(codec : any, userSettingsIndex: Number): Promise<tOutStoreUserSettings> {
-		return StoreUserSettingsI(codec, {
+	export function StoreUserSettings(handle : any, userSettingsIndex: Number): Promise<tOutStoreUserSettings> {
+		return StoreUserSettingsI(handle, {
 				userSettingsIndex: userSettingsIndex
 		});
 	}
 
-	export function SelectUserSettingsI(codec : any, args : tInSelectUserSettings): Promise<tOutSelectUserSettings> {
+	export function SelectUserSettingsI(handle : any, args : tInSelectUserSettings): Promise<tOutSelectUserSettings> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SelectUserSettings(userSettingsIndex: ' + __args.userSettingsIndex+ ',userSettingsInUse: ' + __args.userSettingsInUse+ ')');
+			return handle.codec.send('SystemSettings.SelectUserSettings(userSettingsIndex: ' + __args.userSettingsIndex+ ',userSettingsInUse: ' + __args.userSettingsInUse+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSelectUserSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SelectUserSettings(codec : any, userSettingsIndex: Number, userSettingsInUse: Number): Promise<tOutSelectUserSettings> {
-		return SelectUserSettingsI(codec, {
+	export function SelectUserSettings(handle : any, userSettingsIndex: Number, userSettingsInUse: Number): Promise<tOutSelectUserSettings> {
+		return SelectUserSettingsI(handle, {
 				userSettingsIndex: userSettingsIndex,
 				userSettingsInUse: userSettingsInUse
 		});
 	}
 
-	export function SetDemoModeI(codec : any, args : tInSetDemoMode): Promise<Number> {
+	export function SetDemoModeI(handle : any, args : tInSetDemoMode): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetDemoMode(demoMode: ' + __args.demoMode+ ')');
+			return handle.codec.send('SystemSettings.SetDemoMode(demoMode: ' + __args.demoMode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDemoMode(codec : any, demoMode: Number): Promise<Number> {
-		return SetDemoModeI(codec, {
+	export function SetDemoMode(handle : any, demoMode: Number): Promise<Number> {
+		return SetDemoModeI(handle, {
 				demoMode: demoMode
 		});
 	}
 
-	export function SetLoopDetectionI(codec : any, args : tInSetLoopDetection): Promise<Number> {
+	export function SetLoopDetectionI(handle : any, args : tInSetLoopDetection): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetLoopDetection(loopDetection: ' + __args.loopDetection+ ')');
+			return handle.codec.send('SystemSettings.SetLoopDetection(loopDetection: ' + __args.loopDetection+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetLoopDetection(codec : any, loopDetection: Number): Promise<Number> {
-		return SetLoopDetectionI(codec, {
+	export function SetLoopDetection(handle : any, loopDetection: Number): Promise<Number> {
+		return SetLoopDetectionI(handle, {
 				loopDetection: loopDetection
 		});
 	}
 
-	export function SetLoopPeriodTimeI(codec : any, args : tInSetLoopPeriodTime): Promise<Number> {
+	export function SetLoopPeriodTimeI(handle : any, args : tInSetLoopPeriodTime): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetLoopPeriodTime(loopPeriodTime: ' + __args.loopPeriodTime+ ',isTemporary: ' + __args.isTemporary+ ')');
+			return handle.codec.send('SystemSettings.SetLoopPeriodTime(loopPeriodTime: ' + __args.loopPeriodTime+ ',isTemporary: ' + __args.isTemporary+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetLoopPeriodTime(codec : any, loopPeriodTime: Number, isTemporary: Number): Promise<Number> {
-		return SetLoopPeriodTimeI(codec, {
+	export function SetLoopPeriodTime(handle : any, loopPeriodTime: Number, isTemporary: Number): Promise<Number> {
+		return SetLoopPeriodTimeI(handle, {
 				loopPeriodTime: loopPeriodTime,
 				isTemporary: isTemporary
 		});
 	}
 
-	export function SetPinI(codec : any, args : tInSetPin): Promise<Number> {
+	export function SetPinI(handle : any, args : tInSetPin): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetPin(currentPIN: ' + __args.currentPIN+ ',newPIN: ' + __args.newPIN+ ')');
+			return handle.codec.send('SystemSettings.SetPin(currentPIN: ' + __args.currentPIN+ ',newPIN: ' + __args.newPIN+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPin(codec : any, currentPIN: Number, newPIN: Number): Promise<Number> {
-		return SetPinI(codec, {
+	export function SetPin(handle : any, currentPIN: Number, newPIN: Number): Promise<Number> {
+		return SetPinI(handle, {
 				currentPIN: currentPIN,
 				newPIN: newPIN
 		});
 	}
 
-	export function SetPin2I(codec : any, args : tInSetPin2): Promise<Number> {
+	export function SetPin2I(handle : any, args : tInSetPin2): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetPin2(currentPIN: ' + __args.currentPIN+ ',newPIN: ' + __args.newPIN+ ')');
+			return handle.codec.send('SystemSettings.SetPin2(currentPIN: ' + __args.currentPIN+ ',newPIN: ' + __args.newPIN+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPin2(codec : any, currentPIN: Number, newPIN: Number): Promise<Number> {
-		return SetPin2I(codec, {
+	export function SetPin2(handle : any, currentPIN: Number, newPIN: Number): Promise<Number> {
+		return SetPin2I(handle, {
 				currentPIN: currentPIN,
 				newPIN: newPIN
 		});
 	}
 
-	export function EnterNewStartupSequenceI(codec : any, args : tInEnterNewStartupSequence): Promise<Number> {
+	export function EnterNewStartupSequenceI(handle : any, args : tInEnterNewStartupSequence): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.EnterNewStartupSequence(currentPIN1: ' + __args.currentPIN1+ ')');
+			return handle.codec.send('SystemSettings.EnterNewStartupSequence(currentPIN1: ' + __args.currentPIN1+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function EnterNewStartupSequence(codec : any, currentPIN1: Number): Promise<Number> {
-		return EnterNewStartupSequenceI(codec, {
+	export function EnterNewStartupSequence(handle : any, currentPIN1: Number): Promise<Number> {
+		return EnterNewStartupSequenceI(handle, {
 				currentPIN1: currentPIN1
 		});
 	}
 
-	export function SetEcoModeI(codec : any, args : tInSetEcoMode): Promise<Number> {
+	export function SetEcoModeI(handle : any, args : tInSetEcoMode): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetEcoMode(ecoMode: ' + __args.ecoMode+ ')');
+			return handle.codec.send('SystemSettings.SetEcoMode(ecoMode: ' + __args.ecoMode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetEcoMode(codec : any, ecoMode: Number): Promise<Number> {
-		return SetEcoModeI(codec, {
+	export function SetEcoMode(handle : any, ecoMode: Number): Promise<Number> {
+		return SetEcoModeI(handle, {
 				ecoMode: ecoMode
 		});
 	}
 
-	export function SetCuttingHeightI(codec : any, args : tInSetCuttingHeight): Promise<tOutSetCuttingHeight> {
+	export function SetCuttingHeightI(handle : any, args : tInSetCuttingHeight): Promise<tOutSetCuttingHeight> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetCuttingHeight(targetHeight: ' + __args.targetHeight+ ',initialHeight: ' + __args.initialHeight+ ',action: ' + __args.action+ ')');
+			return handle.codec.send('SystemSettings.SetCuttingHeight(targetHeight: ' + __args.targetHeight+ ',initialHeight: ' + __args.initialHeight+ ',action: ' + __args.action+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetCuttingHeight>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetCuttingHeight(codec : any, targetHeight: Number, initialHeight: Number, action: Number): Promise<tOutSetCuttingHeight> {
-		return SetCuttingHeightI(codec, {
+	export function SetCuttingHeight(handle : any, targetHeight: Number, initialHeight: Number, action: Number): Promise<tOutSetCuttingHeight> {
+		return SetCuttingHeightI(handle, {
 				targetHeight: targetHeight,
 				initialHeight: initialHeight,
 				action: action
 		});
 	}
 
-	export function SetHeadlightEnabledI(codec : any, args : tInSetHeadlightEnabled): Promise<Number> {
+	export function SetHeadlightEnabledI(handle : any, args : tInSetHeadlightEnabled): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetHeadlightEnabled(headlight: ' + __args.headlight+ ')');
+			return handle.codec.send('SystemSettings.SetHeadlightEnabled(headlight: ' + __args.headlight+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetHeadlightEnabled(codec : any, headlight: Number): Promise<Number> {
-		return SetHeadlightEnabledI(codec, {
+	export function SetHeadlightEnabled(handle : any, headlight: Number): Promise<Number> {
+		return SetHeadlightEnabledI(handle, {
 				headlight: headlight
 		});
 	}
 
-	export function SetUserSettingsName(codec : any): Promise<tOutSetUserSettingsName> {
+	export function SetUserSettingsName(handle : any): Promise<tOutSetUserSettingsName> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetUserSettingsName()');
+			return handle.codec.send('SystemSettings.SetUserSettingsName()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetUserSettingsName>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTimestampLastReminderI(codec : any, args : tInSetTimestampLastReminder): Promise<Number> {
+	export function SetTimestampLastReminderI(handle : any, args : tInSetTimestampLastReminder): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetTimestampLastReminder(timestamp: ' + __args.timestamp+ ')');
+			return handle.codec.send('SystemSettings.SetTimestampLastReminder(timestamp: ' + __args.timestamp+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTimestampLastReminder(codec : any, timestamp: Number): Promise<Number> {
-		return SetTimestampLastReminderI(codec, {
+	export function SetTimestampLastReminder(handle : any, timestamp: Number): Promise<Number> {
+		return SetTimestampLastReminderI(handle, {
 				timestamp: timestamp
 		});
 	}
 
-	export function SetConfigChangeCounterI(codec : any, args : tInSetConfigChangeCounter): Promise<tOutSetConfigChangeCounter> {
+	export function SetConfigChangeCounterI(handle : any, args : tInSetConfigChangeCounter): Promise<tOutSetConfigChangeCounter> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SystemSettings.SetConfigChangeCounter(deviceTypeGroup: ' + __args.deviceTypeGroup+ ',deviceType: ' + __args.deviceType+ ',configChangeCount: ' + __args.configChangeCount+ ')');
+			return handle.codec.send('SystemSettings.SetConfigChangeCounter(deviceTypeGroup: ' + __args.deviceTypeGroup+ ',deviceType: ' + __args.deviceType+ ',configChangeCount: ' + __args.configChangeCount+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetConfigChangeCounter>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetConfigChangeCounter(codec : any, deviceTypeGroup: Number, deviceType: Number, configChangeCount: Number): Promise<tOutSetConfigChangeCounter> {
-		return SetConfigChangeCounterI(codec, {
+	export function SetConfigChangeCounter(handle : any, deviceTypeGroup: Number, deviceType: Number, configChangeCount: Number): Promise<tOutSetConfigChangeCounter> {
+		return SetConfigChangeCounterI(handle, {
 				deviceTypeGroup: deviceTypeGroup,
 				deviceType: deviceType,
 				configChangeCount: configChangeCount
@@ -2236,38 +2391,44 @@ export namespace BackendServerdata {
 		debuginfo: Number
 	}
 
-	export function GetMowerStatus(codec : any): Promise<tOutGetMowerStatus> {
+	export function GetMowerStatus(handle : any): Promise<tOutGetMowerStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BackendServerdata.GetMowerStatus()');
+			return handle.codec.send('BackendServerdata.GetMowerStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetMowerStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMowerStatusDebug(codec : any): Promise<tOutGetMowerStatusDebug> {
+	export function GetMowerStatusDebug(handle : any): Promise<tOutGetMowerStatusDebug> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BackendServerdata.GetMowerStatusDebug()');
+			return handle.codec.send('BackendServerdata.GetMowerStatusDebug()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetMowerStatusDebug>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerStatusI(codec : any, args : tInSetMowerStatus): Promise<void> {
+	export function SetMowerStatusI(handle : any, args : tInSetMowerStatus): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BackendServerdata.SetMowerStatus(latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',hdop: ' + __args.hdop+ ',gpsstatus: ' + __args.gpsstatus+ ',gsmrssi: ' + __args.gsmrssi+ ',mowerstatus: ' + __args.mowerstatus+ ',lasterrorcode: ' + __args.lasterrorcode+ ',timestamplasterror: ' + __args.timestamplasterror+ ',configchangecounter: ' + __args.configchangecounter+ ',hostmessage: ' + __args.hostmessage+ ',timestampnextstart: ' + __args.timestampnextstart+ ',sourcefornextstart: ' + __args.sourcefornextstart+ ',batterypercent: ' + __args.batterypercent+ ')');
+			return handle.codec.send('BackendServerdata.SetMowerStatus(latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',hdop: ' + __args.hdop+ ',gpsstatus: ' + __args.gpsstatus+ ',gsmrssi: ' + __args.gsmrssi+ ',mowerstatus: ' + __args.mowerstatus+ ',lasterrorcode: ' + __args.lasterrorcode+ ',timestamplasterror: ' + __args.timestamplasterror+ ',configchangecounter: ' + __args.configchangecounter+ ',hostmessage: ' + __args.hostmessage+ ',timestampnextstart: ' + __args.timestampnextstart+ ',sourcefornextstart: ' + __args.sourcefornextstart+ ',batterypercent: ' + __args.batterypercent+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerStatus(codec : any, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, hdop: Number, gpsstatus: Number, gsmrssi: Number, mowerstatus: Number, lasterrorcode: Number, timestamplasterror: Number, configchangecounter: Number, hostmessage: Number, timestampnextstart: Number, sourcefornextstart: Number, batterypercent: Number): Promise<void> {
-		return SetMowerStatusI(codec, {
+	export function SetMowerStatus(handle : any, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, hdop: Number, gpsstatus: Number, gsmrssi: Number, mowerstatus: Number, lasterrorcode: Number, timestamplasterror: Number, configchangecounter: Number, hostmessage: Number, timestampnextstart: Number, sourcefornextstart: Number, batterypercent: Number): Promise<void> {
+		return SetMowerStatusI(handle, {
 				latitudedegree: latitudedegree,
 				latitudeminute: latitudeminute,
 				latitudedecimalminute: latitudedecimalminute,
@@ -2288,18 +2449,20 @@ export namespace BackendServerdata {
 		});
 	}
 
-	export function SetMowerStatus4I(codec : any, args : tInSetMowerStatus4): Promise<void> {
+	export function SetMowerStatus4I(handle : any, args : tInSetMowerStatus4): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BackendServerdata.SetMowerStatus4(latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',hdop: ' + __args.hdop+ ',gpsstatus: ' + __args.gpsstatus+ ',gsmrssi: ' + __args.gsmrssi+ ',mowerstatus: ' + __args.mowerstatus+ ',lasterrorcode: ' + __args.lasterrorcode+ ',timestamplasterror: ' + __args.timestamplasterror+ ',configchangecounter: ' + __args.configchangecounter+ ',hostmessage: ' + __args.hostmessage+ ',timestampnextstart: ' + __args.timestampnextstart+ ',sourcefornextstart: ' + __args.sourcefornextstart+ ',batterypercent: ' + __args.batterypercent+ ')');
+			return handle.codec.send('BackendServerdata.SetMowerStatus4(latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',hdop: ' + __args.hdop+ ',gpsstatus: ' + __args.gpsstatus+ ',gsmrssi: ' + __args.gsmrssi+ ',mowerstatus: ' + __args.mowerstatus+ ',lasterrorcode: ' + __args.lasterrorcode+ ',timestamplasterror: ' + __args.timestamplasterror+ ',configchangecounter: ' + __args.configchangecounter+ ',hostmessage: ' + __args.hostmessage+ ',timestampnextstart: ' + __args.timestampnextstart+ ',sourcefornextstart: ' + __args.sourcefornextstart+ ',batterypercent: ' + __args.batterypercent+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerStatus4(codec : any, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, hdop: Number, gpsstatus: Number, gsmrssi: Number, mowerstatus: Number, lasterrorcode: Number, timestamplasterror: Number, configchangecounter: Number, hostmessage: Number, timestampnextstart: Number, sourcefornextstart: Number, batterypercent: Number): Promise<void> {
-		return SetMowerStatus4I(codec, {
+	export function SetMowerStatus4(handle : any, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, hdop: Number, gpsstatus: Number, gsmrssi: Number, mowerstatus: Number, lasterrorcode: Number, timestamplasterror: Number, configchangecounter: Number, hostmessage: Number, timestampnextstart: Number, sourcefornextstart: Number, batterypercent: Number): Promise<void> {
+		return SetMowerStatus4I(handle, {
 				latitudedegree: latitudedegree,
 				latitudeminute: latitudeminute,
 				latitudedecimalminute: latitudedecimalminute,
@@ -2320,18 +2483,20 @@ export namespace BackendServerdata {
 		});
 	}
 
-	export function SetMowerStatus5I(codec : any, args : tInSetMowerStatus5): Promise<void> {
+	export function SetMowerStatus5I(handle : any, args : tInSetMowerStatus5): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BackendServerdata.SetMowerStatus5(latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',hdop: ' + __args.hdop+ ',gpsstatus: ' + __args.gpsstatus+ ',gsmrssi: ' + __args.gsmrssi+ ',mowerstatus: ' + __args.mowerstatus+ ',lasterrorcode: ' + __args.lasterrorcode+ ',timestamplasterror: ' + __args.timestamplasterror+ ',configchangecounter: ' + __args.configchangecounter+ ',hostmessage: ' + __args.hostmessage+ ',timestampnextstart: ' + __args.timestampnextstart+ ',sourcefornextstart: ' + __args.sourcefornextstart+ ',batterypercent: ' + __args.batterypercent+ ')');
+			return handle.codec.send('BackendServerdata.SetMowerStatus5(latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',hdop: ' + __args.hdop+ ',gpsstatus: ' + __args.gpsstatus+ ',gsmrssi: ' + __args.gsmrssi+ ',mowerstatus: ' + __args.mowerstatus+ ',lasterrorcode: ' + __args.lasterrorcode+ ',timestamplasterror: ' + __args.timestamplasterror+ ',configchangecounter: ' + __args.configchangecounter+ ',hostmessage: ' + __args.hostmessage+ ',timestampnextstart: ' + __args.timestampnextstart+ ',sourcefornextstart: ' + __args.sourcefornextstart+ ',batterypercent: ' + __args.batterypercent+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerStatus5(codec : any, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, hdop: Number, gpsstatus: Number, gsmrssi: Number, mowerstatus: Number, lasterrorcode: Number, timestamplasterror: Number, configchangecounter: Number, hostmessage: Number, timestampnextstart: Number, sourcefornextstart: Number, batterypercent: Number): Promise<void> {
-		return SetMowerStatus5I(codec, {
+	export function SetMowerStatus5(handle : any, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, hdop: Number, gpsstatus: Number, gsmrssi: Number, mowerstatus: Number, lasterrorcode: Number, timestamplasterror: Number, configchangecounter: Number, hostmessage: Number, timestampnextstart: Number, sourcefornextstart: Number, batterypercent: Number): Promise<void> {
+		return SetMowerStatus5I(handle, {
 				latitudedegree: latitudedegree,
 				latitudeminute: latitudeminute,
 				latitudedecimalminute: latitudedecimalminute,
@@ -2352,18 +2517,20 @@ export namespace BackendServerdata {
 		});
 	}
 
-	export function SetMowerStatusDebugI(codec : any, args : tInSetMowerStatusDebug): Promise<void> {
+	export function SetMowerStatusDebugI(handle : any, args : tInSetMowerStatusDebug): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BackendServerdata.SetMowerStatusDebug(latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',hdop: ' + __args.hdop+ ',gpsstatus: ' + __args.gpsstatus+ ',gsmrssi: ' + __args.gsmrssi+ ',mowerstatus: ' + __args.mowerstatus+ ',lasterrorcode: ' + __args.lasterrorcode+ ',timestamplasterror: ' + __args.timestamplasterror+ ',configchangecounter: ' + __args.configchangecounter+ ',hostmessage: ' + __args.hostmessage+ ',timestampnextstart: ' + __args.timestampnextstart+ ',sourcefornextstart: ' + __args.sourcefornextstart+ ',batterypercent: ' + __args.batterypercent+ ',empty: ' + __args.empty+ ',debuginfo: ' + __args.debuginfo+ ')');
+			return handle.codec.send('BackendServerdata.SetMowerStatusDebug(latitudedegree: ' + __args.latitudedegree+ ',latitudeminute: ' + __args.latitudeminute+ ',latitudedecimalminute: ' + __args.latitudedecimalminute+ ',longitudedegree: ' + __args.longitudedegree+ ',longitudeminute: ' + __args.longitudeminute+ ',longitudedecimalminute: ' + __args.longitudedecimalminute+ ',hdop: ' + __args.hdop+ ',gpsstatus: ' + __args.gpsstatus+ ',gsmrssi: ' + __args.gsmrssi+ ',mowerstatus: ' + __args.mowerstatus+ ',lasterrorcode: ' + __args.lasterrorcode+ ',timestamplasterror: ' + __args.timestamplasterror+ ',configchangecounter: ' + __args.configchangecounter+ ',hostmessage: ' + __args.hostmessage+ ',timestampnextstart: ' + __args.timestampnextstart+ ',sourcefornextstart: ' + __args.sourcefornextstart+ ',batterypercent: ' + __args.batterypercent+ ',empty: ' + __args.empty+ ',debuginfo: ' + __args.debuginfo+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerStatusDebug(codec : any, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, hdop: Number, gpsstatus: Number, gsmrssi: Number, mowerstatus: Number, lasterrorcode: Number, timestamplasterror: Number, configchangecounter: Number, hostmessage: Number, timestampnextstart: Number, sourcefornextstart: Number, batterypercent: Number, empty: Uint8Array, debuginfo: Number): Promise<void> {
-		return SetMowerStatusDebugI(codec, {
+	export function SetMowerStatusDebug(handle : any, latitudedegree: Number, latitudeminute: Number, latitudedecimalminute: Number, longitudedegree: Number, longitudeminute: Number, longitudedecimalminute: Number, hdop: Number, gpsstatus: Number, gsmrssi: Number, mowerstatus: Number, lasterrorcode: Number, timestamplasterror: Number, configchangecounter: Number, hostmessage: Number, timestampnextstart: Number, sourcefornextstart: Number, batterypercent: Number, empty: Uint8Array, debuginfo: Number): Promise<void> {
+		return SetMowerStatusDebugI(handle, {
 				latitudedegree: latitudedegree,
 				latitudeminute: latitudeminute,
 				latitudedecimalminute: latitudedecimalminute,
@@ -2423,66 +2590,74 @@ export namespace Charginstation {
 		park: Number
 	}
 
-	export function SetPeriodTimeI(codec : any, args : tInSetPeriodTime): Promise<void> {
+	export function SetPeriodTimeI(handle : any, args : tInSetPeriodTime): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charginstation.SetPeriodTime(periodtime: ' + __args.periodtime+ ')');
+			return handle.codec.send('Charginstation.SetPeriodTime(periodtime: ' + __args.periodtime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPeriodTime(codec : any, periodtime: Number): Promise<void> {
-		return SetPeriodTimeI(codec, {
+	export function SetPeriodTime(handle : any, periodtime: Number): Promise<void> {
+		return SetPeriodTimeI(handle, {
 				periodtime: periodtime
 		});
 	}
 
-	export function SetActivatedPulsTempI(codec : any, args : tInSetActivatedPulsTemp): Promise<void> {
+	export function SetActivatedPulsTempI(handle : any, args : tInSetActivatedPulsTemp): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charginstation.SetActivatedPulsTemp(activatedpulses: ' + __args.activatedpulses+ ')');
+			return handle.codec.send('Charginstation.SetActivatedPulsTemp(activatedpulses: ' + __args.activatedpulses+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetActivatedPulsTemp(codec : any, activatedpulses: Number): Promise<void> {
-		return SetActivatedPulsTempI(codec, {
+	export function SetActivatedPulsTemp(handle : any, activatedpulses: Number): Promise<void> {
+		return SetActivatedPulsTempI(handle, {
 				activatedpulses: activatedpulses
 		});
 	}
 
-	export function SetDefaultAndCurrentPulsesI(codec : any, args : tInSetDefaultAndCurrentPulses): Promise<void> {
+	export function SetDefaultAndCurrentPulsesI(handle : any, args : tInSetDefaultAndCurrentPulses): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charginstation.SetDefaultAndCurrentPulses(activatedpulses: ' + __args.activatedpulses+ ')');
+			return handle.codec.send('Charginstation.SetDefaultAndCurrentPulses(activatedpulses: ' + __args.activatedpulses+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDefaultAndCurrentPulses(codec : any, activatedpulses: Number): Promise<void> {
-		return SetDefaultAndCurrentPulsesI(codec, {
+	export function SetDefaultAndCurrentPulses(handle : any, activatedpulses: Number): Promise<void> {
+		return SetDefaultAndCurrentPulsesI(handle, {
 				activatedpulses: activatedpulses
 		});
 	}
 
-	export function SetMessageMowerParkedI(codec : any, args : tInSetMessageMowerParked): Promise<void> {
+	export function SetMessageMowerParkedI(handle : any, args : tInSetMessageMowerParked): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charginstation.SetMessageMowerParked(messageid: ' + __args.messageid+ ',deviceid: ' + __args.deviceid+ ',size: ' + __args.size+ ',numberofbytes: ' + __args.numberofbytes+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('Charginstation.SetMessageMowerParked(messageid: ' + __args.messageid+ ',deviceid: ' + __args.deviceid+ ',size: ' + __args.size+ ',numberofbytes: ' + __args.numberofbytes+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMessageMowerParked(codec : any, messageid: Number, deviceid: Number, size: Number, numberofbytes: Number, data: Number): Promise<void> {
-		return SetMessageMowerParkedI(codec, {
+	export function SetMessageMowerParked(handle : any, messageid: Number, deviceid: Number, size: Number, numberofbytes: Number, data: Number): Promise<void> {
+		return SetMessageMowerParkedI(handle, {
 				messageid: messageid,
 				deviceid: deviceid,
 				size: size,
@@ -2491,27 +2666,31 @@ export namespace Charginstation {
 		});
 	}
 
-	export function SetParkFunctionI(codec : any, args : tInSetParkFunction): Promise<void> {
+	export function SetParkFunctionI(handle : any, args : tInSetParkFunction): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charginstation.SetParkFunction(park: ' + __args.park+ ')');
+			return handle.codec.send('Charginstation.SetParkFunction(park: ' + __args.park+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetParkFunction(codec : any, park: Number): Promise<void> {
-		return SetParkFunctionI(codec, {
+	export function SetParkFunction(handle : any, park: Number): Promise<void> {
+		return SetParkFunctionI(handle, {
 				park: park
 		});
 	}
 
-	export function SetSendApplicationSWVersion(codec : any): Promise<void> {
+	export function SetSendApplicationSWVersion(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charginstation.SetSendApplicationSWVersion()');
+			return handle.codec.send('Charginstation.SetSendApplicationSWVersion()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
@@ -2601,208 +2780,236 @@ export namespace CommunicationBoardCommands {
 		comboardbitfailed: Number
 	}
 
-	export function SetFactorySettingsAllI(codec : any, args : tInSetFactorySettingsAll): Promise<void> {
+	export function SetFactorySettingsAllI(handle : any, args : tInSetFactorySettingsAll): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetFactorySettingsAll(pincode: ' + __args.pincode+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetFactorySettingsAll(pincode: ' + __args.pincode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFactorySettingsAll(codec : any, pincode: Number): Promise<void> {
-		return SetFactorySettingsAllI(codec, {
+	export function SetFactorySettingsAll(handle : any, pincode: Number): Promise<void> {
+		return SetFactorySettingsAllI(handle, {
 				pincode: pincode
 		});
 	}
 
-	export function SetFactorySettingsAllConstantsI(codec : any, args : tInSetFactorySettingsAllConstants): Promise<void> {
+	export function SetFactorySettingsAllConstantsI(handle : any, args : tInSetFactorySettingsAllConstants): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetFactorySettingsAllConstants(pincode: ' + __args.pincode+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetFactorySettingsAllConstants(pincode: ' + __args.pincode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFactorySettingsAllConstants(codec : any, pincode: Number): Promise<void> {
-		return SetFactorySettingsAllConstantsI(codec, {
+	export function SetFactorySettingsAllConstants(handle : any, pincode: Number): Promise<void> {
+		return SetFactorySettingsAllConstantsI(handle, {
 				pincode: pincode
 		});
 	}
 
-	export function SetFactorySettingsConstantsI(codec : any, args : tInSetFactorySettingsConstants): Promise<void> {
+	export function SetFactorySettingsConstantsI(handle : any, args : tInSetFactorySettingsConstants): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetFactorySettingsConstants(pincode: ' + __args.pincode+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetFactorySettingsConstants(pincode: ' + __args.pincode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFactorySettingsConstants(codec : any, pincode: Number): Promise<void> {
-		return SetFactorySettingsConstantsI(codec, {
+	export function SetFactorySettingsConstants(handle : any, pincode: Number): Promise<void> {
+		return SetFactorySettingsConstantsI(handle, {
 				pincode: pincode
 		});
 	}
 
-	export function SetFactorySettingsSystemSettingsI(codec : any, args : tInSetFactorySettingsSystemSettings): Promise<void> {
+	export function SetFactorySettingsSystemSettingsI(handle : any, args : tInSetFactorySettingsSystemSettings): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetFactorySettingsSystemSettings(pincode: ' + __args.pincode+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetFactorySettingsSystemSettings(pincode: ' + __args.pincode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFactorySettingsSystemSettings(codec : any, pincode: Number): Promise<void> {
-		return SetFactorySettingsSystemSettingsI(codec, {
+	export function SetFactorySettingsSystemSettings(handle : any, pincode: Number): Promise<void> {
+		return SetFactorySettingsSystemSettingsI(handle, {
 				pincode: pincode
 		});
 	}
 
-	export function SetFactorySettingsUserSettingsI(codec : any, args : tInSetFactorySettingsUserSettings): Promise<void> {
+	export function SetFactorySettingsUserSettingsI(handle : any, args : tInSetFactorySettingsUserSettings): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetFactorySettingsUserSettings(pincode: ' + __args.pincode+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetFactorySettingsUserSettings(pincode: ' + __args.pincode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFactorySettingsUserSettings(codec : any, pincode: Number): Promise<void> {
-		return SetFactorySettingsUserSettingsI(codec, {
+	export function SetFactorySettingsUserSettings(handle : any, pincode: Number): Promise<void> {
+		return SetFactorySettingsUserSettingsI(handle, {
 				pincode: pincode
 		});
 	}
 
-	export function GetGSMOperatorName(codec : any): Promise<String> {
+	export function GetGSMOperatorName(handle : any): Promise<String> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.GetGSMOperatorName()');
+			return handle.codec.send('CommunicationBoardCommands.GetGSMOperatorName()', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPhonenumberTestI(codec : any, args : tInSetPhonenumberTest): Promise<void> {
+	export function SetPhonenumberTestI(handle : any, args : tInSetPhonenumberTest): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetPhonenumberTest(number: ' + __args.number+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetPhonenumberTest(number: ' + __args.number+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPhonenumberTest(codec : any, number: Number): Promise<void> {
-		return SetPhonenumberTestI(codec, {
+	export function SetPhonenumberTest(handle : any, number: Number): Promise<void> {
+		return SetPhonenumberTestI(handle, {
 				number: number
 		});
 	}
 
-	export function SendAnyAtCommandI(codec : any, args : tInSendAnyAtCommand): Promise<tOutSendAnyAtCommand> {
+	export function SendAnyAtCommandI(handle : any, args : tInSendAnyAtCommand): Promise<tOutSendAnyAtCommand> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SendAnyAtCommand(target: ' + __args.target+ ',length: ' + __args.length+ ',commandstr: ' + __args.commandstr+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SendAnyAtCommand(target: ' + __args.target+ ',length: ' + __args.length+ ',commandstr: ' + __args.commandstr+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSendAnyAtCommand>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SendAnyAtCommand(codec : any, target: Number, length: Number, commandstr: String): Promise<tOutSendAnyAtCommand> {
-		return SendAnyAtCommandI(codec, {
+	export function SendAnyAtCommand(handle : any, target: Number, length: Number, commandstr: String): Promise<tOutSendAnyAtCommand> {
+		return SendAnyAtCommandI(handle, {
 				target: target,
 				length: length,
 				commandstr: commandstr
 		});
 	}
 
-	export function SetPinPukCodeI(codec : any, args : tInSetPinPukCode): Promise<void> {
+	export function SetPinPukCodeI(handle : any, args : tInSetPinPukCode): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetPinPukCode(ispin: ' + __args.ispin+ ',lenght: ' + __args.lenght+ ',code: ' + __args.code+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetPinPukCode(ispin: ' + __args.ispin+ ',lenght: ' + __args.lenght+ ',code: ' + __args.code+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPinPukCode(codec : any, ispin: Number, lenght: Number, code: String): Promise<void> {
-		return SetPinPukCodeI(codec, {
+	export function SetPinPukCode(handle : any, ispin: Number, lenght: Number, code: String): Promise<void> {
+		return SetPinPukCodeI(handle, {
 				ispin: ispin,
 				lenght: lenght,
 				code: code
 		});
 	}
 
-	export function GetSimCardStatus(codec : any): Promise<void> {
+	export function GetSimCardStatus(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.GetSimCardStatus()');
+			return handle.codec.send('CommunicationBoardCommands.GetSimCardStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTiltSensor(codec : any): Promise<void> {
+	export function SetTiltSensor(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetTiltSensor()');
+			return handle.codec.send('CommunicationBoardCommands.SetTiltSensor()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGenerateLogMessageComboardI(codec : any, args : tInSetGenerateLogMessageComboard): Promise<void> {
+	export function SetGenerateLogMessageComboardI(handle : any, args : tInSetGenerateLogMessageComboard): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetGenerateLogMessageComboard(severity: ' + __args.severity+ ',generatedmessagecode: ' + __args.generatedmessagecode+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetGenerateLogMessageComboard(severity: ' + __args.severity+ ',generatedmessagecode: ' + __args.generatedmessagecode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGenerateLogMessageComboard(codec : any, severity: Number, generatedmessagecode: Number): Promise<void> {
-		return SetGenerateLogMessageComboardI(codec, {
+	export function SetGenerateLogMessageComboard(handle : any, severity: Number, generatedmessagecode: Number): Promise<void> {
+		return SetGenerateLogMessageComboardI(handle, {
 				severity: severity,
 				generatedmessagecode: generatedmessagecode
 		});
 	}
 
-	export function SetRadiomoduleStatusI(codec : any, args : tInSetRadiomoduleStatus): Promise<void> {
+	export function SetRadiomoduleStatusI(handle : any, args : tInSetRadiomoduleStatus): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.SetRadiomoduleStatus(connectionstatus: ' + __args.connectionstatus+ ',signalquality: ' + __args.signalquality+ ',wirelesslinkid: ' + __args.wirelesslinkid+ ')');
+			return handle.codec.send('CommunicationBoardCommands.SetRadiomoduleStatus(connectionstatus: ' + __args.connectionstatus+ ',signalquality: ' + __args.signalquality+ ',wirelesslinkid: ' + __args.wirelesslinkid+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRadiomoduleStatus(codec : any, connectionstatus: Number, signalquality: Number, wirelesslinkid: Number): Promise<void> {
-		return SetRadiomoduleStatusI(codec, {
+	export function SetRadiomoduleStatus(handle : any, connectionstatus: Number, signalquality: Number, wirelesslinkid: Number): Promise<void> {
+		return SetRadiomoduleStatusI(handle, {
 				connectionstatus: connectionstatus,
 				signalquality: signalquality,
 				wirelesslinkid: wirelesslinkid
 		});
 	}
 
-	export function GetComboardBitResult(codec : any): Promise<tOutGetComboardBitResult> {
+	export function GetComboardBitResult(handle : any): Promise<tOutGetComboardBitResult> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationBoardCommands.GetComboardBitResult()');
+			return handle.codec.send('CommunicationBoardCommands.GetComboardBitResult()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetComboardBitResult>((res,reject) => { reject(error);});
 		}
@@ -2819,18 +3026,20 @@ export namespace CommunicationSettings {
 		port: Number
 	}
 
-	export function SetBaudRateI(codec : any, args : tInSetBaudRate): Promise<void> {
+	export function SetBaudRateI(handle : any, args : tInSetBaudRate): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CommunicationSettings.SetBaudRate(baudrate: ' + __args.baudrate+ ',rts: ' + __args.rts+ ',port: ' + __args.port+ ')');
+			return handle.codec.send('CommunicationSettings.SetBaudRate(baudrate: ' + __args.baudrate+ ',rts: ' + __args.rts+ ',port: ' + __args.port+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetBaudRate(codec : any, baudrate: Number, rts: Number, port: Number): Promise<void> {
-		return SetBaudRateI(codec, {
+	export function SetBaudRate(handle : any, baudrate: Number, rts: Number, port: Number): Promise<void> {
+		return SetBaudRateI(handle, {
 				baudrate: baudrate,
 				rts: rts,
 				port: port
@@ -2846,18 +3055,20 @@ export namespace ConnectToServer {
 		trackersw: Number
 	}
 
-	export function GetConnectRequestI(codec : any, args : tInGetConnectRequest): Promise<void> {
+	export function GetConnectRequestI(handle : any, args : tInGetConnectRequest): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('ConnectToServer.GetConnectRequest(trackersw: ' + __args.trackersw+ ')');
+			return handle.codec.send('ConnectToServer.GetConnectRequest(trackersw: ' + __args.trackersw+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetConnectRequest(codec : any, trackersw: Number): Promise<void> {
-		return GetConnectRequestI(codec, {
+	export function GetConnectRequest(handle : any, trackersw: Number): Promise<void> {
+		return GetConnectRequestI(handle, {
 				trackersw: trackersw
 		});
 	}
@@ -2925,28 +3136,32 @@ export namespace ControlOfRecording {
 		totalbuffersize: Number
 	}
 
-	export function GetRecordingOptions(codec : any): Promise<tOutGetRecordingOptions> {
+	export function GetRecordingOptions(handle : any): Promise<tOutGetRecordingOptions> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('ControlOfRecording.GetRecordingOptions()');
+			return handle.codec.send('ControlOfRecording.GetRecordingOptions()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetRecordingOptions>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRecordingOptionsI(codec : any, args : tInSetRecordingOptions): Promise<tOutSetRecordingOptions> {
+	export function SetRecordingOptionsI(handle : any, args : tInSetRecordingOptions): Promise<tOutSetRecordingOptions> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('ControlOfRecording.SetRecordingOptions(parameter: ' + __args.parameter+ ',realtime: ' + __args.realtime+ ',trigcheck: ' + __args.trigcheck+ ',options: ' + __args.options+ ')');
+			return handle.codec.send('ControlOfRecording.SetRecordingOptions(parameter: ' + __args.parameter+ ',realtime: ' + __args.realtime+ ',trigcheck: ' + __args.trigcheck+ ',options: ' + __args.options+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetRecordingOptions>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRecordingOptions(codec : any, parameter: Number, realtime: Number, trigcheck: Number, options: Number): Promise<tOutSetRecordingOptions> {
-		return SetRecordingOptionsI(codec, {
+	export function SetRecordingOptions(handle : any, parameter: Number, realtime: Number, trigcheck: Number, options: Number): Promise<tOutSetRecordingOptions> {
+		return SetRecordingOptionsI(handle, {
 				parameter: parameter,
 				realtime: realtime,
 				trigcheck: trigcheck,
@@ -2954,28 +3169,32 @@ export namespace ControlOfRecording {
 		});
 	}
 
-	export function GetRecordingStatus(codec : any): Promise<tOutGetRecordingStatus> {
+	export function GetRecordingStatus(handle : any): Promise<tOutGetRecordingStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('ControlOfRecording.GetRecordingStatus()');
+			return handle.codec.send('ControlOfRecording.GetRecordingStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetRecordingStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRecordingStatusI(codec : any, args : tInSetRecordingStatus): Promise<tOutSetRecordingStatus> {
+	export function SetRecordingStatusI(handle : any, args : tInSetRecordingStatus): Promise<tOutSetRecordingStatus> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('ControlOfRecording.SetRecordingStatus(recordingonoff: ' + __args.recordingonoff+ ',logbuffersize: ' + __args.logbuffersize+ ',noofparameterrecords: ' + __args.noofparameterrecords+ ',noofrealtimedatarecords: ' + __args.noofrealtimedatarecords+ ',nooftrigrecords: ' + __args.nooftrigrecords+ ',totalbuffersize: ' + __args.totalbuffersize+ ')');
+			return handle.codec.send('ControlOfRecording.SetRecordingStatus(recordingonoff: ' + __args.recordingonoff+ ',logbuffersize: ' + __args.logbuffersize+ ',noofparameterrecords: ' + __args.noofparameterrecords+ ',noofrealtimedatarecords: ' + __args.noofrealtimedatarecords+ ',nooftrigrecords: ' + __args.nooftrigrecords+ ',totalbuffersize: ' + __args.totalbuffersize+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetRecordingStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRecordingStatus(codec : any, recordingonoff: Number, logbuffersize: Number, noofparameterrecords: Number, noofrealtimedatarecords: Number, nooftrigrecords: Number, totalbuffersize: Number): Promise<tOutSetRecordingStatus> {
-		return SetRecordingStatusI(codec, {
+	export function SetRecordingStatus(handle : any, recordingonoff: Number, logbuffersize: Number, noofparameterrecords: Number, noofrealtimedatarecords: Number, nooftrigrecords: Number, totalbuffersize: Number): Promise<tOutSetRecordingStatus> {
+		return SetRecordingStatusI(handle, {
 				recordingonoff: recordingonoff,
 				logbuffersize: logbuffersize,
 				noofparameterrecords: noofparameterrecords,
@@ -2995,18 +3214,20 @@ export namespace DebugMessage {
 		data: Uint8Array
 	}
 
-	export function SetDebugMessageI(codec : any, args : tInSetDebugMessage): Promise<void> {
+	export function SetDebugMessageI(handle : any, args : tInSetDebugMessage): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DebugMessage.SetDebugMessage(dataformat: ' + __args.dataformat+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('DebugMessage.SetDebugMessage(dataformat: ' + __args.dataformat+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDebugMessage(codec : any, dataformat: Number, data: Uint8Array): Promise<void> {
-		return SetDebugMessageI(codec, {
+	export function SetDebugMessage(handle : any, dataformat: Number, data: Uint8Array): Promise<void> {
+		return SetDebugMessageI(handle, {
 				dataformat: dataformat,
 				data: data
 		});
@@ -3023,18 +3244,20 @@ export namespace EventsToDebugChannel {
 		swmodule: Number
 	}
 
-	export function SetDebugChannelI(codec : any, args : tInSetDebugChannel): Promise<Number> {
+	export function SetDebugChannelI(handle : any, args : tInSetDebugChannel): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('EventsToDebugChannel.SetDebugChannel(debugch: ' + __args.debugch+ ',loglevel: ' + __args.loglevel+ ',swmodule: ' + __args.swmodule+ ')');
+			return handle.codec.send('EventsToDebugChannel.SetDebugChannel(debugch: ' + __args.debugch+ ',loglevel: ' + __args.loglevel+ ',swmodule: ' + __args.swmodule+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDebugChannel(codec : any, debugch: Number, loglevel: Number, swmodule: Number): Promise<Number> {
-		return SetDebugChannelI(codec, {
+	export function SetDebugChannel(handle : any, debugch: Number, loglevel: Number, swmodule: Number): Promise<Number> {
+		return SetDebugChannelI(handle, {
 				debugch: debugch,
 				loglevel: loglevel,
 				swmodule: swmodule
@@ -3063,18 +3286,20 @@ export namespace GardenSimulator {
 		value: Number
 	}
 
-	export function SetSimulatorI(codec : any, args : tInSetSimulator): Promise<tOutSetSimulator> {
+	export function SetSimulatorI(handle : any, args : tInSetSimulator): Promise<tOutSetSimulator> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GardenSimulator.SetSimulator(id: ' + __args.id+ ',value: ' + __args.value+ ')');
+			return handle.codec.send('GardenSimulator.SetSimulator(id: ' + __args.id+ ',value: ' + __args.value+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetSimulator>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimulator(codec : any, id: Number, value: Number): Promise<tOutSetSimulator> {
-		return SetSimulatorI(codec, {
+	export function SetSimulator(handle : any, id: Number, value: Number): Promise<tOutSetSimulator> {
+		return SetSimulatorI(handle, {
 				id: id,
 				value: value
 		});
@@ -3136,181 +3361,211 @@ export namespace GPSMapCommands {
 		distanceangle: Number
 	}
 
-	export function SetCalculateAndFilterMapData(codec : any): Promise<void> {
+	export function SetCalculateAndFilterMapData(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.SetCalculateAndFilterMapData()');
+			return handle.codec.send('GPSMapCommands.SetCalculateAndFilterMapData()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGPSMapBlockDataI(codec : any, args : tInGetGPSMapBlockData): Promise<Uint8Array> {
+	export function GetGPSMapBlockDataI(handle : any, args : tInGetGPSMapBlockData): Promise<Uint8Array> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetGPSMapBlockData(index: ' + __args.index+ ',offset: ' + __args.offset+ ',size: ' + __args.size+ ')');
+			return handle.codec.send('GPSMapCommands.GetGPSMapBlockData(index: ' + __args.index+ ',offset: ' + __args.offset+ ',size: ' + __args.size+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGPSMapBlockData(codec : any, index: Number, offset: Number, size: Number): Promise<Uint8Array> {
-		return GetGPSMapBlockDataI(codec, {
+	export function GetGPSMapBlockData(handle : any, index: Number, offset: Number, size: Number): Promise<Uint8Array> {
+		return GetGPSMapBlockDataI(handle, {
 				index: index,
 				offset: offset,
 				size: size
 		});
 	}
 
-	export function GetGPSMapStructure(codec : any): Promise<tOutGetGPSMapStructure> {
+	export function GetGPSMapStructure(handle : any): Promise<tOutGetGPSMapStructure> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetGPSMapStructure()');
+			return handle.codec.send('GPSMapCommands.GetGPSMapStructure()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetGPSMapStructure>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGPSMemoryGetI(codec : any, args : tInGetGPSMemoryGet): Promise<Uint8Array> {
+	export function GetGPSMemoryGetI(handle : any, args : tInGetGPSMemoryGet): Promise<Uint8Array> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetGPSMemoryGet(offset: ' + __args.offset+ ',size: ' + __args.size+ ')');
+			return handle.codec.send('GPSMapCommands.GetGPSMemoryGet(offset: ' + __args.offset+ ',size: ' + __args.size+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGPSMemoryGet(codec : any, offset: Number, size: Number): Promise<Uint8Array> {
-		return GetGPSMemoryGetI(codec, {
+	export function GetGPSMemoryGet(handle : any, offset: Number, size: Number): Promise<Uint8Array> {
+		return GetGPSMemoryGetI(handle, {
 				offset: offset,
 				size: size
 		});
 	}
 
-	export function SetGPSMemoryGetI(codec : any, args : tInSetGPSMemoryGet): Promise<Uint8Array> {
+	export function SetGPSMemoryGetI(handle : any, args : tInSetGPSMemoryGet): Promise<Uint8Array> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.SetGPSMemoryGet(offset: ' + __args.offset+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('GPSMapCommands.SetGPSMemoryGet(offset: ' + __args.offset+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGPSMemoryGet(codec : any, offset: Number, data: Uint8Array): Promise<Uint8Array> {
-		return SetGPSMemoryGetI(codec, {
+	export function SetGPSMemoryGet(handle : any, offset: Number, data: Uint8Array): Promise<Uint8Array> {
+		return SetGPSMemoryGetI(handle, {
 				offset: offset,
 				data: data
 		});
 	}
 
-	export function GetGPSMemorySize(codec : any): Promise<Number> {
+	export function GetGPSMemorySize(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetGPSMemorySize()');
+			return handle.codec.send('GPSMapCommands.GetGPSMemorySize()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGPSWireDataI(codec : any, args : tInGetGPSWireData): Promise<Uint8Array> {
+	export function GetGPSWireDataI(handle : any, args : tInGetGPSWireData): Promise<Uint8Array> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetGPSWireData(loopwire: ' + __args.loopwire+ ',offset: ' + __args.offset+ ',size: ' + __args.size+ ')');
+			return handle.codec.send('GPSMapCommands.GetGPSWireData(loopwire: ' + __args.loopwire+ ',offset: ' + __args.offset+ ',size: ' + __args.size+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGPSWireData(codec : any, loopwire: Number, offset: Number, size: Number): Promise<Uint8Array> {
-		return GetGPSWireDataI(codec, {
+	export function GetGPSWireData(handle : any, loopwire: Number, offset: Number, size: Number): Promise<Uint8Array> {
+		return GetGPSWireDataI(handle, {
 				loopwire: loopwire,
 				offset: offset,
 				size: size
 		});
 	}
 
-	export function GetGPSWireList(codec : any): Promise<Uint8Array> {
+	export function GetGPSWireList(handle : any): Promise<Uint8Array> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetGPSWireList()');
+			return handle.codec.send('GPSMapCommands.GetGPSWireList()', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMapBlockList(codec : any): Promise<Uint8Array> {
+	export function GetMapBlockList(handle : any): Promise<Uint8Array> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetMapBlockList()');
+			return handle.codec.send('GPSMapCommands.GetMapBlockList()', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetReadGPSEraseMemory(codec : any): Promise<void> {
+	export function SetReadGPSEraseMemory(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.SetReadGPSEraseMemory()');
+			return handle.codec.send('GPSMapCommands.SetReadGPSEraseMemory()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetReadGPSMapCSPosition(codec : any): Promise<tOutGetReadGPSMapCSPosition> {
+	export function GetReadGPSMapCSPosition(handle : any): Promise<tOutGetReadGPSMapCSPosition> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetReadGPSMapCSPosition()');
+			return handle.codec.send('GPSMapCommands.GetReadGPSMapCSPosition()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetReadGPSMapCSPosition>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetReadGPSMapFromFlash(codec : any): Promise<void> {
+	export function SetReadGPSMapFromFlash(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.SetReadGPSMapFromFlash()');
+			return handle.codec.send('GPSMapCommands.SetReadGPSMapFromFlash()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGPSMap(codec : any): Promise<void> {
+	export function ResetGPSMap(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.ResetGPSMap()');
+			return handle.codec.send('GPSMapCommands.ResetGPSMap()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSaveGPSMapToFlash(codec : any): Promise<void> {
+	export function SetSaveGPSMapToFlash(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.SetSaveGPSMapToFlash()');
+			return handle.codec.send('GPSMapCommands.SetSaveGPSMapToFlash()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetWayToStartPosition(codec : any): Promise<tOutGetWayToStartPosition> {
+	export function GetWayToStartPosition(handle : any): Promise<tOutGetWayToStartPosition> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('GPSMapCommands.GetWayToStartPosition()');
+			return handle.codec.send('GPSMapCommands.GetWayToStartPosition()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetWayToStartPosition>((res,reject) => { reject(error);});
 		}
@@ -3361,174 +3616,200 @@ export namespace HandleCommunicationLink {
 		result: Number
 	}
 
-	export function SetDisconnectCommunicationLink(codec : any): Promise<void> {
+	export function SetDisconnectCommunicationLink(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.SetDisconnectCommunicationLink()');
+			return handle.codec.send('HandleCommunicationLink.SetDisconnectCommunicationLink()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPairingCode(codec : any): Promise<Number> {
+	export function GetPairingCode(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.GetPairingCode()');
+			return handle.codec.send('HandleCommunicationLink.GetPairingCode()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetHeartbeat(codec : any): Promise<void> {
+	export function SetHeartbeat(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.SetHeartbeat()');
+			return handle.codec.send('HandleCommunicationLink.SetHeartbeat()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPairingcodeHostI(codec : any, args : tInGetPairingcodeHost): Promise<Number> {
+	export function GetPairingcodeHostI(handle : any, args : tInGetPairingcodeHost): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.GetPairingcodeHost(pin: ' + __args.pin+ ')');
+			return handle.codec.send('HandleCommunicationLink.GetPairingcodeHost(pin: ' + __args.pin+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPairingcodeHost(codec : any, pin: Number): Promise<Number> {
-		return GetPairingcodeHostI(codec, {
+	export function GetPairingcodeHost(handle : any, pin: Number): Promise<Number> {
+		return GetPairingcodeHostI(handle, {
 				pin: pin
 		});
 	}
 
-	export function SetGetPairingcodeHostI(codec : any, args : tInSetGetPairingcodeHost): Promise<Number> {
+	export function SetGetPairingcodeHostI(handle : any, args : tInSetGetPairingcodeHost): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.SetGetPairingcodeHost(pairingcode: ' + __args.pairingcode+ ')');
+			return handle.codec.send('HandleCommunicationLink.SetGetPairingcodeHost(pairingcode: ' + __args.pairingcode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGetPairingcodeHost(codec : any, pairingcode: Number): Promise<Number> {
-		return SetGetPairingcodeHostI(codec, {
+	export function SetGetPairingcodeHost(handle : any, pairingcode: Number): Promise<Number> {
+		return SetGetPairingcodeHostI(handle, {
 				pairingcode: pairingcode
 		});
 	}
 
-	export function SetPairingRequestI(codec : any, args : tInSetPairingRequest): Promise<void> {
+	export function SetPairingRequestI(handle : any, args : tInSetPairingRequest): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.SetPairingRequest(pincode: ' + __args.pincode+ ')');
+			return handle.codec.send('HandleCommunicationLink.SetPairingRequest(pincode: ' + __args.pincode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPairingRequest(codec : any, pincode: Number): Promise<void> {
-		return SetPairingRequestI(codec, {
+	export function SetPairingRequest(handle : any, pincode: Number): Promise<void> {
+		return SetPairingRequestI(handle, {
 				pincode: pincode
 		});
 	}
 
-	export function GetPairingResultHost(codec : any): Promise<Number> {
+	export function GetPairingResultHost(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.GetPairingResultHost()');
+			return handle.codec.send('HandleCommunicationLink.GetPairingResultHost()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPairingResultHostI(codec : any, args : tInSetPairingResultHost): Promise<Number> {
+	export function SetPairingResultHostI(handle : any, args : tInSetPairingResultHost): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.SetPairingResultHost(result: ' + __args.result+ ')');
+			return handle.codec.send('HandleCommunicationLink.SetPairingResultHost(result: ' + __args.result+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPairingResultHost(codec : any, result: Number): Promise<Number> {
-		return SetPairingResultHostI(codec, {
+	export function SetPairingResultHost(handle : any, result: Number): Promise<Number> {
+		return SetPairingResultHostI(handle, {
 				result: result
 		});
 	}
 
-	export function SetRemoveAllPairing(codec : any): Promise<void> {
+	export function SetRemoveAllPairing(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.SetRemoveAllPairing()');
+			return handle.codec.send('HandleCommunicationLink.SetRemoveAllPairing()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRemoveAllPairingHostI(codec : any, args : tInSetRemoveAllPairingHost): Promise<void> {
+	export function SetRemoveAllPairingHostI(handle : any, args : tInSetRemoveAllPairingHost): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.SetRemoveAllPairingHost(pin: ' + __args.pin+ ')');
+			return handle.codec.send('HandleCommunicationLink.SetRemoveAllPairingHost(pin: ' + __args.pin+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRemoveAllPairingHost(codec : any, pin: Number): Promise<void> {
-		return SetRemoveAllPairingHostI(codec, {
+	export function SetRemoveAllPairingHost(handle : any, pin: Number): Promise<void> {
+		return SetRemoveAllPairingHostI(handle, {
 				pin: pin
 		});
 	}
 
-	export function GetRemoveAllPairingResult(codec : any): Promise<Number> {
+	export function GetRemoveAllPairingResult(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.GetRemoveAllPairingResult()');
+			return handle.codec.send('HandleCommunicationLink.GetRemoveAllPairingResult()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRemoveAllPairingResultI(codec : any, args : tInSetRemoveAllPairingResult): Promise<Number> {
+	export function SetRemoveAllPairingResultI(handle : any, args : tInSetRemoveAllPairingResult): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.SetRemoveAllPairingResult(result: ' + __args.result+ ')');
+			return handle.codec.send('HandleCommunicationLink.SetRemoveAllPairingResult(result: ' + __args.result+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRemoveAllPairingResult(codec : any, result: Number): Promise<Number> {
-		return SetRemoveAllPairingResultI(codec, {
+	export function SetRemoveAllPairingResult(handle : any, result: Number): Promise<Number> {
+		return SetRemoveAllPairingResultI(handle, {
 				result: result
 		});
 	}
 
-	export function GetTransferPairingResultI(codec : any, args : tInGetTransferPairingResult): Promise<void> {
+	export function GetTransferPairingResultI(handle : any, args : tInGetTransferPairingResult): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleCommunicationLink.GetTransferPairingResult(result: ' + __args.result+ ')');
+			return handle.codec.send('HandleCommunicationLink.GetTransferPairingResult(result: ' + __args.result+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTransferPairingResult(codec : any, result: Number): Promise<void> {
-		return GetTransferPairingResultI(codec, {
+	export function GetTransferPairingResult(handle : any, result: Number): Promise<void> {
+		return GetTransferPairingResultI(handle, {
 				result: result
 		});
 	}
@@ -3620,138 +3901,160 @@ export namespace HandleLogData {
 		triglvl2: Number
 	}
 
-	export function SetConnectToLog(codec : any): Promise<void> {
+	export function SetConnectToLog(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.SetConnectToLog()');
+			return handle.codec.send('HandleLogData.SetConnectToLog()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDisconnectToLog(codec : any): Promise<void> {
+	export function SetDisconnectToLog(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.SetDisconnectToLog()');
+			return handle.codec.send('HandleLogData.SetDisconnectToLog()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetLogDataI(codec : any, args : tInGetLogData): Promise<String> {
+	export function GetLogDataI(handle : any, args : tInGetLogData): Promise<String> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.GetLogData(startpos: ' + __args.startpos+ ',length: ' + __args.length+ ')');
+			return handle.codec.send('HandleLogData.GetLogData(startpos: ' + __args.startpos+ ',length: ' + __args.length+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetLogData(codec : any, startpos: Number, length: Number): Promise<String> {
-		return GetLogDataI(codec, {
+	export function GetLogData(handle : any, startpos: Number, length: Number): Promise<String> {
+		return GetLogDataI(handle, {
 				startpos: startpos,
 				length: length
 		});
 	}
 
-	export function ResetLogData(codec : any): Promise<String> {
+	export function ResetLogData(handle : any): Promise<String> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.ResetLogData()');
+			return handle.codec.send('HandleLogData.ResetLogData()', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetParameterIntervalRec(codec : any): Promise<tOutGetParameterIntervalRec> {
+	export function GetParameterIntervalRec(handle : any): Promise<tOutGetParameterIntervalRec> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.GetParameterIntervalRec()');
+			return handle.codec.send('HandleLogData.GetParameterIntervalRec()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetParameterIntervalRec>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetParameterIntervalRecI(codec : any, args : tInSetParameterIntervalRec): Promise<tOutSetParameterIntervalRec> {
+	export function SetParameterIntervalRecI(handle : any, args : tInSetParameterIntervalRec): Promise<tOutSetParameterIntervalRec> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.SetParameterIntervalRec(parametergroup: ' + __args.parametergroup+ ',parameterid: ' + __args.parameterid+ ')');
+			return handle.codec.send('HandleLogData.SetParameterIntervalRec(parametergroup: ' + __args.parametergroup+ ',parameterid: ' + __args.parameterid+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetParameterIntervalRec>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetParameterIntervalRec(codec : any, parametergroup: Uint8Array, parameterid: Uint8Array): Promise<tOutSetParameterIntervalRec> {
-		return SetParameterIntervalRecI(codec, {
+	export function SetParameterIntervalRec(handle : any, parametergroup: Uint8Array, parameterid: Uint8Array): Promise<tOutSetParameterIntervalRec> {
+		return SetParameterIntervalRecI(handle, {
 				parametergroup: parametergroup,
 				parameterid: parameterid
 		});
 	}
 
-	export function GetRealtimeDataInterval(codec : any): Promise<Uint8Array> {
+	export function GetRealtimeDataInterval(handle : any): Promise<Uint8Array> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.GetRealtimeDataInterval()');
+			return handle.codec.send('HandleLogData.GetRealtimeDataInterval()', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRealtimeDataIntervalI(codec : any, args : tInSetRealtimeDataInterval): Promise<Uint8Array> {
+	export function SetRealtimeDataIntervalI(handle : any, args : tInSetRealtimeDataInterval): Promise<Uint8Array> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.SetRealtimeDataInterval(data: ' + __args.data+ ')');
+			return handle.codec.send('HandleLogData.SetRealtimeDataInterval(data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetRealtimeDataInterval(codec : any, data: Uint8Array): Promise<Uint8Array> {
-		return SetRealtimeDataIntervalI(codec, {
+	export function SetRealtimeDataInterval(handle : any, data: Uint8Array): Promise<Uint8Array> {
+		return SetRealtimeDataIntervalI(handle, {
 				data: data
 		});
 	}
 
-	export function GetRecordingStatus(codec : any): Promise<tOutGetRecordingStatus> {
+	export function GetRecordingStatus(handle : any): Promise<tOutGetRecordingStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.GetRecordingStatus()');
+			return handle.codec.send('HandleLogData.GetRecordingStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetRecordingStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTrigParameterList(codec : any): Promise<tOutGetTrigParameterList> {
+	export function GetTrigParameterList(handle : any): Promise<tOutGetTrigParameterList> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.GetTrigParameterList()');
+			return handle.codec.send('HandleLogData.GetTrigParameterList()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTrigParameterList>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrigParameterListI(codec : any, args : tInSetTrigParameterList): Promise<tOutSetTrigParameterList> {
+	export function SetTrigParameterListI(handle : any, args : tInSetTrigParameterList): Promise<tOutSetTrigParameterList> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HandleLogData.SetTrigParameterList(group1: ' + __args.group1+ ',id1: ' + __args.id1+ ',expression1: ' + __args.expression1+ ',triglvl1: ' + __args.triglvl1+ ',group2: ' + __args.group2+ ',id2: ' + __args.id2+ ',expression2: ' + __args.expression2+ ',triglvl2: ' + __args.triglvl2+ ')');
+			return handle.codec.send('HandleLogData.SetTrigParameterList(group1: ' + __args.group1+ ',id1: ' + __args.id1+ ',expression1: ' + __args.expression1+ ',triglvl1: ' + __args.triglvl1+ ',group2: ' + __args.group2+ ',id2: ' + __args.id2+ ',expression2: ' + __args.expression2+ ',triglvl2: ' + __args.triglvl2+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTrigParameterList>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrigParameterList(codec : any, group1: Number, id1: Number, expression1: Number, triglvl1: Number, group2: Number, id2: Number, expression2: Number, triglvl2: Number): Promise<tOutSetTrigParameterList> {
-		return SetTrigParameterListI(codec, {
+	export function SetTrigParameterList(handle : any, group1: Number, id1: Number, expression1: Number, triglvl1: Number, group2: Number, id2: Number, expression2: Number, triglvl2: Number): Promise<tOutSetTrigParameterList> {
+		return SetTrigParameterListI(handle, {
 				group1: group1,
 				id1: id1,
 				expression1: expression1,
@@ -3786,18 +4089,20 @@ export namespace Memory {
 		nrofbytes: Number
 	}
 
-	export function GetMemoryI(codec : any, args : tInGetMemory): Promise<Number> {
+	export function GetMemoryI(handle : any, args : tInGetMemory): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Memory.GetMemory(targetcommand: ' + __args.targetcommand+ ',memorypartition: ' + __args.memorypartition+ ',memoryaddress: ' + __args.memoryaddress+ ',data: ' + __args.data+ ',nrofbytes: ' + __args.nrofbytes+ ')');
+			return handle.codec.send('Memory.GetMemory(targetcommand: ' + __args.targetcommand+ ',memorypartition: ' + __args.memorypartition+ ',memoryaddress: ' + __args.memoryaddress+ ',data: ' + __args.data+ ',nrofbytes: ' + __args.nrofbytes+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMemory(codec : any, targetcommand: Number, memorypartition: Number, memoryaddress: Number, data: Number, nrofbytes: Number): Promise<Number> {
-		return GetMemoryI(codec, {
+	export function GetMemory(handle : any, targetcommand: Number, memorypartition: Number, memoryaddress: Number, data: Number, nrofbytes: Number): Promise<Number> {
+		return GetMemoryI(handle, {
 				targetcommand: targetcommand,
 				memorypartition: memorypartition,
 				memoryaddress: memoryaddress,
@@ -3806,18 +4111,20 @@ export namespace Memory {
 		});
 	}
 
-	export function SetMemoryI(codec : any, args : tInSetMemory): Promise<Number> {
+	export function SetMemoryI(handle : any, args : tInSetMemory): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Memory.SetMemory(targetcommand: ' + __args.targetcommand+ ',memorypartition: ' + __args.memorypartition+ ',memoryaddress: ' + __args.memoryaddress+ ',data: ' + __args.data+ ',nrofbytes: ' + __args.nrofbytes+ ')');
+			return handle.codec.send('Memory.SetMemory(targetcommand: ' + __args.targetcommand+ ',memorypartition: ' + __args.memorypartition+ ',memoryaddress: ' + __args.memoryaddress+ ',data: ' + __args.data+ ',nrofbytes: ' + __args.nrofbytes+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMemory(codec : any, targetcommand: Number, memorypartition: Number, memoryaddress: Number, data: Number, nrofbytes: Number): Promise<Number> {
-		return SetMemoryI(codec, {
+	export function SetMemory(handle : any, targetcommand: Number, memorypartition: Number, memoryaddress: Number, data: Number, nrofbytes: Number): Promise<Number> {
+		return SetMemoryI(handle, {
 				targetcommand: targetcommand,
 				memorypartition: memorypartition,
 				memoryaddress: memoryaddress,
@@ -4063,211 +4370,253 @@ export namespace RealTimeData {
 		difference: Number
 	}
 
-	export function GetWirelessLinkStatus(codec : any): Promise<tOutGetWirelessLinkStatus> {
+	export function GetWirelessLinkStatus(handle : any): Promise<tOutGetWirelessLinkStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetWirelessLinkStatus()');
+			return handle.codec.send('RealTimeData.GetWirelessLinkStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetWirelessLinkStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetBatteryData(codec : any): Promise<tOutGetBatteryData> {
+	export function GetBatteryData(handle : any): Promise<tOutGetBatteryData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetBatteryData()');
+			return handle.codec.send('RealTimeData.GetBatteryData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetBatteryData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetBladeMotorData(codec : any): Promise<tOutGetBladeMotorData> {
+	export function GetBladeMotorData(handle : any): Promise<tOutGetBladeMotorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetBladeMotorData()');
+			return handle.codec.send('RealTimeData.GetBladeMotorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetBladeMotorData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetChargingStationLEDStatus(codec : any): Promise<tOutGetChargingStationLEDStatus> {
+	export function GetChargingStationLEDStatus(handle : any): Promise<tOutGetChargingStationLEDStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetChargingStationLEDStatus()');
+			return handle.codec.send('RealTimeData.GetChargingStationLEDStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetChargingStationLEDStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetChargingStationLoopCurrents(codec : any): Promise<tOutGetChargingStationLoopCurrents> {
+	export function GetChargingStationLoopCurrents(handle : any): Promise<tOutGetChargingStationLoopCurrents> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetChargingStationLoopCurrents()');
+			return handle.codec.send('RealTimeData.GetChargingStationLoopCurrents()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetChargingStationLoopCurrents>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetChargingStationPeriodTime(codec : any): Promise<tOutGetChargingStationPeriodTime> {
+	export function GetChargingStationPeriodTime(handle : any): Promise<tOutGetChargingStationPeriodTime> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetChargingStationPeriodTime()');
+			return handle.codec.send('RealTimeData.GetChargingStationPeriodTime()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetChargingStationPeriodTime>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetChargingStationPowerData(codec : any): Promise<tOutGetChargingStationPowerData> {
+	export function GetChargingStationPowerData(handle : any): Promise<tOutGetChargingStationPowerData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetChargingStationPowerData()');
+			return handle.codec.send('RealTimeData.GetChargingStationPowerData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetChargingStationPowerData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetComboardSensorData(codec : any): Promise<tOutGetComboardSensorData> {
+	export function GetComboardSensorData(handle : any): Promise<tOutGetComboardSensorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetComboardSensorData()');
+			return handle.codec.send('RealTimeData.GetComboardSensorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetComboardSensorData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetFrontCenterLoopSensorData(codec : any): Promise<tOutGetFrontCenterLoopSensorData> {
+	export function GetFrontCenterLoopSensorData(handle : any): Promise<tOutGetFrontCenterLoopSensorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetFrontCenterLoopSensorData()');
+			return handle.codec.send('RealTimeData.GetFrontCenterLoopSensorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetFrontCenterLoopSensorData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetFrontRightLoopSensorData(codec : any): Promise<tOutGetFrontRightLoopSensorData> {
+	export function GetFrontRightLoopSensorData(handle : any): Promise<tOutGetFrontRightLoopSensorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetFrontRightLoopSensorData()');
+			return handle.codec.send('RealTimeData.GetFrontRightLoopSensorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetFrontRightLoopSensorData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGPSData(codec : any): Promise<tOutGetGPSData> {
+	export function GetGPSData(handle : any): Promise<tOutGetGPSData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetGPSData()');
+			return handle.codec.send('RealTimeData.GetGPSData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetGPSData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetLoopFilterData(codec : any): Promise<tOutGetLoopFilterData> {
+	export function GetLoopFilterData(handle : any): Promise<tOutGetLoopFilterData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetLoopFilterData()');
+			return handle.codec.send('RealTimeData.GetLoopFilterData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetLoopFilterData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetNavigatorData(codec : any): Promise<Number> {
+	export function GetNavigatorData(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetNavigatorData()');
+			return handle.codec.send('RealTimeData.GetNavigatorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetRearLeftLoopSensorData(codec : any): Promise<tOutGetRearLeftLoopSensorData> {
+	export function GetRearLeftLoopSensorData(handle : any): Promise<tOutGetRearLeftLoopSensorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetRearLeftLoopSensorData()');
+			return handle.codec.send('RealTimeData.GetRearLeftLoopSensorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetRearLeftLoopSensorData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetRearRightLoopSensorData(codec : any): Promise<tOutGetRearRightLoopSensorData> {
+	export function GetRearRightLoopSensorData(handle : any): Promise<tOutGetRearRightLoopSensorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetRearRightLoopSensorData()');
+			return handle.codec.send('RealTimeData.GetRearRightLoopSensorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetRearRightLoopSensorData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSensorData(codec : any): Promise<tOutGetSensorData> {
+	export function GetSensorData(handle : any): Promise<tOutGetSensorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetSensorData()');
+			return handle.codec.send('RealTimeData.GetSensorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetSensorData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSumLoopSensorData(codec : any): Promise<tOutGetSumLoopSensorData> {
+	export function GetSumLoopSensorData(handle : any): Promise<tOutGetSumLoopSensorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetSumLoopSensorData()');
+			return handle.codec.send('RealTimeData.GetSumLoopSensorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetSumLoopSensorData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetUltrasonicTrackingData(codec : any): Promise<tOutGetUltrasonicTrackingData> {
+	export function GetUltrasonicTrackingData(handle : any): Promise<tOutGetUltrasonicTrackingData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetUltrasonicTrackingData()');
+			return handle.codec.send('RealTimeData.GetUltrasonicTrackingData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetUltrasonicTrackingData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetUltrasonicStatus(codec : any): Promise<tOutGetUltrasonicStatus> {
+	export function GetUltrasonicStatus(handle : any): Promise<tOutGetUltrasonicStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetUltrasonicStatus()');
+			return handle.codec.send('RealTimeData.GetUltrasonicStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetUltrasonicStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetUserinterfaceData(codec : any): Promise<tOutGetUserinterfaceData> {
+	export function GetUserinterfaceData(handle : any): Promise<tOutGetUserinterfaceData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetUserinterfaceData()');
+			return handle.codec.send('RealTimeData.GetUserinterfaceData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetUserinterfaceData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetWheelMotorData(codec : any): Promise<tOutGetWheelMotorData> {
+	export function GetWheelMotorData(handle : any): Promise<tOutGetWheelMotorData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('RealTimeData.GetWheelMotorData()');
+			return handle.codec.send('RealTimeData.GetWheelMotorData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetWheelMotorData>((res,reject) => { reject(error);});
 		}
@@ -4288,34 +4637,38 @@ export namespace NMEAData {
 		nmeadata: String
 	}
 
-	export function SetGPSToMainI(codec : any, args : tInSetGPSToMain): Promise<String> {
+	export function SetGPSToMainI(handle : any, args : tInSetGPSToMain): Promise<String> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('NMEAData.SetGPSToMain(nmeadata: ' + __args.nmeadata+ ')');
+			return handle.codec.send('NMEAData.SetGPSToMain(nmeadata: ' + __args.nmeadata+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGPSToMain(codec : any, nmeadata: String): Promise<String> {
-		return SetGPSToMainI(codec, {
+	export function SetGPSToMain(handle : any, nmeadata: String): Promise<String> {
+		return SetGPSToMainI(handle, {
 				nmeadata: nmeadata
 		});
 	}
 
-	export function SetMainToGPSI(codec : any, args : tInSetMainToGPS): Promise<String> {
+	export function SetMainToGPSI(handle : any, args : tInSetMainToGPS): Promise<String> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('NMEAData.SetMainToGPS(nmeadata: ' + __args.nmeadata+ ')');
+			return handle.codec.send('NMEAData.SetMainToGPS(nmeadata: ' + __args.nmeadata+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMainToGPS(codec : any, nmeadata: String): Promise<String> {
-		return SetMainToGPSI(codec, {
+	export function SetMainToGPS(handle : any, nmeadata: String): Promise<String> {
+		return SetMainToGPSI(handle, {
 				nmeadata: nmeadata
 		});
 	}
@@ -4823,380 +5176,428 @@ export namespace OperatingData {
 		index: Number
 	}
 
-	export function GetHistogramOverBatteryCompleteI(codec : any, args : tInGetHistogramOverBatteryComplete): Promise<tOutGetHistogramOverBatteryComplete> {
+	export function GetHistogramOverBatteryCompleteI(handle : any, args : tInGetHistogramOverBatteryComplete): Promise<tOutGetHistogramOverBatteryComplete> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetHistogramOverBatteryComplete(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetHistogramOverBatteryComplete(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetHistogramOverBatteryComplete>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetHistogramOverBatteryComplete(codec : any, index: Number): Promise<tOutGetHistogramOverBatteryComplete> {
-		return GetHistogramOverBatteryCompleteI(codec, {
+	export function GetHistogramOverBatteryComplete(handle : any, index: Number): Promise<tOutGetHistogramOverBatteryComplete> {
+		return GetHistogramOverBatteryCompleteI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetHistogramOverBatteryCompleteI(codec : any, args : tInResetGetHistogramOverBatteryComplete): Promise<tOutResetGetHistogramOverBatteryComplete> {
+	export function ResetGetHistogramOverBatteryCompleteI(handle : any, args : tInResetGetHistogramOverBatteryComplete): Promise<tOutResetGetHistogramOverBatteryComplete> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetHistogramOverBatteryComplete(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetHistogramOverBatteryComplete(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetHistogramOverBatteryComplete>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetHistogramOverBatteryComplete(codec : any, index: Number): Promise<tOutResetGetHistogramOverBatteryComplete> {
-		return ResetGetHistogramOverBatteryCompleteI(codec, {
+	export function ResetGetHistogramOverBatteryComplete(handle : any, index: Number): Promise<tOutResetGetHistogramOverBatteryComplete> {
+		return ResetGetHistogramOverBatteryCompleteI(handle, {
 				index: index
 		});
 	}
 
-	export function GetHistogramOverBatteryDockingI(codec : any, args : tInGetHistogramOverBatteryDocking): Promise<tOutGetHistogramOverBatteryDocking> {
+	export function GetHistogramOverBatteryDockingI(handle : any, args : tInGetHistogramOverBatteryDocking): Promise<tOutGetHistogramOverBatteryDocking> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetHistogramOverBatteryDocking(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetHistogramOverBatteryDocking(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetHistogramOverBatteryDocking>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetHistogramOverBatteryDocking(codec : any, index: Number): Promise<tOutGetHistogramOverBatteryDocking> {
-		return GetHistogramOverBatteryDockingI(codec, {
+	export function GetHistogramOverBatteryDocking(handle : any, index: Number): Promise<tOutGetHistogramOverBatteryDocking> {
+		return GetHistogramOverBatteryDockingI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetHistogramOverBatteryDockingI(codec : any, args : tInResetGetHistogramOverBatteryDocking): Promise<tOutResetGetHistogramOverBatteryDocking> {
+	export function ResetGetHistogramOverBatteryDockingI(handle : any, args : tInResetGetHistogramOverBatteryDocking): Promise<tOutResetGetHistogramOverBatteryDocking> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetHistogramOverBatteryDocking(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetHistogramOverBatteryDocking(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetHistogramOverBatteryDocking>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetHistogramOverBatteryDocking(codec : any, index: Number): Promise<tOutResetGetHistogramOverBatteryDocking> {
-		return ResetGetHistogramOverBatteryDockingI(codec, {
+	export function ResetGetHistogramOverBatteryDocking(handle : any, index: Number): Promise<tOutResetGetHistogramOverBatteryDocking> {
+		return ResetGetHistogramOverBatteryDockingI(handle, {
 				index: index
 		});
 	}
 
-	export function GetHistogramOverLoopSignalI(codec : any, args : tInGetHistogramOverLoopSignal): Promise<tOutGetHistogramOverLoopSignal> {
+	export function GetHistogramOverLoopSignalI(handle : any, args : tInGetHistogramOverLoopSignal): Promise<tOutGetHistogramOverLoopSignal> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetHistogramOverLoopSignal(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetHistogramOverLoopSignal(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetHistogramOverLoopSignal>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetHistogramOverLoopSignal(codec : any, index: Number): Promise<tOutGetHistogramOverLoopSignal> {
-		return GetHistogramOverLoopSignalI(codec, {
+	export function GetHistogramOverLoopSignal(handle : any, index: Number): Promise<tOutGetHistogramOverLoopSignal> {
+		return GetHistogramOverLoopSignalI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetHistogramOverLoopSignalI(codec : any, args : tInResetGetHistogramOverLoopSignal): Promise<tOutResetGetHistogramOverLoopSignal> {
+	export function ResetGetHistogramOverLoopSignalI(handle : any, args : tInResetGetHistogramOverLoopSignal): Promise<tOutResetGetHistogramOverLoopSignal> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetHistogramOverLoopSignal(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetHistogramOverLoopSignal(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetHistogramOverLoopSignal>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetHistogramOverLoopSignal(codec : any, index: Number): Promise<tOutResetGetHistogramOverLoopSignal> {
-		return ResetGetHistogramOverLoopSignalI(codec, {
+	export function ResetGetHistogramOverLoopSignal(handle : any, index: Number): Promise<tOutResetGetHistogramOverLoopSignal> {
+		return ResetGetHistogramOverLoopSignalI(handle, {
 				index: index
 		});
 	}
 
-	export function GetHistogramOverTiltI(codec : any, args : tInGetHistogramOverTilt): Promise<tOutGetHistogramOverTilt> {
+	export function GetHistogramOverTiltI(handle : any, args : tInGetHistogramOverTilt): Promise<tOutGetHistogramOverTilt> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetHistogramOverTilt(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetHistogramOverTilt(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetHistogramOverTilt>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetHistogramOverTilt(codec : any, index: Number): Promise<tOutGetHistogramOverTilt> {
-		return GetHistogramOverTiltI(codec, {
+	export function GetHistogramOverTilt(handle : any, index: Number): Promise<tOutGetHistogramOverTilt> {
+		return GetHistogramOverTiltI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetHistogramOverTiltI(codec : any, args : tInResetGetHistogramOverTilt): Promise<tOutResetGetHistogramOverTilt> {
+	export function ResetGetHistogramOverTiltI(handle : any, args : tInResetGetHistogramOverTilt): Promise<tOutResetGetHistogramOverTilt> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetHistogramOverTilt(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetHistogramOverTilt(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetHistogramOverTilt>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetHistogramOverTilt(codec : any, index: Number): Promise<tOutResetGetHistogramOverTilt> {
-		return ResetGetHistogramOverTiltI(codec, {
+	export function ResetGetHistogramOverTilt(handle : any, index: Number): Promise<tOutResetGetHistogramOverTilt> {
+		return ResetGetHistogramOverTiltI(handle, {
 				index: index
 		});
 	}
 
-	export function GetMessageCounterI(codec : any, args : tInGetMessageCounter): Promise<Uint8Array> {
+	export function GetMessageCounterI(handle : any, args : tInGetMessageCounter): Promise<Uint8Array> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetMessageCounter(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetMessageCounter(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMessageCounter(codec : any, index: Number): Promise<Uint8Array> {
-		return GetMessageCounterI(codec, {
+	export function GetMessageCounter(handle : any, index: Number): Promise<Uint8Array> {
+		return GetMessageCounterI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetMessageCounterI(codec : any, args : tInResetGetMessageCounter): Promise<Uint8Array> {
+	export function ResetGetMessageCounterI(handle : any, args : tInResetGetMessageCounter): Promise<Uint8Array> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetMessageCounter(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetMessageCounter(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Uint8Array>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetMessageCounter(codec : any, index: Number): Promise<Uint8Array> {
-		return ResetGetMessageCounterI(codec, {
+	export function ResetGetMessageCounter(handle : any, index: Number): Promise<Uint8Array> {
+		return ResetGetMessageCounterI(handle, {
 				index: index
 		});
 	}
 
-	export function GetonepostbatteryhistoryI(codec : any, args : tInGetonepostbatteryhistory): Promise<tOutGetonepostbatteryhistory> {
+	export function GetonepostbatteryhistoryI(handle : any, args : tInGetonepostbatteryhistory): Promise<tOutGetonepostbatteryhistory> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.Getonepostbatteryhistory(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.Getonepostbatteryhistory(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetonepostbatteryhistory>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Getonepostbatteryhistory(codec : any, index: Number): Promise<tOutGetonepostbatteryhistory> {
-		return GetonepostbatteryhistoryI(codec, {
+	export function Getonepostbatteryhistory(handle : any, index: Number): Promise<tOutGetonepostbatteryhistory> {
+		return GetonepostbatteryhistoryI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetonepostbatteryhistoryI(codec : any, args : tInResetGetonepostbatteryhistory): Promise<tOutResetGetonepostbatteryhistory> {
+	export function ResetGetonepostbatteryhistoryI(handle : any, args : tInResetGetonepostbatteryhistory): Promise<tOutResetGetonepostbatteryhistory> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetonepostbatteryhistory(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetonepostbatteryhistory(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetonepostbatteryhistory>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetonepostbatteryhistory(codec : any, index: Number): Promise<tOutResetGetonepostbatteryhistory> {
-		return ResetGetonepostbatteryhistoryI(codec, {
+	export function ResetGetonepostbatteryhistory(handle : any, index: Number): Promise<tOutResetGetonepostbatteryhistory> {
+		return ResetGetonepostbatteryhistoryI(handle, {
 				index: index
 		});
 	}
 
-	export function GetOnePostCuttingTimeI(codec : any, args : tInGetOnePostCuttingTime): Promise<Number> {
+	export function GetOnePostCuttingTimeI(handle : any, args : tInGetOnePostCuttingTime): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetOnePostCuttingTime(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetOnePostCuttingTime(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetOnePostCuttingTime(codec : any, index: Number): Promise<Number> {
-		return GetOnePostCuttingTimeI(codec, {
+	export function GetOnePostCuttingTime(handle : any, index: Number): Promise<Number> {
+		return GetOnePostCuttingTimeI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetOnePostCuttingTimeI(codec : any, args : tInResetGetOnePostCuttingTime): Promise<Number> {
+	export function ResetGetOnePostCuttingTimeI(handle : any, args : tInResetGetOnePostCuttingTime): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetOnePostCuttingTime(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetOnePostCuttingTime(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetOnePostCuttingTime(codec : any, index: Number): Promise<Number> {
-		return ResetGetOnePostCuttingTimeI(codec, {
+	export function ResetGetOnePostCuttingTime(handle : any, index: Number): Promise<Number> {
+		return ResetGetOnePostCuttingTimeI(handle, {
 				index: index
 		});
 	}
 
-	export function GetOnePostMowerInternalI(codec : any, args : tInGetOnePostMowerInternal): Promise<tOutGetOnePostMowerInternal> {
+	export function GetOnePostMowerInternalI(handle : any, args : tInGetOnePostMowerInternal): Promise<tOutGetOnePostMowerInternal> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetOnePostMowerInternal(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetOnePostMowerInternal(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetOnePostMowerInternal>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetOnePostMowerInternal(codec : any, index: Number): Promise<tOutGetOnePostMowerInternal> {
-		return GetOnePostMowerInternalI(codec, {
+	export function GetOnePostMowerInternal(handle : any, index: Number): Promise<tOutGetOnePostMowerInternal> {
+		return GetOnePostMowerInternalI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetOnePostMowerInternalI(codec : any, args : tInResetGetOnePostMowerInternal): Promise<tOutResetGetOnePostMowerInternal> {
+	export function ResetGetOnePostMowerInternalI(handle : any, args : tInResetGetOnePostMowerInternal): Promise<tOutResetGetOnePostMowerInternal> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetOnePostMowerInternal(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetOnePostMowerInternal(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetOnePostMowerInternal>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetOnePostMowerInternal(codec : any, index: Number): Promise<tOutResetGetOnePostMowerInternal> {
-		return ResetGetOnePostMowerInternalI(codec, {
+	export function ResetGetOnePostMowerInternal(handle : any, index: Number): Promise<tOutResetGetOnePostMowerInternal> {
+		return ResetGetOnePostMowerInternalI(handle, {
 				index: index
 		});
 	}
 
-	export function GetOnePostMowerPublicI(codec : any, args : tInGetOnePostMowerPublic): Promise<tOutGetOnePostMowerPublic> {
+	export function GetOnePostMowerPublicI(handle : any, args : tInGetOnePostMowerPublic): Promise<tOutGetOnePostMowerPublic> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetOnePostMowerPublic(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetOnePostMowerPublic(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetOnePostMowerPublic>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetOnePostMowerPublic(codec : any, index: Number): Promise<tOutGetOnePostMowerPublic> {
-		return GetOnePostMowerPublicI(codec, {
+	export function GetOnePostMowerPublic(handle : any, index: Number): Promise<tOutGetOnePostMowerPublic> {
+		return GetOnePostMowerPublicI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetOnePostMowerPublicI(codec : any, args : tInResetGetOnePostMowerPublic): Promise<tOutResetGetOnePostMowerPublic> {
+	export function ResetGetOnePostMowerPublicI(handle : any, args : tInResetGetOnePostMowerPublic): Promise<tOutResetGetOnePostMowerPublic> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetOnePostMowerPublic(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetOnePostMowerPublic(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetOnePostMowerPublic>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetOnePostMowerPublic(codec : any, index: Number): Promise<tOutResetGetOnePostMowerPublic> {
-		return ResetGetOnePostMowerPublicI(codec, {
+	export function ResetGetOnePostMowerPublic(handle : any, index: Number): Promise<tOutResetGetOnePostMowerPublic> {
+		return ResetGetOnePostMowerPublicI(handle, {
 				index: index
 		});
 	}
 
-	export function GetOnePostTrackerPublicI(codec : any, args : tInGetOnePostTrackerPublic): Promise<tOutGetOnePostTrackerPublic> {
+	export function GetOnePostTrackerPublicI(handle : any, args : tInGetOnePostTrackerPublic): Promise<tOutGetOnePostTrackerPublic> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetOnePostTrackerPublic(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetOnePostTrackerPublic(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetOnePostTrackerPublic>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetOnePostTrackerPublic(codec : any, index: Number): Promise<tOutGetOnePostTrackerPublic> {
-		return GetOnePostTrackerPublicI(codec, {
+	export function GetOnePostTrackerPublic(handle : any, index: Number): Promise<tOutGetOnePostTrackerPublic> {
+		return GetOnePostTrackerPublicI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetOnePostTrackerPublicI(codec : any, args : tInResetGetOnePostTrackerPublic): Promise<tOutResetGetOnePostTrackerPublic> {
+	export function ResetGetOnePostTrackerPublicI(handle : any, args : tInResetGetOnePostTrackerPublic): Promise<tOutResetGetOnePostTrackerPublic> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetOnePostTrackerPublic(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetOnePostTrackerPublic(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetOnePostTrackerPublic>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetOnePostTrackerPublic(codec : any, index: Number): Promise<tOutResetGetOnePostTrackerPublic> {
-		return ResetGetOnePostTrackerPublicI(codec, {
+	export function ResetGetOnePostTrackerPublic(handle : any, index: Number): Promise<tOutResetGetOnePostTrackerPublic> {
+		return ResetGetOnePostTrackerPublicI(handle, {
 				index: index
 		});
 	}
 
-	export function GetOnePostSearchTimeI(codec : any, args : tInGetOnePostSearchTime): Promise<Number> {
+	export function GetOnePostSearchTimeI(handle : any, args : tInGetOnePostSearchTime): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetOnePostSearchTime(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetOnePostSearchTime(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetOnePostSearchTime(codec : any, index: Number): Promise<Number> {
-		return GetOnePostSearchTimeI(codec, {
+	export function GetOnePostSearchTime(handle : any, index: Number): Promise<Number> {
+		return GetOnePostSearchTimeI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetOnePostSearchTimeI(codec : any, args : tInResetGetOnePostSearchTime): Promise<Number> {
+	export function ResetGetOnePostSearchTimeI(handle : any, args : tInResetGetOnePostSearchTime): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetOnePostSearchTime(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetOnePostSearchTime(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetOnePostSearchTime(codec : any, index: Number): Promise<Number> {
-		return ResetGetOnePostSearchTimeI(codec, {
+	export function ResetGetOnePostSearchTime(handle : any, index: Number): Promise<Number> {
+		return ResetGetOnePostSearchTimeI(handle, {
 				index: index
 		});
 	}
 
-	export function GetOperatingData(codec : any): Promise<tOutGetOperatingData> {
+	export function GetOperatingData(handle : any): Promise<tOutGetOperatingData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetOperatingData()');
+			return handle.codec.send('OperatingData.GetOperatingData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetOperatingData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetOperatingDataI(codec : any, args : tInSetOperatingData): Promise<tOutSetOperatingData> {
+	export function SetOperatingDataI(handle : any, args : tInSetOperatingData): Promise<tOutSetOperatingData> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.SetOperatingData(totalrunningtime: ' + __args.totalrunningtime+ ',totalcuttingtime: ' + __args.totalcuttingtime+ ',totalsearchingtime: ' + __args.totalsearchingtime+ ',totalchargingtime: ' + __args.totalchargingtime+ ',completecharges: ' + __args.completecharges+ ',datetimeofmowerproduction: ' + __args.datetimeofmowerproduction+ ',totalnumberoffatalerrors: ' + __args.totalnumberoffatalerrors+ ')');
+			return handle.codec.send('OperatingData.SetOperatingData(totalrunningtime: ' + __args.totalrunningtime+ ',totalcuttingtime: ' + __args.totalcuttingtime+ ',totalsearchingtime: ' + __args.totalsearchingtime+ ',totalchargingtime: ' + __args.totalchargingtime+ ',completecharges: ' + __args.completecharges+ ',datetimeofmowerproduction: ' + __args.datetimeofmowerproduction+ ',totalnumberoffatalerrors: ' + __args.totalnumberoffatalerrors+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetOperatingData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetOperatingData(codec : any, totalrunningtime: Number, totalcuttingtime: Number, totalsearchingtime: Number, totalchargingtime: Number, completecharges: Number, datetimeofmowerproduction: Number, totalnumberoffatalerrors: Number): Promise<tOutSetOperatingData> {
-		return SetOperatingDataI(codec, {
+	export function SetOperatingData(handle : any, totalrunningtime: Number, totalcuttingtime: Number, totalsearchingtime: Number, totalchargingtime: Number, completecharges: Number, datetimeofmowerproduction: Number, totalnumberoffatalerrors: Number): Promise<tOutSetOperatingData> {
+		return SetOperatingDataI(handle, {
 				totalrunningtime: totalrunningtime,
 				totalcuttingtime: totalcuttingtime,
 				totalsearchingtime: totalsearchingtime,
@@ -5207,118 +5608,134 @@ export namespace OperatingData {
 		});
 	}
 
-	export function GetTrackerStatisticCounters(codec : any): Promise<tOutGetTrackerStatisticCounters> {
+	export function GetTrackerStatisticCounters(handle : any): Promise<tOutGetTrackerStatisticCounters> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetTrackerStatisticCounters()');
+			return handle.codec.send('OperatingData.GetTrackerStatisticCounters()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTrackerStatisticCounters>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetTrackerStatisticCounters(codec : any): Promise<tOutResetGetTrackerStatisticCounters> {
+	export function ResetGetTrackerStatisticCounters(handle : any): Promise<tOutResetGetTrackerStatisticCounters> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetTrackerStatisticCounters()');
+			return handle.codec.send('OperatingData.ResetGetTrackerStatisticCounters()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetTrackerStatisticCounters>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTripOperatingDataI(codec : any, args : tInGetTripOperatingData): Promise<tOutGetTripOperatingData> {
+	export function GetTripOperatingDataI(handle : any, args : tInGetTripOperatingData): Promise<tOutGetTripOperatingData> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetTripOperatingData(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetTripOperatingData(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTripOperatingData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTripOperatingData(codec : any, index: Number): Promise<tOutGetTripOperatingData> {
-		return GetTripOperatingDataI(codec, {
+	export function GetTripOperatingData(handle : any, index: Number): Promise<tOutGetTripOperatingData> {
+		return GetTripOperatingDataI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetTripOperatingDataI(codec : any, args : tInResetGetTripOperatingData): Promise<tOutResetGetTripOperatingData> {
+	export function ResetGetTripOperatingDataI(handle : any, args : tInResetGetTripOperatingData): Promise<tOutResetGetTripOperatingData> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetTripOperatingData(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetTripOperatingData(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetTripOperatingData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetTripOperatingData(codec : any, index: Number): Promise<tOutResetGetTripOperatingData> {
-		return ResetGetTripOperatingDataI(codec, {
+	export function ResetGetTripOperatingData(handle : any, index: Number): Promise<tOutResetGetTripOperatingData> {
+		return ResetGetTripOperatingDataI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetAllHistogramI(codec : any, args : tInResetAllHistogram): Promise<void> {
+	export function ResetAllHistogramI(handle : any, args : tInResetAllHistogram): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetAllHistogram(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetAllHistogram(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetAllHistogram(codec : any, index: Number): Promise<void> {
-		return ResetAllHistogramI(codec, {
+	export function ResetAllHistogram(handle : any, index: Number): Promise<void> {
+		return ResetAllHistogramI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetChargingCounterI(codec : any, args : tInResetChargingCounter): Promise<void> {
+	export function ResetChargingCounterI(handle : any, args : tInResetChargingCounter): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetChargingCounter(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetChargingCounter(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetChargingCounter(codec : any, index: Number): Promise<void> {
-		return ResetChargingCounterI(codec, {
+	export function ResetChargingCounter(handle : any, index: Number): Promise<void> {
+		return ResetChargingCounterI(handle, {
 				index: index
 		});
 	}
 
-	export function GetHistogramOverTypeResistorI(codec : any, args : tInGetHistogramOverTypeResistor): Promise<tOutGetHistogramOverTypeResistor> {
+	export function GetHistogramOverTypeResistorI(handle : any, args : tInGetHistogramOverTypeResistor): Promise<tOutGetHistogramOverTypeResistor> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.GetHistogramOverTypeResistor(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.GetHistogramOverTypeResistor(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetHistogramOverTypeResistor>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetHistogramOverTypeResistor(codec : any, index: Number): Promise<tOutGetHistogramOverTypeResistor> {
-		return GetHistogramOverTypeResistorI(codec, {
+	export function GetHistogramOverTypeResistor(handle : any, index: Number): Promise<tOutGetHistogramOverTypeResistor> {
+		return GetHistogramOverTypeResistorI(handle, {
 				index: index
 		});
 	}
 
-	export function ResetGetHistogramOverTypeResistorI(codec : any, args : tInResetGetHistogramOverTypeResistor): Promise<tOutResetGetHistogramOverTypeResistor> {
+	export function ResetGetHistogramOverTypeResistorI(handle : any, args : tInResetGetHistogramOverTypeResistor): Promise<tOutResetGetHistogramOverTypeResistor> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('OperatingData.ResetGetHistogramOverTypeResistor(index: ' + __args.index+ ')');
+			return handle.codec.send('OperatingData.ResetGetHistogramOverTypeResistor(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetGetHistogramOverTypeResistor>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetGetHistogramOverTypeResistor(codec : any, index: Number): Promise<tOutResetGetHistogramOverTypeResistor> {
-		return ResetGetHistogramOverTypeResistorI(codec, {
+	export function ResetGetHistogramOverTypeResistor(handle : any, index: Number): Promise<tOutResetGetHistogramOverTypeResistor> {
+		return ResetGetHistogramOverTypeResistorI(handle, {
 				index: index
 		});
 	}
@@ -5385,139 +5802,155 @@ export namespace Parameterdata {
 		value: Number
 	}
 
-	export function GetParameterDataNearestI(codec : any, args : tInGetParameterDataNearest): Promise<Number> {
+	export function GetParameterDataNearestI(handle : any, args : tInGetParameterDataNearest): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameterdata.GetParameterDataNearest(group: ' + __args.group+ ',id: ' + __args.id+ ')');
+			return handle.codec.send('Parameterdata.GetParameterDataNearest(group: ' + __args.group+ ',id: ' + __args.id+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetParameterDataNearest(codec : any, group: Number, id: Number): Promise<Number> {
-		return GetParameterDataNearestI(codec, {
+	export function GetParameterDataNearest(handle : any, group: Number, id: Number): Promise<Number> {
+		return GetParameterDataNearestI(handle, {
 				group: group,
 				id: id
 		});
 	}
 
-	export function SetParameterDataNearestI(codec : any, args : tInSetParameterDataNearest): Promise<Number> {
+	export function SetParameterDataNearestI(handle : any, args : tInSetParameterDataNearest): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameterdata.SetParameterDataNearest(group: ' + __args.group+ ',id: ' + __args.id+ ',value: ' + __args.value+ ')');
+			return handle.codec.send('Parameterdata.SetParameterDataNearest(group: ' + __args.group+ ',id: ' + __args.id+ ',value: ' + __args.value+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetParameterDataNearest(codec : any, group: Number, id: Number, value: Number): Promise<Number> {
-		return SetParameterDataNearestI(codec, {
+	export function SetParameterDataNearest(handle : any, group: Number, id: Number, value: Number): Promise<Number> {
+		return SetParameterDataNearestI(handle, {
 				group: group,
 				id: id,
 				value: value
 		});
 	}
 
-	export function GetParameterDataMainMCUI(codec : any, args : tInGetParameterDataMainMCU): Promise<Number> {
+	export function GetParameterDataMainMCUI(handle : any, args : tInGetParameterDataMainMCU): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameterdata.GetParameterDataMainMCU(group: ' + __args.group+ ',id: ' + __args.id+ ')');
+			return handle.codec.send('Parameterdata.GetParameterDataMainMCU(group: ' + __args.group+ ',id: ' + __args.id+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetParameterDataMainMCU(codec : any, group: Number, id: Number): Promise<Number> {
-		return GetParameterDataMainMCUI(codec, {
+	export function GetParameterDataMainMCU(handle : any, group: Number, id: Number): Promise<Number> {
+		return GetParameterDataMainMCUI(handle, {
 				group: group,
 				id: id
 		});
 	}
 
-	export function SetParameterDataMainMCUI(codec : any, args : tInSetParameterDataMainMCU): Promise<Number> {
+	export function SetParameterDataMainMCUI(handle : any, args : tInSetParameterDataMainMCU): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameterdata.SetParameterDataMainMCU(group: ' + __args.group+ ',id: ' + __args.id+ ',value: ' + __args.value+ ')');
+			return handle.codec.send('Parameterdata.SetParameterDataMainMCU(group: ' + __args.group+ ',id: ' + __args.id+ ',value: ' + __args.value+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetParameterDataMainMCU(codec : any, group: Number, id: Number, value: Number): Promise<Number> {
-		return SetParameterDataMainMCUI(codec, {
+	export function SetParameterDataMainMCU(handle : any, group: Number, id: Number, value: Number): Promise<Number> {
+		return SetParameterDataMainMCUI(handle, {
 				group: group,
 				id: id,
 				value: value
 		});
 	}
 
-	export function GetParameterDataI(codec : any, args : tInGetParameterData): Promise<Number> {
+	export function GetParameterDataI(handle : any, args : tInGetParameterData): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameterdata.GetParameterData(group: ' + __args.group+ ',id: ' + __args.id+ ')');
+			return handle.codec.send('Parameterdata.GetParameterData(group: ' + __args.group+ ',id: ' + __args.id+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetParameterData(codec : any, group: Number, id: Number): Promise<Number> {
-		return GetParameterDataI(codec, {
+	export function GetParameterData(handle : any, group: Number, id: Number): Promise<Number> {
+		return GetParameterDataI(handle, {
 				group: group,
 				id: id
 		});
 	}
 
-	export function SetParameterDataI(codec : any, args : tInSetParameterData): Promise<Number> {
+	export function SetParameterDataI(handle : any, args : tInSetParameterData): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameterdata.SetParameterData(group: ' + __args.group+ ',id: ' + __args.id+ ')');
+			return handle.codec.send('Parameterdata.SetParameterData(group: ' + __args.group+ ',id: ' + __args.id+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetParameterData(codec : any, group: Number, id: Number): Promise<Number> {
-		return SetParameterDataI(codec, {
+	export function SetParameterData(handle : any, group: Number, id: Number): Promise<Number> {
+		return SetParameterDataI(handle, {
 				group: group,
 				id: id
 		});
 	}
 
-	export function GetParameterDataTrackerI(codec : any, args : tInGetParameterDataTracker): Promise<Number> {
+	export function GetParameterDataTrackerI(handle : any, args : tInGetParameterDataTracker): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameterdata.GetParameterDataTracker(group: ' + __args.group+ ',id: ' + __args.id+ ')');
+			return handle.codec.send('Parameterdata.GetParameterDataTracker(group: ' + __args.group+ ',id: ' + __args.id+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetParameterDataTracker(codec : any, group: Number, id: Number): Promise<Number> {
-		return GetParameterDataTrackerI(codec, {
+	export function GetParameterDataTracker(handle : any, group: Number, id: Number): Promise<Number> {
+		return GetParameterDataTrackerI(handle, {
 				group: group,
 				id: id
 		});
 	}
 
-	export function SetParameterDataTrackerI(codec : any, args : tInSetParameterDataTracker): Promise<Number> {
+	export function SetParameterDataTrackerI(handle : any, args : tInSetParameterDataTracker): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameterdata.SetParameterDataTracker(group: ' + __args.group+ ',id: ' + __args.id+ ',value: ' + __args.value+ ')');
+			return handle.codec.send('Parameterdata.SetParameterDataTracker(group: ' + __args.group+ ',id: ' + __args.id+ ',value: ' + __args.value+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetParameterDataTracker(codec : any, group: Number, id: Number, value: Number): Promise<Number> {
-		return SetParameterDataTrackerI(codec, {
+	export function SetParameterDataTracker(handle : any, group: Number, id: Number, value: Number): Promise<Number> {
+		return SetParameterDataTrackerI(handle, {
 				group: group,
 				id: id,
 				value: value
@@ -5542,18 +5975,20 @@ export namespace PCBProductionInformation {
 		serialnumber: Number
 	}
 
-	export function SetInformationI(codec : any, args : tInSetInformation): Promise<void> {
+	export function SetInformationI(handle : any, args : tInSetInformation): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('PCBProductionInformation.SetInformation(type: ' + __args.type+ ',revision: ' + __args.revision+ ',time: ' + __args.time+ ',serialnumber: ' + __args.serialnumber+ ')');
+			return handle.codec.send('PCBProductionInformation.SetInformation(type: ' + __args.type+ ',revision: ' + __args.revision+ ',time: ' + __args.time+ ',serialnumber: ' + __args.serialnumber+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetInformation(codec : any, type: Number, revision: Number, time: Number, serialnumber: Number): Promise<void> {
-		return SetInformationI(codec, {
+	export function SetInformation(handle : any, type: Number, revision: Number, time: Number, serialnumber: Number): Promise<void> {
+		return SetInformationI(handle, {
 				type: type,
 				revision: revision,
 				time: time,
@@ -5561,18 +5996,20 @@ export namespace PCBProductionInformation {
 		});
 	}
 
-	export function SetProducerSerialNumberI(codec : any, args : tInSetProducerSerialNumber): Promise<void> {
+	export function SetProducerSerialNumberI(handle : any, args : tInSetProducerSerialNumber): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('PCBProductionInformation.SetProducerSerialNumber(serialnumber: ' + __args.serialnumber+ ')');
+			return handle.codec.send('PCBProductionInformation.SetProducerSerialNumber(serialnumber: ' + __args.serialnumber+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetProducerSerialNumber(codec : any, serialnumber: Number): Promise<void> {
-		return SetProducerSerialNumberI(codec, {
+	export function SetProducerSerialNumber(handle : any, serialnumber: Number): Promise<void> {
+		return SetProducerSerialNumberI(handle, {
 				serialnumber: serialnumber
 		});
 	}
@@ -5597,18 +6034,20 @@ export namespace ProductionTestCommands {
 		test3: Number
 	}
 
-	export function SetTestCommandsI(codec : any, args : tInSetTestCommands): Promise<tOutSetTestCommands> {
+	export function SetTestCommandsI(handle : any, args : tInSetTestCommands): Promise<tOutSetTestCommands> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('ProductionTestCommands.SetTestCommands(testcommand: ' + __args.testcommand+ ',test1: ' + __args.test1+ ',test2: ' + __args.test2+ ',test3: ' + __args.test3+ ')');
+			return handle.codec.send('ProductionTestCommands.SetTestCommands(testcommand: ' + __args.testcommand+ ',test1: ' + __args.test1+ ',test2: ' + __args.test2+ ',test3: ' + __args.test3+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTestCommands>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTestCommands(codec : any, testcommand: Number, test1: Number, test2: Number, test3: Number): Promise<tOutSetTestCommands> {
-		return SetTestCommandsI(codec, {
+	export function SetTestCommands(handle : any, testcommand: Number, test1: Number, test2: Number, test3: Number): Promise<tOutSetTestCommands> {
+		return SetTestCommandsI(handle, {
 				testcommand: testcommand,
 				test1: test1,
 				test2: test2,
@@ -5619,21 +6058,25 @@ export namespace ProductionTestCommands {
 
 export namespace MowerControlCommands {
 
-	export function SetStopMower(codec : any): Promise<void> {
+	export function SetStopMower(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerControlCommands.SetStopMower()');
+			return handle.codec.send('MowerControlCommands.SetStopMower()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSilentAlarm(codec : any): Promise<void> {
+	export function SetSilentAlarm(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerControlCommands.SetSilentAlarm()');
+			return handle.codec.send('MowerControlCommands.SetSilentAlarm()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
@@ -6041,46 +6484,52 @@ export namespace Timer {
 		stoptimermodes13: Number
 	}
 
-	export function GetAutotimer(codec : any): Promise<tOutGetAutotimer> {
+	export function GetAutotimer(handle : any): Promise<tOutGetAutotimer> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.GetAutotimer()');
+			return handle.codec.send('Timer.GetAutotimer()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetAutotimer>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetAutotimerI(codec : any, args : tInSetAutotimer): Promise<tOutSetAutotimer> {
+	export function SetAutotimerI(handle : any, args : tInSetAutotimer): Promise<tOutSetAutotimer> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.SetAutotimer(decreasetime: ' + __args.decreasetime+ ',increasetime: ' + __args.increasetime+ ',enabled: ' + __args.enabled+ ')');
+			return handle.codec.send('Timer.SetAutotimer(decreasetime: ' + __args.decreasetime+ ',increasetime: ' + __args.increasetime+ ',enabled: ' + __args.enabled+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetAutotimer>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetAutotimer(codec : any, decreasetime: Number, increasetime: Number, enabled: Number): Promise<tOutSetAutotimer> {
-		return SetAutotimerI(codec, {
+	export function SetAutotimer(handle : any, decreasetime: Number, increasetime: Number, enabled: Number): Promise<tOutSetAutotimer> {
+		return SetAutotimerI(handle, {
 				decreasetime: decreasetime,
 				increasetime: increasetime,
 				enabled: enabled
 		});
 	}
 
-	export function SetClearTimerI(codec : any, args : tInSetClearTimer): Promise<tOutSetClearTimer> {
+	export function SetClearTimerI(handle : any, args : tInSetClearTimer): Promise<tOutSetClearTimer> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.SetClearTimer(timernumber: ' + __args.timernumber+ ',timehour: ' + __args.timehour+ ',timeminute: ' + __args.timeminute+ ',days: ' + __args.days+ ',daycuttingtime: ' + __args.daycuttingtime+ ')');
+			return handle.codec.send('Timer.SetClearTimer(timernumber: ' + __args.timernumber+ ',timehour: ' + __args.timehour+ ',timeminute: ' + __args.timeminute+ ',days: ' + __args.days+ ',daycuttingtime: ' + __args.daycuttingtime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetClearTimer>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetClearTimer(codec : any, timernumber: Number, timehour: Number, timeminute: Number, days: Number, daycuttingtime: Number): Promise<tOutSetClearTimer> {
-		return SetClearTimerI(codec, {
+	export function SetClearTimer(handle : any, timernumber: Number, timehour: Number, timeminute: Number, days: Number, daycuttingtime: Number): Promise<tOutSetClearTimer> {
+		return SetClearTimerI(handle, {
 				timernumber: timernumber,
 				timehour: timehour,
 				timeminute: timeminute,
@@ -6089,18 +6538,20 @@ export namespace Timer {
 		});
 	}
 
-	export function SetDisabledI(codec : any, args : tInSetDisabled): Promise<tOutSetDisabled> {
+	export function SetDisabledI(handle : any, args : tInSetDisabled): Promise<tOutSetDisabled> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.SetDisabled(timernumber: ' + __args.timernumber+ ',timehour: ' + __args.timehour+ ',timeminute: ' + __args.timeminute+ ',days: ' + __args.days+ ',daycuttingtime: ' + __args.daycuttingtime+ ')');
+			return handle.codec.send('Timer.SetDisabled(timernumber: ' + __args.timernumber+ ',timehour: ' + __args.timehour+ ',timeminute: ' + __args.timeminute+ ',days: ' + __args.days+ ',daycuttingtime: ' + __args.daycuttingtime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetDisabled>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDisabled(codec : any, timernumber: Number, timehour: Number, timeminute: Number, days: Number, daycuttingtime: Number): Promise<tOutSetDisabled> {
-		return SetDisabledI(codec, {
+	export function SetDisabled(handle : any, timernumber: Number, timehour: Number, timeminute: Number, days: Number, daycuttingtime: Number): Promise<tOutSetDisabled> {
+		return SetDisabledI(handle, {
 				timernumber: timernumber,
 				timehour: timehour,
 				timeminute: timeminute,
@@ -6109,18 +6560,20 @@ export namespace Timer {
 		});
 	}
 
-	export function SetFactoryResetI(codec : any, args : tInSetFactoryReset): Promise<tOutSetFactoryReset> {
+	export function SetFactoryResetI(handle : any, args : tInSetFactoryReset): Promise<tOutSetFactoryReset> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.SetFactoryReset(timernumber: ' + __args.timernumber+ ',timehour: ' + __args.timehour+ ',timeminute: ' + __args.timeminute+ ',days: ' + __args.days+ ',daycuttingtime: ' + __args.daycuttingtime+ ')');
+			return handle.codec.send('Timer.SetFactoryReset(timernumber: ' + __args.timernumber+ ',timehour: ' + __args.timehour+ ',timeminute: ' + __args.timeminute+ ',days: ' + __args.days+ ',daycuttingtime: ' + __args.daycuttingtime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetFactoryReset>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFactoryReset(codec : any, timernumber: Number, timehour: Number, timeminute: Number, days: Number, daycuttingtime: Number): Promise<tOutSetFactoryReset> {
-		return SetFactoryResetI(codec, {
+	export function SetFactoryReset(handle : any, timernumber: Number, timehour: Number, timeminute: Number, days: Number, daycuttingtime: Number): Promise<tOutSetFactoryReset> {
+		return SetFactoryResetI(handle, {
 				timernumber: timernumber,
 				timehour: timehour,
 				timeminute: timeminute,
@@ -6129,34 +6582,38 @@ export namespace Timer {
 		});
 	}
 
-	export function GetTimerI(codec : any, args : tInGetTimer): Promise<tOutGetTimer> {
+	export function GetTimerI(handle : any, args : tInGetTimer): Promise<tOutGetTimer> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.GetTimer(timernumber: ' + __args.timernumber+ ')');
+			return handle.codec.send('Timer.GetTimer(timernumber: ' + __args.timernumber+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTimer>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTimer(codec : any, timernumber: Number): Promise<tOutGetTimer> {
-		return GetTimerI(codec, {
+	export function GetTimer(handle : any, timernumber: Number): Promise<tOutGetTimer> {
+		return GetTimerI(handle, {
 				timernumber: timernumber
 		});
 	}
 
-	export function SetTimerI(codec : any, args : tInSetTimer): Promise<tOutSetTimer> {
+	export function SetTimerI(handle : any, args : tInSetTimer): Promise<tOutSetTimer> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.SetTimer(timernumber: ' + __args.timernumber+ ',timehour: ' + __args.timehour+ ',timeminute: ' + __args.timeminute+ ',days: ' + __args.days+ ',daycuttingtime: ' + __args.daycuttingtime+ ')');
+			return handle.codec.send('Timer.SetTimer(timernumber: ' + __args.timernumber+ ',timehour: ' + __args.timehour+ ',timeminute: ' + __args.timeminute+ ',days: ' + __args.days+ ',daycuttingtime: ' + __args.daycuttingtime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTimer>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTimer(codec : any, timernumber: Number, timehour: Number, timeminute: Number, days: Number, daycuttingtime: Number): Promise<tOutSetTimer> {
-		return SetTimerI(codec, {
+	export function SetTimer(handle : any, timernumber: Number, timehour: Number, timeminute: Number, days: Number, daycuttingtime: Number): Promise<tOutSetTimer> {
+		return SetTimerI(handle, {
 				timernumber: timernumber,
 				timehour: timehour,
 				timeminute: timeminute,
@@ -6165,38 +6622,44 @@ export namespace Timer {
 		});
 	}
 
-	export function GetTimestamp(codec : any): Promise<tOutGetTimestamp> {
+	export function GetTimestamp(handle : any): Promise<tOutGetTimestamp> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.GetTimestamp()');
+			return handle.codec.send('Timer.GetTimestamp()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTimestamp>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTimeTable(codec : any): Promise<tOutGetTimeTable> {
+	export function GetTimeTable(handle : any): Promise<tOutGetTimeTable> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.GetTimeTable()');
+			return handle.codec.send('Timer.GetTimeTable()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTimeTable>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTimeTableI(codec : any, args : tInSetTimeTable): Promise<tOutSetTimeTable> {
+	export function SetTimeTableI(handle : any, args : tInSetTimeTable): Promise<tOutSetTimeTable> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Timer.SetTimeTable(starttimerminutes0: ' + __args.starttimerminutes0+ ',starttimerdays0: ' + __args.starttimerdays0+ ',starttimermodes0: ' + __args.starttimermodes0+ ',starttimerminutes1: ' + __args.starttimerminutes1+ ',starttimerdays1: ' + __args.starttimerdays1+ ',starttimermodes1: ' + __args.starttimermodes1+ ',starttimerminutes2: ' + __args.starttimerminutes2+ ',starttimerdays2: ' + __args.starttimerdays2+ ',starttimermodes2: ' + __args.starttimermodes2+ ',starttimerminutes3: ' + __args.starttimerminutes3+ ',starttimerdays3: ' + __args.starttimerdays3+ ',starttimermodes3: ' + __args.starttimermodes3+ ',starttimerminutes4: ' + __args.starttimerminutes4+ ',starttimerdays4: ' + __args.starttimerdays4+ ',starttimermodes4: ' + __args.starttimermodes4+ ',starttimerminutes5: ' + __args.starttimerminutes5+ ',starttimerdays5: ' + __args.starttimerdays5+ ',starttimermodes5: ' + __args.starttimermodes5+ ',starttimerminutes6: ' + __args.starttimerminutes6+ ',starttimerdays6: ' + __args.starttimerdays6+ ',starttimermodes6: ' + __args.starttimermodes6+ ',starttimerminutes7: ' + __args.starttimerminutes7+ ',starttimerdays7: ' + __args.starttimerdays7+ ',starttimermodes7: ' + __args.starttimermodes7+ ',starttimerminutes8: ' + __args.starttimerminutes8+ ',starttimerdays8: ' + __args.starttimerdays8+ ',starttimermodes8: ' + __args.starttimermodes8+ ',starttimerminutes9: ' + __args.starttimerminutes9+ ',starttimerdays9: ' + __args.starttimerdays9+ ',starttimermodes9: ' + __args.starttimermodes9+ ',starttimerminutes10: ' + __args.starttimerminutes10+ ',starttimerdays10: ' + __args.starttimerdays10+ ',starttimermodes10: ' + __args.starttimermodes10+ ',starttimerminutes11: ' + __args.starttimerminutes11+ ',starttimerdays11: ' + __args.starttimerdays11+ ',starttimermodes11: ' + __args.starttimermodes11+ ',starttimerminutes12: ' + __args.starttimerminutes12+ ',starttimerdays12: ' + __args.starttimerdays12+ ',starttimermodes12: ' + __args.starttimermodes12+ ',starttimerminutes13: ' + __args.starttimerminutes13+ ',starttimerdays13: ' + __args.starttimerdays13+ ',starttimermodes13: ' + __args.starttimermodes13+ ',stoptimerminutes0: ' + __args.stoptimerminutes0+ ',stoptimerdays0: ' + __args.stoptimerdays0+ ',stoptimermodes0: ' + __args.stoptimermodes0+ ',stoptimerminutes1: ' + __args.stoptimerminutes1+ ',stoptimerdays1: ' + __args.stoptimerdays1+ ',stoptimermodes1: ' + __args.stoptimermodes1+ ',stoptimerminutes2: ' + __args.stoptimerminutes2+ ',stoptimerdays2: ' + __args.stoptimerdays2+ ',stoptimermodes2: ' + __args.stoptimermodes2+ ',stoptimerminutes3: ' + __args.stoptimerminutes3+ ',stoptimerdays3: ' + __args.stoptimerdays3+ ',stoptimermodes3: ' + __args.stoptimermodes3+ ',stoptimerminutes4: ' + __args.stoptimerminutes4+ ',stoptimerdays4: ' + __args.stoptimerdays4+ ',stoptimermodes4: ' + __args.stoptimermodes4+ ',stoptimerminutes5: ' + __args.stoptimerminutes5+ ',stoptimerdays5: ' + __args.stoptimerdays5+ ',stoptimermodes5: ' + __args.stoptimermodes5+ ',stoptimerminutes6: ' + __args.stoptimerminutes6+ ',stoptimerdays6: ' + __args.stoptimerdays6+ ',stoptimermodes6: ' + __args.stoptimermodes6+ ',stoptimerminutes7: ' + __args.stoptimerminutes7+ ',stoptimerdays7: ' + __args.stoptimerdays7+ ',stoptimermodes7: ' + __args.stoptimermodes7+ ',stoptimerminutes8: ' + __args.stoptimerminutes8+ ',stoptimerdays8: ' + __args.stoptimerdays8+ ',stoptimermodes8: ' + __args.stoptimermodes8+ ',stoptimerminutes9: ' + __args.stoptimerminutes9+ ',stoptimerdays9: ' + __args.stoptimerdays9+ ',stoptimermodes9: ' + __args.stoptimermodes9+ ',stoptimerminutes10: ' + __args.stoptimerminutes10+ ',stoptimerdays10: ' + __args.stoptimerdays10+ ',stoptimermodes10: ' + __args.stoptimermodes10+ ',stoptimerminutes11: ' + __args.stoptimerminutes11+ ',stoptimerdays11: ' + __args.stoptimerdays11+ ',stoptimermodes11: ' + __args.stoptimermodes11+ ',stoptimerminutes12: ' + __args.stoptimerminutes12+ ',stoptimerdays12: ' + __args.stoptimerdays12+ ',stoptimermodes12: ' + __args.stoptimermodes12+ ',stoptimerminutes13: ' + __args.stoptimerminutes13+ ',stoptimerdays13: ' + __args.stoptimerdays13+ ',stoptimermodes13: ' + __args.stoptimermodes13+ ')');
+			return handle.codec.send('Timer.SetTimeTable(starttimerminutes0: ' + __args.starttimerminutes0+ ',starttimerdays0: ' + __args.starttimerdays0+ ',starttimermodes0: ' + __args.starttimermodes0+ ',starttimerminutes1: ' + __args.starttimerminutes1+ ',starttimerdays1: ' + __args.starttimerdays1+ ',starttimermodes1: ' + __args.starttimermodes1+ ',starttimerminutes2: ' + __args.starttimerminutes2+ ',starttimerdays2: ' + __args.starttimerdays2+ ',starttimermodes2: ' + __args.starttimermodes2+ ',starttimerminutes3: ' + __args.starttimerminutes3+ ',starttimerdays3: ' + __args.starttimerdays3+ ',starttimermodes3: ' + __args.starttimermodes3+ ',starttimerminutes4: ' + __args.starttimerminutes4+ ',starttimerdays4: ' + __args.starttimerdays4+ ',starttimermodes4: ' + __args.starttimermodes4+ ',starttimerminutes5: ' + __args.starttimerminutes5+ ',starttimerdays5: ' + __args.starttimerdays5+ ',starttimermodes5: ' + __args.starttimermodes5+ ',starttimerminutes6: ' + __args.starttimerminutes6+ ',starttimerdays6: ' + __args.starttimerdays6+ ',starttimermodes6: ' + __args.starttimermodes6+ ',starttimerminutes7: ' + __args.starttimerminutes7+ ',starttimerdays7: ' + __args.starttimerdays7+ ',starttimermodes7: ' + __args.starttimermodes7+ ',starttimerminutes8: ' + __args.starttimerminutes8+ ',starttimerdays8: ' + __args.starttimerdays8+ ',starttimermodes8: ' + __args.starttimermodes8+ ',starttimerminutes9: ' + __args.starttimerminutes9+ ',starttimerdays9: ' + __args.starttimerdays9+ ',starttimermodes9: ' + __args.starttimermodes9+ ',starttimerminutes10: ' + __args.starttimerminutes10+ ',starttimerdays10: ' + __args.starttimerdays10+ ',starttimermodes10: ' + __args.starttimermodes10+ ',starttimerminutes11: ' + __args.starttimerminutes11+ ',starttimerdays11: ' + __args.starttimerdays11+ ',starttimermodes11: ' + __args.starttimermodes11+ ',starttimerminutes12: ' + __args.starttimerminutes12+ ',starttimerdays12: ' + __args.starttimerdays12+ ',starttimermodes12: ' + __args.starttimermodes12+ ',starttimerminutes13: ' + __args.starttimerminutes13+ ',starttimerdays13: ' + __args.starttimerdays13+ ',starttimermodes13: ' + __args.starttimermodes13+ ',stoptimerminutes0: ' + __args.stoptimerminutes0+ ',stoptimerdays0: ' + __args.stoptimerdays0+ ',stoptimermodes0: ' + __args.stoptimermodes0+ ',stoptimerminutes1: ' + __args.stoptimerminutes1+ ',stoptimerdays1: ' + __args.stoptimerdays1+ ',stoptimermodes1: ' + __args.stoptimermodes1+ ',stoptimerminutes2: ' + __args.stoptimerminutes2+ ',stoptimerdays2: ' + __args.stoptimerdays2+ ',stoptimermodes2: ' + __args.stoptimermodes2+ ',stoptimerminutes3: ' + __args.stoptimerminutes3+ ',stoptimerdays3: ' + __args.stoptimerdays3+ ',stoptimermodes3: ' + __args.stoptimermodes3+ ',stoptimerminutes4: ' + __args.stoptimerminutes4+ ',stoptimerdays4: ' + __args.stoptimerdays4+ ',stoptimermodes4: ' + __args.stoptimermodes4+ ',stoptimerminutes5: ' + __args.stoptimerminutes5+ ',stoptimerdays5: ' + __args.stoptimerdays5+ ',stoptimermodes5: ' + __args.stoptimermodes5+ ',stoptimerminutes6: ' + __args.stoptimerminutes6+ ',stoptimerdays6: ' + __args.stoptimerdays6+ ',stoptimermodes6: ' + __args.stoptimermodes6+ ',stoptimerminutes7: ' + __args.stoptimerminutes7+ ',stoptimerdays7: ' + __args.stoptimerdays7+ ',stoptimermodes7: ' + __args.stoptimermodes7+ ',stoptimerminutes8: ' + __args.stoptimerminutes8+ ',stoptimerdays8: ' + __args.stoptimerdays8+ ',stoptimermodes8: ' + __args.stoptimermodes8+ ',stoptimerminutes9: ' + __args.stoptimerminutes9+ ',stoptimerdays9: ' + __args.stoptimerdays9+ ',stoptimermodes9: ' + __args.stoptimermodes9+ ',stoptimerminutes10: ' + __args.stoptimerminutes10+ ',stoptimerdays10: ' + __args.stoptimerdays10+ ',stoptimermodes10: ' + __args.stoptimermodes10+ ',stoptimerminutes11: ' + __args.stoptimerminutes11+ ',stoptimerdays11: ' + __args.stoptimerdays11+ ',stoptimermodes11: ' + __args.stoptimermodes11+ ',stoptimerminutes12: ' + __args.stoptimerminutes12+ ',stoptimerdays12: ' + __args.stoptimerdays12+ ',stoptimermodes12: ' + __args.stoptimermodes12+ ',stoptimerminutes13: ' + __args.stoptimerminutes13+ ',stoptimerdays13: ' + __args.stoptimerdays13+ ',stoptimermodes13: ' + __args.stoptimermodes13+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTimeTable>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTimeTable(codec : any, starttimerminutes0: Number, starttimerdays0: Number, starttimermodes0: Number, starttimerminutes1: Number, starttimerdays1: Number, starttimermodes1: Number, starttimerminutes2: Number, starttimerdays2: Number, starttimermodes2: Number, starttimerminutes3: Number, starttimerdays3: Number, starttimermodes3: Number, starttimerminutes4: Number, starttimerdays4: Number, starttimermodes4: Number, starttimerminutes5: Number, starttimerdays5: Number, starttimermodes5: Number, starttimerminutes6: Number, starttimerdays6: Number, starttimermodes6: Number, starttimerminutes7: Number, starttimerdays7: Number, starttimermodes7: Number, starttimerminutes8: Number, starttimerdays8: Number, starttimermodes8: Number, starttimerminutes9: Number, starttimerdays9: Number, starttimermodes9: Number, starttimerminutes10: Number, starttimerdays10: Number, starttimermodes10: Number, starttimerminutes11: Number, starttimerdays11: Number, starttimermodes11: Number, starttimerminutes12: Number, starttimerdays12: Number, starttimermodes12: Number, starttimerminutes13: Number, starttimerdays13: Number, starttimermodes13: Number, stoptimerminutes0: Number, stoptimerdays0: Number, stoptimermodes0: Number, stoptimerminutes1: Number, stoptimerdays1: Number, stoptimermodes1: Number, stoptimerminutes2: Number, stoptimerdays2: Number, stoptimermodes2: Number, stoptimerminutes3: Number, stoptimerdays3: Number, stoptimermodes3: Number, stoptimerminutes4: Number, stoptimerdays4: Number, stoptimermodes4: Number, stoptimerminutes5: Number, stoptimerdays5: Number, stoptimermodes5: Number, stoptimerminutes6: Number, stoptimerdays6: Number, stoptimermodes6: Number, stoptimerminutes7: Number, stoptimerdays7: Number, stoptimermodes7: Number, stoptimerminutes8: Number, stoptimerdays8: Number, stoptimermodes8: Number, stoptimerminutes9: Number, stoptimerdays9: Number, stoptimermodes9: Number, stoptimerminutes10: Number, stoptimerdays10: Number, stoptimermodes10: Number, stoptimerminutes11: Number, stoptimerdays11: Number, stoptimermodes11: Number, stoptimerminutes12: Number, stoptimerdays12: Number, stoptimermodes12: Number, stoptimerminutes13: Number, stoptimerdays13: Number, stoptimermodes13: Number): Promise<tOutSetTimeTable> {
-		return SetTimeTableI(codec, {
+	export function SetTimeTable(handle : any, starttimerminutes0: Number, starttimerdays0: Number, starttimermodes0: Number, starttimerminutes1: Number, starttimerdays1: Number, starttimermodes1: Number, starttimerminutes2: Number, starttimerdays2: Number, starttimermodes2: Number, starttimerminutes3: Number, starttimerdays3: Number, starttimermodes3: Number, starttimerminutes4: Number, starttimerdays4: Number, starttimermodes4: Number, starttimerminutes5: Number, starttimerdays5: Number, starttimermodes5: Number, starttimerminutes6: Number, starttimerdays6: Number, starttimermodes6: Number, starttimerminutes7: Number, starttimerdays7: Number, starttimermodes7: Number, starttimerminutes8: Number, starttimerdays8: Number, starttimermodes8: Number, starttimerminutes9: Number, starttimerdays9: Number, starttimermodes9: Number, starttimerminutes10: Number, starttimerdays10: Number, starttimermodes10: Number, starttimerminutes11: Number, starttimerdays11: Number, starttimermodes11: Number, starttimerminutes12: Number, starttimerdays12: Number, starttimermodes12: Number, starttimerminutes13: Number, starttimerdays13: Number, starttimermodes13: Number, stoptimerminutes0: Number, stoptimerdays0: Number, stoptimermodes0: Number, stoptimerminutes1: Number, stoptimerdays1: Number, stoptimermodes1: Number, stoptimerminutes2: Number, stoptimerdays2: Number, stoptimermodes2: Number, stoptimerminutes3: Number, stoptimerdays3: Number, stoptimermodes3: Number, stoptimerminutes4: Number, stoptimerdays4: Number, stoptimermodes4: Number, stoptimerminutes5: Number, stoptimerdays5: Number, stoptimermodes5: Number, stoptimerminutes6: Number, stoptimerdays6: Number, stoptimermodes6: Number, stoptimerminutes7: Number, stoptimerdays7: Number, stoptimermodes7: Number, stoptimerminutes8: Number, stoptimerdays8: Number, stoptimermodes8: Number, stoptimerminutes9: Number, stoptimerdays9: Number, stoptimermodes9: Number, stoptimerminutes10: Number, stoptimerdays10: Number, stoptimermodes10: Number, stoptimerminutes11: Number, stoptimerdays11: Number, stoptimermodes11: Number, stoptimerminutes12: Number, stoptimerdays12: Number, stoptimermodes12: Number, stoptimerminutes13: Number, stoptimerdays13: Number, stoptimermodes13: Number): Promise<tOutSetTimeTable> {
+		return SetTimeTableI(handle, {
 				starttimerminutes0: starttimerminutes0,
 				starttimerdays0: starttimerdays0,
 				starttimermodes0: starttimermodes0,
@@ -6338,83 +6801,95 @@ export namespace UltrasonicSetup {
 		active: Number
 	}
 
-	export function GetTrackingFilter(codec : any): Promise<tOutGetTrackingFilter> {
+	export function GetTrackingFilter(handle : any): Promise<tOutGetTrackingFilter> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('UltrasonicSetup.GetTrackingFilter()');
+			return handle.codec.send('UltrasonicSetup.GetTrackingFilter()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTrackingFilter>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrackingFilterI(codec : any, args : tInSetTrackingFilter): Promise<tOutSetTrackingFilter> {
+	export function SetTrackingFilterI(handle : any, args : tInSetTrackingFilter): Promise<tOutSetTrackingFilter> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('UltrasonicSetup.SetTrackingFilter(distance: ' + __args.distance+ ',signal: ' + __args.signal+ ',object: ' + __args.object+ ')');
+			return handle.codec.send('UltrasonicSetup.SetTrackingFilter(distance: ' + __args.distance+ ',signal: ' + __args.signal+ ',object: ' + __args.object+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTrackingFilter>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrackingFilter(codec : any, distance: Number, signal: Number, object: Number): Promise<tOutSetTrackingFilter> {
-		return SetTrackingFilterI(codec, {
+	export function SetTrackingFilter(handle : any, distance: Number, signal: Number, object: Number): Promise<tOutSetTrackingFilter> {
+		return SetTrackingFilterI(handle, {
 				distance: distance,
 				signal: signal,
 				object: object
 		});
 	}
 
-	export function GetTrackingParameters(codec : any): Promise<tOutGetTrackingParameters> {
+	export function GetTrackingParameters(handle : any): Promise<tOutGetTrackingParameters> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('UltrasonicSetup.GetTrackingParameters()');
+			return handle.codec.send('UltrasonicSetup.GetTrackingParameters()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTrackingParameters>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrackingParametersI(codec : any, args : tInSetTrackingParameters): Promise<tOutSetTrackingParameters> {
+	export function SetTrackingParametersI(handle : any, args : tInSetTrackingParameters): Promise<tOutSetTrackingParameters> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('UltrasonicSetup.SetTrackingParameters(bodytype: ' + __args.bodytype+ ',sensitivity: ' + __args.sensitivity+ ')');
+			return handle.codec.send('UltrasonicSetup.SetTrackingParameters(bodytype: ' + __args.bodytype+ ',sensitivity: ' + __args.sensitivity+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTrackingParameters>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTrackingParameters(codec : any, bodytype: Number, sensitivity: Number): Promise<tOutSetTrackingParameters> {
-		return SetTrackingParametersI(codec, {
+	export function SetTrackingParameters(handle : any, bodytype: Number, sensitivity: Number): Promise<tOutSetTrackingParameters> {
+		return SetTrackingParametersI(handle, {
 				bodytype: bodytype,
 				sensitivity: sensitivity
 		});
 	}
 
-	export function GetSimulateNoObstacle(codec : any): Promise<Number> {
+	export function GetSimulateNoObstacle(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('UltrasonicSetup.GetSimulateNoObstacle()');
+			return handle.codec.send('UltrasonicSetup.GetSimulateNoObstacle()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimulateNoObstacleI(codec : any, args : tInSetSimulateNoObstacle): Promise<Number> {
+	export function SetSimulateNoObstacleI(handle : any, args : tInSetSimulateNoObstacle): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('UltrasonicSetup.SetSimulateNoObstacle(active: ' + __args.active+ ')');
+			return handle.codec.send('UltrasonicSetup.SetSimulateNoObstacle(active: ' + __args.active+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimulateNoObstacle(codec : any, active: Number): Promise<Number> {
-		return SetSimulateNoObstacleI(codec, {
+	export function SetSimulateNoObstacle(handle : any, active: Number): Promise<Number> {
+		return SetSimulateNoObstacleI(handle, {
 				active: active
 		});
 	}
@@ -6428,38 +6903,44 @@ export namespace Time {
 		secondsSinceStart: Number
 	}
 
-	export function MilliSecondsSinceStart(codec : any): Promise<Number> {
+	export function MilliSecondsSinceStart(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Time.MilliSecondsSinceStart()');
+			return handle.codec.send('Time.MilliSecondsSinceStart()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SecondsSinceStart(codec : any): Promise<Number> {
+	export function SecondsSinceStart(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Time.SecondsSinceStart()');
+			return handle.codec.send('Time.SecondsSinceStart()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSecondsSinceStartI(codec : any, args : tInSetSecondsSinceStart): Promise<void> {
+	export function SetSecondsSinceStartI(handle : any, args : tInSetSecondsSinceStart): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Time.SetSecondsSinceStart(secondsSinceStart: ' + __args.secondsSinceStart+ ')');
+			return handle.codec.send('Time.SetSecondsSinceStart(secondsSinceStart: ' + __args.secondsSinceStart+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSecondsSinceStart(codec : any, secondsSinceStart: Number): Promise<void> {
-		return SetSecondsSinceStartI(codec, {
+	export function SetSecondsSinceStart(handle : any, secondsSinceStart: Number): Promise<void> {
+		return SetSecondsSinceStartI(handle, {
 				secondsSinceStart: secondsSinceStart
 		});
 	}
@@ -6473,18 +6954,20 @@ export namespace DigitalInput {
 		pinIndex: tIDigitalInput_PinIndex
 	}
 
-	export function GetI(codec : any, args : tInGet): Promise<Boolean> {
+	export function GetI(handle : any, args : tInGet): Promise<Boolean> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DigitalInput.Get(pinIndex: ' + __args.pinIndex+ ')');
+			return handle.codec.send('DigitalInput.Get(pinIndex: ' + __args.pinIndex+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Get(codec : any, pinIndex: tIDigitalInput_PinIndex): Promise<Boolean> {
-		return GetI(codec, {
+	export function Get(handle : any, pinIndex: tIDigitalInput_PinIndex): Promise<Boolean> {
+		return GetI(handle, {
 				pinIndex: pinIndex
 		});
 	}
@@ -6513,140 +6996,164 @@ export namespace BladeMotor {
 		status: Number
 	}
 
-	export function Brake(codec : any): Promise<void> {
+	export function Brake(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.Brake()');
+			return handle.codec.send('BladeMotor.Brake()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Run(codec : any): Promise<void> {
+	export function Run(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.Run()');
+			return handle.codec.send('BladeMotor.Run()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSpeed(codec : any): Promise<Number> {
+	export function GetSpeed(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.GetSpeed()');
+			return handle.codec.send('BladeMotor.GetSpeed()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSpeedI(codec : any, args : tInSetSpeed): Promise<void> {
+	export function SetSpeedI(handle : any, args : tInSetSpeed): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.SetSpeed(speed: ' + __args.speed+ ')');
+			return handle.codec.send('BladeMotor.SetSpeed(speed: ' + __args.speed+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSpeed(codec : any, speed: Number): Promise<void> {
-		return SetSpeedI(codec, {
+	export function SetSpeed(handle : any, speed: Number): Promise<void> {
+		return SetSpeedI(handle, {
 				speed: speed
 		});
 	}
 
-	export function GetDirection(codec : any): Promise<Number> {
+	export function GetDirection(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.GetDirection()');
+			return handle.codec.send('BladeMotor.GetDirection()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDirectionI(codec : any, args : tInSetDirection): Promise<void> {
+	export function SetDirectionI(handle : any, args : tInSetDirection): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.SetDirection(direction: ' + __args.direction+ ')');
+			return handle.codec.send('BladeMotor.SetDirection(direction: ' + __args.direction+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDirection(codec : any, direction: Number): Promise<void> {
-		return SetDirectionI(codec, {
+	export function SetDirection(handle : any, direction: Number): Promise<void> {
+		return SetDirectionI(handle, {
 				direction: direction
 		});
 	}
 
-	export function GetMeasuredCurrent(codec : any): Promise<Number> {
+	export function GetMeasuredCurrent(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.GetMeasuredCurrent()');
+			return handle.codec.send('BladeMotor.GetMeasuredCurrent()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMeasuredSpeed(codec : any): Promise<Number> {
+	export function GetMeasuredSpeed(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.GetMeasuredSpeed()');
+			return handle.codec.send('BladeMotor.GetMeasuredSpeed()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetRunningStatus(codec : any): Promise<Number> {
+	export function GetRunningStatus(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.GetRunningStatus()');
+			return handle.codec.send('BladeMotor.GetRunningStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function On(codec : any): Promise<void> {
+	export function On(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.On()');
+			return handle.codec.send('BladeMotor.On()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Off(codec : any): Promise<void> {
+	export function Off(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.Off()');
+			return handle.codec.send('BladeMotor.Off()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimulationI(codec : any, args : tInSetSimulation): Promise<void> {
+	export function SetSimulationI(handle : any, args : tInSetSimulation): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('BladeMotor.SetSimulation(onOff: ' + __args.onOff+ ',current: ' + __args.current+ ',speed: ' + __args.speed+ ',status: ' + __args.status+ ')');
+			return handle.codec.send('BladeMotor.SetSimulation(onOff: ' + __args.onOff+ ',current: ' + __args.current+ ',speed: ' + __args.speed+ ',status: ' + __args.status+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimulation(codec : any, onOff: Number, current: Number, speed: Number, status: Number): Promise<void> {
-		return SetSimulationI(codec, {
+	export function SetSimulation(handle : any, onOff: Number, current: Number, speed: Number, status: Number): Promise<void> {
+		return SetSimulationI(handle, {
 				onOff: onOff,
 				current: current,
 				speed: speed,
@@ -6690,11 +7197,13 @@ export namespace CutIntensity {
 		updateTimeGardenFilter_10s: Number
 	}
 
-	export function GetData(codec : any): Promise<tOutGetData> {
+	export function GetData(handle : any): Promise<tOutGetData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CutIntensity.GetData()');
+			return handle.codec.send('CutIntensity.GetData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetData>((res,reject) => { reject(error);});
 		}
@@ -6778,237 +7287,269 @@ export namespace Wheels {
 		index: Number
 	}
 
-	export function ClearHwBrakeSignalI(codec : any, args : tInClearHwBrakeSignal): Promise<void> {
+	export function ClearHwBrakeSignalI(handle : any, args : tInClearHwBrakeSignal): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.ClearHwBrakeSignal(index: ' + __args.index+ ')');
+			return handle.codec.send('Wheels.ClearHwBrakeSignal(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ClearHwBrakeSignal(codec : any, index: Number): Promise<void> {
-		return ClearHwBrakeSignalI(codec, {
+	export function ClearHwBrakeSignal(handle : any, index: Number): Promise<void> {
+		return ClearHwBrakeSignalI(handle, {
 				index: index
 		});
 	}
 
-	export function EmergencyBrake(codec : any): Promise<void> {
+	export function EmergencyBrake(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.EmergencyBrake()');
+			return handle.codec.send('Wheels.EmergencyBrake()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetDirectionI(codec : any, args : tInGetDirection): Promise<Number> {
+	export function GetDirectionI(handle : any, args : tInGetDirection): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.GetDirection(index: ' + __args.index+ ')');
+			return handle.codec.send('Wheels.GetDirection(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetDirection(codec : any, index: Number): Promise<Number> {
-		return GetDirectionI(codec, {
+	export function GetDirection(handle : any, index: Number): Promise<Number> {
+		return GetDirectionI(handle, {
 				index: index
 		});
 	}
 
-	export function GetHwBrakeSignalI(codec : any, args : tInGetHwBrakeSignal): Promise<Number> {
+	export function GetHwBrakeSignalI(handle : any, args : tInGetHwBrakeSignal): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.GetHwBrakeSignal(index: ' + __args.index+ ')');
+			return handle.codec.send('Wheels.GetHwBrakeSignal(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetHwBrakeSignal(codec : any, index: Number): Promise<Number> {
-		return GetHwBrakeSignalI(codec, {
+	export function GetHwBrakeSignal(handle : any, index: Number): Promise<Number> {
+		return GetHwBrakeSignalI(handle, {
 				index: index
 		});
 	}
 
-	export function GetPowerI(codec : any, args : tInGetPower): Promise<Number> {
+	export function GetPowerI(handle : any, args : tInGetPower): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.GetPower(index: ' + __args.index+ ')');
+			return handle.codec.send('Wheels.GetPower(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetPower(codec : any, index: Number): Promise<Number> {
-		return GetPowerI(codec, {
+	export function GetPower(handle : any, index: Number): Promise<Number> {
+		return GetPowerI(handle, {
 				index: index
 		});
 	}
 
-	export function GetRotationCounterI(codec : any, args : tInGetRotationCounter): Promise<Number> {
+	export function GetRotationCounterI(handle : any, args : tInGetRotationCounter): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.GetRotationCounter(index: ' + __args.index+ ')');
+			return handle.codec.send('Wheels.GetRotationCounter(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetRotationCounter(codec : any, index: Number): Promise<Number> {
-		return GetRotationCounterI(codec, {
+	export function GetRotationCounter(handle : any, index: Number): Promise<Number> {
+		return GetRotationCounterI(handle, {
 				index: index
 		});
 	}
 
-	export function GetSpeedI(codec : any, args : tInGetSpeed): Promise<Number> {
+	export function GetSpeedI(handle : any, args : tInGetSpeed): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.GetSpeed(index: ' + __args.index+ ')');
+			return handle.codec.send('Wheels.GetSpeed(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSpeed(codec : any, index: Number): Promise<Number> {
-		return GetSpeedI(codec, {
+	export function GetSpeed(handle : any, index: Number): Promise<Number> {
+		return GetSpeedI(handle, {
 				index: index
 		});
 	}
 
-	export function IsRunning(codec : any): Promise<Boolean> {
+	export function IsRunning(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.IsRunning()');
+			return handle.codec.send('Wheels.IsRunning()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function PowerOff(codec : any): Promise<void> {
+	export function PowerOff(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.PowerOff()');
+			return handle.codec.send('Wheels.PowerOff()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function PowerOn(codec : any): Promise<void> {
+	export function PowerOn(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.PowerOn()');
+			return handle.codec.send('Wheels.PowerOn()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function RotationCounterToMmI(codec : any, args : tInRotationCounterToMm): Promise<Number> {
+	export function RotationCounterToMmI(handle : any, args : tInRotationCounterToMm): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.RotationCounterToMm(counter: ' + __args.counter+ ')');
+			return handle.codec.send('Wheels.RotationCounterToMm(counter: ' + __args.counter+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function RotationCounterToMm(codec : any, counter: Number): Promise<Number> {
-		return RotationCounterToMmI(codec, {
+	export function RotationCounterToMm(handle : any, counter: Number): Promise<Number> {
+		return RotationCounterToMmI(handle, {
 				counter: counter
 		});
 	}
 
-	export function SetDirectionI(codec : any, args : tInSetDirection): Promise<void> {
+	export function SetDirectionI(handle : any, args : tInSetDirection): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.SetDirection(index: ' + __args.index+ ',direction: ' + __args.direction+ ')');
+			return handle.codec.send('Wheels.SetDirection(index: ' + __args.index+ ',direction: ' + __args.direction+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetDirection(codec : any, index: Number, direction: Number): Promise<void> {
-		return SetDirectionI(codec, {
+	export function SetDirection(handle : any, index: Number, direction: Number): Promise<void> {
+		return SetDirectionI(handle, {
 				index: index,
 				direction: direction
 		});
 	}
 
-	export function SetPowerI(codec : any, args : tInSetPower): Promise<void> {
+	export function SetPowerI(handle : any, args : tInSetPower): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.SetPower(index: ' + __args.index+ ',power: ' + __args.power+ ')');
+			return handle.codec.send('Wheels.SetPower(index: ' + __args.index+ ',power: ' + __args.power+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPower(codec : any, index: Number, power: Number): Promise<void> {
-		return SetPowerI(codec, {
+	export function SetPower(handle : any, index: Number, power: Number): Promise<void> {
+		return SetPowerI(handle, {
 				index: index,
 				power: power
 		});
 	}
 
-	export function SetWheelLockI(codec : any, args : tInSetWheelLock): Promise<void> {
+	export function SetWheelLockI(handle : any, args : tInSetWheelLock): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.SetWheelLock(wheelLock: ' + __args.wheelLock+ ')');
+			return handle.codec.send('Wheels.SetWheelLock(wheelLock: ' + __args.wheelLock+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetWheelLock(codec : any, wheelLock: Number): Promise<void> {
-		return SetWheelLockI(codec, {
+	export function SetWheelLock(handle : any, wheelLock: Number): Promise<void> {
+		return SetWheelLockI(handle, {
 				wheelLock: wheelLock
 		});
 	}
 
-	export function RunWheelsI(codec : any, args : tInRunWheels): Promise<void> {
+	export function RunWheelsI(handle : any, args : tInRunWheels): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.RunWheels(powerLeft: ' + __args.powerLeft+ ',powerRight: ' + __args.powerRight+ ')');
+			return handle.codec.send('Wheels.RunWheels(powerLeft: ' + __args.powerLeft+ ',powerRight: ' + __args.powerRight+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function RunWheels(codec : any, powerLeft: Number, powerRight: Number): Promise<void> {
-		return RunWheelsI(codec, {
+	export function RunWheels(handle : any, powerLeft: Number, powerRight: Number): Promise<void> {
+		return RunWheelsI(handle, {
 				powerLeft: powerLeft,
 				powerRight: powerRight
 		});
 	}
 
-	export function SetHoldI(codec : any, args : tInSetHold): Promise<void> {
+	export function SetHoldI(handle : any, args : tInSetHold): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Wheels.SetHold(index: ' + __args.index+ ')');
+			return handle.codec.send('Wheels.SetHold(index: ' + __args.index+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetHold(codec : any, index: Number): Promise<void> {
-		return SetHoldI(codec, {
+	export function SetHold(handle : any, index: Number): Promise<void> {
+		return SetHoldI(handle, {
 				index: index
 		});
 	}
@@ -7041,87 +7582,99 @@ export namespace Traction {
 		angle: Number
 	}
 
-	export function BrakeI(codec : any, args : tInBrake): Promise<void> {
+	export function BrakeI(handle : any, args : tInBrake): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Traction.Brake(brakeDistance: ' + __args.brakeDistance+ ')');
+			return handle.codec.send('Traction.Brake(brakeDistance: ' + __args.brakeDistance+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Brake(codec : any, brakeDistance: Number): Promise<void> {
-		return BrakeI(codec, {
+	export function Brake(handle : any, brakeDistance: Number): Promise<void> {
+		return BrakeI(handle, {
 				brakeDistance: brakeDistance
 		});
 	}
 
-	export function PowerOff(codec : any): Promise<void> {
+	export function PowerOff(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Traction.PowerOff()');
+			return handle.codec.send('Traction.PowerOff()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function PowerOn(codec : any): Promise<void> {
+	export function PowerOn(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Traction.PowerOn()');
+			return handle.codec.send('Traction.PowerOn()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function RunI(codec : any, args : tInRun): Promise<void> {
+	export function RunI(handle : any, args : tInRun): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Traction.Run(distance: ' + __args.distance+ ')');
+			return handle.codec.send('Traction.Run(distance: ' + __args.distance+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Run(codec : any, distance: Number): Promise<void> {
-		return RunI(codec, {
+	export function Run(handle : any, distance: Number): Promise<void> {
+		return RunI(handle, {
 				distance: distance
 		});
 	}
 
-	export function TurnI(codec : any, args : tInTurn): Promise<void> {
+	export function TurnI(handle : any, args : tInTurn): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Traction.Turn(angle: ' + __args.angle+ ',distance: ' + __args.distance+ ')');
+			return handle.codec.send('Traction.Turn(angle: ' + __args.angle+ ',distance: ' + __args.distance+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Turn(codec : any, angle: Number, distance: Number): Promise<void> {
-		return TurnI(codec, {
+	export function Turn(handle : any, angle: Number, distance: Number): Promise<void> {
+		return TurnI(handle, {
 				angle: angle,
 				distance: distance
 		});
 	}
 
-	export function TurnOneWheelI(codec : any, args : tInTurnOneWheel): Promise<void> {
+	export function TurnOneWheelI(handle : any, args : tInTurnOneWheel): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Traction.TurnOneWheel(angle: ' + __args.angle+ ')');
+			return handle.codec.send('Traction.TurnOneWheel(angle: ' + __args.angle+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TurnOneWheel(codec : any, angle: Number): Promise<void> {
-		return TurnOneWheelI(codec, {
+	export function TurnOneWheel(handle : any, angle: Number): Promise<void> {
+		return TurnOneWheelI(handle, {
 				angle: angle
 		});
 	}
@@ -7135,27 +7688,31 @@ export namespace LiftSensor {
 		status: Number
 	}
 
-	export function SetSimStatusI(codec : any, args : tInSetSimStatus): Promise<void> {
+	export function SetSimStatusI(handle : any, args : tInSetSimStatus): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LiftSensor.SetSimStatus(status: ' + __args.status+ ')');
+			return handle.codec.send('LiftSensor.SetSimStatus(status: ' + __args.status+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimStatus(codec : any, status: Number): Promise<void> {
-		return SetSimStatusI(codec, {
+	export function SetSimStatus(handle : any, status: Number): Promise<void> {
+		return SetSimStatusI(handle, {
 				status: status
 		});
 	}
 
-	export function IsActivated(codec : any): Promise<Number> {
+	export function IsActivated(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LiftSensor.IsActivated()');
+			return handle.codec.send('LiftSensor.IsActivated()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
@@ -7170,27 +7727,31 @@ export namespace MainSwitch {
 		status: Number
 	}
 
-	export function SetSimStatusI(codec : any, args : tInSetSimStatus): Promise<void> {
+	export function SetSimStatusI(handle : any, args : tInSetSimStatus): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MainSwitch.SetSimStatus(status: ' + __args.status+ ')');
+			return handle.codec.send('MainSwitch.SetSimStatus(status: ' + __args.status+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimStatus(codec : any, status: Number): Promise<void> {
-		return SetSimStatusI(codec, {
+	export function SetSimStatus(handle : any, status: Number): Promise<void> {
+		return SetSimStatusI(handle, {
 				status: status
 		});
 	}
 
-	export function IsActivated(codec : any): Promise<Number> {
+	export function IsActivated(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MainSwitch.IsActivated()');
+			return handle.codec.send('MainSwitch.IsActivated()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
@@ -7205,27 +7766,31 @@ export namespace StopButton {
 		status: Number
 	}
 
-	export function SetSimStatusI(codec : any, args : tInSetSimStatus): Promise<void> {
+	export function SetSimStatusI(handle : any, args : tInSetSimStatus): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('StopButton.SetSimStatus(status: ' + __args.status+ ')');
+			return handle.codec.send('StopButton.SetSimStatus(status: ' + __args.status+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimStatus(codec : any, status: Number): Promise<void> {
-		return SetSimStatusI(codec, {
+	export function SetSimStatus(handle : any, status: Number): Promise<void> {
+		return SetSimStatusI(handle, {
 				status: status
 		});
 	}
 
-	export function IsActivated(codec : any): Promise<Boolean> {
+	export function IsActivated(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('StopButton.IsActivated()');
+			return handle.codec.send('StopButton.IsActivated()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
@@ -7255,54 +7820,62 @@ export namespace Collision {
 		status: Number
 	}
 
-	export function GetStatus(codec : any): Promise<tOutGetStatus> {
+	export function GetStatus(handle : any): Promise<tOutGetStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Collision.GetStatus()');
+			return handle.codec.send('Collision.GetStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCounterI(codec : any, args : tInGetCounter): Promise<Number> {
+	export function GetCounterI(handle : any, args : tInGetCounter): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Collision.GetCounter(type: ' + __args.type+ ')');
+			return handle.codec.send('Collision.GetCounter(type: ' + __args.type+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCounter(codec : any, type: Number): Promise<Number> {
-		return GetCounterI(codec, {
+	export function GetCounter(handle : any, type: Number): Promise<Number> {
+		return GetCounterI(handle, {
 				type: type
 		});
 	}
 
-	export function ClearCounters(codec : any): Promise<void> {
+	export function ClearCounters(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Collision.ClearCounters()');
+			return handle.codec.send('Collision.ClearCounters()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimulationI(codec : any, args : tInSetSimulation): Promise<void> {
+	export function SetSimulationI(handle : any, args : tInSetSimulation): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Collision.SetSimulation(onOff: ' + __args.onOff+ ',status: ' + __args.status+ ')');
+			return handle.codec.send('Collision.SetSimulation(onOff: ' + __args.onOff+ ',status: ' + __args.status+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimulation(codec : any, onOff: Boolean, status: Number): Promise<void> {
-		return SetSimulationI(codec, {
+	export function SetSimulation(handle : any, onOff: Boolean, status: Number): Promise<void> {
+		return SetSimulationI(handle, {
 				onOff: onOff,
 				status: status
 		});
@@ -7363,129 +7936,151 @@ export namespace SAFETYSUPERVISOR_TIF_FAMILY {
 		chargerOkToCharge: Boolean
 	}
 
-	export function GetStatus(codec : any): Promise<tOutGetStatus> {
+	export function GetStatus(handle : any): Promise<tOutGetStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.GetStatus()');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.GetStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function OdometerResetI(codec : any, args : tInOdometerReset): Promise<void> {
+	export function OdometerResetI(handle : any, args : tInOdometerReset): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.OdometerReset(odometerId: ' + __args.odometerId+ ')');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.OdometerReset(odometerId: ' + __args.odometerId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function OdometerReset(codec : any, odometerId: Number): Promise<void> {
-		return OdometerResetI(codec, {
+	export function OdometerReset(handle : any, odometerId: Number): Promise<void> {
+		return OdometerResetI(handle, {
 				odometerId: odometerId
 		});
 	}
 
-	export function OdometerGetRotDistanceI(codec : any, args : tInOdometerGetRotDistance): Promise<Number> {
+	export function OdometerGetRotDistanceI(handle : any, args : tInOdometerGetRotDistance): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.OdometerGetRotDistance(odometerId: ' + __args.odometerId+ ')');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.OdometerGetRotDistance(odometerId: ' + __args.odometerId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function OdometerGetRotDistance(codec : any, odometerId: Number): Promise<Number> {
-		return OdometerGetRotDistanceI(codec, {
+	export function OdometerGetRotDistance(handle : any, odometerId: Number): Promise<Number> {
+		return OdometerGetRotDistanceI(handle, {
 				odometerId: odometerId
 		});
 	}
 
-	export function OdometerGetMovDistanceI(codec : any, args : tInOdometerGetMovDistance): Promise<Number> {
+	export function OdometerGetMovDistanceI(handle : any, args : tInOdometerGetMovDistance): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.OdometerGetMovDistance(odometerId: ' + __args.odometerId+ ')');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.OdometerGetMovDistance(odometerId: ' + __args.odometerId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function OdometerGetMovDistance(codec : any, odometerId: Number): Promise<Number> {
-		return OdometerGetMovDistanceI(codec, {
+	export function OdometerGetMovDistance(handle : any, odometerId: Number): Promise<Number> {
+		return OdometerGetMovDistanceI(handle, {
 				odometerId: odometerId
 		});
 	}
 
-	export function LoopSupervisorLoopDetected(codec : any): Promise<Boolean> {
+	export function LoopSupervisorLoopDetected(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.LoopSupervisorLoopDetected()');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.LoopSupervisorLoopDetected()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function LoopSupervisorIsInsideLoop(codec : any): Promise<Boolean> {
+	export function LoopSupervisorIsInsideLoop(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.LoopSupervisorIsInsideLoop()');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.LoopSupervisorIsInsideLoop()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function LoopSupervisorIsOnChargerStation(codec : any): Promise<Boolean> {
+	export function LoopSupervisorIsOnChargerStation(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.LoopSupervisorIsOnChargerStation()');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.LoopSupervisorIsOnChargerStation()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function MotionSensorInMotion(codec : any): Promise<Boolean> {
+	export function MotionSensorInMotion(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.MotionSensorInMotion()');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.MotionSensorInMotion()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function MotionSensorInMotionTimestamp(codec : any): Promise<Number> {
+	export function MotionSensorInMotionTimestamp(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.MotionSensorInMotionTimestamp()');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.MotionSensorInMotionTimestamp()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function MotionSensorIsMovingForward(codec : any): Promise<Boolean> {
+	export function MotionSensorIsMovingForward(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.MotionSensorIsMovingForward()');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.MotionSensorIsMovingForward()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSafeGates(codec : any): Promise<tOutGetSafeGates> {
+	export function GetSafeGates(handle : any): Promise<tOutGetSafeGates> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SAFETYSUPERVISOR_TIF_FAMILY.GetSafeGates()');
+			return handle.codec.send('SAFETYSUPERVISOR_TIF_FAMILY.GetSafeGates()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetSafeGates>((res,reject) => { reject(error);});
 		}
@@ -7500,18 +8095,20 @@ export namespace SOUND_TIF_FAMILY {
 		soundType: tSoundType
 	}
 
-	export function SetSoundTypeI(codec : any, args : tInSetSoundType): Promise<void> {
+	export function SetSoundTypeI(handle : any, args : tInSetSoundType): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('SOUND_TIF_FAMILY.SetSoundType(soundType: ' + __args.soundType+ ')');
+			return handle.codec.send('SOUND_TIF_FAMILY.SetSoundType(soundType: ' + __args.soundType+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSoundType(codec : any, soundType: tSoundType): Promise<void> {
-		return SetSoundTypeI(codec, {
+	export function SetSoundType(handle : any, soundType: tSoundType): Promise<void> {
+		return SetSoundTypeI(handle, {
 				soundType: soundType
 		});
 	}
@@ -7519,11 +8116,13 @@ export namespace SOUND_TIF_FAMILY {
 
 export namespace PinValidator {
 
-	export function IsPinCodeValid(codec : any): Promise<void> {
+	export function IsPinCodeValid(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('PinValidator.IsPinCodeValid()');
+			return handle.codec.send('PinValidator.IsPinCodeValid()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
@@ -7576,155 +8175,177 @@ export namespace LoopSampler {
 		value: Number
 	}
 
-	export function Disable(codec : any): Promise<void> {
+	export function Disable(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.Disable()');
+			return handle.codec.send('LoopSampler.Disable()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Enable(codec : any): Promise<void> {
+	export function Enable(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.Enable()');
+			return handle.codec.send('LoopSampler.Enable()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPeriodTimeI(codec : any, args : tInSetPeriodTime): Promise<void> {
+	export function SetPeriodTimeI(handle : any, args : tInSetPeriodTime): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.SetPeriodTime(periodTime: ' + __args.periodTime+ ')');
+			return handle.codec.send('LoopSampler.SetPeriodTime(periodTime: ' + __args.periodTime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetPeriodTime(codec : any, periodTime: Number): Promise<void> {
-		return SetPeriodTimeI(codec, {
+	export function SetPeriodTime(handle : any, periodTime: Number): Promise<void> {
+		return SetPeriodTimeI(handle, {
 				periodTime: periodTime
 		});
 	}
 
-	export function GetLoopSignalMasterI(codec : any, args : tInGetLoopSignalMaster): Promise<Number> {
+	export function GetLoopSignalMasterI(handle : any, args : tInGetLoopSignalMaster): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.GetLoopSignalMaster(loop: ' + __args.loop+ ')');
+			return handle.codec.send('LoopSampler.GetLoopSignalMaster(loop: ' + __args.loop+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetLoopSignalMaster(codec : any, loop: tILoopSamplerLoops): Promise<Number> {
-		return GetLoopSignalMasterI(codec, {
+	export function GetLoopSignalMaster(handle : any, loop: tILoopSamplerLoops): Promise<Number> {
+		return GetLoopSignalMasterI(handle, {
 				loop: loop
 		});
 	}
 
-	export function GetLoopSignalSlaveI(codec : any, args : tInGetLoopSignalSlave): Promise<Number> {
+	export function GetLoopSignalSlaveI(handle : any, args : tInGetLoopSignalSlave): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.GetLoopSignalSlave(loop: ' + __args.loop+ ')');
+			return handle.codec.send('LoopSampler.GetLoopSignalSlave(loop: ' + __args.loop+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetLoopSignalSlave(codec : any, loop: tILoopSamplerLoops): Promise<Number> {
-		return GetLoopSignalSlaveI(codec, {
+	export function GetLoopSignalSlave(handle : any, loop: tILoopSamplerLoops): Promise<Number> {
+		return GetLoopSignalSlaveI(handle, {
 				loop: loop
 		});
 	}
 
-	export function GetPeriodTime(codec : any): Promise<Number> {
+	export function GetPeriodTime(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.GetPeriodTime()');
+			return handle.codec.send('LoopSampler.GetPeriodTime()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSignalQuality(codec : any): Promise<Number> {
+	export function GetSignalQuality(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.GetSignalQuality()');
+			return handle.codec.send('LoopSampler.GetSignalQuality()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SimulateEnableI(codec : any, args : tInSimulateEnable): Promise<void> {
+	export function SimulateEnableI(handle : any, args : tInSimulateEnable): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.SimulateEnable(enable: ' + __args.enable+ ')');
+			return handle.codec.send('LoopSampler.SimulateEnable(enable: ' + __args.enable+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SimulateEnable(codec : any, enable: Boolean): Promise<void> {
-		return SimulateEnableI(codec, {
+	export function SimulateEnable(handle : any, enable: Boolean): Promise<void> {
+		return SimulateEnableI(handle, {
 				enable: enable
 		});
 	}
 
-	export function SimulateQualityI(codec : any, args : tInSimulateQuality): Promise<void> {
+	export function SimulateQualityI(handle : any, args : tInSimulateQuality): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.SimulateQuality(quality: ' + __args.quality+ ')');
+			return handle.codec.send('LoopSampler.SimulateQuality(quality: ' + __args.quality+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SimulateQuality(codec : any, quality: Number): Promise<void> {
-		return SimulateQualityI(codec, {
+	export function SimulateQuality(handle : any, quality: Number): Promise<void> {
+		return SimulateQualityI(handle, {
 				quality: quality
 		});
 	}
 
-	export function SimulateSignalMasterI(codec : any, args : tInSimulateSignalMaster): Promise<void> {
+	export function SimulateSignalMasterI(handle : any, args : tInSimulateSignalMaster): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.SimulateSignalMaster(loop: ' + __args.loop+ ',value: ' + __args.value+ ')');
+			return handle.codec.send('LoopSampler.SimulateSignalMaster(loop: ' + __args.loop+ ',value: ' + __args.value+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SimulateSignalMaster(codec : any, loop: tILoopSamplerLoops, value: Number): Promise<void> {
-		return SimulateSignalMasterI(codec, {
+	export function SimulateSignalMaster(handle : any, loop: tILoopSamplerLoops, value: Number): Promise<void> {
+		return SimulateSignalMasterI(handle, {
 				loop: loop,
 				value: value
 		});
 	}
 
-	export function SimulateSignalSlaveI(codec : any, args : tInSimulateSignalSlave): Promise<void> {
+	export function SimulateSignalSlaveI(handle : any, args : tInSimulateSignalSlave): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSampler.SimulateSignalSlave(loop: ' + __args.loop+ ',value: ' + __args.value+ ')');
+			return handle.codec.send('LoopSampler.SimulateSignalSlave(loop: ' + __args.loop+ ',value: ' + __args.value+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SimulateSignalSlave(codec : any, loop: tILoopSamplerLoops, value: Number): Promise<void> {
-		return SimulateSignalSlaveI(codec, {
+	export function SimulateSignalSlave(handle : any, loop: tILoopSamplerLoops, value: Number): Promise<void> {
+		return SimulateSignalSlaveI(handle, {
 				loop: loop,
 				value: value
 		});
@@ -7746,35 +8367,39 @@ export namespace DigitalOutput {
 		pinIndex: tIDigitalOutput_PinIndex
 	}
 
-	export function SetI(codec : any, args : tInSet): Promise<void> {
+	export function SetI(handle : any, args : tInSet): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DigitalOutput.Set(pinIndex: ' + __args.pinIndex+ ',output: ' + __args.output+ ')');
+			return handle.codec.send('DigitalOutput.Set(pinIndex: ' + __args.pinIndex+ ',output: ' + __args.output+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Set(codec : any, pinIndex: tIDigitalOutput_PinIndex, output: Boolean): Promise<void> {
-		return SetI(codec, {
+	export function Set(handle : any, pinIndex: tIDigitalOutput_PinIndex, output: Boolean): Promise<void> {
+		return SetI(handle, {
 				pinIndex: pinIndex,
 				output: output
 		});
 	}
 
-	export function GetI(codec : any, args : tInGet): Promise<Boolean> {
+	export function GetI(handle : any, args : tInGet): Promise<Boolean> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DigitalOutput.Get(pinIndex: ' + __args.pinIndex+ ')');
+			return handle.codec.send('DigitalOutput.Get(pinIndex: ' + __args.pinIndex+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Get(codec : any, pinIndex: tIDigitalOutput_PinIndex): Promise<Boolean> {
-		return GetI(codec, {
+	export function Get(handle : any, pinIndex: tIDigitalOutput_PinIndex): Promise<Boolean> {
+		return GetI(handle, {
 				pinIndex: pinIndex
 		});
 	}
@@ -7800,80 +8425,92 @@ export namespace Charger {
 		status: Number
 	}
 
-	export function ChargingOff(codec : any): Promise<void> {
+	export function ChargingOff(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charger.ChargingOff()');
+			return handle.codec.send('Charger.ChargingOff()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ChargingGateOffI(codec : any, args : tInChargingGateOff): Promise<void> {
+	export function ChargingGateOffI(handle : any, args : tInChargingGateOff): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charger.ChargingGateOff(gateIndex: ' + __args.gateIndex+ ')');
+			return handle.codec.send('Charger.ChargingGateOff(gateIndex: ' + __args.gateIndex+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ChargingGateOff(codec : any, gateIndex: Number): Promise<void> {
-		return ChargingGateOffI(codec, {
+	export function ChargingGateOff(handle : any, gateIndex: Number): Promise<void> {
+		return ChargingGateOffI(handle, {
 				gateIndex: gateIndex
 		});
 	}
 
-	export function ChargingGateOnI(codec : any, args : tInChargingGateOn): Promise<void> {
+	export function ChargingGateOnI(handle : any, args : tInChargingGateOn): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charger.ChargingGateOn(gateIndex: ' + __args.gateIndex+ ')');
+			return handle.codec.send('Charger.ChargingGateOn(gateIndex: ' + __args.gateIndex+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ChargingGateOn(codec : any, gateIndex: Number): Promise<void> {
-		return ChargingGateOnI(codec, {
+	export function ChargingGateOn(handle : any, gateIndex: Number): Promise<void> {
+		return ChargingGateOnI(handle, {
 				gateIndex: gateIndex
 		});
 	}
 
-	export function IsChargingEnabled(codec : any): Promise<Boolean> {
+	export function IsChargingEnabled(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charger.IsChargingEnabled()');
+			return handle.codec.send('Charger.IsChargingEnabled()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function IsChargingPowerConnected(codec : any): Promise<Boolean> {
+	export function IsChargingPowerConnected(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charger.IsChargingPowerConnected()');
+			return handle.codec.send('Charger.IsChargingPowerConnected()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimStatusI(codec : any, args : tInSetSimStatus): Promise<void> {
+	export function SetSimStatusI(handle : any, args : tInSetSimStatus): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Charger.SetSimStatus(status: ' + __args.status+ ')');
+			return handle.codec.send('Charger.SetSimStatus(status: ' + __args.status+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimStatus(codec : any, status: Number): Promise<void> {
-		return SetSimStatusI(codec, {
+	export function SetSimStatus(handle : any, status: Number): Promise<void> {
+		return SetSimStatusI(handle, {
 				status: status
 		});
 	}
@@ -7918,146 +8555,170 @@ export namespace HeightMotor {
 		targetHeight: Number
 	}
 
-	export function Brake(codec : any): Promise<void> {
+	export function Brake(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.Brake()');
+			return handle.codec.send('HeightMotor.Brake()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function CalibrateAndSetHeightI(codec : any, args : tInCalibrateAndSetHeight): Promise<Number> {
+	export function CalibrateAndSetHeightI(handle : any, args : tInCalibrateAndSetHeight): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.CalibrateAndSetHeight(cuttingHeight: ' + __args.cuttingHeight+ ')');
+			return handle.codec.send('HeightMotor.CalibrateAndSetHeight(cuttingHeight: ' + __args.cuttingHeight+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function CalibrateAndSetHeight(codec : any, cuttingHeight: Number): Promise<Number> {
-		return CalibrateAndSetHeightI(codec, {
+	export function CalibrateAndSetHeight(handle : any, cuttingHeight: Number): Promise<Number> {
+		return CalibrateAndSetHeightI(handle, {
 				cuttingHeight: cuttingHeight
 		});
 	}
 
-	export function ConfirmFault(codec : any): Promise<void> {
+	export function ConfirmFault(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.ConfirmFault()');
+			return handle.codec.send('HeightMotor.ConfirmFault()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCuttingHeightData(codec : any): Promise<tOutGetCuttingHeightData> {
+	export function GetCuttingHeightData(handle : any): Promise<tOutGetCuttingHeightData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.GetCuttingHeightData()');
+			return handle.codec.send('HeightMotor.GetCuttingHeightData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetCuttingHeightData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetHeight(codec : any): Promise<Number> {
+	export function GetHeight(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.GetHeight()');
+			return handle.codec.send('HeightMotor.GetHeight()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function IsCalibrating(codec : any): Promise<Number> {
+	export function IsCalibrating(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.IsCalibrating()');
+			return handle.codec.send('HeightMotor.IsCalibrating()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function IsFault(codec : any): Promise<Number> {
+	export function IsFault(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.IsFault()');
+			return handle.codec.send('HeightMotor.IsFault()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function IsRunning(codec : any): Promise<Number> {
+	export function IsRunning(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.IsRunning()');
+			return handle.codec.send('HeightMotor.IsRunning()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetHeightI(codec : any, args : tInSetHeight): Promise<Number> {
+	export function SetHeightI(handle : any, args : tInSetHeight): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.SetHeight(height: ' + __args.height+ ')');
+			return handle.codec.send('HeightMotor.SetHeight(height: ' + __args.height+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetHeight(codec : any, height: Number): Promise<Number> {
-		return SetHeightI(codec, {
+	export function SetHeight(handle : any, height: Number): Promise<Number> {
+		return SetHeightI(handle, {
 				height: height
 		});
 	}
 
-	export function SetHeightValueWithoutRunningMotorI(codec : any, args : tInSetHeightValueWithoutRunningMotor): Promise<Number> {
+	export function SetHeightValueWithoutRunningMotorI(handle : any, args : tInSetHeightValueWithoutRunningMotor): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.SetHeightValueWithoutRunningMotor(height: ' + __args.height+ ')');
+			return handle.codec.send('HeightMotor.SetHeightValueWithoutRunningMotor(height: ' + __args.height+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetHeightValueWithoutRunningMotor(codec : any, height: Number): Promise<Number> {
-		return SetHeightValueWithoutRunningMotorI(codec, {
+	export function SetHeightValueWithoutRunningMotor(handle : any, height: Number): Promise<Number> {
+		return SetHeightValueWithoutRunningMotorI(handle, {
 				height: height
 		});
 	}
 
-	export function InitialHeightI(codec : any, args : tInInitialHeight): Promise<Number> {
+	export function InitialHeightI(handle : any, args : tInInitialHeight): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.InitialHeight(currentHeight: ' + __args.currentHeight+ ',targetHeight: ' + __args.targetHeight+ ')');
+			return handle.codec.send('HeightMotor.InitialHeight(currentHeight: ' + __args.currentHeight+ ',targetHeight: ' + __args.targetHeight+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function InitialHeight(codec : any, currentHeight: Number, targetHeight: Number): Promise<Number> {
-		return InitialHeightI(codec, {
+	export function InitialHeight(handle : any, currentHeight: Number, targetHeight: Number): Promise<Number> {
+		return InitialHeightI(handle, {
 				currentHeight: currentHeight,
 				targetHeight: targetHeight
 		});
 	}
 
-	export function Start(codec : any): Promise<void> {
+	export function Start(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HeightMotor.Start()');
+			return handle.codec.send('HeightMotor.Start()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
@@ -8095,35 +8756,39 @@ export namespace Parameters {
 		data: Number
 	}
 
-	export function ReadMemI(codec : any, args : tInReadMem): Promise<tOutReadMem> {
+	export function ReadMemI(handle : any, args : tInReadMem): Promise<tOutReadMem> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameters.ReadMem(virtualAddr: ' + __args.virtualAddr+ ',length: ' + __args.length+ ')');
+			return handle.codec.send('Parameters.ReadMem(virtualAddr: ' + __args.virtualAddr+ ',length: ' + __args.length+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutReadMem>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ReadMem(codec : any, virtualAddr: Number, length: Number): Promise<tOutReadMem> {
-		return ReadMemI(codec, {
+	export function ReadMem(handle : any, virtualAddr: Number, length: Number): Promise<tOutReadMem> {
+		return ReadMemI(handle, {
 				virtualAddr: virtualAddr,
 				length: length
 		});
 	}
 
-	export function WriteMem8I(codec : any, args : tInWriteMem8): Promise<tOutWriteMem8> {
+	export function WriteMem8I(handle : any, args : tInWriteMem8): Promise<tOutWriteMem8> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('Parameters.WriteMem8(virtualAddr: ' + __args.virtualAddr+ ',data: ' + __args.data+ ')');
+			return handle.codec.send('Parameters.WriteMem8(virtualAddr: ' + __args.virtualAddr+ ',data: ' + __args.data+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutWriteMem8>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function WriteMem8(codec : any, virtualAddr: Number, data: Number): Promise<tOutWriteMem8> {
-		return WriteMem8I(codec, {
+	export function WriteMem8(handle : any, virtualAddr: Number, data: Number): Promise<tOutWriteMem8> {
+		return WriteMem8I(handle, {
 				virtualAddr: virtualAddr,
 				data: data
 		});
@@ -8144,34 +8809,38 @@ export namespace LoopSystem {
 		loopSchedule: Number
 	}
 
-	export function SetScheduleMasterI(codec : any, args : tInSetScheduleMaster): Promise<void> {
+	export function SetScheduleMasterI(handle : any, args : tInSetScheduleMaster): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSystem.SetScheduleMaster(loopSchedule: ' + __args.loopSchedule+ ')');
+			return handle.codec.send('LoopSystem.SetScheduleMaster(loopSchedule: ' + __args.loopSchedule+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetScheduleMaster(codec : any, loopSchedule: Number): Promise<void> {
-		return SetScheduleMasterI(codec, {
+	export function SetScheduleMaster(handle : any, loopSchedule: Number): Promise<void> {
+		return SetScheduleMasterI(handle, {
 				loopSchedule: loopSchedule
 		});
 	}
 
-	export function SetScheduleSlaveI(codec : any, args : tInSetScheduleSlave): Promise<void> {
+	export function SetScheduleSlaveI(handle : any, args : tInSetScheduleSlave): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LoopSystem.SetScheduleSlave(loopSchedule: ' + __args.loopSchedule+ ')');
+			return handle.codec.send('LoopSystem.SetScheduleSlave(loopSchedule: ' + __args.loopSchedule+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetScheduleSlave(codec : any, loopSchedule: Number): Promise<void> {
-		return SetScheduleSlaveI(codec, {
+	export function SetScheduleSlave(handle : any, loopSchedule: Number): Promise<void> {
+		return SetScheduleSlaveI(handle, {
 				loopSchedule: loopSchedule
 		});
 	}
@@ -8195,39 +8864,45 @@ export namespace TiltSensor {
 		zAcc_mg: Number
 	}
 
-	export function SetSimStatusI(codec : any, args : tInSetSimStatus): Promise<void> {
+	export function SetSimStatusI(handle : any, args : tInSetSimStatus): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('TiltSensor.SetSimStatus(pitch100: ' + __args.pitch100+ ',roll100: ' + __args.roll100+ ',zAcc_mg: ' + __args.zAcc_mg+ ')');
+			return handle.codec.send('TiltSensor.SetSimStatus(pitch100: ' + __args.pitch100+ ',roll100: ' + __args.roll100+ ',zAcc_mg: ' + __args.zAcc_mg+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSimStatus(codec : any, pitch100: Number, roll100: Number, zAcc_mg: Number): Promise<void> {
-		return SetSimStatusI(codec, {
+	export function SetSimStatus(handle : any, pitch100: Number, roll100: Number, zAcc_mg: Number): Promise<void> {
+		return SetSimStatusI(handle, {
 				pitch100: pitch100,
 				roll100: roll100,
 				zAcc_mg: zAcc_mg
 		});
 	}
 
-	export function GetFiltered(codec : any): Promise<tOutGetFiltered> {
+	export function GetFiltered(handle : any): Promise<tOutGetFiltered> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('TiltSensor.GetFiltered()');
+			return handle.codec.send('TiltSensor.GetFiltered()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetFiltered>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function IsSensorOk(codec : any): Promise<Boolean> {
+	export function IsSensorOk(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('TiltSensor.IsSensorOk()');
+			return handle.codec.send('TiltSensor.IsSensorOk()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
@@ -8269,95 +8944,107 @@ export namespace LinkManager {
 		packetType: tILinkManagerPacketType
 	}
 
-	export function GetVersionString(codec : any): Promise<String> {
+	export function GetVersionString(handle : any): Promise<String> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LinkManager.GetVersionString()');
+			return handle.codec.send('LinkManager.GetVersionString()', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function CreateLinkI(codec : any, args : tInCreateLink): Promise<void> {
+	export function CreateLinkI(handle : any, args : tInCreateLink): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LinkManager.CreateLink(portId: ' + __args.portId+ ',linkId: ' + __args.linkId+ ')');
+			return handle.codec.send('LinkManager.CreateLink(portId: ' + __args.portId+ ',linkId: ' + __args.linkId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function CreateLink(codec : any, portId: tLinkManagerPortId, linkId: tILinkManagerLinkId): Promise<void> {
-		return CreateLinkI(codec, {
+	export function CreateLink(handle : any, portId: tLinkManagerPortId, linkId: tILinkManagerLinkId): Promise<void> {
+		return CreateLinkI(handle, {
 				portId: portId,
 				linkId: linkId
 		});
 	}
 
-	export function RouteI(codec : any, args : tInRoute): Promise<void> {
+	export function RouteI(handle : any, args : tInRoute): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LinkManager.Route(linkId: ' + __args.linkId+ ',routePortId: ' + __args.routePortId+ ')');
+			return handle.codec.send('LinkManager.Route(linkId: ' + __args.linkId+ ',routePortId: ' + __args.routePortId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Route(codec : any, linkId: tILinkManagerLinkId, routePortId: tLinkManagerPortId): Promise<void> {
-		return RouteI(codec, {
+	export function Route(handle : any, linkId: tILinkManagerLinkId, routePortId: tLinkManagerPortId): Promise<void> {
+		return RouteI(handle, {
 				linkId: linkId,
 				routePortId: routePortId
 		});
 	}
 
-	export function RouteRawI(codec : any, args : tInRouteRaw): Promise<void> {
+	export function RouteRawI(handle : any, args : tInRouteRaw): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LinkManager.RouteRaw(linkId: ' + __args.linkId+ ',routePortId: ' + __args.routePortId+ ')');
+			return handle.codec.send('LinkManager.RouteRaw(linkId: ' + __args.linkId+ ',routePortId: ' + __args.routePortId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function RouteRaw(codec : any, linkId: tILinkManagerLinkId, routePortId: tLinkManagerPortId): Promise<void> {
-		return RouteRawI(codec, {
+	export function RouteRaw(handle : any, linkId: tILinkManagerLinkId, routePortId: tLinkManagerPortId): Promise<void> {
+		return RouteRawI(handle, {
 				linkId: linkId,
 				routePortId: routePortId
 		});
 	}
 
-	export function CloseRouteI(codec : any, args : tInCloseRoute): Promise<void> {
+	export function CloseRouteI(handle : any, args : tInCloseRoute): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LinkManager.CloseRoute(linkId: ' + __args.linkId+ ')');
+			return handle.codec.send('LinkManager.CloseRoute(linkId: ' + __args.linkId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function CloseRoute(codec : any, linkId: tILinkManagerLinkId): Promise<void> {
-		return CloseRouteI(codec, {
+	export function CloseRoute(handle : any, linkId: tILinkManagerLinkId): Promise<void> {
+		return CloseRouteI(handle, {
 				linkId: linkId
 		});
 	}
 
-	export function IsPacketTypeSupportedI(codec : any, args : tInIsPacketTypeSupported): Promise<Boolean> {
+	export function IsPacketTypeSupportedI(handle : any, args : tInIsPacketTypeSupported): Promise<Boolean> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('LinkManager.IsPacketTypeSupported(packetType: ' + __args.packetType+ ')');
+			return handle.codec.send('LinkManager.IsPacketTypeSupported(packetType: ' + __args.packetType+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function IsPacketTypeSupported(codec : any, packetType: tILinkManagerPacketType): Promise<Boolean> {
-		return IsPacketTypeSupportedI(codec, {
+	export function IsPacketTypeSupported(handle : any, packetType: tILinkManagerPacketType): Promise<Boolean> {
+		return IsPacketTypeSupportedI(handle, {
 				packetType: packetType
 		});
 	}
@@ -8677,68 +9364,80 @@ export namespace DeviceInformation {
 		versionString: String
 	}
 
-	export function GetDeviceIdentification(codec : any): Promise<tOutGetDeviceIdentification> {
+	export function GetDeviceIdentification(handle : any): Promise<tOutGetDeviceIdentification> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetDeviceIdentification()');
+			return handle.codec.send('DeviceInformation.GetDeviceIdentification()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetDeviceIdentification>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMowerProductionData(codec : any): Promise<tOutGetMowerProductionData> {
+	export function GetMowerProductionData(handle : any): Promise<tOutGetMowerProductionData> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetMowerProductionData()');
+			return handle.codec.send('DeviceInformation.GetMowerProductionData()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetMowerProductionData>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMowerSubDevices(codec : any): Promise<tOutGetMowerSubDevices> {
+	export function GetMowerSubDevices(handle : any): Promise<tOutGetMowerSubDevices> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetMowerSubDevices()');
+			return handle.codec.send('DeviceInformation.GetMowerSubDevices()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetMowerSubDevices>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMowerSoftware(codec : any): Promise<tOutGetMowerSoftware> {
+	export function GetMowerSoftware(handle : any): Promise<tOutGetMowerSoftware> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetMowerSoftware()');
+			return handle.codec.send('DeviceInformation.GetMowerSoftware()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetMowerSoftware>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMmiInformation(codec : any): Promise<tOutGetMmiInformation> {
+	export function GetMmiInformation(handle : any): Promise<tOutGetMmiInformation> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetMmiInformation()');
+			return handle.codec.send('DeviceInformation.GetMmiInformation()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetMmiInformation>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMmiInformationI(codec : any, args : tInSetMmiInformation): Promise<tOutSetMmiInformation> {
+	export function SetMmiInformationI(handle : any, args : tInSetMmiInformation): Promise<tOutSetMmiInformation> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetMmiInformation(deviceTypeGroup: ' + __args.deviceTypeGroup+ ',MMIDeviceType: ' + __args.MMIDeviceType+ ',MMISwType: ' + __args.MMISwType+ ',MMISwVer: ' + __args.MMISwVer+ ',MMISwBuildNo: ' + __args.MMISwBuildNo+ ',langVer: ' + __args.langVer+ ',langBuildNo: ' + __args.langBuildNo+ ',langTime: ' + __args.langTime+ ',langDate: ' + __args.langDate+ ',MMIBootSwVer: ' + __args.MMIBootSwVer+ ',MMIBoardType: ' + __args.MMIBoardType+ ',MMIBoardRev: ' + __args.MMIBoardRev+ ',MMIBoardProdTime: ' + __args.MMIBoardProdTime+ ',MMIBoardPCBASerialNo: ' + __args.MMIBoardPCBASerialNo+ ')');
+			return handle.codec.send('DeviceInformation.SetMmiInformation(deviceTypeGroup: ' + __args.deviceTypeGroup+ ',MMIDeviceType: ' + __args.MMIDeviceType+ ',MMISwType: ' + __args.MMISwType+ ',MMISwVer: ' + __args.MMISwVer+ ',MMISwBuildNo: ' + __args.MMISwBuildNo+ ',langVer: ' + __args.langVer+ ',langBuildNo: ' + __args.langBuildNo+ ',langTime: ' + __args.langTime+ ',langDate: ' + __args.langDate+ ',MMIBootSwVer: ' + __args.MMIBootSwVer+ ',MMIBoardType: ' + __args.MMIBoardType+ ',MMIBoardRev: ' + __args.MMIBoardRev+ ',MMIBoardProdTime: ' + __args.MMIBoardProdTime+ ',MMIBoardPCBASerialNo: ' + __args.MMIBoardPCBASerialNo+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetMmiInformation>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMmiInformation(codec : any, deviceTypeGroup: tDeviceTypeGroup, MMIDeviceType: Number, MMISwType: Number, MMISwVer: Number, MMISwBuildNo: Number, langVer: Number, langBuildNo: Number, langTime: String, langDate: String, MMIBootSwVer: Number, MMIBoardType: Number, MMIBoardRev: Number, MMIBoardProdTime: Date, MMIBoardPCBASerialNo: Number): Promise<tOutSetMmiInformation> {
-		return SetMmiInformationI(codec, {
+	export function SetMmiInformation(handle : any, deviceTypeGroup: tDeviceTypeGroup, MMIDeviceType: Number, MMISwType: Number, MMISwVer: Number, MMISwBuildNo: Number, langVer: Number, langBuildNo: Number, langTime: String, langDate: String, MMIBootSwVer: Number, MMIBoardType: Number, MMIBoardRev: Number, MMIBoardProdTime: Date, MMIBoardPCBASerialNo: Number): Promise<tOutSetMmiInformation> {
+		return SetMmiInformationI(handle, {
 				deviceTypeGroup: deviceTypeGroup,
 				MMIDeviceType: MMIDeviceType,
 				MMISwType: MMISwType,
@@ -8756,145 +9455,165 @@ export namespace DeviceInformation {
 		});
 	}
 
-	export function SetMowerSerialNumberI(codec : any, args : tInSetMowerSerialNumber): Promise<Number> {
+	export function SetMowerSerialNumberI(handle : any, args : tInSetMowerSerialNumber): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetMowerSerialNumber(mowerSerialNo: ' + __args.mowerSerialNo+ ')');
+			return handle.codec.send('DeviceInformation.SetMowerSerialNumber(mowerSerialNo: ' + __args.mowerSerialNo+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerSerialNumber(codec : any, mowerSerialNo: Number): Promise<Number> {
-		return SetMowerSerialNumberI(codec, {
+	export function SetMowerSerialNumber(handle : any, mowerSerialNo: Number): Promise<Number> {
+		return SetMowerSerialNumberI(handle, {
 				mowerSerialNo: mowerSerialNo
 		});
 	}
 
-	export function SetMowerDeviceTypeI(codec : any, args : tInSetMowerDeviceType): Promise<tOutSetMowerDeviceType> {
+	export function SetMowerDeviceTypeI(handle : any, args : tInSetMowerDeviceType): Promise<tOutSetMowerDeviceType> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetMowerDeviceType(mowerDeviceType: ' + __args.mowerDeviceType+ ',mowerVariantType: ' + __args.mowerVariantType+ ')');
+			return handle.codec.send('DeviceInformation.SetMowerDeviceType(mowerDeviceType: ' + __args.mowerDeviceType+ ',mowerVariantType: ' + __args.mowerVariantType+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetMowerDeviceType>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerDeviceType(codec : any, mowerDeviceType: tMowerDeviceType, mowerVariantType: tMowerVariantType): Promise<tOutSetMowerDeviceType> {
-		return SetMowerDeviceTypeI(codec, {
+	export function SetMowerDeviceType(handle : any, mowerDeviceType: tMowerDeviceType, mowerVariantType: tMowerVariantType): Promise<tOutSetMowerDeviceType> {
+		return SetMowerDeviceTypeI(handle, {
 				mowerDeviceType: mowerDeviceType,
 				mowerVariantType: mowerVariantType
 		});
 	}
 
-	export function SetMowerProductionTimeI(codec : any, args : tInSetMowerProductionTime): Promise<Date> {
+	export function SetMowerProductionTimeI(handle : any, args : tInSetMowerProductionTime): Promise<Date> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetMowerProductionTime(tMowerProductionTime: ' + __args.tMowerProductionTime+ ')');
+			return handle.codec.send('DeviceInformation.SetMowerProductionTime(tMowerProductionTime: ' + __args.tMowerProductionTime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Date>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerProductionTime(codec : any, tMowerProductionTime: Date): Promise<Date> {
-		return SetMowerProductionTimeI(codec, {
+	export function SetMowerProductionTime(handle : any, tMowerProductionTime: Date): Promise<Date> {
+		return SetMowerProductionTimeI(handle, {
 				tMowerProductionTime: tMowerProductionTime
 		});
 	}
 
-	export function SetWheelMotorTypeI(codec : any, args : tInSetWheelMotorType): Promise<Number> {
+	export function SetWheelMotorTypeI(handle : any, args : tInSetWheelMotorType): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetWheelMotorType(wheelMotorType: ' + __args.wheelMotorType+ ')');
+			return handle.codec.send('DeviceInformation.SetWheelMotorType(wheelMotorType: ' + __args.wheelMotorType+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetWheelMotorType(codec : any, wheelMotorType: tWheelMotorType): Promise<Number> {
-		return SetWheelMotorTypeI(codec, {
+	export function SetWheelMotorType(handle : any, wheelMotorType: tWheelMotorType): Promise<Number> {
+		return SetWheelMotorTypeI(handle, {
 				wheelMotorType: wheelMotorType
 		});
 	}
 
-	export function SetBladeMotorTypeI(codec : any, args : tInSetBladeMotorType): Promise<Number> {
+	export function SetBladeMotorTypeI(handle : any, args : tInSetBladeMotorType): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetBladeMotorType(bladeMotorType: ' + __args.bladeMotorType+ ')');
+			return handle.codec.send('DeviceInformation.SetBladeMotorType(bladeMotorType: ' + __args.bladeMotorType+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetBladeMotorType(codec : any, bladeMotorType: Number): Promise<Number> {
-		return SetBladeMotorTypeI(codec, {
+	export function SetBladeMotorType(handle : any, bladeMotorType: Number): Promise<Number> {
+		return SetBladeMotorTypeI(handle, {
 				bladeMotorType: bladeMotorType
 		});
 	}
 
-	export function GetChargingStationInformation(codec : any): Promise<tOutGetChargingStationInformation> {
+	export function GetChargingStationInformation(handle : any): Promise<tOutGetChargingStationInformation> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetChargingStationInformation()');
+			return handle.codec.send('DeviceInformation.GetChargingStationInformation()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetChargingStationInformation>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetUltrasonicInformation(codec : any): Promise<tOutGetUltrasonicInformation> {
+	export function GetUltrasonicInformation(handle : any): Promise<tOutGetUltrasonicInformation> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetUltrasonicInformation()');
+			return handle.codec.send('DeviceInformation.GetUltrasonicInformation()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetUltrasonicInformation>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetBodyTypeI(codec : any, args : tInSetBodyType): Promise<Number> {
+	export function SetBodyTypeI(handle : any, args : tInSetBodyType): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetBodyType(bodyType: ' + __args.bodyType+ ')');
+			return handle.codec.send('DeviceInformation.SetBodyType(bodyType: ' + __args.bodyType+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetBodyType(codec : any, bodyType: Number): Promise<Number> {
-		return SetBodyTypeI(codec, {
+	export function SetBodyType(handle : any, bodyType: Number): Promise<Number> {
+		return SetBodyTypeI(handle, {
 				bodyType: bodyType
 		});
 	}
 
-	export function GetComBoardInformation(codec : any): Promise<tOutGetComBoardInformation> {
+	export function GetComBoardInformation(handle : any): Promise<tOutGetComBoardInformation> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetComBoardInformation()');
+			return handle.codec.send('DeviceInformation.GetComBoardInformation()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetComBoardInformation>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetComBoardInformationI(codec : any, args : tInSetComBoardInformation): Promise<tOutSetComBoardInformation> {
+	export function SetComBoardInformationI(handle : any, args : tInSetComBoardInformation): Promise<tOutSetComBoardInformation> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetComBoardInformation(deviceTypeGroup: ' + __args.deviceTypeGroup+ ',deviceType: ' + __args.deviceType+ ',swType: ' + __args.swType+ ',swVer: ' + __args.swVer+ ',swBuildNo: ' + __args.swBuildNo+ ',bootSwType: ' + __args.bootSwType+ ',bootSwVer: ' + __args.bootSwVer+ ',boardType: ' + __args.boardType+ ',boardRev: ' + __args.boardRev+ ',boardProdTime: ' + __args.boardProdTime+ ',boardPCBASerialNo: ' + __args.boardPCBASerialNo+ ',comBoardSpecific1: ' + __args.comBoardSpecific1+ ',comBoardSpecific2: ' + __args.comBoardSpecific2+ ',comBoardSpecific3: ' + __args.comBoardSpecific3+ ',mowerSubDeviceSwType: ' + __args.mowerSubDeviceSwType+ ',mowerSubDeviceSwVer: ' + __args.mowerSubDeviceSwVer+ ',mowerSubDeviceSwBuildNo: ' + __args.mowerSubDeviceSwBuildNo+ ')');
+			return handle.codec.send('DeviceInformation.SetComBoardInformation(deviceTypeGroup: ' + __args.deviceTypeGroup+ ',deviceType: ' + __args.deviceType+ ',swType: ' + __args.swType+ ',swVer: ' + __args.swVer+ ',swBuildNo: ' + __args.swBuildNo+ ',bootSwType: ' + __args.bootSwType+ ',bootSwVer: ' + __args.bootSwVer+ ',boardType: ' + __args.boardType+ ',boardRev: ' + __args.boardRev+ ',boardProdTime: ' + __args.boardProdTime+ ',boardPCBASerialNo: ' + __args.boardPCBASerialNo+ ',comBoardSpecific1: ' + __args.comBoardSpecific1+ ',comBoardSpecific2: ' + __args.comBoardSpecific2+ ',comBoardSpecific3: ' + __args.comBoardSpecific3+ ',mowerSubDeviceSwType: ' + __args.mowerSubDeviceSwType+ ',mowerSubDeviceSwVer: ' + __args.mowerSubDeviceSwVer+ ',mowerSubDeviceSwBuildNo: ' + __args.mowerSubDeviceSwBuildNo+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetComBoardInformation>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetComBoardInformation(codec : any, deviceTypeGroup: tDeviceTypeGroup, deviceType: Number, swType: Number, swVer: Number, swBuildNo: Number, bootSwType: Number, bootSwVer: Number, boardType: Number, boardRev: Number, boardProdTime: Date, boardPCBASerialNo: Number, comBoardSpecific1: String, comBoardSpecific2: String, comBoardSpecific3: String, mowerSubDeviceSwType: Number, mowerSubDeviceSwVer: Number, mowerSubDeviceSwBuildNo: Number): Promise<tOutSetComBoardInformation> {
-		return SetComBoardInformationI(codec, {
+	export function SetComBoardInformation(handle : any, deviceTypeGroup: tDeviceTypeGroup, deviceType: Number, swType: Number, swVer: Number, swBuildNo: Number, bootSwType: Number, bootSwVer: Number, boardType: Number, boardRev: Number, boardProdTime: Date, boardPCBASerialNo: Number, comBoardSpecific1: String, comBoardSpecific2: String, comBoardSpecific3: String, mowerSubDeviceSwType: Number, mowerSubDeviceSwVer: Number, mowerSubDeviceSwBuildNo: Number): Promise<tOutSetComBoardInformation> {
+		return SetComBoardInformationI(handle, {
 				deviceTypeGroup: deviceTypeGroup,
 				deviceType: deviceType,
 				swType: swType,
@@ -8915,100 +9634,116 @@ export namespace DeviceInformation {
 		});
 	}
 
-	export function GetMowerInformation(codec : any): Promise<tOutGetMowerInformation> {
+	export function GetMowerInformation(handle : any): Promise<tOutGetMowerInformation> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetMowerInformation()');
+			return handle.codec.send('DeviceInformation.GetMowerInformation()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetMowerInformation>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetRadioModuleInformation(codec : any): Promise<tOutGetRadioModuleInformation> {
+	export function GetRadioModuleInformation(handle : any): Promise<tOutGetRadioModuleInformation> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetRadioModuleInformation()');
+			return handle.codec.send('DeviceInformation.GetRadioModuleInformation()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetRadioModuleInformation>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetMowerModelName(codec : any): Promise<String> {
+	export function GetMowerModelName(handle : any): Promise<String> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetMowerModelName()');
+			return handle.codec.send('DeviceInformation.GetMowerModelName()', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerModelNameI(codec : any, args : tInSetMowerModelName): Promise<String> {
+	export function SetMowerModelNameI(handle : any, args : tInSetMowerModelName): Promise<String> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetMowerModelName(mowerModelName: ' + __args.mowerModelName+ ')');
+			return handle.codec.send('DeviceInformation.SetMowerModelName(mowerModelName: ' + __args.mowerModelName+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMowerModelName(codec : any, mowerModelName: String): Promise<String> {
-		return SetMowerModelNameI(codec, {
+	export function SetMowerModelName(handle : any, mowerModelName: String): Promise<String> {
+		return SetMowerModelNameI(handle, {
 				mowerModelName: mowerModelName
 		});
 	}
 
-	export function GetMmiVersionString(codec : any): Promise<String> {
+	export function GetMmiVersionString(handle : any): Promise<String> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetMmiVersionString()');
+			return handle.codec.send('DeviceInformation.GetMmiVersionString()', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMmiVersionStringI(codec : any, args : tInSetMmiVersionString): Promise<void> {
+	export function SetMmiVersionStringI(handle : any, args : tInSetMmiVersionString): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetMmiVersionString(versionString: ' + __args.versionString+ ')');
+			return handle.codec.send('DeviceInformation.SetMmiVersionString(versionString: ' + __args.versionString+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetMmiVersionString(codec : any, versionString: String): Promise<void> {
-		return SetMmiVersionStringI(codec, {
+	export function SetMmiVersionString(handle : any, versionString: String): Promise<void> {
+		return SetMmiVersionStringI(handle, {
 				versionString: versionString
 		});
 	}
 
-	export function GetComBoardVersionString(codec : any): Promise<String> {
+	export function GetComBoardVersionString(handle : any): Promise<String> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.GetComBoardVersionString()');
+			return handle.codec.send('DeviceInformation.GetComBoardVersionString()', handle.timeout);
 		} catch(error) {
 			return new Promise<String>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetComBoardVersionStringI(codec : any, args : tInSetComBoardVersionString): Promise<void> {
+	export function SetComBoardVersionStringI(handle : any, args : tInSetComBoardVersionString): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DeviceInformation.SetComBoardVersionString(versionString: ' + __args.versionString+ ')');
+			return handle.codec.send('DeviceInformation.SetComBoardVersionString(versionString: ' + __args.versionString+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetComBoardVersionString(codec : any, versionString: String): Promise<void> {
-		return SetComBoardVersionStringI(codec, {
+	export function SetComBoardVersionString(handle : any, versionString: String): Promise<void> {
+		return SetComBoardVersionStringI(handle, {
 				versionString: versionString
 		});
 	}
@@ -9306,174 +10041,200 @@ export namespace DrivingSettings {
 		loopWire: Number
 	}
 
-	export function GetSubareaSettingsI(codec : any, args : tInGetSubareaSettings): Promise<tOutGetSubareaSettings> {
+	export function GetSubareaSettingsI(handle : any, args : tInGetSubareaSettings): Promise<tOutGetSubareaSettings> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetSubareaSettings(subareaId: ' + __args.subareaId+ ')');
+			return handle.codec.send('DrivingSettings.GetSubareaSettings(subareaId: ' + __args.subareaId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetSubareaSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetSubareaSettings(codec : any, subareaId: Number): Promise<tOutGetSubareaSettings> {
-		return GetSubareaSettingsI(codec, {
+	export function GetSubareaSettings(handle : any, subareaId: Number): Promise<tOutGetSubareaSettings> {
+		return GetSubareaSettingsI(handle, {
 				subareaId: subareaId
 		});
 	}
 
-	export function GetExitAngles(codec : any): Promise<tOutGetExitAngles> {
+	export function GetExitAngles(handle : any): Promise<tOutGetExitAngles> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetExitAngles()');
+			return handle.codec.send('DrivingSettings.GetExitAngles()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetExitAngles>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCorridorI(codec : any, args : tInGetCorridor): Promise<tOutGetCorridor> {
+	export function GetCorridorI(handle : any, args : tInGetCorridor): Promise<tOutGetCorridor> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetCorridor(loopWire: ' + __args.loopWire+ ')');
+			return handle.codec.send('DrivingSettings.GetCorridor(loopWire: ' + __args.loopWire+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetCorridor>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCorridor(codec : any, loopWire: Number): Promise<tOutGetCorridor> {
-		return GetCorridorI(codec, {
+	export function GetCorridor(handle : any, loopWire: Number): Promise<tOutGetCorridor> {
+		return GetCorridorI(handle, {
 				loopWire: loopWire
 		});
 	}
 
-	export function GetFollowWireOutI(codec : any, args : tInGetFollowWireOut): Promise<tOutGetFollowWireOut> {
+	export function GetFollowWireOutI(handle : any, args : tInGetFollowWireOut): Promise<tOutGetFollowWireOut> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetFollowWireOut(startPositionId: ' + __args.startPositionId+ ')');
+			return handle.codec.send('DrivingSettings.GetFollowWireOut(startPositionId: ' + __args.startPositionId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetFollowWireOut>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetFollowWireOut(codec : any, startPositionId: Number): Promise<tOutGetFollowWireOut> {
-		return GetFollowWireOutI(codec, {
+	export function GetFollowWireOut(handle : any, startPositionId: Number): Promise<tOutGetFollowWireOut> {
+		return GetFollowWireOutI(handle, {
 				startPositionId: startPositionId
 		});
 	}
 
-	export function GetFollowWireInI(codec : any, args : tInGetFollowWireIn): Promise<tOutGetFollowWireIn> {
+	export function GetFollowWireInI(handle : any, args : tInGetFollowWireIn): Promise<tOutGetFollowWireIn> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetFollowWireIn(loopWire: ' + __args.loopWire+ ')');
+			return handle.codec.send('DrivingSettings.GetFollowWireIn(loopWire: ' + __args.loopWire+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetFollowWireIn>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetFollowWireIn(codec : any, loopWire: Number): Promise<tOutGetFollowWireIn> {
-		return GetFollowWireInI(codec, {
+	export function GetFollowWireIn(handle : any, loopWire: Number): Promise<tOutGetFollowWireIn> {
+		return GetFollowWireInI(handle, {
 				loopWire: loopWire
 		});
 	}
 
-	export function GetTestFollowWireOutI(codec : any, args : tInGetTestFollowWireOut): Promise<tOutGetTestFollowWireOut> {
+	export function GetTestFollowWireOutI(handle : any, args : tInGetTestFollowWireOut): Promise<tOutGetTestFollowWireOut> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetTestFollowWireOut(forFutureUse: ' + __args.forFutureUse+ ')');
+			return handle.codec.send('DrivingSettings.GetTestFollowWireOut(forFutureUse: ' + __args.forFutureUse+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetTestFollowWireOut>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTestFollowWireOut(codec : any, forFutureUse: Number): Promise<tOutGetTestFollowWireOut> {
-		return GetTestFollowWireOutI(codec, {
+	export function GetTestFollowWireOut(handle : any, forFutureUse: Number): Promise<tOutGetTestFollowWireOut> {
+		return GetTestFollowWireOutI(handle, {
 				forFutureUse: forFutureUse
 		});
 	}
 
-	export function GetTestFollowWireInI(codec : any, args : tInGetTestFollowWireIn): Promise<Number> {
+	export function GetTestFollowWireInI(handle : any, args : tInGetTestFollowWireIn): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetTestFollowWireIn(forFutureUse: ' + __args.forFutureUse+ ')');
+			return handle.codec.send('DrivingSettings.GetTestFollowWireIn(forFutureUse: ' + __args.forFutureUse+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetTestFollowWireIn(codec : any, forFutureUse: Number): Promise<Number> {
-		return GetTestFollowWireInI(codec, {
+	export function GetTestFollowWireIn(handle : any, forFutureUse: Number): Promise<Number> {
+		return GetTestFollowWireInI(handle, {
 				forFutureUse: forFutureUse
 		});
 	}
 
-	export function GetFollowGpsPosOut(codec : any): Promise<tOutGetFollowGpsPosOut> {
+	export function GetFollowGpsPosOut(handle : any): Promise<tOutGetFollowGpsPosOut> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetFollowGpsPosOut()');
+			return handle.codec.send('DrivingSettings.GetFollowGpsPosOut()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetFollowGpsPosOut>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetGpsSettings(codec : any): Promise<Number> {
+	export function GetGpsSettings(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetGpsSettings()');
+			return handle.codec.send('DrivingSettings.GetGpsSettings()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetCSRange(codec : any): Promise<Number> {
+	export function GetCSRange(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetCSRange()');
+			return handle.codec.send('DrivingSettings.GetCSRange()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetUltrasonicSettings(codec : any): Promise<Boolean> {
+	export function GetUltrasonicSettings(handle : any): Promise<Boolean> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetUltrasonicSettings()');
+			return handle.codec.send('DrivingSettings.GetUltrasonicSettings()', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetAdvancedDriveSettings(codec : any): Promise<Number> {
+	export function GetAdvancedDriveSettings(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.GetAdvancedDriveSettings()');
+			return handle.codec.send('DrivingSettings.GetAdvancedDriveSettings()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSubareaSettingsI(codec : any, args : tInSetSubareaSettings): Promise<tOutSetSubareaSettings> {
+	export function SetSubareaSettingsI(handle : any, args : tInSetSubareaSettings): Promise<tOutSetSubareaSettings> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetSubareaSettings(subareaId: ' + __args.subareaId+ ',gardenShape: ' + __args.gardenShape+ ',localIntCutLevel: ' + __args.localIntCutLevel+ ',cutCurrentIntTime: ' + __args.cutCurrentIntTime+ ',maxConfigWheelSpeed: ' + __args.maxConfigWheelSpeed+ ',localIntCutEnable: ' + __args.localIntCutEnable+ ')');
+			return handle.codec.send('DrivingSettings.SetSubareaSettings(subareaId: ' + __args.subareaId+ ',gardenShape: ' + __args.gardenShape+ ',localIntCutLevel: ' + __args.localIntCutLevel+ ',cutCurrentIntTime: ' + __args.cutCurrentIntTime+ ',maxConfigWheelSpeed: ' + __args.maxConfigWheelSpeed+ ',localIntCutEnable: ' + __args.localIntCutEnable+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetSubareaSettings>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetSubareaSettings(codec : any, subareaId: Number, gardenShape: Number, localIntCutLevel: Number, cutCurrentIntTime: Number, maxConfigWheelSpeed: Number, localIntCutEnable: Number): Promise<tOutSetSubareaSettings> {
-		return SetSubareaSettingsI(codec, {
+	export function SetSubareaSettings(handle : any, subareaId: Number, gardenShape: Number, localIntCutLevel: Number, cutCurrentIntTime: Number, maxConfigWheelSpeed: Number, localIntCutEnable: Number): Promise<tOutSetSubareaSettings> {
+		return SetSubareaSettingsI(handle, {
 				subareaId: subareaId,
 				gardenShape: gardenShape,
 				localIntCutLevel: localIntCutLevel,
@@ -9483,18 +10244,20 @@ export namespace DrivingSettings {
 		});
 	}
 
-	export function SetExitAnglesI(codec : any, args : tInSetExitAngles): Promise<tOutSetExitAngles> {
+	export function SetExitAnglesI(handle : any, args : tInSetExitAngles): Promise<tOutSetExitAngles> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetExitAngles(reversingDistance: ' + __args.reversingDistance+ ',minAngle1: ' + __args.minAngle1+ ',maxAngle1: ' + __args.maxAngle1+ ',minAngle2: ' + __args.minAngle2+ ',maxAngle2: ' + __args.maxAngle2+ ',propFirstSector: ' + __args.propFirstSector+ ')');
+			return handle.codec.send('DrivingSettings.SetExitAngles(reversingDistance: ' + __args.reversingDistance+ ',minAngle1: ' + __args.minAngle1+ ',maxAngle1: ' + __args.maxAngle1+ ',minAngle2: ' + __args.minAngle2+ ',maxAngle2: ' + __args.maxAngle2+ ',propFirstSector: ' + __args.propFirstSector+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetExitAngles>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetExitAngles(codec : any, reversingDistance: Number, minAngle1: Number, maxAngle1: Number, minAngle2: Number, maxAngle2: Number, propFirstSector: Number): Promise<tOutSetExitAngles> {
-		return SetExitAnglesI(codec, {
+	export function SetExitAngles(handle : any, reversingDistance: Number, minAngle1: Number, maxAngle1: Number, minAngle2: Number, maxAngle2: Number, propFirstSector: Number): Promise<tOutSetExitAngles> {
+		return SetExitAnglesI(handle, {
 				reversingDistance: reversingDistance,
 				minAngle1: minAngle1,
 				maxAngle1: maxAngle1,
@@ -9504,18 +10267,20 @@ export namespace DrivingSettings {
 		});
 	}
 
-	export function SetCorridorI(codec : any, args : tInSetCorridor): Promise<tOutSetCorridor> {
+	export function SetCorridorI(handle : any, args : tInSetCorridor): Promise<tOutSetCorridor> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetCorridor(loopWire: ' + __args.loopWire+ ',minDistToWire: ' + __args.minDistToWire+ ',maxDistToWire: ' + __args.maxDistToWire+ ',wireInGuideCorridor: ' + __args.wireInGuideCorridor+ ',autoDistanceEnable: ' + __args.autoDistanceEnable+ ')');
+			return handle.codec.send('DrivingSettings.SetCorridor(loopWire: ' + __args.loopWire+ ',minDistToWire: ' + __args.minDistToWire+ ',maxDistToWire: ' + __args.maxDistToWire+ ',wireInGuideCorridor: ' + __args.wireInGuideCorridor+ ',autoDistanceEnable: ' + __args.autoDistanceEnable+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetCorridor>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetCorridor(codec : any, loopWire: Number, minDistToWire: Number, maxDistToWire: Number, wireInGuideCorridor: Number, autoDistanceEnable: Number): Promise<tOutSetCorridor> {
-		return SetCorridorI(codec, {
+	export function SetCorridor(handle : any, loopWire: Number, minDistToWire: Number, maxDistToWire: Number, wireInGuideCorridor: Number, autoDistanceEnable: Number): Promise<tOutSetCorridor> {
+		return SetCorridorI(handle, {
 				loopWire: loopWire,
 				minDistToWire: minDistToWire,
 				maxDistToWire: maxDistToWire,
@@ -9524,18 +10289,20 @@ export namespace DrivingSettings {
 		});
 	}
 
-	export function SetFollowWireOutI(codec : any, args : tInSetFollowWireOut): Promise<tOutSetFollowWireOut> {
+	export function SetFollowWireOutI(handle : any, args : tInSetFollowWireOut): Promise<tOutSetFollowWireOut> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetFollowWireOut(startPositionId: ' + __args.startPositionId+ ',loopWire: ' + __args.loopWire+ ',runningDistance: ' + __args.runningDistance+ ',proportion: ' + __args.proportion+ ',startPositionEnable: ' + __args.startPositionEnable+ ')');
+			return handle.codec.send('DrivingSettings.SetFollowWireOut(startPositionId: ' + __args.startPositionId+ ',loopWire: ' + __args.loopWire+ ',runningDistance: ' + __args.runningDistance+ ',proportion: ' + __args.proportion+ ',startPositionEnable: ' + __args.startPositionEnable+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetFollowWireOut>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFollowWireOut(codec : any, startPositionId: Number, loopWire: Number, runningDistance: Number, proportion: Number, startPositionEnable: Number): Promise<tOutSetFollowWireOut> {
-		return SetFollowWireOutI(codec, {
+	export function SetFollowWireOut(handle : any, startPositionId: Number, loopWire: Number, runningDistance: Number, proportion: Number, startPositionEnable: Number): Promise<tOutSetFollowWireOut> {
+		return SetFollowWireOutI(handle, {
 				startPositionId: startPositionId,
 				loopWire: loopWire,
 				runningDistance: runningDistance,
@@ -9544,166 +10311,186 @@ export namespace DrivingSettings {
 		});
 	}
 
-	export function SetFollowWireInI(codec : any, args : tInSetFollowWireIn): Promise<tOutSetFollowWireIn> {
+	export function SetFollowWireInI(handle : any, args : tInSetFollowWireIn): Promise<tOutSetFollowWireIn> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetFollowWireIn(loopWire: ' + __args.loopWire+ ',delayTime: ' + __args.delayTime+ ',followWireInEnable: ' + __args.followWireInEnable+ ')');
+			return handle.codec.send('DrivingSettings.SetFollowWireIn(loopWire: ' + __args.loopWire+ ',delayTime: ' + __args.delayTime+ ',followWireInEnable: ' + __args.followWireInEnable+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetFollowWireIn>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFollowWireIn(codec : any, loopWire: Number, delayTime: Number, followWireInEnable: Number): Promise<tOutSetFollowWireIn> {
-		return SetFollowWireInI(codec, {
+	export function SetFollowWireIn(handle : any, loopWire: Number, delayTime: Number, followWireInEnable: Number): Promise<tOutSetFollowWireIn> {
+		return SetFollowWireInI(handle, {
 				loopWire: loopWire,
 				delayTime: delayTime,
 				followWireInEnable: followWireInEnable
 		});
 	}
 
-	export function SetTestFollowWireOutI(codec : any, args : tInSetTestFollowWireOut): Promise<tOutSetTestFollowWireOut> {
+	export function SetTestFollowWireOutI(handle : any, args : tInSetTestFollowWireOut): Promise<tOutSetTestFollowWireOut> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetTestFollowWireOut(startPositionId: ' + __args.startPositionId+ ',minMaxDistance: ' + __args.minMaxDistance+ ')');
+			return handle.codec.send('DrivingSettings.SetTestFollowWireOut(startPositionId: ' + __args.startPositionId+ ',minMaxDistance: ' + __args.minMaxDistance+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetTestFollowWireOut>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTestFollowWireOut(codec : any, startPositionId: Number, minMaxDistance: Number): Promise<tOutSetTestFollowWireOut> {
-		return SetTestFollowWireOutI(codec, {
+	export function SetTestFollowWireOut(handle : any, startPositionId: Number, minMaxDistance: Number): Promise<tOutSetTestFollowWireOut> {
+		return SetTestFollowWireOutI(handle, {
 				startPositionId: startPositionId,
 				minMaxDistance: minMaxDistance
 		});
 	}
 
-	export function SetTestFollowWireInI(codec : any, args : tInSetTestFollowWireIn): Promise<Number> {
+	export function SetTestFollowWireInI(handle : any, args : tInSetTestFollowWireIn): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetTestFollowWireIn(loopWire: ' + __args.loopWire+ ')');
+			return handle.codec.send('DrivingSettings.SetTestFollowWireIn(loopWire: ' + __args.loopWire+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetTestFollowWireIn(codec : any, loopWire: Number): Promise<Number> {
-		return SetTestFollowWireInI(codec, {
+	export function SetTestFollowWireIn(handle : any, loopWire: Number): Promise<Number> {
+		return SetTestFollowWireInI(handle, {
 				loopWire: loopWire
 		});
 	}
 
-	export function SetFollowGpsPosOutI(codec : any, args : tInSetFollowGpsPosOut): Promise<tOutSetFollowGpsPosOut> {
+	export function SetFollowGpsPosOutI(handle : any, args : tInSetFollowGpsPosOut): Promise<tOutSetFollowGpsPosOut> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetFollowGpsPosOut(xPos: ' + __args.xPos+ ',yPos: ' + __args.yPos+ ')');
+			return handle.codec.send('DrivingSettings.SetFollowGpsPosOut(xPos: ' + __args.xPos+ ',yPos: ' + __args.yPos+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutSetFollowGpsPosOut>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetFollowGpsPosOut(codec : any, xPos: Number, yPos: Number): Promise<tOutSetFollowGpsPosOut> {
-		return SetFollowGpsPosOutI(codec, {
+	export function SetFollowGpsPosOut(handle : any, xPos: Number, yPos: Number): Promise<tOutSetFollowGpsPosOut> {
+		return SetFollowGpsPosOutI(handle, {
 				xPos: xPos,
 				yPos: yPos
 		});
 	}
 
-	export function SetGpsSettingsI(codec : any, args : tInSetGpsSettings): Promise<Number> {
+	export function SetGpsSettingsI(handle : any, args : tInSetGpsSettings): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetGpsSettings(GPSNavigationEnable: ' + __args.GPSNavigationEnable+ ')');
+			return handle.codec.send('DrivingSettings.SetGpsSettings(GPSNavigationEnable: ' + __args.GPSNavigationEnable+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGpsSettings(codec : any, GPSNavigationEnable: Number): Promise<Number> {
-		return SetGpsSettingsI(codec, {
+	export function SetGpsSettings(handle : any, GPSNavigationEnable: Number): Promise<Number> {
+		return SetGpsSettingsI(handle, {
 				GPSNavigationEnable: GPSNavigationEnable
 		});
 	}
 
-	export function SetCSRangeI(codec : any, args : tInSetCSRange): Promise<Number> {
+	export function SetCSRangeI(handle : any, args : tInSetCSRange): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetCSRange(range: ' + __args.range+ ')');
+			return handle.codec.send('DrivingSettings.SetCSRange(range: ' + __args.range+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetCSRange(codec : any, range: Number): Promise<Number> {
-		return SetCSRangeI(codec, {
+	export function SetCSRange(handle : any, range: Number): Promise<Number> {
+		return SetCSRangeI(handle, {
 				range: range
 		});
 	}
 
-	export function SetUltrasonicSettingsI(codec : any, args : tInSetUltrasonicSettings): Promise<Boolean> {
+	export function SetUltrasonicSettingsI(handle : any, args : tInSetUltrasonicSettings): Promise<Boolean> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetUltrasonicSettings(ultrasonicEnable: ' + __args.ultrasonicEnable+ ')');
+			return handle.codec.send('DrivingSettings.SetUltrasonicSettings(ultrasonicEnable: ' + __args.ultrasonicEnable+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Boolean>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetUltrasonicSettings(codec : any, ultrasonicEnable: Boolean): Promise<Boolean> {
-		return SetUltrasonicSettingsI(codec, {
+	export function SetUltrasonicSettings(handle : any, ultrasonicEnable: Boolean): Promise<Boolean> {
+		return SetUltrasonicSettingsI(handle, {
 				ultrasonicEnable: ultrasonicEnable
 		});
 	}
 
-	export function SetAdvancedDriveSettingsI(codec : any, args : tInSetAdvancedDriveSettings): Promise<Number> {
+	export function SetAdvancedDriveSettingsI(handle : any, args : tInSetAdvancedDriveSettings): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.SetAdvancedDriveSettings(drivePastWire: ' + __args.drivePastWire+ ')');
+			return handle.codec.send('DrivingSettings.SetAdvancedDriveSettings(drivePastWire: ' + __args.drivePastWire+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetAdvancedDriveSettings(codec : any, drivePastWire: tDrivingSettings_DrivePastWire): Promise<Number> {
-		return SetAdvancedDriveSettingsI(codec, {
+	export function SetAdvancedDriveSettings(handle : any, drivePastWire: tDrivingSettings_DrivePastWire): Promise<Number> {
+		return SetAdvancedDriveSettingsI(handle, {
 				drivePastWire: drivePastWire
 		});
 	}
 
-	export function ResetFollowWireOutI(codec : any, args : tInResetFollowWireOut): Promise<tOutResetFollowWireOut> {
+	export function ResetFollowWireOutI(handle : any, args : tInResetFollowWireOut): Promise<tOutResetFollowWireOut> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.ResetFollowWireOut(startPositionId: ' + __args.startPositionId+ ')');
+			return handle.codec.send('DrivingSettings.ResetFollowWireOut(startPositionId: ' + __args.startPositionId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetFollowWireOut>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetFollowWireOut(codec : any, startPositionId: Number): Promise<tOutResetFollowWireOut> {
-		return ResetFollowWireOutI(codec, {
+	export function ResetFollowWireOut(handle : any, startPositionId: Number): Promise<tOutResetFollowWireOut> {
+		return ResetFollowWireOutI(handle, {
 				startPositionId: startPositionId
 		});
 	}
 
-	export function ResetFollowWireInI(codec : any, args : tInResetFollowWireIn): Promise<tOutResetFollowWireIn> {
+	export function ResetFollowWireInI(handle : any, args : tInResetFollowWireIn): Promise<tOutResetFollowWireIn> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('DrivingSettings.ResetFollowWireIn(loopWire: ' + __args.loopWire+ ')');
+			return handle.codec.send('DrivingSettings.ResetFollowWireIn(loopWire: ' + __args.loopWire+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutResetFollowWireIn>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ResetFollowWireIn(codec : any, loopWire: Number): Promise<tOutResetFollowWireIn> {
-		return ResetFollowWireInI(codec, {
+	export function ResetFollowWireIn(handle : any, loopWire: Number): Promise<tOutResetFollowWireIn> {
+		return ResetFollowWireInI(handle, {
 				loopWire: loopWire
 		});
 	}
@@ -9738,378 +10525,448 @@ export namespace MowerCommands {
 		wirelessLinkId: Number
 	}
 
-	export function Stop(codec : any): Promise<Number> {
+	export function Stop(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.Stop()');
+			return handle.codec.send('MowerCommands.Stop()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Start(codec : any): Promise<Number> {
+	export function Start(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.Start()');
+			return handle.codec.send('MowerCommands.Start()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function HomeMode(codec : any): Promise<Number> {
+	export function HomeMode(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.HomeMode()');
+			return handle.codec.send('MowerCommands.HomeMode()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ManualMode(codec : any): Promise<Number> {
+	export function ManualMode(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ManualMode()');
+			return handle.codec.send('MowerCommands.ManualMode()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function AutoMode(codec : any): Promise<Number> {
+	export function AutoMode(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.AutoMode()');
+			return handle.codec.send('MowerCommands.AutoMode()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ChargeThenAutoMode(codec : any): Promise<Number> {
+	export function ChargeThenAutoMode(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ChargeThenAutoMode()');
+			return handle.codec.send('MowerCommands.ChargeThenAutoMode()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TestFollowIn(codec : any): Promise<Number> {
+	export function TestFollowIn(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.TestFollowIn()');
+			return handle.codec.send('MowerCommands.TestFollowIn()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TestFollowOut(codec : any): Promise<Number> {
+	export function TestFollowOut(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.TestFollowOut()');
+			return handle.codec.send('MowerCommands.TestFollowOut()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TiltCalibration(codec : any): Promise<Number> {
+	export function TiltCalibration(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.TiltCalibration()');
+			return handle.codec.send('MowerCommands.TiltCalibration()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function FactoryResetAll(codec : any): Promise<Number> {
+	export function FactoryResetAll(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.FactoryResetAll()');
+			return handle.codec.send('MowerCommands.FactoryResetAll()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function FactoryResetAllUser(codec : any): Promise<Number> {
+	export function FactoryResetAllUser(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.FactoryResetAllUser()');
+			return handle.codec.send('MowerCommands.FactoryResetAllUser()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function FactoryResetSystem(codec : any): Promise<Number> {
+	export function FactoryResetSystem(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.FactoryResetSystem()');
+			return handle.codec.send('MowerCommands.FactoryResetSystem()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function FactoryResetCurDriving(codec : any): Promise<Number> {
+	export function FactoryResetCurDriving(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.FactoryResetCurDriving()');
+			return handle.codec.send('MowerCommands.FactoryResetCurDriving()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function FactoryResetCurUser(codec : any): Promise<Number> {
+	export function FactoryResetCurUser(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.FactoryResetCurUser()');
+			return handle.codec.send('MowerCommands.FactoryResetCurUser()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function FactoryResetAppConstants(codec : any): Promise<Number> {
+	export function FactoryResetAppConstants(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.FactoryResetAppConstants()');
+			return handle.codec.send('MowerCommands.FactoryResetAppConstants()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ConfirmFault(codec : any): Promise<Number> {
+	export function ConfirmFault(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ConfirmFault()');
+			return handle.codec.send('MowerCommands.ConfirmFault()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function PrepareStart(codec : any): Promise<Number> {
+	export function PrepareStart(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.PrepareStart()');
+			return handle.codec.send('MowerCommands.PrepareStart()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function FactoryResetAllConstants(codec : any): Promise<Number> {
+	export function FactoryResetAllConstants(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.FactoryResetAllConstants()');
+			return handle.codec.send('MowerCommands.FactoryResetAllConstants()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function StopPrepareStart(codec : any): Promise<Number> {
+	export function StopPrepareStart(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.StopPrepareStart()');
+			return handle.codec.send('MowerCommands.StopPrepareStart()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function StopFollowWire(codec : any): Promise<Number> {
+	export function StopFollowWire(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.StopFollowWire()');
+			return handle.codec.send('MowerCommands.StopFollowWire()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function StartSpotCutting(codec : any): Promise<Number> {
+	export function StartSpotCutting(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.StartSpotCutting()');
+			return handle.codec.send('MowerCommands.StartSpotCutting()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function CalibrateGuide(codec : any): Promise<Number> {
+	export function CalibrateGuide(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.CalibrateGuide()');
+			return handle.codec.send('MowerCommands.CalibrateGuide()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ConfirmWarning(codec : any): Promise<Number> {
+	export function ConfirmWarning(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ConfirmWarning()');
+			return handle.codec.send('MowerCommands.ConfirmWarning()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ConfirmInfo(codec : any): Promise<Number> {
+	export function ConfirmInfo(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ConfirmInfo()');
+			return handle.codec.send('MowerCommands.ConfirmInfo()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function StopSpotCutting(codec : any): Promise<Number> {
+	export function StopSpotCutting(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.StopSpotCutting()');
+			return handle.codec.send('MowerCommands.StopSpotCutting()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ClearSettingsChangedFlag(codec : any): Promise<Number> {
+	export function ClearSettingsChangedFlag(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ClearSettingsChangedFlag()');
+			return handle.codec.send('MowerCommands.ClearSettingsChangedFlag()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ClearUserSettingsIndex(codec : any): Promise<Number> {
+	export function ClearUserSettingsIndex(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ClearUserSettingsIndex()');
+			return handle.codec.send('MowerCommands.ClearUserSettingsIndex()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetGeofenceAlarm(codec : any): Promise<Number> {
+	export function SetGeofenceAlarm(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.SetGeofenceAlarm()');
+			return handle.codec.send('MowerCommands.SetGeofenceAlarm()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ForceStandby(codec : any): Promise<Number> {
+	export function ForceStandby(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ForceStandby()');
+			return handle.codec.send('MowerCommands.ForceStandby()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function StartWithOverrideTimeI(codec : any, args : tInStartWithOverrideTime): Promise<Number> {
+	export function StartWithOverrideTimeI(handle : any, args : tInStartWithOverrideTime): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.StartWithOverrideTime(time: ' + __args.time+ ')');
+			return handle.codec.send('MowerCommands.StartWithOverrideTime(time: ' + __args.time+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function StartWithOverrideTime(codec : any, time: Number): Promise<Number> {
-		return StartWithOverrideTimeI(codec, {
+	export function StartWithOverrideTime(handle : any, time: Number): Promise<Number> {
+		return StartWithOverrideTimeI(handle, {
 				time: time
 		});
 	}
 
-	export function ParkDuringTimeI(codec : any, args : tInParkDuringTime): Promise<Number> {
+	export function ParkDuringTimeI(handle : any, args : tInParkDuringTime): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ParkDuringTime(time: ' + __args.time+ ')');
+			return handle.codec.send('MowerCommands.ParkDuringTime(time: ' + __args.time+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ParkDuringTime(codec : any, time: Number): Promise<Number> {
-		return ParkDuringTimeI(codec, {
+	export function ParkDuringTime(handle : any, time: Number): Promise<Number> {
+		return ParkDuringTimeI(handle, {
 				time: time
 		});
 	}
 
-	export function CreateLogMsgI(codec : any, args : tInCreateLogMsg): Promise<Number> {
+	export function CreateLogMsgI(handle : any, args : tInCreateLogMsg): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.CreateLogMsg(level: ' + __args.level+ ',id: ' + __args.id+ ')');
+			return handle.codec.send('MowerCommands.CreateLogMsg(level: ' + __args.level+ ',id: ' + __args.id+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function CreateLogMsg(codec : any, level: Number, id: Number): Promise<Number> {
-		return CreateLogMsgI(codec, {
+	export function CreateLogMsg(handle : any, level: Number, id: Number): Promise<Number> {
+		return CreateLogMsgI(handle, {
 				level: level,
 				id: id
 		});
 	}
 
-	export function SetWirelessLinkStatusI(codec : any, args : tInSetWirelessLinkStatus): Promise<Number> {
+	export function SetWirelessLinkStatusI(handle : any, args : tInSetWirelessLinkStatus): Promise<Number> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.SetWirelessLinkStatus(connectionStatus: ' + __args.connectionStatus+ ',rssi: ' + __args.rssi+ ',wirelessLinkId: ' + __args.wirelessLinkId+ ')');
+			return handle.codec.send('MowerCommands.SetWirelessLinkStatus(connectionStatus: ' + __args.connectionStatus+ ',rssi: ' + __args.rssi+ ',wirelessLinkId: ' + __args.wirelessLinkId+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function SetWirelessLinkStatus(codec : any, connectionStatus: Number, rssi: Number, wirelessLinkId: Number): Promise<Number> {
-		return SetWirelessLinkStatusI(codec, {
+	export function SetWirelessLinkStatus(handle : any, connectionStatus: Number, rssi: Number, wirelessLinkId: Number): Promise<Number> {
+		return SetWirelessLinkStatusI(handle, {
 				connectionStatus: connectionStatus,
 				rssi: rssi,
 				wirelessLinkId: wirelessLinkId
 		});
 	}
 
-	export function FactoryResetComplete(codec : any): Promise<Number> {
+	export function FactoryResetComplete(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.FactoryResetComplete()');
+			return handle.codec.send('MowerCommands.FactoryResetComplete()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ClearStartupSeq(codec : any): Promise<Number> {
+	export function ClearStartupSeq(handle : any): Promise<Number> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('MowerCommands.ClearStartupSeq()');
+			return handle.codec.send('MowerCommands.ClearStartupSeq()', handle.timeout);
 		} catch(error) {
 			return new Promise<Number>((res,reject) => { reject(error);});
 		}
@@ -10217,350 +11074,400 @@ export namespace HardwareControl {
 		standbyTime: Number
 	}
 
-	export function BladeMotorSpeedI(codec : any, args : tInBladeMotorSpeed): Promise<void> {
+	export function BladeMotorSpeedI(handle : any, args : tInBladeMotorSpeed): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.BladeMotorSpeed(bladeMotorSpeed: ' + __args.bladeMotorSpeed+ ')');
+			return handle.codec.send('HardwareControl.BladeMotorSpeed(bladeMotorSpeed: ' + __args.bladeMotorSpeed+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function BladeMotorSpeed(codec : any, bladeMotorSpeed: Number): Promise<void> {
-		return BladeMotorSpeedI(codec, {
+	export function BladeMotorSpeed(handle : any, bladeMotorSpeed: Number): Promise<void> {
+		return BladeMotorSpeedI(handle, {
 				bladeMotorSpeed: bladeMotorSpeed
 		});
 	}
 
-	export function WheelMotorsPowerI(codec : any, args : tInWheelMotorsPower): Promise<void> {
+	export function WheelMotorsPowerI(handle : any, args : tInWheelMotorsPower): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.WheelMotorsPower(leftWheelMotorPower: ' + __args.leftWheelMotorPower+ ',rightWheelMotorPower: ' + __args.rightWheelMotorPower+ ')');
+			return handle.codec.send('HardwareControl.WheelMotorsPower(leftWheelMotorPower: ' + __args.leftWheelMotorPower+ ',rightWheelMotorPower: ' + __args.rightWheelMotorPower+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function WheelMotorsPower(codec : any, leftWheelMotorPower: Number, rightWheelMotorPower: Number): Promise<void> {
-		return WheelMotorsPowerI(codec, {
+	export function WheelMotorsPower(handle : any, leftWheelMotorPower: Number, rightWheelMotorPower: Number): Promise<void> {
+		return WheelMotorsPowerI(handle, {
 				leftWheelMotorPower: leftWheelMotorPower,
 				rightWheelMotorPower: rightWheelMotorPower
 		});
 	}
 
-	export function DisplayTestPatternI(codec : any, args : tInDisplayTestPattern): Promise<void> {
+	export function DisplayTestPatternI(handle : any, args : tInDisplayTestPattern): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.DisplayTestPattern(testPattern: ' + __args.testPattern+ ')');
+			return handle.codec.send('HardwareControl.DisplayTestPattern(testPattern: ' + __args.testPattern+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function DisplayTestPattern(codec : any, testPattern: Number): Promise<void> {
-		return DisplayTestPatternI(codec, {
+	export function DisplayTestPattern(handle : any, testPattern: Number): Promise<void> {
+		return DisplayTestPatternI(handle, {
 				testPattern: testPattern
 		});
 	}
 
-	export function TrigWatchdogI(codec : any, args : tInTrigWatchdog): Promise<void> {
+	export function TrigWatchdogI(handle : any, args : tInTrigWatchdog): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.TrigWatchdog(watchdogTime: ' + __args.watchdogTime+ ')');
+			return handle.codec.send('HardwareControl.TrigWatchdog(watchdogTime: ' + __args.watchdogTime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function TrigWatchdog(codec : any, watchdogTime: Number): Promise<void> {
-		return TrigWatchdogI(codec, {
+	export function TrigWatchdog(handle : any, watchdogTime: Number): Promise<void> {
+		return TrigWatchdogI(handle, {
 				watchdogTime: watchdogTime
 		});
 	}
 
-	export function BacklightI(codec : any, args : tInBacklight): Promise<void> {
+	export function BacklightI(handle : any, args : tInBacklight): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.Backlight(backlight: ' + __args.backlight+ ')');
+			return handle.codec.send('HardwareControl.Backlight(backlight: ' + __args.backlight+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Backlight(codec : any, backlight: Number): Promise<void> {
-		return BacklightI(codec, {
+	export function Backlight(handle : any, backlight: Number): Promise<void> {
+		return BacklightI(handle, {
 				backlight: backlight
 		});
 	}
 
-	export function SoundI(codec : any, args : tInSound): Promise<void> {
+	export function SoundI(handle : any, args : tInSound): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.Sound(beeper: ' + __args.beeper+ ',buzzerAlarm: ' + __args.buzzerAlarm+ ')');
+			return handle.codec.send('HardwareControl.Sound(beeper: ' + __args.beeper+ ',buzzerAlarm: ' + __args.buzzerAlarm+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Sound(codec : any, beeper: Number, buzzerAlarm: Number): Promise<void> {
-		return SoundI(codec, {
+	export function Sound(handle : any, beeper: Number, buzzerAlarm: Number): Promise<void> {
+		return SoundI(handle, {
 				beeper: beeper,
 				buzzerAlarm: buzzerAlarm
 		});
 	}
 
-	export function KeyboardStatusI(codec : any, args : tInKeyboardStatus): Promise<void> {
+	export function KeyboardStatusI(handle : any, args : tInKeyboardStatus): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.KeyboardStatus(keyboard: ' + __args.keyboard+ ')');
+			return handle.codec.send('HardwareControl.KeyboardStatus(keyboard: ' + __args.keyboard+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function KeyboardStatus(codec : any, keyboard: Number): Promise<void> {
-		return KeyboardStatusI(codec, {
+	export function KeyboardStatus(handle : any, keyboard: Number): Promise<void> {
+		return KeyboardStatusI(handle, {
 				keyboard: keyboard
 		});
 	}
 
-	export function KeyboardTestI(codec : any, args : tInKeyboardTest): Promise<void> {
+	export function KeyboardTestI(handle : any, args : tInKeyboardTest): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.KeyboardTest(keyboard: ' + __args.keyboard+ ')');
+			return handle.codec.send('HardwareControl.KeyboardTest(keyboard: ' + __args.keyboard+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function KeyboardTest(codec : any, keyboard: Number): Promise<void> {
-		return KeyboardTestI(codec, {
+	export function KeyboardTest(handle : any, keyboard: Number): Promise<void> {
+		return KeyboardTestI(handle, {
 				keyboard: keyboard
 		});
 	}
 
-	export function WheelMotorPatternI(codec : any, args : tInWheelMotorPattern): Promise<void> {
+	export function WheelMotorPatternI(handle : any, args : tInWheelMotorPattern): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.WheelMotorPattern(wheelMotorPattern: ' + __args.wheelMotorPattern+ ')');
+			return handle.codec.send('HardwareControl.WheelMotorPattern(wheelMotorPattern: ' + __args.wheelMotorPattern+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function WheelMotorPattern(codec : any, wheelMotorPattern: Number): Promise<void> {
-		return WheelMotorPatternI(codec, {
+	export function WheelMotorPattern(handle : any, wheelMotorPattern: Number): Promise<void> {
+		return WheelMotorPatternI(handle, {
 				wheelMotorPattern: wheelMotorPattern
 		});
 	}
 
-	export function LogToMsgListI(codec : any, args : tInLogToMsgList): Promise<void> {
+	export function LogToMsgListI(handle : any, args : tInLogToMsgList): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.LogToMsgList(level: ' + __args.level+ ',id: ' + __args.id+ ')');
+			return handle.codec.send('HardwareControl.LogToMsgList(level: ' + __args.level+ ',id: ' + __args.id+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function LogToMsgList(codec : any, level: Number, id: Number): Promise<void> {
-		return LogToMsgListI(codec, {
+	export function LogToMsgList(handle : any, level: Number, id: Number): Promise<void> {
+		return LogToMsgListI(handle, {
 				level: level,
 				id: id
 		});
 	}
 
-	export function ActivateLoopSensorsI(codec : any, args : tInActivateLoopSensors): Promise<void> {
+	export function ActivateLoopSensorsI(handle : any, args : tInActivateLoopSensors): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.ActivateLoopSensors(loopSensors: ' + __args.loopSensors+ ')');
+			return handle.codec.send('HardwareControl.ActivateLoopSensors(loopSensors: ' + __args.loopSensors+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ActivateLoopSensors(codec : any, loopSensors: Number): Promise<void> {
-		return ActivateLoopSensorsI(codec, {
+	export function ActivateLoopSensors(handle : any, loopSensors: Number): Promise<void> {
+		return ActivateLoopSensorsI(handle, {
 				loopSensors: loopSensors
 		});
 	}
 
-	export function HeadlightTestI(codec : any, args : tInHeadlightTest): Promise<void> {
+	export function HeadlightTestI(handle : any, args : tInHeadlightTest): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.HeadlightTest(headlight: ' + __args.headlight+ ')');
+			return handle.codec.send('HardwareControl.HeadlightTest(headlight: ' + __args.headlight+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function HeadlightTest(codec : any, headlight: Number): Promise<void> {
-		return HeadlightTestI(codec, {
+	export function HeadlightTest(handle : any, headlight: Number): Promise<void> {
+		return HeadlightTestI(handle, {
 				headlight: headlight
 		});
 	}
 
-	export function GenerateHostMsgI(codec : any, args : tInGenerateHostMsg): Promise<void> {
+	export function GenerateHostMsgI(handle : any, args : tInGenerateHostMsg): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.GenerateHostMsg(hostMsgCode: ' + __args.hostMsgCode+ ')');
+			return handle.codec.send('HardwareControl.GenerateHostMsg(hostMsgCode: ' + __args.hostMsgCode+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GenerateHostMsg(codec : any, hostMsgCode: Number): Promise<void> {
-		return GenerateHostMsgI(codec, {
+	export function GenerateHostMsg(handle : any, hostMsgCode: Number): Promise<void> {
+		return GenerateHostMsgI(handle, {
 				hostMsgCode: hostMsgCode
 		});
 	}
 
-	export function RestartExtBoard(codec : any): Promise<void> {
+	export function RestartExtBoard(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.RestartExtBoard()');
+			return handle.codec.send('HardwareControl.RestartExtBoard()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function HeadlightI(codec : any, args : tInHeadlight): Promise<void> {
+	export function HeadlightI(handle : any, args : tInHeadlight): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.Headlight(headlight: ' + __args.headlight+ ')');
+			return handle.codec.send('HardwareControl.Headlight(headlight: ' + __args.headlight+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function Headlight(codec : any, headlight: Number): Promise<void> {
-		return HeadlightI(codec, {
+	export function Headlight(handle : any, headlight: Number): Promise<void> {
+		return HeadlightI(handle, {
 				headlight: headlight
 		});
 	}
 
-	export function USEnable(codec : any): Promise<void> {
+	export function USEnable(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.USEnable()');
+			return handle.codec.send('HardwareControl.USEnable()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function USDisable(codec : any): Promise<void> {
+	export function USDisable(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.USDisable()');
+			return handle.codec.send('HardwareControl.USDisable()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function USEnableWithSDLog(codec : any): Promise<void> {
+	export function USEnableWithSDLog(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.USEnableWithSDLog()');
+			return handle.codec.send('HardwareControl.USEnableWithSDLog()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function USEnableLeft(codec : any): Promise<void> {
+	export function USEnableLeft(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.USEnableLeft()');
+			return handle.codec.send('HardwareControl.USEnableLeft()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function USEnableRight(codec : any): Promise<void> {
+	export function USEnableRight(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.USEnableRight()');
+			return handle.codec.send('HardwareControl.USEnableRight()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ComboardPowerOff(codec : any): Promise<void> {
+	export function ComboardPowerOff(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.ComboardPowerOff()');
+			return handle.codec.send('HardwareControl.ComboardPowerOff()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ComboardStandby(codec : any): Promise<void> {
+	export function ComboardStandby(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.ComboardStandby()');
+			return handle.codec.send('HardwareControl.ComboardStandby()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ComboardStandbyTimerI(codec : any, args : tInComboardStandbyTimer): Promise<void> {
+	export function ComboardStandbyTimerI(handle : any, args : tInComboardStandbyTimer): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.ComboardStandbyTimer(standbyTime: ' + __args.standbyTime+ ')');
+			return handle.codec.send('HardwareControl.ComboardStandbyTimer(standbyTime: ' + __args.standbyTime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ComboardStandbyTimer(codec : any, standbyTime: Number): Promise<void> {
-		return ComboardStandbyTimerI(codec, {
+	export function ComboardStandbyTimer(handle : any, standbyTime: Number): Promise<void> {
+		return ComboardStandbyTimerI(handle, {
 				standbyTime: standbyTime
 		});
 	}
 
-	export function ComboardStandbyTimeoutI(codec : any, args : tInComboardStandbyTimeout): Promise<void> {
+	export function ComboardStandbyTimeoutI(handle : any, args : tInComboardStandbyTimeout): Promise<void> {
 		let __args = args;
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.ComboardStandbyTimeout(standbyTime: ' + __args.standbyTime+ ')');
+			return handle.codec.send('HardwareControl.ComboardStandbyTimeout(standbyTime: ' + __args.standbyTime+ ')', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function ComboardStandbyTimeout(codec : any, standbyTime: Number): Promise<void> {
-		return ComboardStandbyTimeoutI(codec, {
+	export function ComboardStandbyTimeout(handle : any, standbyTime: Number): Promise<void> {
+		return ComboardStandbyTimeoutI(handle, {
 				standbyTime: standbyTime
 		});
 	}
 
-	export function ComboardSleep(codec : any): Promise<void> {
+	export function ComboardSleep(handle : any): Promise<void> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('HardwareControl.ComboardSleep()');
+			return handle.codec.send('HardwareControl.ComboardSleep()', handle.timeout);
 		} catch(error) {
 			return new Promise<void>((res,reject) => { reject(error);});
 		}
@@ -10631,41 +11538,49 @@ export namespace CurrentStatus {
 		gpsStatus: Number
 	}
 
-	export function GetStatus(codec : any): Promise<tOutGetStatus> {
+	export function GetStatus(handle : any): Promise<tOutGetStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CurrentStatus.GetStatus()');
+			return handle.codec.send('CurrentStatus.GetStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetExtendedStatus(codec : any): Promise<tOutGetExtendedStatus> {
+	export function GetExtendedStatus(handle : any): Promise<tOutGetExtendedStatus> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CurrentStatus.GetExtendedStatus()');
+			return handle.codec.send('CurrentStatus.GetExtendedStatus()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetExtendedStatus>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetStatusKeepAlive(codec : any): Promise<tOutGetStatusKeepAlive> {
+	export function GetStatusKeepAlive(handle : any): Promise<tOutGetStatusKeepAlive> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CurrentStatus.GetStatusKeepAlive()');
+			return handle.codec.send('CurrentStatus.GetStatusKeepAlive()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetStatusKeepAlive>((res,reject) => { reject(error);});
 		}
 	}
 
-	export function GetExtendedStatusKeepAlive(codec : any): Promise<tOutGetExtendedStatusKeepAlive> {
+	export function GetExtendedStatusKeepAlive(handle : any): Promise<tOutGetExtendedStatusKeepAlive> {
 		let __args = {};
 
+		if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}
+
 		try {
-			return codec.send('CurrentStatus.GetExtendedStatusKeepAlive()');
+			return handle.codec.send('CurrentStatus.GetExtendedStatusKeepAlive()', handle.timeout);
 		} catch(error) {
 			return new Promise<tOutGetExtendedStatusKeepAlive>((res,reject) => { reject(error);});
 		}

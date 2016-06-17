@@ -318,12 +318,11 @@ class TifCompiler {
             return prev;
         }, '') + ')';
 
-        let response = '\n\t\tlet __args = ' + runArgs + ';\n';
-        
-        response += '\n\t\ttry {\n\t\t\t' + "return codec.send('" + request +
-            "'" + ');\n\t\t} catch(error) {\n\t\t' +
-            '\treturn new Promise<' + returnType + '>((res,reject) => { reject(error);\});'
-            + '\n\t\t}\n';
+        let response = util.format('\n\t\tlet __args = %s;\n', runArgs);
+        response += "\n\t\t\if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}\n"; 
+       
+        response += util.format("\n\t\ttry {\n\t\t\treturn handle.codec.send('%s', handle.timeout);\n\t\t} catch(error) {\n\t\t" +
+            '\treturn new Promise<%s>((res,reject) => { reject(error);\});\n\t\t}\n', request, returnType);
 
         return response;
     }
@@ -359,14 +358,14 @@ class TifCompiler {
                 let runArgs = '{}';
 
                 if (method.inParams.tifParams.length == 0) {
-                     methods += header + '(codec : any): ';
+                     methods += header + '(handle : any): ';
                      
                      methods += 'Promise<' + returnType + '>';
                      methods += ' {' + this.writeBody(method, returnType,runArgs) + '\t}\n';
                 } else {
                     interfaces += this.writeInterface(method.inParams, 'tIn', method, 'Input interface for ' + method.family + '.' + method.command);
 
-                    methods += header + 'I(codec : any, args : tIn' + method.command + '): ';
+                    methods += header + 'I(handle : any, args : tIn' + method.command + '): ';
                     methods += 'Promise<' + returnType + '>';
                     methods += ' {' + this.writeBody(method, returnType, 'args') + '\t}\n';
                     
@@ -389,12 +388,11 @@ class TifCompiler {
                             }
 
                             return prev + '): '
-                        }, '(codec : any, ');
+                        }, '(handle : any, ');
                         
                     runArgs += '\n\t\t}';
                     
-                    methods += 'Promise<' + returnType + '>';
-                    methods += ' {\n\t\treturn ' + method.command + 'I(codec, ' + runArgs + ');\n\t}\n';
+                    methods += util.format('Promise<%s> {\n\t\treturn %sI(handle, %s);\n\t}\n', returnType, method.command, runArgs);
                 }
 
             }

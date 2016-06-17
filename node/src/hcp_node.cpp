@@ -159,6 +159,12 @@ size_t HcpState::decode(const size_t CodecId, const unsigned char* source, const
 		throw std::string(message);
 	}
 
+	auto method = v8::Object::New(isolate);
+	auto outParams = v8::Object::New(isolate);
+
+	dest->Set(String::NewFromUtf8(isolate, "method"), method);
+	dest->Set(String::NewFromUtf8(isolate, "outParams"), outParams);
+
 	for (auto i = 0; i < result.parameterCount; i++) {
 		auto p = &result.parameters[i];
 
@@ -223,8 +229,13 @@ size_t HcpState::decode(const size_t CodecId, const unsigned char* source, const
 			} break;
 		}
 
-		dest->Set(String::NewFromUtf8(isolate, p->template_->name.value), value);
+		outParams->Set(String::NewFromUtf8(isolate, p->template_->name.value), value);
 	}
+
+	method->Set(String::NewFromUtf8(isolate, "command"), v8::String::NewFromUtf8(isolate, result.command.value, v8::NewStringType::kNormal, result.command.length).ToLocalChecked());
+	method->Set(String::NewFromUtf8(isolate, "family"), v8::String::NewFromUtf8(isolate, result.family.value, v8::NewStringType::kNormal, result.family.length).ToLocalChecked());
+	method->Set(String::NewFromUtf8(isolate, "deviceError"), v8::Number::New(isolate, result.deviceError));
+	method->Set(String::NewFromUtf8(isolate, "error"), v8::Number::New(isolate, result.error));
 
 	return bytesRead;
 }
@@ -271,7 +282,7 @@ void HcpState::decode(const FunctionCallbackInfo<Value>& args) {
 
 	size_t bytesRead = 0;
 	Local<Object> result = Object::New(isolate);
-
+    
 	try {
 		bytesRead = _adapter->decode(id, sourceData, bytesToRead,isolate, result);
 	}
@@ -282,7 +293,6 @@ void HcpState::decode(const FunctionCallbackInfo<Value>& args) {
 	}
 
 	Local<Object> outObj = Object::New(isolate);
-	
 
 	outObj->Set(String::NewFromUtf8(isolate, "bytesRead"), v8::Integer::New(isolate, bytesRead));
 	outObj->Set(String::NewFromUtf8(isolate, "result"), result);
