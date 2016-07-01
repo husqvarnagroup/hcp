@@ -3,7 +3,6 @@
         "target": "ES6",
         "module" : "commonjs",
         "sourceMap": true,
-        "outDir": "build/scripts",
-        "allowJs": true
+        "outDir": "build/scripts"
     }
 }

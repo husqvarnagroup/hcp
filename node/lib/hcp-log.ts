@@ -4,7 +4,7 @@ export class HcpLog {
     }
 
     error(error : any, source : string, file : string) : void {
-        console.error(file + ':' + source + ' - ' JSON.stringify(error));
+        console.error(file + ':' + source + ' - ' + JSON.stringify(error));
     }
 
     info(message : string, source : string, file : string) : void {

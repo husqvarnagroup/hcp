@@ -1,6 +1,7 @@
 'use strict';
 
 const util = require('util');
+const fs = require('fs');
 
 class TifCompiler {
     constructor() {
@@ -404,7 +405,7 @@ class TifCompiler {
     }
 
 
-    static compile(doc) {
+    static compile(doc, options) {
         let compiler = new TifCompiler();
 
         compiler.extractTypes(doc);
@@ -412,6 +413,10 @@ class TifCompiler {
 
         let script = compiler.writeTypes();
         script += compiler.writeMethods();
+
+        if(options && String.isString(options.outFile)) {
+            fs.WriteFile(options.outFile, script);
+        }
 
         return script;
     }

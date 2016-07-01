@@ -1,0 +1,220 @@
+{
+  "header": {},
+  "types": [
+    {
+      "name": "tTestType",
+      "description": "",
+      "type": "uint32",
+      "postfix": ""
+    },
+    {
+      "name": "tTestEnum",
+      "description": "",
+      "type": "uint8",
+      "postfix": "",
+      "enums": [
+        {
+          "key": "NOT_RUNNING",
+          "description": "Not Running",
+          "value": "0"
+        },
+        {
+          "key": "STARTING",
+          "description": "Starting",
+          "value": "1"
+        },
+        {
+          "key": "STOPPING",
+          "description": "Stopping",
+          "value": "2"
+        },
+        {
+          "key": "RUNNING",
+          "description": "Running",
+          "value": "3"
+        }
+      ]
+    }
+  ],
+  "methods": [
+    {
+      "elementType": "function",
+      "family": "Test",
+      "command": "EnumInCommand",
+      "inParams": [],
+      "outParams": [
+        {
+          "name": "value",
+          "type": "tTestEnum"
+        }
+      ],
+      "protocol": []
+    },
+    {
+      "elementType": "function",
+      "family": "Test",
+      "command": "EnumInCommandOn",
+      "inParams": [
+          {
+          "name": "value",
+          "type": "tTestEnum"
+        }
+      ],
+      "outParams": [],
+      "protocol": []
+    },
+    {
+      "elementType": "function",
+      "family": "Test",
+      "command": "LotsOfOutOutParams",
+      "inParams": [],
+      "outParams": [
+        {
+          "name": "arg1",
+          "type": "tTestType"
+        },
+        {
+          "name": "arg2",
+          "type": "uint8"
+        },
+        {
+          "name": "arg3",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg4",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg5",
+          "type": "uint8"
+        },
+        {
+          "name": "arg6",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg7",
+          "type": "uint8"
+        },
+        {
+          "name": "arg8",
+          "type": "ascii",
+          "length": "8"
+        },
+        {
+          "name": "arg9",
+          "type": "ascii",
+          "length": "10"
+        },
+        {
+          "name": "arg10",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg11",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg12",
+          "type": "uint8"
+        },
+        {
+          "name": "arg13",
+          "type": "tUnixTime"
+        },
+        {
+          "name": "arg14",
+          "type": "uint64"
+        }
+      ],
+      "protocol": []
+    },
+    {
+      "elementType": "function",
+      "family": "Test",
+      "command": "LotsOfInAndOutParams",
+      "inParams": [
+        {
+          "name": "arg1",
+          "type": "tTestType"
+        },
+        {
+          "name": "arg2",
+          "type": "uint8"
+        },
+        {
+          "name": "arg3",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg4",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg5",
+          "type": "uint8"
+        },
+        {
+          "name": "arg6",
+          "type": "ascii",
+          "length": "8"
+        },
+        {
+          "name": "arg7",
+          "type": "ascii",
+          "length": "10"
+        },
+        {
+          "name": "arg8",
+          "type": "tUnixTime"
+        },
+        {
+          "name": "arg9",
+          "type": "uint64"
+        }
+      ],
+      "outParams": [
+        {
+          "name": "arg1",
+          "type": "tTestType"
+        },
+        {
+          "name": "arg2",
+          "type": "uint8"
+        },
+        {
+          "name": "arg3",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg4",
+          "type": "tSimpleVersion"
+        },
+        {
+          "name": "arg5",
+          "type": "uint8"
+        },
+        {
+          "name": "arg6",
+          "type": "ascii",
+          "length": "8"
+        },
+        {
+          "name": "arg7",
+          "type": "ascii",
+          "length": "10"
+        },
+        {
+          "name": "arg8",
+          "type": "tUnixTime"
+        },
+        {
+          "name": "arg9",
+          "type": "uint64"
+        }
+      ],
+      "protocol" : []
+    }
+  ]
+}
