@@ -879,7 +879,7 @@ hcp_Int HCP_CALL hcp_BytesToParameters(hcp_tRuntime* R, const hcp_tBlob* pSource
 		hcp_Size_t typeSize = hcp_GetTypeSize(typeId);
 
 		hcp_Int error = HCP_NOERROR;
-
+		 
 		switch (typeId)
 		{
 			case HCP_UINT8_ID: {

@@ -97,7 +97,7 @@ static hcp_Int hcp_ParseTIFHeader(hcp_tString* pCommand, hcp_tCommandHeader* pHe
 static hcp_Int hcp_ParseArgumentName(hcp_tString* pArguments, hcp_tParameterSet* pParameters, hcp_tParameter** ppResult);
 static hcp_Int hcp_LoadProtocol(hcp_tState* pState, cJSON* pObject, hcp_tProtocol* pProtocol);
 static hcp_Int hcp_ParseArgumentValue(hcp_tString* pValue, hcp_tParameter* pParameter);
-static hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter, hcp_Int32 ExpectedLength);
+static hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter, hcp_Int32 ExpectedLength); 
 static hcp_Int hcp_ParseByteArray(hcp_tString* pValue, hcp_tParameter* pParameter);
 static void hcp_IgnoreSpace(hcp_tString* pString);
 
