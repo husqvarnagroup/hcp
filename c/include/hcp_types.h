@@ -94,11 +94,15 @@
 *==============================================================================
 */
 
+#ifndef HCP_EXPORT
+#	define HCP_EXPORT __declspec(dllexport)
+#endif
+
 #ifndef HCP_NOEXPORT
 #	ifdef __cplusplus
-#		define HCP_API extern "C" __declspec(dllexport)
+#		define HCP_API extern "C" HCP_EXPORT
 #	else
-#		define HCP_API extern __declspec(dllexport)
+#		define HCP_API extern HCP_EXPORT
 #	endif
 #else
 #	ifdef __cplusplus
