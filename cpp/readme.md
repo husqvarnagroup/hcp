@@ -1,6 +1,6 @@
 # HCP C++
 
-```C/C++
+```cpp
 #include "hcp_runtime.h"
 
 // create new runtime state
