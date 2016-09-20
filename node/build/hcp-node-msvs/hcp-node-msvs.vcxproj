@@ -73,7 +73,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetName>hcp</TargetName>
     <TargetExt>.node</TargetExt>
-    <IncludePath>$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\..\..\..\cpp\include;$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
     <LibraryPath>$(NODE_ROOT)\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
@@ -81,7 +81,7 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetName>hcp</TargetName>
     <TargetExt>.node</TargetExt>
-    <IncludePath>$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\..\..\..\cpp\include;$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
     <LibraryPath>$(NODE_ROOT)\$(Platform)\$(Configuration);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
@@ -89,7 +89,7 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetName>hcp</TargetName>
     <TargetExt>.node</TargetExt>
-    <IncludePath>$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\..\..\..\cpp\include;$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
     <LibraryPath>$(NODE_ROOT)\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
@@ -97,7 +97,7 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetName>hcp</TargetName>
     <TargetExt>.node</TargetExt>
-    <IncludePath>$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\..\..\..\cpp\include;$(ProjectDir)\..\..\..\c\src;$(ProjectDir)\..\..\..\c\include;$(NODE_ROOT)\deps\uv\include;$(NODE_ROOT)\deps\v8\include;$(NODE_ROOT)\src;$(IncludePath)</IncludePath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
     <LibraryPath>$(NODE_ROOT)\$(Platform)\$(Configuration);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
@@ -175,17 +175,12 @@
     <ClCompile Include="..\..\src\hcp_node.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\test.js">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="..\..\test.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\test.js" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -121,7 +121,7 @@ hcp_Int hcp_AppendZeroes(const hcp_Size_t Length, hcp_tBlob* pDestination) {
 	}
 
 	hcp_Uint8* destination = (hcp_Uint8*)((hcp_Size_t)pDestination->value + pDestination->length);
-	hcp_Memset(HCP_NULL, destination, 0, Length);
+	hcp_Memset(HCP_NULL, (void*)destination, 0, (hcp_Size_t)Length);
 
 	return HCP_NOERROR;
 }

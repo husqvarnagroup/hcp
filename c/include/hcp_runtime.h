@@ -42,23 +42,6 @@
 #include "hcp_error.h"
 #include "hcp_codec.h"
 #include "hcp_model.h"
-/*
-*==============================================================================
-*  3.      DECLARATIONS
-*  3.1     Global constants
-*==============================================================================
-*/
-
-#define HCP_TIMEOUT_MODIFYSTATE 1000	/* number of milliseconds that a state-modifying function should\n
-										 * wait before returning HCP_LOCKTIMEOUT */
-#define HCP_TIMEOUT_MODIFYCODEC 1000	/* number of milliseconds that a serlizer-modifying function should\n
-											 * wait before returning HCP_LOCKTIMEOUT */
-/*
-*==============================================================================
-*  3.2     Global macros
-*==============================================================================
-*/
-
 
 /*
 *==============================================================================
@@ -193,44 +176,92 @@ typedef struct {
 
 /*
 *==============================================================================
-*  3.4     Global variables (defined in some implementation file)
-*==============================================================================
-*/
-
-
-/*
-*==============================================================================
-*  3.5     Global constant data
-*==============================================================================
-*/
-
-
-/*
-*==============================================================================
 *  4.      GLOBAL FUNCTIONS
 *==============================================================================
 */
-
-	HCP_API hcp_Boolean HCP_CALL hcp_TryLock(hcp_tState* pState, const void* pHandle, const hcp_Int Duration);
-	HCP_API void HCP_CALL hcp_Unlock(hcp_tState* pState, const void* pHandle);
-	
-	HCP_API hcp_Int HCP_CALL hcp_NewCodec(hcp_tState* pState, const hcp_szStr Codec, const hcp_Size_t TemplateId, hcp_Size_t* pId);
+	/**
+	 *	Resolves an error codec into a error message, writing a null-terminated string
+	 *	to a specified output buffer.
+	 *	@param ErrorCode	Error code to resolve.
+	 *	@param pOutput	Destination (output) string.
+	 *	@param MaxLength	Maximum number of characters to write to [pOutput9.
+	 */
+	HCP_API void HCP_CALL hcp_GetMessage(const hcp_Int ErrorCode, hcp_szStr pOutput, const hcp_Size_t MaxLength);
+	/**
+	 *	Creates a new codec instance which can be used to encode and decode requests.
+	 *	@param pState	HCP state where the loaded codec library and model exists.
+	 *	@param Codec	Name of the codec to use (output when calling hcp_LoadCodec).
+	 *	@param ModelId	If of the object model to use (output when calling hcp_LoadModel).
+	 *	@param pId	On success, outputs a codec instance id. This id is used to refer to the newly created instance when calling encode and decode.
+	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
+	 */
+	HCP_API hcp_Int HCP_CALL hcp_NewCodec(hcp_tState* pState, const hcp_szStr Codec, const hcp_Size_t ModelId, hcp_Size_t* pId);
+	/**
+	 *	Closes a codec instance and releases any related resources.
+	 *	@param pState	State where the codec was created.
+	 *	@param CodecId	Codec instance id, obtained when calling [hcp_NewCodec].
+	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
+	 */
 	HCP_API hcp_Int HCP_CALL hcp_CloseCodec(hcp_tState* pState, const hcp_Size_t CodecId);
-	
-	HCP_API void HCP_CALL hcp_GetMessage(const hcp_Int ErrorCode,hcp_szStr pOutput, const hcp_Size_t MaxLength);
-
+	/**
+	 *	Loads a new object model (JSON) into a HCP-state.
+	 *	@param pState	State where the model should be made avalible.
+	 *	@param Model	Zero-terminated JSON string contaning the HCP object model.
+	 *	@param Length	Number of characters in [Model].
+	 *	@param pId	On success, outputs a model instance id.
+	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
+	 */
 	HCP_API hcp_Int HCP_CALL hcp_LoadModel(hcp_tState* pState, const hcp_szStr Model, const hcp_Size_t Length, hcp_Int* pId);
-	
+	/**
+	 *	MARKED FOR DELETION
+	 */
 	HCP_API hcp_Int HCP_CALL hcp_GetPrimitiveType(hcp_tState* pState, const hcp_Int CommandSetId, const hcp_szStr ComplexType);
-	
+	/**
+	 *	Loads a codec library into a HCP-state, allowing codec instances to be created for encoding and decoding data.
+	 *	@param pState	State where the codec should be made avalible.
+	 *	@param codecName	Output buffer where the name (zero-terminated string) of the codec will be written to.
+	 *	@param MaxLength	Maximum number of characters that [codecName] can hold.
+	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
+	 */
 	HCP_API hcp_Int HCP_CALL hcp_LoadCodec(hcp_tState* pState, hcp_tCodecLibrary* pLibrary, hcp_szStr CodecName, const hcp_Size_t MaxLength);
-
-	extern hcp_Size_t HCP_CALL hcp_SizeOfState(void);
-	extern hcp_Int HCP_CALL hcp_NewState(hcp_tState* pDest, hcp_tHost* pOst);
-	extern hcp_Int HCP_CALL hcp_CloseState(hcp_tState* pState);
-
-	HCP_API hcp_Int HCP_CALL hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Command, hcp_Uint8* pDestination, const hcp_Uint32 MaxLength, hcp_SetFlag SetFlag, void* pCallbackContext);
+	/**
+	 *	Encodes a request into a byte-array.
+	 *	@param pState	State where the codec instance exists.
+	 *	@param CodecId	Codec instance id to use (output from calling [hcp_NewCodec].
+	 *	@param pDestination	Output destination buffer.
+	 *	@param MaxLength	Size of [pDestination].
+	 *	@return	On success, returns a value greater to zero which indicates how many bytes that were written to [pDestination]. A value less than zero
+	 *			indicates an error. Call [hcp_GetMessage] to resolve an error message.
+	 */
+	HCP_API hcp_Int HCP_CALL hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Command, hcp_Uint8* pDestination, const hcp_Uint32 MaxLength);
+	/**
+	 *	Decodes a range of bytes into a response object. A empty result object [pResult] indicates that not enough bytes has been received to make
+	 *	a complete message.
+	 *	@param pState	State where the codec instance exists.
+	 *	@param CodeId	Codec that was used when calling [hcp_Encode].
+	 *	@param pSource	Array contaning the bytes to decode.
+	 *	@param Length	[pSource] length.
+	 *	@param pResult	Destination result object, will be empty (memset-ed) if no complete message is found.
+	 *	@return Returns the number of bytes consumed from [pSource]. If the number of bytes consumed is less then [Length], the remaning bytes
+	 *			should be passed back to [hcp_Decode] once [pResult] is processed.
+	 */
 	HCP_API hcp_Int HCP_CALL hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_Uint8* pSource, const hcp_Size_t Length, hcp_tResult* pResult);
+	/**
+	 *	Returns the number of bytes required for a hcp_tState object.
+	 */
+	extern hcp_Size_t HCP_CALL hcp_SizeOfState(void);
+	/**
+	 *	Creates a new state instance.
+	 *	@param pDest	Instance to initialize.
+	 *	@param pHost	Host struct mapping functions for malloc/free and more.
+	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
+	 */
+	extern hcp_Int HCP_CALL hcp_NewState(hcp_tState* pDest, hcp_tHost* pHost);
+	/**
+	 *	Closes a state and releases all associated resources.
+	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
+	 */
+	extern hcp_Int HCP_CALL hcp_CloseState(hcp_tState* pState);
 
 #endif /* Match the re-definition guard */
 

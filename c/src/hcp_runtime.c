@@ -264,10 +264,6 @@ hcp_Int hcp_CloseState(hcp_tState* pState) {
 	if (pState == HCP_NULL) {
 		return HCP_INVALIDSTATE;
 	}
-
-	if (hcp_TryLock(pState, &pState->writeLock, HCP_TIMEOUT_MODIFYSTATE) == HCP_FALSE) {
-		return HCP_LOCKTIMEOUT;
-	}
 	// locked region
 	{
 		// pop all codecs
@@ -297,7 +293,7 @@ hcp_Int hcp_CloseState(hcp_tState* pState) {
 			} while (index-- != 0);
 		}
 
-		hcp_Memset(HCP_NULL, pState, 0, sizeof(hcp_tState));
+		hcp_Memset(HCP_NULL, (void*)pState, 0, (const hcp_Size_t)sizeof(hcp_tState));
 	}
 	hcp_Unlock(pState, &pState->writeLock);
 
@@ -309,9 +305,6 @@ hcp_Int hcp_CloseCodec(hcp_tState* pState, const hcp_Size_t Id) {
 		return HCP_INVALIDSTATE;
 	}
 
-	if (hcp_TryLock(pState, &pState->writeLock, HCP_TIMEOUT_MODIFYSTATE) == HCP_FALSE) {
-		return HCP_LOCKTIMEOUT;
-	}
 	// locked region
 	{
 		hcp_Boolean found = HCP_FALSE;
@@ -323,7 +316,6 @@ hcp_Int hcp_CloseCodec(hcp_tState* pState, const hcp_Size_t Id) {
 
 		hcp_Pop(&pState->codecs.header, index);
 	}
-	hcp_Unlock(pState, &pState->writeLock);
 
 	return HCP_NOERROR;
 }
@@ -344,7 +336,7 @@ hcp_Int hcp_NewState(hcp_tState* pState, hcp_tHost* pHost) {
 	pState->host.realloc_ = HCP_NULL;
 	pState->host.unlock = HCP_NULL;
 
-	hcp_Memset(HCP_NULL, (pState), 0, sizeof(hcp_tState));
+	hcp_Memset(HCP_NULL, (void*)pState, 0, sizeof(hcp_tState));
 	
 	if (pHost != HCP_NULL) {
 		if (pHost->malloc_ != HCP_NULL && pHost->free_ == HCP_NULL) {
@@ -376,7 +368,7 @@ hcp_Int hcp_NewState(hcp_tState* pState, hcp_tHost* pHost) {
 	return HCP_NOERROR;
 }
 
-hcp_Int hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Command, hcp_Uint8* pDestination, const hcp_Uint32 MaxLength, hcp_SetFlag SetFlag, void* pCallbackContext) {
+hcp_Int hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Command, hcp_Uint8* pDestination, const hcp_Uint32 MaxLength) {
 	if (pState == HCP_NULL) {
 		return HCP_INVALIDSTATE;
 	}
@@ -385,9 +377,6 @@ hcp_Int hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Comma
 	hcp_tCodec* codec = HCP_NULL;
 	hcp_Int error = HCP_NOERROR;
 
-	if (hcp_TryLock(pState, pState, HCP_TIMEOUT_MODIFYSTATE) == HCP_FALSE) {
-		return HCP_LOCKTIMEOUT;
-	}
 	// locked region 
 	{
 		hcp_Boolean found = HCP_FALSE;
@@ -397,15 +386,11 @@ hcp_Int hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Comma
 			codec = (hcp_tCodec*)hcp_ValueAt(&pState->codecs.header, index);
 		}
 	}
-	hcp_Unlock(pState, pState);
 
 	if (codec == HCP_NULL) {
 		return HCP_INVALIDID;
 	}
 
-	if (hcp_TryLock(pState, codec, HCP_TIMEOUT_MODIFYCODEC) == HCP_FALSE) {
-		return HCP_LOCKTIMEOUT;
-	}
 	// locked region
 	{
 		hcp_tCommand* output = HCP_NULL;
@@ -439,7 +424,6 @@ hcp_Int hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Comma
 			}
 		}
 	}
-	hcp_Unlock(pState, codec);
 
 	// a return value greater than -1 means the number of bytes written to the stream
 	return error;
@@ -457,9 +441,6 @@ hcp_Int hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_Uint8* pSou
 	hcp_tCodec* codec = (hcp_tCodec*)hcp_ValueAt(&pState->codecs.header, codecIndex);
 	hcp_Int bytesRead = 0;
 
-	if (hcp_TryLock(pState, codec, HCP_TIMEOUT_MODIFYCODEC) == HCP_FALSE) {
-		return HCP_LOCKTIMEOUT;
-	}
 	// locked area
 	{
 		hcp_tProtocol* protocol = &codec->template_->protocol;
@@ -511,7 +492,7 @@ hcp_Int hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_Uint8* pSou
 				}
 			}	
 		}
-	} hcp_Unlock(pState, codec);
+	} 
 
 	return bytesRead;
 }
@@ -520,9 +501,6 @@ hcp_Int hcp_NewCodec(hcp_tState* pState,const hcp_szStr Codec,const hcp_Size_t T
 	*pId = 0;
 	hcp_Int error = HCP_NOERROR;
 
-	if (hcp_TryLock(pState, pState , HCP_TIMEOUT_MODIFYSTATE) == HCP_FALSE) {
-		return HCP_LOCKTIMEOUT;
-	}
 	// locked region
 	{
 		hcp_Boolean found = HCP_FALSE;
@@ -578,7 +556,7 @@ hcp_Int hcp_NewCodec(hcp_tState* pState,const hcp_szStr Codec,const hcp_Size_t T
 				}
 			}
 		}
-	} hcp_Unlock(pState, pState);
+	}
 
 	return error;
 }
@@ -622,10 +600,6 @@ void hcp_GetMessage(const hcp_Int ErrorCode, hcp_szStr pOutput, const hcp_Size_t
 hcp_Int hcp_GetPrimitiveType(hcp_tState* pState, const hcp_Int CommandSetId, const hcp_szStr ComplexType) {
 	hcp_Int error = HCP_NOERROR;
 
-	if (hcp_TryLock(pState, pState, HCP_TIMEOUT_MODIFYSTATE) == HCP_FALSE) {
-		return HCP_LOCKTIMEOUT;
-	}
-	// locked session
 	{
 		hcp_Boolean found = HCP_FALSE;
 
@@ -638,17 +612,12 @@ hcp_Int hcp_GetPrimitiveType(hcp_tState* pState, const hcp_Int CommandSetId, con
 			error = HCP_INVALIDTEMPLATEID;
 		}
 	}
-	hcp_Unlock(pState, pState);
 
 	return error;
 }
 
 hcp_Int hcp_LoadModel(hcp_tState* pState, const hcp_szStr Model, const hcp_Size_t Length, hcp_Int* pId) {
 	*pId = -1;
-
-	if (hcp_TryLock(pState, pState, HCP_TIMEOUT_MODIFYSTATE) == HCP_FALSE) {
-		return HCP_LOCKTIMEOUT;
-	}
 
 	hcp_Int error = HCP_NOERROR;
 	// locked session
@@ -680,7 +649,6 @@ hcp_Int hcp_LoadModel(hcp_tState* pState, const hcp_szStr Model, const hcp_Size_
 			*pId = t->id;
 		}
 	}
-	hcp_Unlock(pState, pState);
 
 	return error;
 }

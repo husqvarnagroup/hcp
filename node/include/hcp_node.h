@@ -46,7 +46,6 @@ namespace hcp {
 		hcp_Size_t heapSize() const;
 
 		size_t loadModel(const std::string & sModel);
-		void scanDir(const std::string & sPath);
 		size_t newCodec(const std::string & LibraryName,const size_t ModelId);
 		void closeCode(const size_t codecId);
 		size_t encode(const size_t CodecId, std::string Command, unsigned char* dest, const size_t length);
@@ -73,15 +72,9 @@ namespace hcp {
 
 	private:
 
+		bool initialize(const std::string & sPath);
 		std::list<std::string> getLibraries() const;
-		void loadLibrary(const std::string & sFilename, CodecLibrary & Library);
-		hcp_Boolean TryLock(const void* pPtr, const hcp_Size_t Timeout);
-		void Unlock(const void* pPtr);
-		void* Memset(void* pDest, const hcp_Int Value, const hcp_Size_t Length);
-		void* Memcpy(void* pDest, const void* psource, const hcp_Size_t Length);
-		void Free(void* pDest);
-		void* Malloc(const hcp_Size_t Size);
-		void* Realloc(void* pDest, const hcp_Size_t Size);
+		
 
 	private:
 
@@ -91,16 +84,6 @@ namespace hcp {
 		std::list<CodecInstance> _codecs;
 
 		hcp_tState* _pState;
-
-	private:
-	
-		static hcp_Boolean TryLock(const void* pPtr, const hcp_Size_t Timeout, void* pContext);
-		static void Unlock(const void* pPtr, void* pContext);
-		static void* Memset(void* pDest, const hcp_Int Value, const hcp_Size_t Length, void* pContext);
-		static void* Memcpy(void* pDest, const void* psource, const hcp_Size_t Length, void* pContext);
-		static void Free(void* pDest, void* pContext);
-		static void* Malloc(const hcp_Size_t Size, void* pContext);
-		static void* Realloc(void* pDest, const hcp_Size_t Size, void* pContext);
 	};
 
 
