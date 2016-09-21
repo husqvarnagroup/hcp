@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 #include <string.h>
 #include <stdio.h>
-#include <cmath>
+#include <math.h>
 #include <stdlib.h>
 #include <float.h>
 #include <limits.h>

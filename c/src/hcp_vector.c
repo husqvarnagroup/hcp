@@ -44,6 +44,8 @@
 */
 #include "hcp_vector.h"
 #include "hcp_error.h"
+#include "hcp_library.h"
+
 /*
 *==============================================================================
 *  3.   DECLARATIONS
@@ -296,7 +298,7 @@ hcp_Size_t hcp_FindFirstFree(hcp_tVector* pHeader) {
 
 		index++;
 	}
-	
+
 	return -1;
 }
 

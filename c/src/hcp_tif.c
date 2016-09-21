@@ -43,10 +43,12 @@
 *==============================================================================
 */
 #include "hcp_error.h"
-#include "cJSON.h"
 #include "hcp_tif.h"
 #include "hcp_string.h"
 #include "hcp_codec.h"
+#include "hcp_library.h"
+#include "cJSON.h"
+
 /*
 *==============================================================================
 *  3.   DECLARATIONS
@@ -97,7 +99,7 @@ static hcp_Int hcp_ParseTIFHeader(hcp_tString* pCommand, hcp_tCommandHeader* pHe
 static hcp_Int hcp_ParseArgumentName(hcp_tString* pArguments, hcp_tParameterSet* pParameters, hcp_tParameter** ppResult);
 static hcp_Int hcp_LoadProtocol(hcp_tState* pState, cJSON* pObject, hcp_tProtocol* pProtocol);
 static hcp_Int hcp_ParseArgumentValue(hcp_tString* pValue, hcp_tParameter* pParameter);
-static hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter, hcp_Int32 ExpectedLength); 
+static hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter, hcp_Int32 ExpectedLength);
 static hcp_Int hcp_ParseByteArray(hcp_tString* pValue, hcp_tParameter* pParameter);
 static void hcp_IgnoreSpace(hcp_tString* pString);
 
@@ -230,7 +232,7 @@ hcp_Int hcp_LoadTIFTemplate(hcp_tState* pState, const hcp_tString* pText, hcp_tM
 		cJSON_Delete(root);
 		root = HCP_NULL;
 	}
-	
+
 	pTemplate->cache = root;
 	return error;
 }
@@ -333,14 +335,14 @@ hcp_Int hcp_ParseByteArray(hcp_tString* pValue, hcp_tParameter* pParameter) {
 	hcp_Size_t i = 1;
 
 	hcp_Uint8* dest = (hcp_Uint8*)pValue->value;
-	
+
 	while (pValue->length > 0) {
 		if (*pValue->value == ',' || *pValue->value == ' ' || *pValue->value == ')') {
 			break;
 		}
 
 		end = pValue->value;
-		
+
 		if (i % 2 == 0) {
 			hcp_Uint8 value = 0;
 			hcp_Int index = i - 2;
@@ -393,7 +395,7 @@ hcp_Int hcp_ParseDigitValue(hcp_tString* pValue, hcp_tParameter* pParameter) {
 	}
 	else {
 		hcp_tString value;
-		
+
 		value.value = start;
 		value.length = ((hcp_Size_t)end - (hcp_Size_t)start);
 		value.zeroTerm = HCP_FALSE;
@@ -448,7 +450,7 @@ hcp_Int hcp_LoadProtocol(hcp_tState* pState, cJSON* pRoot, hcp_tProtocol* pProto
 		cJSON* item = cJSON_GetArrayItem(array, i);
 
 		hcp_Size_t index = 0;
-		
+
 		if ((error = hcp_PushEmpty(&pProtocol->header, &index)) != HCP_NOERROR) {
 			return error;
 		}
@@ -521,7 +523,7 @@ hcp_tString hcp_NextString(hcp_tString* pString,char Terminator, hcp_Boolean End
 	}
 
 	hcp_tString output;
-	
+
 	output.value = start;
 	output.length = ((hcp_Size_t)end - (hcp_Size_t)start);
 	output.zeroTerm = HCP_FALSE;
@@ -573,7 +575,7 @@ hcp_Int hcp_LoadCommandTemplate(hcp_tState* pState, cJSON* pMethod, cJSON* pType
 }
 
 hcp_Int hcp_LoadMethods(hcp_tState* pState, cJSON* pObject,hcp_tCommandTemplateSet* pTemplates) {
-	hcp_Int error = HCP_NOERROR; 
+	hcp_Int error = HCP_NOERROR;
 
 	error = hcp_InitializeCommandTemplates(pState, pTemplates);
 
@@ -621,7 +623,7 @@ hcp_Int hcp_LoadMethods(hcp_tState* pState, cJSON* pObject,hcp_tCommandTemplateS
 
 hcp_Int hcp_GetString(cJSON* N, const hcp_szStr Name, hcp_tString* pDestination) {
 	cJSON* node = cJSON_GetObjectItem(N, (const char*)Name);
-	
+
 	if (node == HCP_NULL || node->type != cJSON_String) {
 		pDestination->value = HCP_NULL;
 		pDestination->length = 0;
@@ -708,7 +710,7 @@ hcp_Int hcp_LoadParameterTemplates(hcp_tState* pState, cJSON* pArray,cJSON* pTyp
 		if (error != HCP_NOERROR) {
 			return error;
 		}
-		
+
 		hcp_tParameterTemplate* t = (hcp_tParameterTemplate*)hcp_ValueAt(&pParameters->header, index);
 		hcp_tString typeName;
 		hcp_tString valueLength;
@@ -732,7 +734,7 @@ hcp_Int hcp_LoadParameterTemplates(hcp_tState* pState, cJSON* pArray,cJSON* pTyp
 		if (typeId == HCP_TYPE_INVALID) {
 			error = HCP_INVALID_PARAMETERTYPE;
 		}
-		
+
 		if (error != HCP_NOERROR) {
 			hcp_Pop(&pParameters->header, index);
 			return error;

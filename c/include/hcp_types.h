@@ -113,7 +113,11 @@
 #endif
 
 #ifndef HCP_CALL
-#	define HCP_CALL __cdecl
+#	ifdef __gnu_linux__
+#		define HCP_CALL 
+#	else
+#		define HCP_CALL __cdecl
+#	endif
 #endif
 
 
@@ -149,12 +153,12 @@ typedef void hcp_Void;			/* void */
 
 /* platform specific long (4 bytes on win32, 8 on x64) */
 #ifdef _x64
-typedef unsigned long long hcp_Size_t;		
+typedef unsigned long long hcp_Size_t;
 #else
 typedef unsigned long hcp_Size_t;
 #endif
 
-typedef uint8_t hcp_Uint8;	
+typedef uint8_t hcp_Uint8;
 typedef int8_t hcp_Int8;
 typedef uint16_t hcp_Uint16;
 typedef int16_t hcp_Int16;
@@ -247,7 +251,7 @@ typedef struct {
  */
 #pragma pack(push, 8)
 typedef union {
-	hcp_Double d;		
+	hcp_Double d;
 	hcp_Float f;
 	hcp_Boolean b;
 	hcp_Size_t sz;
