@@ -25,42 +25,29 @@ package com.husqvarnagroup.connectivity;
 
 import java.util.HashMap;
 
+  class HcpException extends Exception {
+    HcpException(String msg) {
+      super(msg);
+    }
+};
 /**
  *	Internal class used to map native HCP C-Runtime to Java. Do not call this call
  * 	directly but use the other provided public classes instead.
  */
 public class HcpJNI {
 	
-	private boolean _initialized;
-	
-	private static HcpJNI _singleton;
-	
-	static {
-		System.loadLibrary("hcp-jni");
+  static {
+		System.loadLibrary("HcpJNI");
 	}
 	
-	public static HcpJNI GetGlobal() {
-		if(_singleton == null) {
-			_singleton = new HcpJNI();
-		}
-		
-		return _singleton;
-	}
-	
-	private HcpJNI() {
-		_initialized = false;
-	}
-	 
-	public native long NewState();
+	public native long NewState(String path);
 	public native void CloseState(long StateHandle);
-	
+  public native String[] GetCodecNames();
+
 	public native String GetMessage(int ErrorCode);
-	
-	native int Deserialize(long StateHandle, int SerializerId, byte[] Data, int Length, HcpElement Destination);
-	native int Serialize(long StateHandle, int SerializerId, String Command, byte[] Destination);
-	
-	public native int LoadTIF(long StateHandle, String Content);
-	
-	native int CreateSerializer(long StateHandle, String Protocol, int TIFId);
-	native void CloseSerializer(long StateHandle, int SerializerId);
+	public native long NewCodec(long StateHandle, String Codec, long ModelId);
+	public native void CloseCodec(long StateHandle, long CodecId);
+	public native int LoadModel(long StateHandle, String Model);
+	public native int Decode(long StateHandle, long CodecId, byte[] Data, int Length, HcpElement Destination);
+	public native int Encode(long StateHandle, long CodecId, String Command, byte[] Destination);
 }

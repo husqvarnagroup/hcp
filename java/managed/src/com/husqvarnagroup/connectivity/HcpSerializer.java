@@ -1,11 +1,11 @@
 package com.husqvarnagroup.connectivity;
 
 public class HcpSerializer {
-	private int _serializerId;
+	private long _serializerId;
 	private long _stateHandle;
 	private HcpJNI _jni;
 	
-	public HcpSerializer(long StateHandle, int SerializerId, HcpJNI Jni) {
+	public HcpSerializer(long StateHandle, long SerializerId, HcpJNI Jni) {
 		_serializerId = SerializerId;
 		_stateHandle = StateHandle;
 		_jni = Jni;
@@ -14,7 +14,7 @@ public class HcpSerializer {
 	public HcpElement fromBytes(byte[] Source, int Length) throws Exception {
 		HcpElement element = new HcpElement();
 		
-		int error = _jni.Deserialize(_stateHandle, _serializerId, Source, Length, element);
+		int error = _jni.Decode(_stateHandle, _serializerId, Source, Length, element);
 		
 		if(error < 0) {
 			throw new Exception(_jni.GetMessage(error));
@@ -33,7 +33,7 @@ public class HcpSerializer {
 			return 0;
 		}
 
-		int bytesWritten = _jni.Serialize(_stateHandle, _serializerId, Command, Destination);
+		int bytesWritten = _jni.Encode(_stateHandle, _serializerId, Command, Destination);
 		
 		if(bytesWritten < 0) {
 			throw new Exception(_jni.GetMessage(bytesWritten));
@@ -42,7 +42,7 @@ public class HcpSerializer {
 		return bytesWritten;
 	}
 	
-	public void close() {
-		_jni.CloseSerializer(_stateHandle, _serializerId);
-	}
+	//public void close() {
+		//_jni.CloseSerializer(_stateHandle, _serializerId);
+	//}
 }

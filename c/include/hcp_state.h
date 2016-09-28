@@ -1,4 +1,3 @@
-#pragma once
 #include <hcp_runtime.h>
 
 /** Vector with codecs */

@@ -2,15 +2,20 @@
 
 #include <jni.h>
 #include <stdlib.h>
+#include <string.h>
+#include <hcp_types.h>
+#include <hcp_error.h>
+#include <hcp_codec.h>
+#include <hcp_state.h>
 
-#include "../../../c/src/cJSON.c"
-#include "../../../c/src/hcp_error.c"
-#include "../../../c/src/hcp_protocol.c"
-#include "../../../c/src/hcp_runtime.c"
-#include "../../../c/src/hcp_string.c"
-#include "../../../c/src/hcp_tif.c"
-#include "../../../c/src/hcp_vector.c"
-#include "../../../../amg3/src/amg3.c"
+//#include "../../../c/src/cJSON.c"
+//#include "../../../c/src/hcp_error.c"
+//#include "../../../c/src/hcp_protocol.c"
+//#include "../../../c/src/hcp_runtime.c"
+//#include "../../../c/src/hcp_string.c"
+//#include "../../../c/src/hcp_tif.c"
+//#include "../../../c/src/hcp_vector.c"
+//#include "../../../../amg3/src/amg3.c"
 
 /************     START STOLEN FROM: http://stackoverflow.com/questions/230689/best-way-to-throw-exceptions-in-jni-code *****/
 static jint throwNoSuchMethodError( JNIEnv *env, char *className, char *methodName, char *signature );
