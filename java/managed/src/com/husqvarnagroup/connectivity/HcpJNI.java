@@ -55,12 +55,19 @@ public class HcpJNI {
 	public native void CloseState(long StateHandle);
 	
 	public native String GetMessage(int ErrorCode);
+	public native long NewCodec(long StateHandle, String Codec, long ModelId);
+	public native void CloseCodec(long StateHandle, long CodecId);
+	public native long LoadModel(long StateHandle, String Model);
+	//public native String LoadCodec(long StateHandle, hcp_tCodecLibrary* pLibrary);
+	public native byte[] Encode(long StateHandle, long CodecId, String Command);
+	//public native HcpElement Decode(long StateHandle, long CodecId, byte[] source);
+	public native void Decode(long StateHandle, long CodecId, byte[] source);
 	
-	native int Deserialize(long StateHandle, int SerializerId, byte[] Data, int Length, HcpElement Destination);
-	native int Serialize(long StateHandle, int SerializerId, String Command, byte[] Destination);
+	//native int Deserialize(long StateHandle, int SerializerId, byte[] Data, int Length, HcpElement Destination);
+	//native int Serialize(long StateHandle, int SerializerId, String Command, byte[] Destination);
 	
-	public native int LoadTIF(long StateHandle, String Content);
+	//public native int LoadTIF(long StateHandle, String Content);
 	
-	native int CreateSerializer(long StateHandle, String Protocol, int TIFId);
-	native void CloseSerializer(long StateHandle, int SerializerId);
+	//native int CreateSerializer(long StateHandle, String Protocol, int TIFId);
+	//native void CloseSerializer(long StateHandle, int SerializerId);
 }
