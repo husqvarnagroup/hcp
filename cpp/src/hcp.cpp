@@ -1,12 +1,11 @@
-#include "../include/hcp.h"
-#include "../../c/src/hcp_error.c"
-#include "../../c/src/cJSON.c"
-#include "../../c/src/hcp_library.c"
-#include "../../c/src/hcp_runtime.c"
-#include "../../c/src/hcp_string.c"
-#include "../../c/src/hcp_tif.c"
+#include "hcp.h"
+extern "C" {
 #include "../../c/src/hcp_vector.c"
-#include "../../c/include/hcp_vector.h"
+#include "hcp_vector.h"
+#include "hcp_string.h"
+}
+#include <iostream>
+
 
 /** Singleton instance set when calling create */
 static hcp::Runtime* _r = nullptr;
@@ -102,7 +101,7 @@ hcp_Size_t hcp_getCodecCount(void)
 	return 0;
 }
 
-hcp_tState* hcp_init(const hcp_szStr codecPath) {
+hcp::Runtime* hcp_init_runtime(hcp_cszStr codecPath) {
 	if (_r == nullptr) {
 		hcp_tHost host;
 
@@ -115,13 +114,20 @@ hcp_tState* hcp_init(const hcp_szStr codecPath) {
 
 		_r = new hcp::Runtime(&host);
 	}
+  char const* err = nullptr;
 
 	if (codecPath != nullptr && hcp_szStrLen(codecPath) > 0) {
-		if (!_r->scanDir(codecPath, nullptr)) {
+		if (!_r->scanDir(codecPath, &err)) {
+
+    std::cout << "failed: " << err << std::endl;
 
 		}
 	}
 
+  return _r;
+}
+hcp_tState* hcp_init(hcp_cszStr codecPath) {
+  hcp_init_runtime(codecPath);
 	return _r->getState();
 }
 
@@ -130,7 +136,7 @@ bool hcp::Runtime::hasExtension(const char* path, const char* extension) {
 		return false;
 	}
 
-	hcp_Int pathLen = hcp_szStrLen((const hcp_szStr)path);
+	hcp_Int pathLen = hcp_szStrLen((hcp_cszStr)path);
 	hcp_Int extLen = hcp_szStrLen((const hcp_szStr)extension);
 
 	if (extLen >= pathLen) {
@@ -188,7 +194,7 @@ bool hcp::Runtime::scanDir(const char* codecPath,const char** error) {
 
 		if (hcp::Runtime::hasExtension(ent.name, ".DLL") ||
 			hcp::Runtime::hasExtension(ent.name, ".SO") ||
-			hcp::Runtime::hasExtension(ent.name, ".DYNLIB")) {
+        hcp::Runtime::hasExtension(ent.name, ".DYLIB")) {
 
 			hcp_Size_t pathLen = hcp_szStrLen((hcp_szStr)codecPath);
 			hcp_Size_t nameLen = hcp_szStrLen((hcp_szStr)ent.name);

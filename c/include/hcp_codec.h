@@ -216,7 +216,7 @@ typedef hcp_Int(HCP_CALL *hcp_CodecLastError)(hcp_tRuntime* pRuntime, hcp_tBuffe
 */
 struct hcp_tCodecLibrary {
 	hcp_Int requiredVersion;	/* Required version of HCP to run. */
-	hcp_szStr name;	/* name of the codec */
+	hcp_cszStr name;	/* name of the codec */
 	hcp_CodecSetup setup;	/* gives the codec a chance to initialize a state */
 	hcp_CodecEncode encode;
 	hcp_CodecDecode decode;

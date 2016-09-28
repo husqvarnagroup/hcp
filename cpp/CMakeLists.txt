@@ -19,4 +19,13 @@ target_link_libraries(hcp_cpp PUBLIC ${LIBUV_LIBRARIES})
 target_include_directories(hcp_cpp PUBLIC ${LIBUV_INCLUDE_DIRS})
 #target_compile_options(hcp_cpp PRIVATE -Wno-writable-strings)
 
+add_library(catch INTERFACE)
+target_include_directories(catch INTERFACE lib/catch/include)
+
+add_library(json INTERFACE)
+target_include_directories(json INTERFACE lib/json/src)
+
+add_executable(runtime_test test/runtime.cpp)
+target_link_libraries(runtime_test hcp_cpp catch json)
+target_include_directories(runtime_test PUBLIC include)
 

@@ -2,8 +2,10 @@
 #define HCP_H_
 
 #include <uv.h>
+extern "C" {
 #include "../../c/include/hcp_types.h"
 #include "../../c/include/hcp_runtime.h"
+}
 
 /**
  *	Initializes a runtime object which holds a single HCP-state. If a 
@@ -12,7 +14,7 @@
  *	@param codecPath	Path to codecs, may be null.
  *	@return	Returns a non-null handle of the HCP-runtime was successfully initialized.
  */
-HCP_API hcp_tState* HCP_CALL hcp_init(const hcp_szStr codecPath);
+HCP_API hcp_tState* HCP_CALL hcp_init(hcp_cszStr codecPath);
 /**
  *	Returns the number of loaded codecs.
  *	@return Returns the number of codecs loaded into the runtime.
@@ -92,4 +94,5 @@ namespace hcp {
 	};
 }
 
+HCP_API hcp::Runtime* HCP_CALL hcp_init_runtime(hcp_cszStr codecPath);
 #endif

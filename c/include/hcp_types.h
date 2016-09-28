@@ -93,7 +93,6 @@
 *  3.2     Global macros
 *==============================================================================
 */
-
 #ifndef HCP_EXPORT
 #	define HCP_EXPORT __declspec(dllexport)
 #endif
