@@ -67,10 +67,10 @@
 */
 
 
-extern hcp_Int HCP_CALL hcp_szStrLen(const hcp_szStr String);
-extern hcp_Int HCP_CALL hcp_szStrCmp(const hcp_szStr Lhs, const hcp_szStr Rhs);
+extern hcp_Int HCP_CALL hcp_szStrLen(hcp_cszStr String);
+extern hcp_Int HCP_CALL hcp_szStrCmp(hcp_cszStr Lhs, hcp_cszStr Rhs);
 extern hcp_Int HCP_CALL hcp_tStrCmp(const hcp_tString* pLhs, const hcp_tString* pRhs);
-extern hcp_Int HCP_CALL hcp_tStrSzCmp(const hcp_tString* pLhs, const hcp_szStr pRhs);
+extern hcp_Int HCP_CALL hcp_tStrSzCmp(const hcp_tString* pLhs, const hcp_cszStr pRhs);
 extern hcp_Boolean HCP_CALL hcp_IsDecimal(const hcp_tString* Number);
 extern hcp_Boolean HCP_CALL hcp_IsAlphaNumerical(const hcp_Char Character);
 extern hcp_Boolean HCP_CALL hcp_IsDigit(const hcp_Char Character);

@@ -63,7 +63,7 @@
 *			always void*, which can be cast to the desired type of data pointer in order to be dereferenceable.\n
 *			If the function failed to allocate the requested block of memory, a null pointer is returned.
 */
-typedef void*(*hcp_tMalloc)(const hcp_Size_t Size, void* Context);
+typedef void*(*hcp_tMalloc)(hcp_Size_t Size, void* Context);
 /**
 * A block of memory previously allocated by a call to malloc, calloc or realloc is deallocated, making it available again for further allocations.
 * @param _pPtr If ptr does not point to a block of memory allocated with the above functions, it causes undefined behavior.
@@ -82,7 +82,7 @@ typedef void(*hcp_tFree)(void* _pPtr, void* _pHostCtx);
 * @return	A pointer to the reallocated memory block, which may be either the same as ptr or a new location.
 *			The type of this pointer is void*, which can be cast to the desired type of data pointer in order to be dereferenceable.
 */
-typedef void*(*hcp_tRealloc)(void* _pDst, const hcp_Size_t _nSize, void* _pHostCtx);
+typedef void*(*hcp_tRealloc)(void* _pDst, hcp_Size_t _nSize, void* _pHostCtx);
 /**
 * Copies the values of num bytes from the location pointed to by source directly to the memory block pointed to by destination.
 * The underlying type of the objects pointed to by both the source and destination pointers are irrelevant for this function; The result
@@ -95,7 +95,7 @@ typedef void*(*hcp_tRealloc)(void* _pDst, const hcp_Size_t _nSize, void* _pHostC
 * @param _pHostCtx	Host callback context.
 * @return On success, [_pDst] is returned.
 */
-typedef void*(*hcp_tMemcpy)(void* _pDst, const void* _pSrc, const hcp_Size_t _nSize, void* _pHostCtx);
+typedef void*(*hcp_tMemcpy)(void* _pDst, void const* _pSrc, hcp_Size_t _nSize, void* _pHostCtx);
 /**
 * Sets the first [_nLen] bytes of the block of memory pointed by [_pDst] to the specified [_nValue] (interpreted as an unsigned char).
 * @param _pDst	Pointer to the block of memory to fill.
@@ -105,7 +105,7 @@ typedef void*(*hcp_tMemcpy)(void* _pDst, const void* _pSrc, const hcp_Size_t _nS
 * @param _pHostCtx	Host callback context.
 * @return On success, returns [_pDst].
 */
-typedef void*(*hcp_tMemset)(void * _pDst, const hcp_Int _nValue, const hcp_Size_t _nLen, void* _pHostCtx);
+typedef void*(*hcp_tMemset)(void * _pDst, hcp_Int _nValue, hcp_Size_t _nLen, void* _pHostCtx);
 /**
 *	Attempts to lock (acquire exclusive access) to a pointer.
 *	@param _pPtr	Pointer to acquire exclusive access to
@@ -113,7 +113,7 @@ typedef void*(*hcp_tMemset)(void * _pDst, const hcp_Int _nValue, const hcp_Size_
 *	@param _pHostCtx	Host context associated with the lock function.
 *	@return	Returns HCP_TRUE if the lock was acquired within [_nTimeout] ms.
 */
-typedef hcp_Boolean(*hcp_tTryLock)(const void* _pPtr, const hcp_Size_t _nTimeout, void* _pHostCtx);
+typedef hcp_Boolean(*hcp_tTryLock)(const void* _pPtr, hcp_Size_t _nTimeout, void* _pHostCtx);
 /**
 *	Releases a lock on a pointer value.
 *	@param _pPtr	Pointer to release any locks on.
@@ -149,7 +149,7 @@ typedef void(*hcp_tUnlock)(const void* _pPtr, void* _pHostCtx);
 		hcp_tString family;
 		hcp_Int error;
 		hcp_Int deviceError;
-		hcp_szStr message;
+		hcp_cszStr message;
 		hcp_tParameter* parameters;
 		hcp_Size_t parameterCount;
 		hcp_Uint8 padding;
@@ -186,7 +186,7 @@ typedef struct {
 	 *	@param pOutput	Destination (output) string.
 	 *	@param MaxLength	Maximum number of characters to write to [pOutput9.
 	 */
-	HCP_API void HCP_CALL hcp_GetMessage(const hcp_Int ErrorCode, hcp_szStr pOutput, const hcp_Size_t MaxLength);
+	HCP_API void HCP_CALL hcp_GetMessage(hcp_Int ErrorCode, hcp_szStr pOutput, hcp_Size_t MaxLength);
 	/**
 	 *	Creates a new codec instance which can be used to encode and decode requests.
 	 *	@param pState	HCP state where the loaded codec library and model exists.
@@ -195,14 +195,14 @@ typedef struct {
 	 *	@param pId	On success, outputs a codec instance id. This id is used to refer to the newly created instance when calling encode and decode.
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_NewCodec(hcp_tState* pState, const hcp_szStr Codec, const hcp_Size_t ModelId, hcp_Size_t* pId);
+	HCP_API hcp_Int HCP_CALL hcp_NewCodec(hcp_tState* pState, hcp_cszStr Codec, hcp_Size_t ModelId, hcp_Size_t* pId);
 	/**
 	 *	Closes a codec instance and releases any related resources.
 	 *	@param pState	State where the codec was created.
 	 *	@param CodecId	Codec instance id, obtained when calling [hcp_NewCodec].
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_CloseCodec(hcp_tState* pState, const hcp_Size_t CodecId);
+	HCP_API hcp_Int HCP_CALL hcp_CloseCodec(hcp_tState* pState, hcp_Size_t CodecId);
 	/**
 	 *	Loads a new object model (JSON) into a HCP-state.
 	 *	@param pState	State where the model should be made avalible.
@@ -211,11 +211,11 @@ typedef struct {
 	 *	@param pId	On success, outputs a model instance id.
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_LoadModel(hcp_tState* pState, const hcp_szStr Model, const hcp_Size_t Length, hcp_Int* pId);
+	HCP_API hcp_Int HCP_CALL hcp_LoadModel(hcp_tState* pState, hcp_cszStr Model, hcp_Size_t Length, hcp_Int* pId);
 	/**
 	 *	MARKED FOR DELETION
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_GetPrimitiveType(hcp_tState* pState, const hcp_Int CommandSetId, const hcp_szStr ComplexType);
+	HCP_API hcp_Int HCP_CALL hcp_GetPrimitiveType(hcp_tState* pState, hcp_Int CommandSetId, const hcp_szStr ComplexType);
 	/**
 	 *	Loads a codec library into a HCP-state, allowing codec instances to be created for encoding and decoding data.
 	 *	@param pState	State where the codec should be made avalible.
@@ -223,7 +223,7 @@ typedef struct {
 	 *	@param MaxLength	Maximum number of characters that [codecName] can hold.
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_LoadCodec(hcp_tState* pState, hcp_tCodecLibrary* pLibrary, hcp_szStr CodecName, const hcp_Size_t MaxLength);
+	HCP_API hcp_Int HCP_CALL hcp_LoadCodec(hcp_tState* pState, hcp_tCodecLibrary* pLibrary, hcp_szStr CodecName, hcp_Size_t MaxLength);
 	/**
 	 *	Encodes a request into a byte-array.
 	 *	@param pState	State where the codec instance exists.
@@ -233,7 +233,7 @@ typedef struct {
 	 *	@return	On success, returns a value greater to zero which indicates how many bytes that were written to [pDestination]. A value less than zero
 	 *			indicates an error. Call [hcp_GetMessage] to resolve an error message.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Command, hcp_Uint8* pDestination, const hcp_Uint32 MaxLength);
+	HCP_API hcp_Int HCP_CALL hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, hcp_cszStr Command, hcp_Uint8* pDestination, hcp_Uint32 MaxLength);
 	/**
 	 *	Decodes a range of bytes into a response object. A empty result object [pResult] indicates that not enough bytes has been received to make
 	 *	a complete message.
@@ -245,7 +245,7 @@ typedef struct {
 	 *	@return Returns the number of bytes consumed from [pSource]. If the number of bytes consumed is less then [Length], the remaning bytes
 	 *			should be passed back to [hcp_Decode] once [pResult] is processed.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_Uint8* pSource, const hcp_Size_t Length, hcp_tResult* pResult);
+	HCP_API hcp_Int HCP_CALL hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, hcp_Uint8 const* pSource, hcp_Size_t Length, hcp_tResult* pResult);
 	/**
 	 *	Returns the number of bytes required for a hcp_tState object.
 	 */

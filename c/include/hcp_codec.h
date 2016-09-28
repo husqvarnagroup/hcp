@@ -159,15 +159,15 @@ struct hcp_tRuntime {
 	// Common functions
 	hcp_Size_t(HCP_CALL *GetParameterSetSize)(const hcp_tParameterSet* pParameters);
 	hcp_Size_t(HCP_CALL *GetTypeSize)(const hcp_Int TypeId);
-	const hcp_szStr(HCP_CALL* GetTypeName)(const hcp_Uint8 Id);
+	hcp_cszStr(HCP_CALL* GetTypeName)(const hcp_Uint8 Id);
 	const hcp_Uint8(HCP_CALL* GetTypeId)(const hcp_tString* pName);
 
 	// String functions
-	hcp_Int(HCP_CALL *szStrLen)(const hcp_szStr String);
-	hcp_Int(HCP_CALL *szStrCmp)(const hcp_szStr Lhs, const hcp_szStr Rhs);
+	hcp_Int(HCP_CALL *szStrLen)(hcp_cszStr String);
+	hcp_Int(HCP_CALL *szStrCmp)(hcp_cszStr Lhs, hcp_cszStr Rhs);
 
 	hcp_Int(HCP_CALL *tStrCmp)(const hcp_tString* pLhs, const hcp_tString* pRhs);
-	hcp_Int(HCP_CALL *tStrSzCmp)(const hcp_tString* pLhs, const hcp_szStr pRhs);
+	hcp_Int(HCP_CALL *tStrSzCmp)(const hcp_tString* pLhs, hcp_cszStr pRhs);
 	hcp_Boolean(HCP_CALL *IsDecimal)(const hcp_tString* Number);
 	hcp_Boolean(HCP_CALL *IsAlphaNumerical)(const hcp_Char Character);
 	hcp_Boolean(HCP_CALL *IsDigit)(const hcp_Char Character);
@@ -208,7 +208,7 @@ typedef hcp_tCodecLibrary*(HCP_CALL *hcp_CodecLoad)(void);
 typedef hcp_Int(HCP_CALL *hcp_CodecSetup)(hcp_tRuntime* pRuntime, hcp_tBuffer* pContext);
 typedef hcp_Int(HCP_CALL *hcp_CodecEncode)(hcp_tRuntime* pRuntime, hcp_tProtocol* pProtocol, const hcp_tCommand* pCommand, hcp_tBlob* pDestination, hcp_tBuffer* pContext);
 typedef hcp_Int(HCP_CALL *hcp_CodecDecode)(hcp_tRuntime* pRuntime, hcp_tProtocol* pProtocol, const hcp_tBlob* pSource, hcp_tCommandSet* pCommands, hcp_tCommand** ppCommand, hcp_tBuffer* pContext);
-typedef hcp_Int(HCP_CALL *hcp_CodecLastError)(hcp_tRuntime* pRuntime, hcp_tBuffer* pContext, hcp_szStr* pMessage);
+typedef hcp_Int(HCP_CALL *hcp_CodecLastError)(hcp_tRuntime* pRuntime, hcp_tBuffer* pContext, hcp_cszStr* pMessage);
 
 /**
 *	Structure which exposes functionallity for encoding/decoding

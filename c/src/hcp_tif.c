@@ -92,7 +92,7 @@ static hcp_Int hcp_LoadCommandTemplate(hcp_tState* pState, cJSON* pMethod, cJSON
 static hcp_Int hcp_LoadMethods(hcp_tState* pState, cJSON* pObject, hcp_tCommandTemplateSet* pTemplates);
 static hcp_Int hcp_LoadHeader(hcp_tState* pState, hcp_tJSON* pRoot, hcp_tModel* pTemplate);
 static hcp_Int hcp_LoadParameterTemplates(hcp_tState* pState, cJSON* pArray, cJSON* pTypeArray, hcp_tParameterTemplateSet* pParameters);
-static hcp_Int hcp_GetString(cJSON* N, const hcp_szStr Name, hcp_tString* pDestination);
+static hcp_Int hcp_GetString(cJSON* N, hcp_cszStr Name, hcp_tString* pDestination);
 static hcp_Boolean hcp_LoadCommandHeader(cJSON* pObject, hcp_tCommandHeader* pHeader);
 static hcp_tString hcp_NextString(hcp_tString* pSource, char Terminator, hcp_Boolean EndOnEndOfString);
 static hcp_Int hcp_ParseTIFHeader(hcp_tString* pCommand, hcp_tCommandHeader* pHeader);
@@ -279,8 +279,8 @@ hcp_Int hcp_ParseStringValue(hcp_tString* pValue, hcp_tParameter* pParameter, hc
 		quoteStart = HCP_TRUE;
 	}
 
-	hcp_Char* end = pValue->value;
-	hcp_Char* start = pValue->value;
+	hcp_Char const* end = pValue->value;
+	hcp_Char const* start = pValue->value;
 	hcp_Boolean terminated = HCP_FALSE;
 
 	if (quoteStart == HCP_TRUE) {
@@ -330,8 +330,8 @@ hcp_Int hcp_ParseByteArray(hcp_tString* pValue, hcp_tParameter* pParameter) {
 		pValue->length--;
 	}
 
-	hcp_Char* end = pValue->value;
-	hcp_Char* start = pValue->value;
+	hcp_Char const* end = pValue->value;
+	hcp_Char const* start = pValue->value;
 	hcp_Size_t i = 1;
 
 	hcp_Uint8* dest = (hcp_Uint8*)pValue->value;
@@ -370,8 +370,8 @@ hcp_Int hcp_ParseDigitValue(hcp_tString* pValue, hcp_tParameter* pParameter) {
 	hcp_Int error = HCP_NOERROR;
 
 	hcp_IgnoreSpace(pValue);
-	hcp_Char* start = pValue->value;
-	hcp_Char* end = pValue->value;
+	hcp_Char const* start = pValue->value;
+	hcp_Char const* end = pValue->value;
 
 	while (pValue->length > 0) {
 		if (*pValue->value == ',' || *pValue->value == ')') {
@@ -490,8 +490,8 @@ hcp_tString hcp_NextString(hcp_tString* pString,char Terminator, hcp_Boolean End
 	hcp_IgnoreSpace(pString);
 
 	hcp_Boolean complete = EndOnEndOfString;
-	hcp_Char* start = pString->value;
-	hcp_Char* end = pString->value;
+	hcp_Char const* start = pString->value;
+	hcp_Char const* end = pString->value;
 
 	while (pString->length > 0) {
 		hcp_Char character = *pString->value;
@@ -621,7 +621,7 @@ hcp_Int hcp_LoadMethods(hcp_tState* pState, cJSON* pObject,hcp_tCommandTemplateS
 	return HCP_NOERROR;
 }
 
-hcp_Int hcp_GetString(cJSON* N, const hcp_szStr Name, hcp_tString* pDestination) {
+hcp_Int hcp_GetString(cJSON* N, hcp_cszStr Name, hcp_tString* pDestination) {
 	cJSON* node = cJSON_GetObjectItem(N, (const char*)Name);
 
 	if (node == HCP_NULL || node->type != cJSON_String) {

@@ -368,7 +368,7 @@ hcp_Int hcp_NewState(hcp_tState* pState, hcp_tHost* pHost) {
 	return HCP_NOERROR;
 }
 
-hcp_Int hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_szStr Command, hcp_Uint8* pDestination, const hcp_Uint32 MaxLength) {
+hcp_Int hcp_Encode(hcp_tState* pState, hcp_Size_t CodecId, hcp_cszStr Command, hcp_Uint8* pDestination, hcp_Uint32 MaxLength) {
 	if (pState == HCP_NULL) {
 		return HCP_INVALIDSTATE;
 	}
@@ -497,7 +497,7 @@ hcp_Int hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_Uint8* pSou
 	return bytesRead;
 }
 
-hcp_Int hcp_NewCodec(hcp_tState* pState,const hcp_szStr Codec,const hcp_Size_t TemplateId, hcp_Size_t* pId) {
+hcp_Int hcp_NewCodec(hcp_tState* pState,hcp_cszStr Codec,const hcp_Size_t TemplateId, hcp_Size_t* pId) {
 	*pId = 0;
 	hcp_Int error = HCP_NOERROR;
 
@@ -567,7 +567,7 @@ hcp_Size_t hcp_SizeOfState(void) {
 
 void hcp_GetMessage(const hcp_Int ErrorCode, hcp_szStr pOutput, const hcp_Size_t MaxLength) {
 	const hcp_tErrorMessage* msg = hcp_Errors;
-	hcp_szStr src = HCP_NULL;
+	hcp_cszStr src = HCP_NULL;
 
 	while (msg != HCP_NULL && !((*msg).code == 0 && (*msg).message == HCP_NULL)) {
 		if ((*msg).code == ErrorCode) {
@@ -616,7 +616,7 @@ hcp_Int hcp_GetPrimitiveType(hcp_tState* pState, const hcp_Int CommandSetId, con
 	return error;
 }
 
-hcp_Int hcp_LoadModel(hcp_tState* pState, const hcp_szStr Model, const hcp_Size_t Length, hcp_Int* pId) {
+hcp_Int hcp_LoadModel(hcp_tState* pState, hcp_cszStr Model, const hcp_Size_t Length, hcp_Int* pId) {
 	*pId = -1;
 
 	hcp_Int error = HCP_NOERROR;
@@ -653,7 +653,7 @@ hcp_Int hcp_LoadModel(hcp_tState* pState, const hcp_szStr Model, const hcp_Size_
 	return error;
 }
 
-const hcp_szStr hcp_GetTypeName(const hcp_Uint8 Id) {
+hcp_cszStr hcp_GetTypeName(const hcp_Uint8 Id) {
 	const hcp_tType* type = hcp_Types;
 
 	while (type != HCP_NULL && !(type->id == 0 && type->name == HCP_NULL)) {

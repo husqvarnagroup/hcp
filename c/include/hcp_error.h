@@ -193,7 +193,7 @@
 
 	typedef struct {
 		hcp_Int code;
-		hcp_szStr message;
+		hcp_cszStr message;
 	}hcp_tErrorMessage;
 /*
 *==============================================================================

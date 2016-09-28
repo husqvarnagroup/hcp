@@ -101,7 +101,7 @@ static hcp_Int hcp_ToBytes(void* pNumber, const hcp_Size_t NumberOfBytes, hcp_tB
 *==============================================================================
 */
 
-hcp_Int hcp_szStrCmp(const hcp_szStr Lhs, const hcp_szStr Rhs) {
+hcp_Int hcp_szStrCmp(hcp_cszStr Lhs, hcp_cszStr Rhs) {
 	if (Lhs == HCP_NULL && Rhs == HCP_NULL) {
 		return 0;
 	}
@@ -114,8 +114,8 @@ hcp_Int hcp_szStrCmp(const hcp_szStr Lhs, const hcp_szStr Rhs) {
 		return 1;
 	}
 
-	hcp_Char* lhs = Lhs;
-	hcp_Char* rhs = Rhs;
+	hcp_Char const* lhs = Lhs;
+	hcp_Char const* rhs = Rhs;
 
 	while (*lhs != HCP_NULL) {
 		if (*rhs == HCP_NULL) {
@@ -138,7 +138,7 @@ hcp_Int32 hcp_Atio(const hcp_tString* pNumber) {
 		return 0;
 	}
 
-	hcp_Char* start = pNumber->value;;
+	hcp_Char const* start = pNumber->value;;
 	hcp_Int multiplyer = 1;
 	hcp_Int base = 0;
 	hcp_Size_t length = pNumber->length;
@@ -168,7 +168,7 @@ hcp_Int32 hcp_Atio(const hcp_tString* pNumber) {
 		return 0;
 	}
 
-	hcp_Char* end = (hcp_Char*)((hcp_Size_t)start + length - 1);
+	hcp_Char const* end = (hcp_Char*)((hcp_Size_t)start + length - 1);
 	hcp_Int32 value = 0;
 
 	for (; end >= start; end--) {
@@ -179,7 +179,7 @@ hcp_Int32 hcp_Atio(const hcp_tString* pNumber) {
 	return value*scale;
 }
 
-hcp_Int hcp_tStrSzCmp(const hcp_tString* pLhs, const hcp_szStr pRhs) {
+hcp_Int hcp_tStrSzCmp(const hcp_tString* pLhs, const hcp_cszStr pRhs) {
 	if (pRhs == HCP_NULL) {
 		return 1;
 	}
@@ -190,8 +190,8 @@ hcp_Int hcp_tStrSzCmp(const hcp_tString* pLhs, const hcp_szStr pRhs) {
 
 	const hcp_Size_t maxLength = pLhs->length;
 	hcp_Size_t length = 0;
-	hcp_Char* lhs = pLhs->value;
-	hcp_Char* rhs = pRhs;
+	hcp_Char const* lhs = pLhs->value;
+	hcp_Char const* rhs = pRhs;
 
 	while (length < maxLength) {
 
@@ -229,7 +229,7 @@ hcp_Boolean hcp_IsHexadecimal(const hcp_tString* pNumber) {
 	}
 
 	hcp_Size_t length = pNumber->length;
-	hcp_Char* value = pNumber->value;
+	hcp_Char const* value = pNumber->value;
 
 	if (length == 0 || value == HCP_FALSE) {
 		return HCP_FALSE;
@@ -270,7 +270,7 @@ hcp_Boolean hcp_IsDecimal(const hcp_tString* Number) {
 	}
 
 	hcp_Size_t length = Number->length;
-	hcp_Char* value = Number->value;
+	hcp_Char const* value = Number->value;
 
 	if (*value == '-') {
 		value++; length--;
@@ -305,8 +305,8 @@ hcp_Int hcp_tStrCmp(const hcp_tString* pLhs, const hcp_tString* pRhs) {
 	}
 
 	hcp_Size_t length = 0;
-	hcp_Char* lhs = pLhs->value;
-	hcp_Char* rhs = pRhs->value;
+	hcp_Char const* lhs = pLhs->value;
+	hcp_Char const* rhs = pRhs->value;
 
 	while (length < pLhs->length) {
 		if (*lhs != *rhs) {
@@ -319,12 +319,12 @@ hcp_Int hcp_tStrCmp(const hcp_tString* pLhs, const hcp_tString* pRhs) {
 	return 0;
 }
 
-hcp_Int hcp_szStrLen(const hcp_szStr String) {
+hcp_Int hcp_szStrLen(hcp_cszStr String) {
 	if (String == HCP_NULL) {
 		return 0;
 	}
 
-	hcp_szStr value = String;
+	hcp_cszStr value = String;
 	hcp_Int length = 0;
 
 	while (*value != 0) {

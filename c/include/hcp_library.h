@@ -189,7 +189,7 @@ extern hcp_Int HCP_CALL hcp_AppendString(const hcp_tString* pString, hcp_tBlob* 
 
 extern hcp_Size_t HCP_CALL hcp_GetParameterSetSize(const hcp_tParameterSet* pParameters);
 extern hcp_Size_t HCP_CALL hcp_GetTypeSize(const hcp_Int TypeId);
-extern const hcp_szStr HCP_CALL hcp_GetTypeName(const hcp_Uint8 Id);
+extern hcp_cszStr HCP_CALL hcp_GetTypeName(const hcp_Uint8 Id);
 extern const hcp_Uint8 HCP_CALL hcp_GetTypeId(const hcp_tString* pName);
 
 extern hcp_Int HCP_CALL hcp_InitializeCommandTemplates(hcp_tState* pState, hcp_tCommandTemplateSet* pTemplates);

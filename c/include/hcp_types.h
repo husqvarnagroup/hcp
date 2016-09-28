@@ -169,6 +169,7 @@ typedef int64_t hcp_Int64;
 typedef hcp_Int32 hcp_Int;		/* platform specific int */
 typedef char hcp_Char;			/* single character element */
 typedef char* hcp_szStr;		/* zero-terminated string */
+typedef char const* hcp_cszStr;		/* zero-terminated string */
 typedef uint32_t hcp_UnixTime;
 typedef uint16_t hcp_SimpleVersion;
 
@@ -212,7 +213,7 @@ typedef uint16_t hcp_SimpleVersion;
 
 typedef struct {
 	hcp_Uint8 id;
-	hcp_szStr name;
+	hcp_cszStr name;
 } hcp_tType;
 
 /**
@@ -240,7 +241,7 @@ typedef struct hcp_tBlob {
  */
 #pragma pack(push, 8)
 typedef struct {
-	hcp_Char* value;		/* value of the string */
+	hcp_Char const* value;		/* value of the string */
 	hcp_Size_t length;			/* number of characters in [value] */
 	hcp_Boolean zeroTerm;	/* equal to HCP_TRUE if the string is terminated by a zero */
 } hcp_tString;
