@@ -882,6 +882,15 @@ hcp_Int HCP_CALL hcp_BytesToParameters(hcp_tRuntime* R, const hcp_tBlob* pSource
 		 
 		switch (typeId)
 		{
+			case HCP_BOOLEAN_ID: {
+				hcp_Uint8 value = 0;
+
+				error = hcp_BytesToUint8(pSource, Offset + bytesRead, &value, Endianess);
+
+				if (error == HCP_NOERROR) {
+					parameter->value.b = (value != HCP_FALSE) ? HCP_TRUE : HCP_FALSE;
+				}
+			} break;
 			case HCP_UINT8_ID: {
 				error = hcp_BytesToUint8(pSource, Offset + bytesRead, &parameter->value.u8, Endianess);
 			} break;
