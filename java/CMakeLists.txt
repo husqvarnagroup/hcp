@@ -34,7 +34,7 @@ ADD_CUSTOM_COMMAND(
   COMMENT   "Build JNI Header"
   )
 
-add_library(HcpJNI STATIC native/jni/hcp_jni.c ${CMAKE_CURRENT_BINARY_DIR}/com_husqvarnagroup_connectivity_HcpJNI.h )
+add_library(HcpJNI STATIC native/jni/hcp_jni.cpp ${CMAKE_CURRENT_BINARY_DIR}/com_husqvarnagroup_connectivity_HcpJNI.h )
 target_include_directories(HcpJNI PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(HcpJNI PUBLIC ${JNI_INCLUDE_DIRS})
 target_include_directories(HcpJNI PUBLIC native/jni)

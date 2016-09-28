@@ -25,6 +25,11 @@ package com.husqvarnagroup.connectivity;
 
 import java.util.HashMap;
 
+  class HcpException extends Exception {
+    HcpException(String msg) {
+      super(msg);
+    }
+};
 /**
  *	Internal class used to map native HCP C-Runtime to Java. Do not call this call
  * 	directly but use the other provided public classes instead.
@@ -34,8 +39,8 @@ public class HcpJNI {
 	private boolean _initialized;
 	
 	private static HcpJNI _singleton;
-	
-	static {
+
+        static {
 		System.loadLibrary("hcp-jni");
 	}
 	

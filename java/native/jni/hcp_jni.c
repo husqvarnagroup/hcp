@@ -108,7 +108,6 @@ JNIEXPORT jstring JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_GetMessage
 	return result;
 }
 
-/*
 #include <stdio.h>
 
 JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_LoadTIF
@@ -403,4 +402,3 @@ JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Deserialize
 
 	return bytesRead;
 }
-*/
