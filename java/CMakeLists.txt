@@ -11,10 +11,10 @@ find_package(JNI REQUIRED)
 
 
   set(jni_src
-#managed/src/com/husqvarnagroup/connectivity/HcpElement.java
+managed/src/com/husqvarnagroup/connectivity/HcpElement.java
       managed/src/com/husqvarnagroup/connectivity/HcpJNI.java
-#managed/src/com/husqvarnagroup/connectivity/HcpSerializer.java
-#managed/src/com/husqvarnagroup/connectivity/HcpSerializerFactory.java
+managed/src/com/husqvarnagroup/connectivity/HcpSerializer.java
+managed/src/com/husqvarnagroup/connectivity/HcpSerializerFactory.java
      )
 
   add_jar(hcp_jni ${jni_src})
@@ -39,3 +39,19 @@ target_include_directories(HcpJNI PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(HcpJNI PUBLIC ${JNI_INCLUDE_DIRS})
 target_include_directories(HcpJNI PUBLIC native/jni)
 target_link_libraries(HcpJNI PUBLIC hcp)
+
+#add_jar(hcp_helloworld 
+#SOURCES managed/src/com/husqvarnagroup/connectivity/examples/HelloWorld.java
+#INCLUDE_JARS hcp_jni
+#)
+
+add_jar(hcp_use_amg3 
+        SOURCES managed/src/com/husqvarnagroup/connectivity/test/UseAmg3.java
+        INCLUDE_JARS hcp_jni
+        ENTRY_POINT com/husqvarnagroup/connectivity/test/UseAmg3
+#MANIFEST managed/src/com/husqvarnagroup/connectivity/test/MANIFEST.MF
+        )
+  get_target_property(_jarAmg3 hcp_use_amg3 JAR_FILE)
+message(STATUS "Amg3 file ${_jarAmg3}")
+
+

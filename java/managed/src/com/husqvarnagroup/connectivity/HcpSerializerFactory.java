@@ -31,7 +31,7 @@ public class HcpSerializerFactory {
 		stream.close();
 
 		String body = new String(data, "UTF-8");
-		int id = _library.LoadTIF(_stateHandle, body);
+		int id = _library.LoadModel(_stateHandle, body);
 
 		if(id < 0) {
 			String errorMessage = _library.GetMessage(id);
@@ -48,12 +48,12 @@ public class HcpSerializerFactory {
 			throw new Exception("Invalid TIF-body id.");
 		}
 
-		int serializerId = _library.CreateSerializer(_stateHandle,  Protocol,  TIFId);
+		long serializerId = _library.NewCodec(_stateHandle,  Protocol,  TIFId);
 		
-		if(serializerId < 0) {
-			String errorMessage = _library.GetMessage(serializerId);
-			throw new IOException(errorMessage);
-		}
+		//if(serializerId < 0) {
+			//String errorMessage = _library.GetMessage(serializerId);
+			//throw new IOException(errorMessage);
+		//}
 		
 		return new HcpSerializer(_stateHandle, serializerId, _library);
 	}

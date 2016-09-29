@@ -153,7 +153,7 @@ auto toBytes(JNIEnv * env, jbyteArray const& bytes) {
     return std::unique_ptr<hcp_Uint8,decltype(clean)>{array,std::move(clean)};
 }
 
-JNIEXPORT jlong JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_LoadModel
+JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_LoadModel
   (JNIEnv * env, jobject , jlong StateHandle, jstring Model)
 {
     auto state = reinterpret_cast<hcp_tState*>(StateHandle);
