@@ -3,10 +3,13 @@
 #include <jni.h>
 #include <stdlib.h>
 #include <string.h>
+extern "C" {
 #include <hcp_types.h>
 #include <hcp_error.h>
 #include <hcp_codec.h>
 #include <hcp_state.h>
+}
+#include "hcp.h"
 #include <memory>
 
 /************     START STOLEN FROM: http://stackoverflow.com/questions/230689/best-way-to-throw-exceptions-in-jni-code *****/
@@ -77,24 +80,42 @@ jint throwHcpException( JNIEnv* env, int error)
 
 /************     END STOLEN FROM: http://stackoverflow.com/questions/230689/best-way-to-throw-exceptions-in-jni-code *****/
 
+auto toUtfStr(JNIEnv * env, jstring const& str) {
+    auto model = env->GetStringUTFChars(str, 0);
+    auto clean = [env,&str] (auto* p) { env->ReleaseStringUTFChars( str, p); };
+    return std::unique_ptr<char const,decltype(clean)>{model,std::move(clean)};
+}
+auto toBytes(JNIEnv * env, jbyteArray const& bytes) {
+    auto array = reinterpret_cast<hcp_Uint8*>(env->GetByteArrayElements(bytes, 0));
+    auto clean = [env,&bytes] (auto* p) { env->ReleaseByteArrayElements( bytes, (jbyte*)p, 0); };
+    return std::unique_ptr<hcp_Uint8,decltype(clean)>{array,std::move(clean)};
+}
+
+auto toState(jlong p) {
+ auto runtime = reinterpret_cast<hcp::Runtime*>(p);
+ return runtime->getState();
+}
+
 JNIEXPORT jlong JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_NewState
-  (JNIEnv * Env, jobject Object){
+  (JNIEnv * env, jobject Object, jstring Path){
 
-	hcp_tState* pState = new hcp_tState();
+    auto path = toUtfStr(env,Path);
+    auto runtime = hcp_init_runtime(path.get());
+	//hcp_tState* pState = new hcp_tState();
 
-	if(pState == NULL) {
-		return 0;
-	}
+	//if(pState == NULL) {
+		//return 0;
+	//}
 
-	hcp_Int error = HCP_NOERROR;
+	//hcp_Int error = HCP_NOERROR;
 
-	error = hcp_NewState(pState, HCP_NULL);
+	//error = hcp_NewState(pState, HCP_NULL);
 
-	if(error != HCP_NOERROR) {
-		return (jlong)error;
-	}
+	//if(error != HCP_NOERROR) {
+		//return (jlong)error;
+	////}
 
-	return (jlong)pState;
+	return (jlong)runtime;
 }
 
 JNIEXPORT void JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_CloseState
@@ -141,16 +162,6 @@ JNIEXPORT void JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_CloseCodec
     auto res = hcp_CloseCodec(state, codec_id);
     if (res != HCP_NOERROR) 
       throwHcpException(env, res);
-}
-auto toUtfStr(JNIEnv * env, jstring const& str) {
-    auto model = env->GetStringUTFChars(str, 0);
-    auto clean = [env,&str] (auto* p) { env->ReleaseStringUTFChars( str, p); };
-    return std::unique_ptr<char const,decltype(clean)>{model,std::move(clean)};
-}
-auto toBytes(JNIEnv * env, jbyteArray const& bytes) {
-    auto array = reinterpret_cast<hcp_Uint8*>(env->GetByteArrayElements(bytes, 0));
-    auto clean = [env,&bytes] (auto* p) { env->ReleaseByteArrayElements( bytes, (jbyte*)p, 0); };
-    return std::unique_ptr<hcp_Uint8,decltype(clean)>{array,std::move(clean)};
 }
 
 JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_LoadModel

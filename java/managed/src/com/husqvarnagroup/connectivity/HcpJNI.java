@@ -41,7 +41,8 @@ public class HcpJNI {
 	private static HcpJNI _singleton;
 
         static {
-		System.loadLibrary("hcp-jni");
+		System.loadLibrary("HcpJNI");
+		//System.loadLibrary("hcp-jni");
 	}
 	
 	public static HcpJNI GetGlobal() {
@@ -56,9 +57,9 @@ public class HcpJNI {
 		_initialized = false;
 	}
 	 
-	public native long NewState();
+	public native long NewState(String path);
 	public native void CloseState(long StateHandle);
-	
+
 	public native String GetMessage(int ErrorCode);
 	public native long NewCodec(long StateHandle, String Codec, long ModelId);
 	public native void CloseCodec(long StateHandle, long CodecId);

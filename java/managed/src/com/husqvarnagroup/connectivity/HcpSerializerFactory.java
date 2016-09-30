@@ -59,7 +59,7 @@ public class HcpSerializerFactory {
 	}
 	
 	public void initialize() {
-		_stateHandle = _library.NewState();
+		_stateHandle = _library.NewState("");
 	}
 	
 	public void close() {

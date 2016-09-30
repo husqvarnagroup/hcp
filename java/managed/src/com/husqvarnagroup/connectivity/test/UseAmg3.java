@@ -24,7 +24,10 @@ public class UseAmg3  {
              System.out.print("Use Amg3 \n");
              classPath();
              HcpElement elm = new HcpElement();
-		//HcpJNI global = HcpJNI.GetGlobal();
+		HcpJNI global = HcpJNI.GetGlobal();
+    long state = global.NewState();
+             System.out.print("Amg3 set up!!\n");
+             global.CloseState(state);
              System.out.print("Amg3 Ok!!\n");
   }
 }
