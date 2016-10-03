@@ -1,3 +1,9 @@
 [submodule "cpp/lib/libuv"]
 	path = cpp/lib/libuv
 	url = https://github.com/libuv/libuv
+[submodule "cpp/lib/catch"]
+	path = cpp/lib/catch
+	url = https://github.com/philsquared/Catch.git
+[submodule "cpp/lib/json"]
+	path = cpp/lib/json
+	url = https://github.com/nlohmann/json.git
