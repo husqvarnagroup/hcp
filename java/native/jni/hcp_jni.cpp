@@ -254,25 +254,6 @@ JNIEXPORT jobjectArray JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_GetCo
     }
 }
 
-JNIEXPORT jstring JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_GetMessage
-  (JNIEnv * Env, jobject Obj, jint ErrorCode) {
-    try {
-	constexpr hcp_Size_t BufferSize = 512;
-
-  char buffer[BufferSize];
-
-	hcp_GetMessage(ErrorCode, buffer, BufferSize);
-
-	jstring result = Env->NewStringUTF(buffer);
-
-	return result;
-    }
-    catch (JavaException const& ex) {
-        ex.propagateToJava(*Env);
-        return nullptr;
-    }
-}
-
 JNIEXPORT jlong JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_NewCodec
   (JNIEnv * Env, jobject, jlong StateHandle, jstring Codec, jlong ModelId)
 {
@@ -336,9 +317,10 @@ JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Encode
 
     auto dest = toBytes(env,ret);
     auto destLen = env->GetArrayLength(ret);
-    auto res = hcp_Encode(state, codec_id, command.get(), dest.get(), destLen);
-    if (res < 0) throw hcpException( res);
-    return res;
+    auto bytesWritten = hcp_Encode(state, codec_id, command.get(), dest.get(), destLen);
+    if (bytesWritten < 0) 
+      throw hcpException( bytesWritten);
+    return bytesWritten;
     }
     catch (JavaException const& ex) {
         ex.propagateToJava(*env);
@@ -347,7 +329,6 @@ JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Encode
 }
 void copyToHcpElement(JNIEnv * Env, hcp_tResult const& result, jobject& Destination)
 {
-    try {
 			static const char* destClass = "com/husqvarnagroup/connectivity/HcpElement";
 
 			static const char* setFamilyName = "setFamily";
@@ -402,10 +383,6 @@ void copyToHcpElement(JNIEnv * Env, hcp_tResult const& result, jobject& Destinat
 			} else {
 				throw noClassDefError(destClass);
 			}
-    }
-    catch (JavaException const& ex) {
-        ex.propagateToJava(*Env);
-    }
 }
 JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Decode
   (JNIEnv * env, jobject, jlong StateHandle, jlong CodecId, jbyteArray data, jint len, jobject ret)
@@ -417,9 +394,11 @@ JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Decode
 
     auto dest = toBytes(env,data);
     hcp_tResult result;
-    auto res = hcp_Decode(state, codec_id, dest.get(), data_len, &result);
+    auto bytesRead = hcp_Decode(state, codec_id, dest.get(), data_len, &result);
+    if(bytesRead < 0)
+      throw hcpException(bytesRead);
     copyToHcpElement(env,result,ret);
-    return res;
+    return bytesRead;
     }
     catch (JavaException const& ex) {
         ex.propagateToJava(*env);

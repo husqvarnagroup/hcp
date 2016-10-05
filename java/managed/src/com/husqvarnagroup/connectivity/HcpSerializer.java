@@ -16,10 +16,6 @@ public class HcpSerializer {
 		
 		int error = _jni.Decode(_stateHandle, _serializerId, Source, Length, element);
 		
-		if(error < 0) {
-			throw new Exception(_jni.GetMessage(error));
-		}
-		
 		element.setBytesRead(error);
 		return element;
 	}
@@ -34,10 +30,6 @@ public class HcpSerializer {
 		}
 
 		int bytesWritten = _jni.Encode(_stateHandle, _serializerId, Command, Destination);
-		
-		if(bytesWritten < 0) {
-			throw new Exception(_jni.GetMessage(bytesWritten));
-		}
 		
 		return bytesWritten;
 	}

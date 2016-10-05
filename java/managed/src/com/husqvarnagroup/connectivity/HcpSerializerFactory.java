@@ -33,11 +33,6 @@ public class HcpSerializerFactory {
 		String body = new String(data, "UTF-8");
 		int id = _library.LoadModel(_stateHandle, body);
 
-		if(id < 0) {
-			String errorMessage = _library.GetMessage(id);
-			throw new IOException(errorMessage);
-		}
-
 		// add to internal collection
 		_tifs.put(Filename,  id);
 	}

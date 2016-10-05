@@ -44,7 +44,6 @@ public class HcpJNI {
 	public native void CloseState(long StateHandle);
   public native String[] GetCodecNames();
 
-	public native String GetMessage(int ErrorCode);
 	public native long NewCodec(long StateHandle, String Codec, long ModelId);
 	public native void CloseCodec(long StateHandle, long CodecId);
 	public native int LoadModel(long StateHandle, String Model);
