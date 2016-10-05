@@ -1,8 +1,6 @@
 #include "com_husqvarnagroup_connectivity_HcpJNI.h"
 
 #include <jni.h>
-#include <stdlib.h>
-#include <string.h>
 extern "C" {
 #include <hcp_types.h>
 #include <hcp_error.h>
@@ -12,74 +10,47 @@ extern "C" {
 #include "hcp.h"
 #include <memory>
 #include <string>
+#include <assert.h>
 
-/************     START STOLEN FROM: http://stackoverflow.com/questions/230689/best-way-to-throw-exceptions-in-jni-code *****/
-static jint throwNoSuchMethodError( JNIEnv *env, char const *className, char const *methodName, char const *signature );
-static jint throwNoClassDefError( JNIEnv *env,const char * pMessage );
+class JavaException {
+  public:
+    JavaException(std::string className, std::string message)
+      : className(std::move(className))
+      , message(std::move(message))
+  {}
+  void propagateToJava(JNIEnv& env) const
+  {
+      jclass exClass = env.FindClass(className.c_str());
+      assert(exClass != nullptr);
+      auto ok = env.ThrowNew(exClass, message.c_str());
+      assert(ok);
+  }
 
-jint throwNoClassDefError( JNIEnv* env,const char* pMessage )
-{
-    const char * className = "java/lang/NoClassDefFoundError";
-
-    jclass exClass = env->FindClass(className);
-
-    if (exClass == NULL) {
-        //return throwNoClassDefError( env, className );
-    }
-
-    return env->ThrowNew( exClass, pMessage );
+private:
+  std::string className;
+  std::string message;
+};
+JavaException noClassDefError(std::string message) { 
+  return {"java/lang/NoClassDefFoundError",std::move(message)}; 
 }
-jint throwIllegalArgumentException( JNIEnv* env,const char* pMessage )
-{
-    const char * className = "java/lang/IllegalArgumentException";
-
-    jclass exClass = env->FindClass( className);
-
-    return env->ThrowNew( exClass, pMessage );
+JavaException illegalArgumentException(std::string message) { 
+  return { "java/lang/IllegalArgumentException",std::move(message)}; 
 }
-
-jint throwNoSuchMethodError( JNIEnv* env, char const* className, char const* methodName, char const* signature )
-{
-
-    char const *exClassName = "java/lang/NoSuchMethodError" ;
-    char* msgBuf;
-    jint retCode;
-    size_t nMallocSize;
-
-    jclass exClass = env->FindClass( exClassName );
-
-    nMallocSize = strlen(className)
-            + strlen(methodName)
-            + strlen(signature) + 8;
-
-    msgBuf = (char*)malloc( nMallocSize );
-    memset( msgBuf, 0, nMallocSize );
-
-    strcpy( msgBuf, className );
-    strcat( msgBuf, "." );
-    strcat( msgBuf, methodName );
-    strcat( msgBuf, "." );
-    strcat( msgBuf, signature );
-
-    retCode = env->ThrowNew( exClass, msgBuf );
-    free ( msgBuf );
-    return retCode;
+JavaException noSuchMethodError( char const* className, char const* methodName, char const* signature ) { 
+    auto message = std::string( className );
+    message += ".";
+    message += methodName;
+    message += ".";
+    message += signature;
+  return { "java/lang/NoSuchMethodError",std::move(message)}; 
 }
-
-jint throwHcpException( JNIEnv* env, int error)
-{
-  const char * className = "com/husqvarnagroup/connectivity/HcpException";
-  jclass exClass = env->FindClass( className);
-
+JavaException hcpException(int error) { 
   constexpr hcp_Size_t BufferSize = 512;
   char buffer[BufferSize];
 
   hcp_GetMessage(error, buffer, BufferSize);
-
-  return env->ThrowNew( exClass, buffer);
+  return { "com/husqvarnagroup/connectivity/HcpException",buffer}; 
 }
-
-/************     END STOLEN FROM: http://stackoverflow.com/questions/230689/best-way-to-throw-exceptions-in-jni-code *****/
 
 auto toUtfStr(JNIEnv * env, jstring const& str) {
     auto model = env->GetStringUTFChars(str, 0);
@@ -233,26 +204,38 @@ static jobject HcpJNI_NewObject(JNIEnv * env, const hcp_tParameter* pParameter) 
 	return value;
 }
 
-JNIEXPORT jlong JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_NewState
-  (JNIEnv * env, jobject Object, jstring Path){
+JNIEXPORT jlong JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_NewState(
+    JNIEnv* env, jobject Object, jstring Path)
+{
+    try {
+        auto path = toUtfStr(env, Path);
+        auto runtime = hcp_init_runtime(path.get());
 
-    auto path = toUtfStr(env,Path);
-    auto runtime = hcp_init_runtime(path.get());
-
-    return (jlong)runtime;
+        return (jlong)runtime;
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*env);
+        return 0;
+    }
 }
 
 JNIEXPORT void JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_CloseState
   (JNIEnv * Env, jobject Object, jlong StateHandle){
+    try {
 
 	if(StateHandle != 0) {
 		hcp_CloseState(toState(StateHandle));
 		free((void*)StateHandle);
 	}
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*Env);
+    }
 }
 JNIEXPORT jobjectArray JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_GetCodecNames
   (JNIEnv * Env, jobject)
 {
+    try {
   auto siz = hcp_getCodecCount();
 
       jobjectArray strarr = Env->NewObjectArray(siz, Env->FindClass("java/lang/String"), nullptr);
@@ -264,10 +247,16 @@ JNIEXPORT jobjectArray JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_GetCo
     }
 
     return strarr;
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*Env);
+        return nullptr;
+    }
 }
 
 JNIEXPORT jstring JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_GetMessage
   (JNIEnv * Env, jobject Obj, jint ErrorCode) {
+    try {
 	constexpr hcp_Size_t BufferSize = 512;
 
   char buffer[BufferSize];
@@ -277,64 +266,70 @@ JNIEXPORT jstring JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_GetMessage
 	jstring result = Env->NewStringUTF(buffer);
 
 	return result;
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*Env);
+        return nullptr;
+    }
 }
 
 JNIEXPORT jlong JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_NewCodec
   (JNIEnv * Env, jobject, jlong StateHandle, jstring Codec, jlong ModelId)
 {
+    try {
   auto state = toState(StateHandle);
   auto codec = toUtfStr(Env,Codec); // Env->GetStringUTFChars(Codec, 0);
   auto model_id = static_cast<long>(ModelId);
   hcp_Size_t pId;
   auto res = hcp_NewCodec(state, codec.get(), model_id,&pId);
   if(res != HCP_NOERROR) 
-    throwHcpException(Env,res);
+    throw hcpException(res);
 
   return pId;
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*Env);
+        return 0;
+    }
 }
 
 JNIEXPORT void JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_CloseCodec
   (JNIEnv * env, jobject, jlong StateHandle, jlong CodecId)
 {
+    try {
     auto state = toState(StateHandle);
     auto codec_id = static_cast<hcp_Size_t>(CodecId);
     auto res = hcp_CloseCodec(state, codec_id);
     if (res != HCP_NOERROR) 
-      throwHcpException(env, res);
+      throw hcpException( res);
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*env);
+    }
 }
 
 JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_LoadModel
   (JNIEnv * env, jobject , jlong StateHandle, jstring Model)
 {
+    try {
     auto state = toState(StateHandle);
     auto model = toUtfStr(env,Model);
     //auto model = env->GetStringUTFChars(Model, 0);
     auto length = env->GetStringUTFLength(Model);
     hcp_Int pId;
     auto res = hcp_LoadModel(state, model.get(), length, &pId);
-    if (res != HCP_NOERROR) throwHcpException(env, res);
+    if (res != HCP_NOERROR) throw hcpException( res);
     return pId;
-}
-JNIEXPORT jbyteArray JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Encode
-  (JNIEnv * env, jobject, jlong StateHandle, jlong CodecId, jstring Command)
-{
-    auto state = toState(StateHandle);
-    auto codec_id = static_cast<hcp_Size_t>(CodecId);
-    //auto command = env->GetStringUTFChars(Command, 0);
-    auto command = toUtfStr(env,Command);
-
-    jbyteArray ret;
-    auto dest = toBytes(env,ret);
-    //auto dest = reinterpret_cast<hcp_Uint8*>(env->GetByteArrayElements(ret, 0));
-    auto destLen = env->GetArrayLength(ret);
-    auto res = hcp_Encode(state, codec_id, command.get(), dest.get(), destLen);
-    if (res != HCP_NOERROR) throwHcpException(env, res);
-    //env->ReleaseByteArrayElements( ret, (jbyte*)dest, 0);
-    return ret;
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*env);
+        return 0;
+    }
 }
 JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Encode
   (JNIEnv * env, jobject, jlong StateHandle, jlong CodecId, jstring Command, jbyteArray ret)
 {
+    try {
     auto state = toState(StateHandle);
     auto codec_id = static_cast<hcp_Size_t>(CodecId);
     auto command = toUtfStr(env,Command);
@@ -342,11 +337,17 @@ JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Encode
     auto dest = toBytes(env,ret);
     auto destLen = env->GetArrayLength(ret);
     auto res = hcp_Encode(state, codec_id, command.get(), dest.get(), destLen);
-    if (res < 0) throwHcpException(env, res);
+    if (res < 0) throw hcpException( res);
     return res;
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*env);
+        return 0;
+    }
 }
 void copyToHcpElement(JNIEnv * Env, hcp_tResult const& result, jobject& Destination)
 {
+    try {
 			static const char* destClass = "com/husqvarnagroup/connectivity/HcpElement";
 
 			static const char* setFamilyName = "setFamily";
@@ -389,22 +390,27 @@ void copyToHcpElement(JNIEnv * Env, hcp_tResult const& result, jobject& Destinat
 								Env->DeleteLocalRef(value);
 							}
 						} else {
-							throwNoSuchMethodError(Env,destClass, putName, putSig);
+							throw noSuchMethodError(destClass, putName, putSig);
 						}
 
 					} else {
-						throwNoSuchMethodError(Env,destClass,setCommandName, setCommandSig);
+						throw noSuchMethodError(destClass,setCommandName, setCommandSig);
 					}
 				} else {
-					throwNoSuchMethodError(Env,destClass,setFamilyName, setFamilySig);
+					throw noSuchMethodError(destClass,setFamilyName, setFamilySig);
 				}
 			} else {
-				throwNoClassDefError(Env,destClass);
+				throw noClassDefError(destClass);
 			}
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*Env);
+    }
 }
 JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Decode
   (JNIEnv * env, jobject, jlong StateHandle, jlong CodecId, jbyteArray data, jint len, jobject ret)
 {
+    try {
     auto state = toState(StateHandle);
     auto codec_id = static_cast<hcp_Size_t>(CodecId);
     auto data_len = static_cast<hcp_Size_t>(len);
@@ -414,4 +420,9 @@ JNIEXPORT jint JNICALL Java_com_husqvarnagroup_connectivity_HcpJNI_Decode
     auto res = hcp_Decode(state, codec_id, dest.get(), data_len, &result);
     copyToHcpElement(env,result,ret);
     return res;
+    }
+    catch (JavaException const& ex) {
+        ex.propagateToJava(*env);
+        return 0;
+    }
 }
