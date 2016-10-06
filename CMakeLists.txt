@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 14)
   add_subdirectory(c)
   add_subdirectory(cpp)
   add_subdirectory(java)
+  add_subdirectory(python)
   
 #message(info ${LIBUV
 
