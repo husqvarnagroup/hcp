@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD 14)
 #message(info ${LIBUV
 
 #target_link_libraries(hcp_cpp LibUV)
-add_executable(hcp_cpp_demo cpp/src/main.cpp)
-target_link_libraries(hcp_cpp_demo hcp_cpp)
+#add_executable(hcp_cpp_demo cpp/src/main.cpp)
+#target_link_libraries(hcp_cpp_demo hcp_cpp)
 #target_compile_options(hcp_cpp_demo PRIVATE -Wno-writable-strings)
-target_compile_options(hcp_cpp_demo PRIVATE -Wno-format-security)
+#target_compile_options(hcp_cpp_demo PRIVATE -Wno-format-security)
