@@ -95,6 +95,8 @@
 */
 #ifdef __APPLE__
 #	define HCP_EXPORT
+#elif __linux__
+#	define HCP_EXPORT
 #endif
 
 #ifndef HCP_EXPORT

@@ -3,9 +3,11 @@
 
 #include <uv.h>
 extern "C" {
+#include "../../c/include/hcp_library.h"
 #include "../../c/include/hcp_types.h"
 #include "../../c/include/hcp_runtime.h"
 }
+#include <string.h>
 
 /**
  *	Initializes a runtime object which holds a single HCP-state. If a 

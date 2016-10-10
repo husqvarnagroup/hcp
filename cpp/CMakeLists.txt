@@ -14,6 +14,7 @@ add_library(hcp_cpp STATIC ${hcp_cpp})
 
 target_include_directories(hcp_cpp PUBLIC include)
 target_link_libraries(hcp_cpp PUBLIC hcp LibUV::LibUV)
+set_property(TARGET hcp_cpp PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 #target_link_libraries(hcp_cpp PUBLIC ${LIBUV_LIBRARIES})
 #target_include_directories(hcp_cpp PUBLIC ${LIBUV_INCLUDE_DIRS})

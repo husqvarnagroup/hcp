@@ -26,4 +26,5 @@ set(hcp_src
 
 add_library(hcp STATIC ${hcp_src})
 target_include_directories(hcp PUBLIC include)
+set_property(TARGET hcp PROPERTY POSITION_INDEPENDENT_CODE ON)
 
