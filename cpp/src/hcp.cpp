@@ -1,6 +1,5 @@
 #include "hcp.h"
 extern "C" {
-#include "../../c/src/hcp_vector.c"
 #include "hcp_vector.h"
 #include "hcp_string.h"
 }
