@@ -181,7 +181,7 @@
 	 *		runtime is also encouraged to return tError objects instead of integers to ease future
 	 *		fault finding.
 	 */
-	typedef struct {
+	typedef struct hcp_tError {
 		const hcp_Int16 error;		/*	result code, equal to HCP_NOERROR if \n
 									the operation completed successfully */
 		const hcp_Int line;				/*  line number where the error occured */

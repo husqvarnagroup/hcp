@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
   list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
   add_subdirectory(c)
   add_subdirectory(cpp)
+  add_subdirectory(objective-c)
   add_subdirectory(java)
   add_subdirectory(python)
   

@@ -304,7 +304,7 @@ hcp_Int hcp_CloseCodec(hcp_tState* pState, const hcp_Size_t Id) {
 
 
 
-hcp_Int hcp_NewState(hcp_tState* pState, hcp_tHost* pHost) {
+hcp_Int hcp_NewState(hcp_tState* pState, hcp_tHost const* pHost) {
 	if (pState == HCP_NULL) {
 		return HCP_INVALIDSTATE;
 	}

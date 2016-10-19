@@ -256,7 +256,7 @@ typedef struct {
 	 *	@param pHost	Host struct mapping functions for malloc/free and more.
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
-	extern hcp_Int HCP_CALL hcp_NewState(hcp_tState* pDest, hcp_tHost* pHost);
+	extern hcp_Int HCP_CALL hcp_NewState(hcp_tState* pDest, hcp_tHost const* pHost);
 	/**
 	 *	Closes a state and releases all associated resources.
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
