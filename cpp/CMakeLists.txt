@@ -8,6 +8,10 @@ find_package(LibUV REQUIRED)
 set(hcp_cpp 
     src/hcp.cpp
     include/hcp.h
+    src/hcp/scan.cpp
+    include/hcp/scan.hpp
+    src/hcp/runtime.cpp
+    include/hcp/runtime.hpp
    )
 
 add_library(hcp_cpp STATIC ${hcp_cpp})
