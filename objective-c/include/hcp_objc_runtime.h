@@ -1,36 +1,26 @@
 #import <Foundation/Foundation.h>
-#import <hcp_runtime.h>
 
-@interface Result : NSObject {
-  @private
-    NSDictionary* parameters;
-    int error;
-    int deviceError;
-    NSString* message;
-}
-@property(copy) NSString* command;
-@property(copy) NSString* family;
+@interface Result : NSObject
+@property(copy,readonly) NSString* command;
+@property(copy,readonly) NSString* family;
+@property(copy,readonly) NSDictionary* parameters;
+@property(copy,readonly) NSString* message;
+@property(readonly) NSInteger error;
+@property(readonly) NSInteger deviceError;
 @end
 
-@interface Codec : NSObject {
-  @private
-    hcp_Size_t pCodec;
-    hcp_tState* pState;
-}
-- (id)initCodec:(hcp_Size_t)handle state:(hcp_tState*)st;
-- (NSData*)encode:(NSString*)command onError:(NSError**)errorPtr;
-- (Result*)decode:(NSData*)buffer onError:(NSError**)errorPtr;
+@interface Codec : NSObject
+- (NSData*)encodeCommand:(NSString*)command onError:(NSError**)error;
+- (Result*)decodeResult:(NSData*)buffer onError:(NSError**)error;
 @end
 
-@interface Hcp : NSObject {
-  @private
-    hcp_tState* pState;
-}
-- (void)scanForCodecs:(NSString*)path onError:(NSError**)errorPtr;
+@interface Hcp : NSObject
+- (void)scanForCodecsInPath:(NSString*)path
+                    onError:(NSError**)error;
 - (NSArray*)codecList;
-- (int)addModel:(NSString*)model onError:(NSError**)errorPtr;
-- (Codec*)newCodec:(int)model
-           library:(NSString*)name
-           onError:(NSError**)errorPtr;
+- (NSInteger)addModel:(NSString*)model onError:(NSError**)error;
+- (Codec*)newCodecWithModel:(NSInteger)model
+                    library:(NSString*)name
+                    onError:(NSError**)error;
 @end
 

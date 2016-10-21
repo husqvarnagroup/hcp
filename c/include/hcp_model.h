@@ -60,7 +60,7 @@
 
 /**	Vector with commands that will be populated during runtime
 */
-HCP_VECTOR(hcp_tCommandTemplate, hcp_tCommandTemplateSet, HCP_MAXSIZE_COMMANDS);
+HCP_VECTOR(hcp_tCommandTemplate, hcp_tCommandTemplateSet, HCP_MAXSIZE_COMMANDS)
 
 
 typedef struct {

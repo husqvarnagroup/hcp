@@ -1,5 +1,11 @@
-#import <hcp_objc_runtime.h>
-#import <hcp_scan.h>
+#import "hcp_objc_runtime.h"
+#import "hcp_scan.h"
+#import "hcp_runtime.h"
+
+#if ! __has_feature(objc_arc)
+#error "ARC is off"
+#endif
+
 
 NSString* fromHcpString(hcp_tString const* str)
 {
@@ -48,7 +54,11 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
         return nil;
     }
 }
+
 @implementation Result
+{
+}
+
 - (id)initFromHcpResult:(hcp_tResult const*)res
 {
     self = [super init];
@@ -61,17 +71,21 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
         }
         _command = fromHcpString(&res->command);
         _family = fromHcpString(&res->family);
-        error = res->error;
-        deviceError = res->deviceError;
+        _error = res->error;
+        _deviceError = res->deviceError;
         if (res->message)
-            message = [NSString stringWithUTF8String:res->message];
+            _message = [NSString stringWithUTF8String:res->message];
     }
     return self;
 }
 @end
 
-@implementation Codec
-- (id)initCodec:(hcp_Size_t)handle state:(hcp_tState*)state
+@implementation Codec {
+    hcp_Size_t pCodec;
+    hcp_tState* pState;
+}
+
+- (id)initCodecWithHandle:(hcp_Size_t)handle state:(hcp_tState*)state
 {
     self = [super init];
     if (self) {
@@ -80,7 +94,7 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
     }
     return self;
 }
-- (NSData*)encode:(NSString*)command onError:(NSError**)errorPtr
+- (NSData*)encodeCommand:(NSString *)command onError:(NSError *__autoreleasing *)error
 {
     hcp_Uint8 buffer[1024];
     int bytesWritten =
@@ -88,7 +102,7 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
     if (bytesWritten < 0) {
         char msg[1024];
         hcp_GetMessage(bytesWritten, msg, 1024);
-        *errorPtr = [NSError errorWithDomain:@"com.husqvarna"
+        *error = [NSError errorWithDomain:@"com.husqvarna"
                                         code:bytesWritten
                                     userInfo:@{
                                         @"Error reason" : @(msg)
@@ -97,7 +111,7 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
     }
     return [NSData dataWithBytes:(void*)buffer length:bytesWritten];
 }
-- (Result*)decode:(NSData*)buffer onError:(NSError**)errorPtr
+- (Result*)decodeResult:(NSData *)buffer onError:(NSError *__autoreleasing *)error
 {
     hcp_tResult dest;
     int bytesRead =
@@ -105,7 +119,7 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
     if (bytesRead < 0) {
         char msg[1024];
         hcp_GetMessage(bytesRead, msg, 1024);
-        *errorPtr = [NSError errorWithDomain:@"com.husqvarna"
+        *error = [NSError errorWithDomain:@"com.husqvarna"
                                         code:bytesRead
                                     userInfo:@{
                                         @"Error reason" : @(msg)
@@ -117,14 +131,17 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
 @end
 
 @implementation Hcp
+{
+    hcp_tState* pState;
+}
 
 - (void)dealloc
 {
     hcp_CloseState2(pState, NULL);
-    [super dealloc];
 }
-- (void)scanForCodecs:(NSString*)path onError:(NSError**)errorPtr
+- (void)scanForCodecsInPath:(NSString *)path onError:(NSError *__autoreleasing *)error
 {
+    error = nil;
     hcp_ScanAndLoad([path UTF8String], pState);
 }
 - (id)init
@@ -147,40 +164,37 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
     return [NSArray arrayWithArray:codecs];
 }
 
-- (int)addModel:(NSString*)model onError:(NSError**)errorPtr
-{
-    int id;
-    int err = hcp_LoadModel(pState, [model UTF8String], [model length], &id);
+- (NSInteger)addModel:(NSString *)model onError:(NSError *__autoreleasing *)error{
+    int handle;
+    int err = hcp_LoadModel(pState, [model UTF8String], [model length], &handle);
     if (err != HCP_NOERROR) {
         char msg[1024];
         hcp_GetMessage(err, msg, 1024);
-        *errorPtr = [NSError errorWithDomain:@"com.husqvarna"
+        *error = [NSError errorWithDomain:@"com.husqvarna"
                                         code:err
                                     userInfo:@{
                                         @"Error reason" : @(msg)
                                     }];
         return err;
     }
-    return id;
+    return (NSInteger)handle;
 }
 
-- (Codec*)newCodec:(int)model
-           library:(NSString*)name
-           onError:(NSError**)errorPtr
+- (Codec*)newCodecWithModel:(NSInteger)model library:(NSString *)name onError:(NSError *__autoreleasing *)error
 {
-    hcp_Size_t id;
-    int err = hcp_NewCodec(pState, [name UTF8String], model, &id);
+    hcp_Size_t handle;
+    int err = hcp_NewCodec(pState, [name UTF8String], model, &handle);
     if (err != HCP_NOERROR) {
         char msg[1024];
         hcp_GetMessage(err, msg, 1024);
-        *errorPtr = [NSError errorWithDomain:@"com.husqvarna"
+        *error = [NSError errorWithDomain:@"com.husqvarna"
                                         code:err
                                     userInfo:@{
                                         @"Error reason" : @(msg)
                                     }];
         return nil;
     }
-    return [[Codec alloc] initCodec:id state:pState];
+    return [[Codec alloc] initCodecWithHandle:handle state:pState];
 }
 
 @end
