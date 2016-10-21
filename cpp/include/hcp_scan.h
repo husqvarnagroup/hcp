@@ -21,7 +21,7 @@ HCP_API void HCP_CALL hcp_CloseState2(hcp_State_t, hcp_Error_t*);
 struct hcp_tCodecLibrary;
 struct hcp_tState;
 
-typedef void (*library_callback)(hcp_tCodecLibrary*, void*);
+typedef void (*library_callback)(struct hcp_tCodecLibrary*, void*);
 
 void hcp_Scan(char const* path, library_callback, void* context);
 void hcp_ScanAndLoad(char const* path, hcp_tState*);

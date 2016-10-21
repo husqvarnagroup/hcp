@@ -71,7 +71,7 @@ typedef struct {
 	hcp_tString value;
 } hcp_tProtocolNode;
 
-HCP_VECTOR(hcp_tProtocolNode, hcp_tProtocol, HCP_MAXSIZE_PROTOCOLS);
+HCP_VECTOR(hcp_tProtocolNode, hcp_tProtocol, HCP_MAXSIZE_PROTOCOLS)
 
 /**	Description of a parameter
  */
@@ -95,8 +95,8 @@ typedef struct {
 
 /** Collection (set) of parameters
 */
-HCP_VECTOR(hcp_tParameter, hcp_tParameterSet, HCP_MAXSIZE_PARAMS);
-HCP_VECTOR(hcp_tParameterTemplate, hcp_tParameterTemplateSet, HCP_MAXSIZE_PARAMS);
+HCP_VECTOR(hcp_tParameter, hcp_tParameterSet, HCP_MAXSIZE_PARAMS)
+HCP_VECTOR(hcp_tParameterTemplate, hcp_tParameterTemplateSet, HCP_MAXSIZE_PARAMS)
 
 /**	Header which identifies a command within a collection
  */
@@ -125,7 +125,7 @@ typedef struct hcp_tCommand {
 
 /**	Vector with commands that will be populated during runtime
 */
-HCP_VECTOR(hcp_tCommand, hcp_tCommandSet, HCP_MAXSIZE_COMMANDS);
+HCP_VECTOR(hcp_tCommand, hcp_tCommandSet, HCP_MAXSIZE_COMMANDS)
 
 typedef struct hcp_tCodecLibrary hcp_tCodecLibrary;
 typedef struct hcp_tRuntime hcp_tRuntime;
@@ -160,7 +160,7 @@ struct hcp_tRuntime {
 	hcp_Size_t(HCP_CALL *GetParameterSetSize)(const hcp_tParameterSet* pParameters);
 	hcp_Size_t(HCP_CALL *GetTypeSize)(const hcp_Int TypeId);
 	hcp_cszStr(HCP_CALL* GetTypeName)(const hcp_Uint8 Id);
-	const hcp_Uint8(HCP_CALL* GetTypeId)(const hcp_tString* pName);
+	hcp_Uint8(HCP_CALL* GetTypeId)(const hcp_tString* pName);
 
 	// String functions
 	hcp_Int(HCP_CALL *szStrLen)(hcp_cszStr String);

@@ -1,6 +1,4 @@
 #import <hcp_objc_runtime.h>
-#import <hcp_scan.h>
-#import <uv.h>
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +14,7 @@ int main(int argc, char *argv[])
 
     Hcp* hcp = [[Hcp alloc] init];
     // Scan the file system for codec plugins
-    [hcp scanForCodecs:codecPath onError:&error];
+    [hcp scanForCodecsInPath:codecPath onError:&error];
     
     // Get a list of found codec plugins
     NSArray* codecs = [hcp codecList];
@@ -27,14 +25,14 @@ int main(int argc, char *argv[])
     }
     
     // Add a model
-    int id = [hcp addModel:model onError:&error];
+    NSInteger model_id = [hcp addModel:model onError:&error];
     if(error) {
         NSLog(@"An error occured: %@", error);
         return 1;
     }
     
     // Create a new codec using a pluging and a model
-    Codec* codec = [hcp newCodec:id library:@"amg3" onError:&error];
+    Codec* codec = [hcp newCodecWithModel:model_id library:@"amg3" onError:&error];
     if(error) {
         NSLog(@"An error occured: %@", error);
         return 1;
@@ -42,14 +40,14 @@ int main(int argc, char *argv[])
 
     // Encode a command
     NSString* command = @"DeviceInformation.GetMmiInformation()";
-    NSData* buf = [codec encode:command onError:&error];
+    NSData* buf = [codec encodeCommand:command onError:&error];
     if(error) {
         NSLog(@"An error occured: %@", error);
         return 1;
     }
     
     // Decode the encoded buffer
-    Result* res = [codec decode:buf onError:&error];
+    Result* res = [codec decodeResult:buf onError:&error];
     if(error) {
         NSLog(@"An error occured: %@", error);
         return 1;
