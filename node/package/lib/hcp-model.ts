@@ -1,28 +1,123 @@
-'use strict';
+/// <reference types="typescript" />
 
-const util = require('util');
-const fs = require('fs');
+import { Completer, CompleterResult } from 'readline';
+import * as util from 'util';
+import * as fs from 'fs';
 
-class TifCompiler {
+export type MethodParameter = {
+    name: string;
+    type: string | any,
+    length?: number | string
+}
+
+export type CompiledMethodParameter = {
+    tifParams : MethodParameter[],
+    scriptParams : ObjectType
+}
+
+export type MethodBody = {
+    command: string;
+    family: string;
+    inParams: MethodParameter[] | CompiledMethodParameter,
+    outParams: MethodParameter[] | CompiledMethodParameter,
+    path?: string; // use for compiling
+};
+
+export type ModelBody = {
+    header?: {},
+    types?: any[],
+    methods: MethodBody[]
+}
+
+export type ObjectType = {
+    name: string,
+    types: any[],
+    method: MethodBody,
+    description: string
+};
+
+export class HcpModel {
+    private _id: number;
+    private _body: ModelBody;
+    private _completer: Completer;
+    private _build : string;
+
+    constructor(id: number, body: ModelBody) {
+        this._id = id;
+        this._body = body;
+        this._completer = null;
+        this._build = null;
+    }
+
+    public get id() {
+        return this._id;
+    }
+
+    public get completer() : Completer{
+        if (this._completer == null) {
+            // build the contents of the completer
+            let completions: string[] = this._body.methods.map(
+                (method) => method.family + '.' + method.command);
+
+            this._completer = (line): any => {
+                let hits = completions.filter((c) => c.indexOf(line) == 0);
+                return [hits.length ? hits : completions, line];
+            }
+        }
+
+        return this._completer;
+    }
+    /**
+     * Compiles the model into a typescript file.
+     */
+    public compile() : string {
+        if(!this._build) {
+            let compiler = new HcpModelCompiler();
+            this._build = compiler.compile(this._body);
+        }
+
+        return this._build;
+    }
+    /**
+     * Compiles the model into a typescript file and stores the result to disc.
+     */
+    public compileTo(outFile : string) : void {
+        let build = this.compile();
+        fs.writeFileSync(outFile, build);
+    }
+}
+
+class HcpModelCompiler {
+
+    private _methods = {};
+    private _enums = {};
+    private _types = {};
+    private _errors = [];
+    private _objects = [];
+    private _namespaces = [];
+
     constructor() {
         this._methods = {};
         this._enums = {};
         this._types = {};
         this._errors = [];
-        this._interfaces = [];
+        this._objects = [];
         this._namespaces = [];
     }
-
-    clear() {
-        this._methods.clear();
-        this._errors.clear();
-        this._interfaces.clear();
-
+    /**
+     * Clears the compilers internal state.
+     */
+    private clear() {
+        this._methods = [];
+        this._errors = [];
+        this._objects = [];
         this._enums = {};
         this._types = {};
     }
-
-    getScriptType(type) {
+    /**
+     * Returns the corresponding node-type from a model-parameter type.
+     */
+    private getScriptType(type: string): any {
         if (!type || !util.isString(type)) {
             return null;
         }
@@ -60,13 +155,15 @@ class TifCompiler {
             }
         }
     }
-
-    extractTypes(doc) {
-        if (!doc || !util.isArray(doc.types)) {
+    /**
+     * Extracts the types section from a model.
+     */
+    private extractTypes(body: ModelBody): void {
+        if (!body || !util.isArray(body.types)) {
             return;
         }
 
-        doc.types.forEach((type, index) => {
+        body.types.forEach((type, index) => {
             if (!util.isString(type.name) || type.name.length < 1) {
                 return;
             }
@@ -138,19 +235,20 @@ class TifCompiler {
             }
         }
     }
-
-    //var uint8array = new TextEncoder("utf-8").encode("¢");
-    //var string = new TextDecoder("utf-8").decode(uint8array);
-
-    verifyParameterName(name) {
+    /**
+     * Checks if a parameter name is valid.
+     */
+    private verifyParameterName(name): boolean {
         if (!name || !util.isString(name) || name == '') {
             return false;
         }
 
         return true;
     }
-
-    resolveParameterTypes(parameters, method) {
+    /**
+     * Extracts the types from a parameter array.
+     */
+    private resolveParameterTypes(parameters: MethodParameter[], method: MethodBody): void {
         if (!parameters || !util.isArray(parameters)) {
             return;
         }
@@ -177,8 +275,10 @@ class TifCompiler {
             }
         });
     }
-
-    extractInterfaces(parameters, prefix, method, description) {
+    /**
+     * Extracts the object-style object- types
+     */
+    private extractObjectTypes(parameters: MethodParameter[], prefix: string, method: MethodBody, description: string) : ObjectType{
         if (!parameters || !util.isArray(parameters)) {
             this._errors.push(new Error('Parameter property on ' + method.path + ' was not an array.'));
             return null;
@@ -199,27 +299,29 @@ class TifCompiler {
             result.types.push({
                 name: p.name,
                 type: p.type.scriptType,
-                size: parseInt(p.length),
+                size: util.isString(p.length) ? parseInt(p.length as string) : p.length,
                 source: p
             });
         });
 
-        if (this._interfaces.find((item) => {
+        if (this._objects.find((item) => {
             return item.name == result.name;
         })) {
             return;
         }
 
-        this._interfaces.push(result);
+        this._objects.push(result);
         return result;
     }
-
-    extractMethods(doc) {
-        if (!doc || !util.isArray(doc.methods)) {
+    /**
+     * Extacts the methods from a body, adding them to the compiler state.
+     */
+    private extractMethods(body : ModelBody) : void {
+        if (!body || !util.isArray(body.methods)) {
             return;
         }
 
-        doc.methods.forEach((method) => {
+        body.methods.forEach((method) => {
             if (!util.isString(method.family) || method.family.length < 1) {
                 return;
             }
@@ -233,22 +335,24 @@ class TifCompiler {
 
             method.path = method.family + '.' + method.command;
 
-            this.resolveParameterTypes(method.inParams, method);
-            this.resolveParameterTypes(method.outParams, method);
+            this.resolveParameterTypes(method.inParams as MethodParameter[], method);
+            this.resolveParameterTypes(method.outParams as MethodParameter[], method);
 
             method.inParams = {
-                tifParams: method.inParams,
-                scriptParams: this.extractInterfaces(method.inParams, 'tIn', method, 'Input interface for ' + method.family + '.' + method.command)
+                tifParams: method.inParams as MethodParameter[],
+                scriptParams: this.extractObjectTypes(method.inParams as MethodParameter[], 'tIn', method, 'Input object for ' + method.family + '.' + method.command)
             };
 
             method.outParams = {
-                tifParams: method.outParams,
-                scriptParams: this.extractInterfaces(method.outParams, 'tOut', method, 'Output interface for ' + method.family + '.' + method.command)
+                tifParams: method.outParams as MethodParameter[],
+                scriptParams: this.extractObjectTypes(method.outParams as MethodParameter[], 'tOut', method, 'Output object for ' + method.family + '.' + method.command)
             };
         });
     }
-
-    writeTypes() {
+    /**
+     * Writes the types section of the compiled model.
+     */
+    private writeTypes() : string {
         let typesBlock = '';
         let enumsBlock = '';
 
@@ -290,9 +394,11 @@ class TifCompiler {
 
         return typesBlock + '\n\n' + enumsBlock + '\n';
     }
-
-    writeInterface(parameters, prefix, method, description) {
-        let interfaceName = prefix + method.command;
+    /**
+     * Writes the objects associated with a method.
+     */
+    private writeObjects(parameters : CompiledMethodParameter, prefix : string, method : MethodBody, description : string) : string{
+        let objectName = prefix + method.command;
 
         return parameters.tifParams.reduce((prev, curr, index, array) => {
             prev += '\n\t\t' + curr.name + ': ';
@@ -303,123 +409,124 @@ class TifCompiler {
                 return prev + curr.type.scriptType.name;
             }
 
-        }, '\t/**\n\t *  ' + description + '\n\t */\n\texport interface ' + interfaceName + ' {') + '\n\t}\n';
+        }, '\t/**\n\t *  ' + description + '\n\t */\n\texport type ' + objectName + ' = {') + '\n\t}\n';
     }
-
-    writeBody(method, returnType, runArgs) {
+    /**
+     * Returns the body section of the compiled model as a string.
+     */
+    private writeBody(method : MethodBody, returnType, string, runArgs : string) : string {
         let request = method.family + '.' + method.command;
 
-        request += '(' + method.inParams.tifParams.reduce((prev, curr, index, array) => {
+        request += '(' + (method.inParams as CompiledMethodParameter) .tifParams.reduce((prev, curr, index, array) => {
             prev += "" + curr.name + ": ' + __args." + curr.name + "+ '";
-            
-            if(index + 1 < array.length) {
+
+            if (index + 1 < array.length) {
                 return prev + ',';
             }
-            
+
             return prev;
         }, '') + ')';
 
         let response = util.format('\n\t\tlet __args = %s;\n', runArgs);
-        response += "\n\t\t\if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}\n"; 
-       
+        response += "\n\t\t\if(!handle.codec || typeof(handle.codec) != 'object') { handle = { codec : handle,timeout : 0};}\n";
+
         response += util.format("\n\t\ttry {\n\t\t\treturn handle.codec.send('%s', handle.timeout);\n\t\t} catch(error) {\n\t\t" +
             '\treturn new Promise<%s>((res,reject) => { reject(error);\});\n\t\t}\n', request, returnType);
 
         return response;
     }
-
-    writeMethods() {
+    /**
+     * Returns the methods section of the compiled model as a string.
+     */
+    private writeMethods() : string {
         let result = '';
 
         for (let family in this._methods) {
             result += '\nexport namespace ' + family + ' {\n';
 
-            let interfaces = '';
+            let objects = '';
             let methods = '';
 
-            // write interfaces
+            // write objects
             for (let command in this._methods[family]) {
-                let method = this._methods[family][command];
+                let method : MethodBody = this._methods[family][command];
 
-                if (method.outParams.tifParams.length > 1) {
-                    interfaces += this.writeInterface(method.outParams, 'tOut', method, 'Output interface for ' + method.family + '.' + method.command);
+                if ((method.outParams as CompiledMethodParameter).tifParams.length > 1) {
+                    objects += this.writeObjects((method.outParams as CompiledMethodParameter), 'tOut', method, 'Output type for ' + method.family + '.' + method.command);
                 }
 
                 let returnType = '';
 
-                if (method.outParams.tifParams.length > 1) {
+                if ((method.outParams as CompiledMethodParameter).tifParams.length > 1) {
                     returnType = 'tOut' + method.command;
-                } else if (method.outParams.tifParams.length == 1) {
-                    returnType = method.outParams.tifParams[0].type.scriptType.name;
+                } else if ((method.outParams as CompiledMethodParameter).tifParams.length == 1) {
+                    returnType = (method.outParams as CompiledMethodParameter).tifParams[0].type.scriptType.name;
                 } else {
                     returnType = 'void';
                 }
-                
+
                 let header = '\n\texport function ' + method.command;
                 let runArgs = '{}';
+                
+                if ((method.inParams as CompiledMethodParameter).tifParams.length == 0) {
+                    methods += header + '(handle : any): ';
 
-                if (method.inParams.tifParams.length == 0) {
-                     methods += header + '(handle : any): ';
-                     
-                     methods += 'Promise<' + returnType + '>';
-                     methods += ' {' + this.writeBody(method, returnType,runArgs) + '\t}\n';
+                    methods += 'Promise<' + returnType + '>';
+                    methods += ' {' + this.writeBody(method, returnType, runArgs) + '\t}\n';
                 } else {
-                    interfaces += this.writeInterface(method.inParams, 'tIn', method, 'Input interface for ' + method.family + '.' + method.command);
+                    objects += this.writeObjects(method.inParams as CompiledMethodParameter, 'tIn', method, 'Input type for ' + method.family + '.' + method.command);
 
                     methods += header + 'I(handle : any, args : tIn' + method.command + '): ';
                     methods += 'Promise<' + returnType + '>';
                     methods += ' {' + this.writeBody(method, returnType, 'args') + '\t}\n';
-                    
+
                     runArgs = '{\n';
-                    
-                    methods += header + method.inParams.tifParams.reduce((prev, curr, index, array) => {
-                        
-                            if (!this.getScriptType(curr.type.tifType)) {
-                                prev += curr.name + ': ' + curr.type.tifType;
-                                
-                            } else {
-                                prev += curr.name + ': ' + curr.type.scriptType.name;
-                            }
-                            
-                            runArgs += '\t\t\t\t' + curr.name + ': ' + curr.name;
 
-                            if (index + 1 < array.length) {
-                                runArgs += ',\n'
-                                return prev + ', ';
-                            }
+                    methods += header + (method.inParams as CompiledMethodParameter).tifParams.reduce((prev, curr, index, array) => {
 
-                            return prev + '): '
-                        }, '(handle : any, ');
-                        
+                        if (!this.getScriptType(curr.type.tifType)) {
+                            prev += curr.name + ': ' + curr.type.tifType;
+
+                        } else {
+                            prev += curr.name + ': ' + curr.type.scriptType.name;
+                        }
+
+                        runArgs += '\t\t\t\t' + curr.name + ': ' + curr.name;
+
+                        if (index + 1 < array.length) {
+                            runArgs += ',\n'
+                            return prev + ', ';
+                        }
+
+                        return prev + '): '
+                    }, '(handle : any, ');
+
                     runArgs += '\n\t\t}';
-                    
+
                     methods += util.format('Promise<%s> {\n\t\treturn %sI(handle, %s);\n\t}\n', returnType, method.command, runArgs);
                 }
 
             }
 
-            result += interfaces + methods + '}\n';
+            result += objects + methods + '}\n';
         }
 
         return result;
     }
 
+    /**
+     * Compiles a model into a type-script string.
+     */
+    public compile(body : ModelBody) : string{
+        this.extractTypes(body);
+        this.extractMethods(body);
 
-    static compile(doc, options) {
-        let compiler = new TifCompiler();
+        let script = this.writeTypes();
+        script += this.writeMethods();
 
-        compiler.extractTypes(doc);
-        compiler.extractMethods(doc);
-
-        let script = compiler.writeTypes();
-        script += compiler.writeMethods();
-
-        if(options && String.isString(options.outFile)) {
-            fs.WriteFile(options.outFile, script);
-        }
+        // reset internal state
+        this.clear();
 
         return script;
     }
 }
-
-module.exports = TifCompiler.compile;

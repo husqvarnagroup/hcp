@@ -1,5 +1,8 @@
 test_dev
 typings
 node_modules
-build/*
+build
 codecs
+package/dev
+package/node_modules
+package/typings

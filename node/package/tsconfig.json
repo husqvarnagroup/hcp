@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "outDir" : "release",
+        "declaration": true,
+        "types": [
+            "node", "serialport"
+        ]
+    },
+    "exclude": [
+        ".vscode",
+        "codecs",
+        "release",
+        "dev"
+    ]
+}

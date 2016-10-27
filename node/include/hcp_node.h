@@ -5,7 +5,10 @@
 #include <list>
 #include <vector>
 #include <uv.h>
-#include "../../c/include/hcp_runtime.h"
+
+extern "C" {
+#include "hcp_runtime.h"
+}
 
 struct CodecLibrary {
 	uv_lib_t lib;

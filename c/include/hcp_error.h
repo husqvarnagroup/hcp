@@ -268,29 +268,6 @@
 *  4.      GLOBAL FUNCTIONS (defined in some implementation file)
 *==============================================================================
 */
-
-	/**	Creates a new error structure.
-	 *-----------------------------------------------------------------------------
-	 * \par	Description:
-	 *		Creates a new error structure which is intended to provide detailed\n
-	 *		error information which to ease the use of the module and to find the\n
-	 *		location where the source occured.
-	 *
-	 * \param	ErrorCode	[IN] Code which identifies the type of error that occured.
-	 * \param	LineNumber [IN]	The exact line where the error occured.
-	 * \param	File [IN]	Name of the file where the error occured.
-	 * \param	Module [IN]	Name of the module.
-	 * \param	Resolver [IN]	Callback function to resolve custom errors, that is\n
-	 *							error which is specific to the module and not found\n
-	 *							in [hcp_Errors].
-	 * \param	pCallbackContext [IN]	Resolver specific callback context that is\n
-	 *									passed to [Resolver] when invoked.
-	 *
-	 *
-	 * \return	Returns a error structure populated with the input arguments.
-	 *-----------------------------------------------------------------------------
-	 */
-	extern hcp_tError HCP_CALL hcp_NewError(const hcp_Int16 ErrorCode, const hcp_Int LineNumber, const hcp_tString File, hcp_tString Module, hcp_ErrorSource Resolver, void* pCallbackContext);
 	/**	Resolves a error message expressing the need for a specific type.
 	*-----------------------------------------------------------------------------
 	* \par	Description:

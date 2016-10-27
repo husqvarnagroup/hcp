@@ -186,7 +186,7 @@ typedef struct {
 	 *	@param pOutput	Destination (output) string.
 	 *	@param MaxLength	Maximum number of characters to write to [pOutput9.
 	 */
-	HCP_API void HCP_CALL hcp_GetMessage(hcp_Int ErrorCode, hcp_szStr pOutput, hcp_Size_t MaxLength);
+	HCP_API void HCP_CALL hcp_GetMessage(const hcp_Int ErrorCode, hcp_szStr pOutput,const hcp_Size_t MaxLength);
 	/**
 	 *	Creates a new codec instance which can be used to encode and decode requests.
 	 *	@param pState	HCP state where the loaded codec library and model exists.
@@ -202,7 +202,7 @@ typedef struct {
 	 *	@param CodecId	Codec instance id, obtained when calling [hcp_NewCodec].
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_CloseCodec(hcp_tState* pState, hcp_Size_t CodecId);
+	HCP_API hcp_Int HCP_CALL hcp_CloseCodec(hcp_tState* pState,const hcp_Size_t CodecId);
 	/**
 	 *	Loads a new object model (JSON) into a HCP-state.
 	 *	@param pState	State where the model should be made avalible.
@@ -211,11 +211,11 @@ typedef struct {
 	 *	@param pId	On success, outputs a model instance id.
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_LoadModel(hcp_tState* pState, hcp_cszStr Model, hcp_Size_t Length, hcp_Int* pId);
+	HCP_API hcp_Int HCP_CALL hcp_LoadModel(hcp_tState* pState, hcp_cszStr Model,const hcp_Size_t Length, hcp_Int* pId);
 	/**
 	 *	MARKED FOR DELETION
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_GetPrimitiveType(hcp_tState* pState, hcp_Int CommandSetId, const hcp_szStr ComplexType);
+	HCP_API hcp_Int HCP_CALL hcp_GetPrimitiveType(hcp_tState* pState, const hcp_Int CommandSetId, const hcp_szStr ComplexType);
 	/**
 	 *	Loads a codec library into a HCP-state, allowing codec instances to be created for encoding and decoding data.
 	 *	@param pState	State where the codec should be made avalible.
@@ -223,7 +223,7 @@ typedef struct {
 	 *	@param MaxLength	Maximum number of characters that [codecName] can hold.
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_LoadCodec(hcp_tState* pState, hcp_tCodecLibrary* pLibrary, hcp_szStr CodecName, hcp_Size_t MaxLength);
+	HCP_API hcp_Int HCP_CALL hcp_LoadCodec(hcp_tState* pState, hcp_tCodecLibrary* pLibrary, hcp_szStr CodecName,const hcp_Size_t MaxLength);
 	/**
 	 *	Encodes a request into a byte-array.
 	 *	@param pState	State where the codec instance exists.
@@ -245,7 +245,7 @@ typedef struct {
 	 *	@return Returns the number of bytes consumed from [pSource]. If the number of bytes consumed is less then [Length], the remaning bytes
 	 *			should be passed back to [hcp_Decode] once [pResult] is processed.
 	 */
-	HCP_API hcp_Int HCP_CALL hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, hcp_Uint8 const* pSource, hcp_Size_t Length, hcp_tResult* pResult);
+	HCP_API hcp_Int HCP_CALL hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, hcp_Uint8 const* pSource,const hcp_Size_t Length, hcp_tResult* pResult);
 	/**
 	 *	Returns the number of bytes required for a hcp_tState object.
 	 */

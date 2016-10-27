@@ -1,8 +1,16 @@
 #include "../include/hcp_node.h"
 
 #include <node.h>
+#include <node_buffer.h>
 #include <string>
-#include "../../cpp/src/hcp.cpp"
+
+extern "C" {
+	#include "hcp_vector.h"
+	#include "hcp_runtime.h"
+}
+
+#include "../../cpp/include/hcp.h"
+
 
 using hcp::HcpState;
 using v8::Exception;
@@ -233,8 +241,8 @@ void HcpState::decode(const FunctionCallbackInfo<Value>& args) {
 			String::NewFromUtf8(isolate, "Invalid number of arguments, expected integer codec id, source array buffer and integer bytes to read.")));
 		return;
 	}
-
-	if (!args[0]->IsNumber() || !args[1]->IsArrayBuffer() || !args[2]->IsNumber()) {
+	
+	if (!args[0]->IsNumber() || !args[1]->IsUint8Array() || !args[2]->IsNumber()) {
 		isolate->ThrowException(Exception::SyntaxError(
 			String::NewFromUtf8(isolate, "Invalid argument type(s), expected integer codec id, source array buffer and integer bytes to read.")));
 		return;
@@ -242,13 +250,12 @@ void HcpState::decode(const FunctionCallbackInfo<Value>& args) {
 
 	auto id = args[0]->IntegerValue();
 	auto bytesToRead = args[2]->IntegerValue();
-	auto sourceObj = args[1]->ToObject().As<v8::ArrayBuffer>();
-	auto sourceContent = sourceObj->GetContents();
-	auto sourceData = static_cast<unsigned char*>(sourceContent.Data());
+	auto sourceData = reinterpret_cast<unsigned char*>(node::Buffer::Data(args[1]));
+	auto sourceLength = node::Buffer::Length(args[1]);
 
-	if (sourceObj->ByteLength() == 0) {
+	if (node::Buffer::Length(args[1]) == 0) {
 		isolate->ThrowException(Exception::SyntaxError(
-			String::NewFromUtf8(isolate, "Source array buffer was zero in size.")));
+			String::NewFromUtf8(isolate, "Source buffer was zero in size.")));
 		return;
 	}
 

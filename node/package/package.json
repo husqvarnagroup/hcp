@@ -1,0 +1,27 @@
+{
+  "name": "hqv-hcp",
+  "version": "0.2.0",
+  "description": "Husqvarna Connectivity Platform",
+  "main": "./release/index.js",
+  "types" : "./release/index.d.ts",
+  "engines": {
+    "vscode": "^0.10.0",
+    "node" : ">=7.0.0"
+  },
+  "dependencies": {
+    "serialport": "^4.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/husqvarnagroup/hcp/node/package"
+  },
+  "keywords": [
+    "Husqvarna"
+  ],
+  "author": "Olof Andreassen (c)",
+  "license": "MIT"
+}
