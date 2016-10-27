@@ -1,18 +1,20 @@
 {
   "name": "hqv-hcp",
-  "version": "0.2.0",
+  "version": "0.3.2",
   "description": "Husqvarna Connectivity Platform",
   "main": "./release/index.js",
-  "types" : "./release/index.d.ts",
+  "types": "./release/index.d.ts",
   "engines": {
     "vscode": "^0.10.0",
-    "node" : ">=7.0.0"
+    "node": ">=7.0.0"
   },
   "dependencies": {
+    "request": "^2.76.0",
     "serialport": "^4.0.3"
   },
   "devDependencies": {},
   "scripts": {
+    "postinstall": "node post-install.js",
     "test": "test"
   },
   "repository": {
