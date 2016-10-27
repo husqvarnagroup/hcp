@@ -1,7 +1,7 @@
 import {HcpModel, ModelBody} from './hcp-model';
 import * as os from 'os';
 
-let nativePath : string = './bin/';
+let nativePath : string = './../../lib/bin/';
 
 switch(os.arch()) {
     case "x64" : {

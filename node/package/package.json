@@ -1,6 +1,6 @@
 {
   "name": "hqv-hcp",
-  "version": "0.3.2",
+  "version": "0.3.8",
   "description": "Husqvarna Connectivity Platform",
   "main": "./release/index.js",
   "types": "./release/index.d.ts",
@@ -14,7 +14,6 @@
   },
   "devDependencies": {},
   "scripts": {
-    "postinstall": "node post-install.js",
     "test": "test"
   },
   "repository": {
