@@ -34,3 +34,7 @@ add_executable(runtime_test test/runtime.cpp)
 target_link_libraries(runtime_test hcp_cpp catch json)
 target_include_directories(runtime_test PUBLIC include)
 
+add_executable(hcp_vector_test test/test_hcp_vector.cpp)
+target_link_libraries(hcp_vector_test hcp_cpp catch)
+
+  add_test(NAME HcpVectorTests COMMAND hcp_vector_test)

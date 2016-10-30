@@ -5,6 +5,7 @@ extern "C" {
 }
 #include <memory>
 #include <type_traits>
+#include <string>
 
 template <typename T> using unique_ptr_del = std::unique_ptr<T, void (*)(T*)>;
 
@@ -18,6 +19,7 @@ template <typename T> unique_void_ptr type_erase(unique_ptr_del<T> ptr)
 
 namespace hcp {
 hcp_tHost default_mem();
+std::string  GetErrorMessage(int);
 
 class State {
   public:
@@ -46,20 +48,3 @@ class Library {
 };
 }
 
-/**
- * Returns the begin iterator of hcp vector
- */
-template <typename V> auto begin(V& v) -> decltype(&v.fixed[0])
-{
-    using T = std::remove_reference_t<decltype(v.fixed[0])>;
-    return static_cast<T*>(v.header.values);
-}
-/**
- * Returns the end iterator of hcp vector
- */
-template <typename V> auto end(V& v) -> decltype(&v.fixed[0])
-{
-    using T = std::remove_reference_t<decltype(v.fixed[0])>;
-    assert(sizeof(T) == v.header.elementSize);
-    return static_cast<T*>(v.header.values) + v.header.length;
-}

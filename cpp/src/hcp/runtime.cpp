@@ -26,6 +26,11 @@ namespace hcp {
     hcp_GetMessage(err,buf,256);
     throw std::runtime_error(buf);
   }                          
+std::string  GetErrorMessage(int err) {
+    char buf[256];
+    hcp_GetMessage(err,buf,256);
+    return buf;
+}
   State::State(hcp_tHost const& host) 
     {
       throwOnError(hcp_NewState(&dest,&host));

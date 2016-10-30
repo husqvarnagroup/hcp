@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <hcp/runtime.hpp>
 #include <hcp/scan.hpp>
+#include <hcp/util.hpp>
 #include <hcp_scan.h>
 #include <regex>
 #include <string>
