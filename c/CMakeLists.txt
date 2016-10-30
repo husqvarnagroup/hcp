@@ -14,6 +14,7 @@ set(hcp_src
     include/hcp_tif.h
     include/hcp_types.h
     include/hcp_vector.h
+    include/hcp_api.h
 
     src/cJSON.c
     src/hcp_error.c
