@@ -164,7 +164,7 @@ hcp_Int hcp_InitializeVector(hcp_tState* pState, hcp_tVector* pHeader, void* pVa
 }
 
 hcp_Size_t hcp_FindFirst(const hcp_tVector* pHeader, const hcp_Size_t StartIndex, void* pValue, hcp_Boolean* pSuccess) {
-	hcp_Size_t index = 0;
+	hcp_Size_t index = StartIndex;
 	*pSuccess = HCP_TRUE;
 
 	while (index < pHeader->length) {
