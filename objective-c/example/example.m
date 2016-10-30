@@ -4,8 +4,8 @@ int main(int argc, char *argv[])
 {
     NSError* error = nil;
     
-    NSString* codecPath = @"/Users/jonas/dev/husqvarna/build/hcprobotics";
-    NSString* modelPath = @"/Users/jonas/dev/husqvarna/hcprobotics/models/_AMG3-Debug.json";
+    NSString* codecPath = @"/Users/jonas/dev/husqvarna/hcp2/cmake_xcode/echo_codec/Debug";
+    NSString* modelPath = @"/Users/jonas/dev/husqvarna/hcp2/echo_codec/models/echo.json";
     NSString* model = [NSString stringWithContentsOfFile:modelPath encoding:NSUTF8StringEncoding error:&error];
     if(error) {
         NSLog(@"An error occured: %@", error);
@@ -18,6 +18,11 @@ int main(int argc, char *argv[])
     
     // Get a list of found codec plugins
     NSArray* codecs = [hcp codecList];
+    
+    if([codecs count] == 0){
+        NSLog(@"No codecs found");
+        return 1;
+    }
     
     // Log names of all codecs
     for (int i=0; i<[codecs count]; i++) {
@@ -32,14 +37,14 @@ int main(int argc, char *argv[])
     }
     
     // Create a new codec using a pluging and a model
-    Codec* codec = [hcp newCodecWithModel:model_id library:@"amg3" onError:&error];
+    Codec* codec = [hcp newCodecWithModel:model_id library:@"Echo" onError:&error];
     if(error) {
         NSLog(@"An error occured: %@", error);
         return 1;
     }
 
     // Encode a command
-    NSString* command = @"DeviceInformation.GetMmiInformation()";
+    NSString* command = @"Basic.Call(param1:16)";
     NSData* buf = [codec encodeCommand:command onError:&error];
     if(error) {
         NSLog(@"An error occured: %@", error);
@@ -55,6 +60,7 @@ int main(int argc, char *argv[])
     // Log the decoded result
     NSLog(@"Family : %@", res.family);
     NSLog(@"Command : %@", res.command);
+    NSLog(@"Reply : %@", res.parameters);
     
     return 0;
 }

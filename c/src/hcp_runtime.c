@@ -467,6 +467,7 @@ hcp_Int hcp_Decode(hcp_tState* pState, hcp_Size_t CodecId, const hcp_Uint8* pSou
 						pResult->parameters = (hcp_tParameter*)command->outParams.header.values;
 						pResult->command = command->template_->header.command;
 						pResult->family = command->template_->header.family;
+                        pResult->message = HCP_NULL;
 					}
 					else {
 						hcp_Memset(pState, pResult, 0, sizeof(hcp_tResult));

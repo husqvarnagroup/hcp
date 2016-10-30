@@ -22,6 +22,10 @@ if(HCP_PYTHON OR HCP_JAVA OR HCP_OBJC)
   add_subdirectory(cpp)
 endif()
 
+if(HCP_ENABLE_TESTS)
+  add_subdirectory(echo_codec)
+endif()
+
 if(APPLE AND HCP_OBJC)
     add_subdirectory(objective-c)
   endif()

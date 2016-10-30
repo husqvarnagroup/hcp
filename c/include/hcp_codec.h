@@ -200,7 +200,7 @@ struct hcp_tRuntime {
 	hcp_Int(HCP_CALL *AppendBlob)(const hcp_tBlob* pSource, hcp_tBlob* pDestination);
 	hcp_Int(HCP_CALL *AppendZeroes)(const hcp_Size_t Length, hcp_tBlob* pDestination);
 	hcp_Int(HCP_CALL *AppendString)(const hcp_tString* pString, hcp_tBlob* pDestination, hcp_Uint8 Encoding);
-	hcp_Int(HCP_CALL *AppendParameters)(hcp_tRuntime* R, hcp_tBlob* pDestination, hcp_tParameterSet* pParameters, const hcp_Uint8 Endianess, hcp_EncodeString StringEncoder, void* pContext);
+	hcp_Int(HCP_CALL *AppendParameters)(hcp_tRuntime* R, hcp_tBlob* pDestination, hcp_tParameterSet const* pParameters, const hcp_Uint8 Endianess, hcp_EncodeString StringEncoder, void* pContext);
 
 };
 

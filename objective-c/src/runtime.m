@@ -27,6 +27,8 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
         return [NSNumber numberWithUnsignedLong:parameter->value.sz];
     case HCP_UINT8_ID:
         return [NSNumber numberWithInt:parameter->value.u8];
+    case HCP_INT8_ID:
+            return [NSNumber numberWithInt:parameter->value.s8];
     case HCP_UINT16_ID:
         return [NSNumber numberWithUnsignedInt:parameter->value.u16];
     case HCP_INT16_ID:
@@ -51,6 +53,7 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
     case HCP_SIMPLEVERSION_ID:
         return [NSNumber numberWithInt:parameter->value.version];
     default:
+            assert(false);
         return nil;
     }
 }
@@ -71,6 +74,7 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
         }
         _command = fromHcpString(&res->command);
         _family = fromHcpString(&res->family);
+        _parameters = ret;
         _error = res->error;
         _deviceError = res->deviceError;
         if (res->message)
