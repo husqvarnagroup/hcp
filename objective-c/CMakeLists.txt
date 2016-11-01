@@ -26,10 +26,14 @@ if(HCP_ENABLE_EXAMPLES)
   add_dependencies(objC_example echo_codec)
 endif()
 
-add_executable(objC_test MACOSX_BUNDLE 
-  test/test_hcp.mm 
-  test/objc_test_utils.cpp 
-  test/objc_test_utils.hpp)
-target_link_libraries(objC_test hcp_objC json catch)
-add_dependencies(objC_example echo_codec)
+if(HCP_ENABLE_TESTS)
+  add_executable(objC_test MACOSX_BUNDLE 
+    test/test_hcp.mm 
+    test/objc_test_utils.cpp 
+    test/objc_test_utils.hpp)
+  target_link_libraries(objC_test hcp_objC json catch)
+  add_dependencies(objC_test echo_codec)
+  add_test(NAME HcpObjCTests COMMAND objC_test)
+endif()
+
 
