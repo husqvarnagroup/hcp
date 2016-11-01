@@ -20,7 +20,9 @@ target_compile_options(hcp_objC PRIVATE -Wall -pedantic -Werror -Wextra)
 target_compile_options(hcp_objC PUBLIC -fobjc-arc)
 set_property(TARGET hcp_objC PROPERTY POSITION_INDEPENDENT_CODE ON)
 
-add_executable(objC_example MACOSX_BUNDLE example/example.m)
-target_link_libraries(objC_example hcp_objC)
-target_link_libraries(objC_example hcp_cpp)
+if(HCP_ENABLE_EXAMPLES)
+  add_executable(objC_example MACOSX_BUNDLE example/example.m)
+  target_link_libraries(objC_example hcp_objC)
+  target_link_libraries(objC_example hcp_cpp)
+endif()
 

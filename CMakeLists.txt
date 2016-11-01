@@ -2,16 +2,37 @@ cmake_minimum_required(VERSION 3.5)
   project(hcp VERSION 1.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 14)
-enable_testing()
+option(HCP_PYTHON "Enable the python bindings for hcp" OFF)
+option(HCP_JAVA "Enable the java bindings for hcp" OFF)
+option(HCP_OBJC "Enable the objective-c bindings for hcp" OFF)
+option(HCP_ENABLE_TESTS "Enable unit tests for hcp" OFF)
+option(HCP_ENABLE_EXAMPLES "Build examples for hcp" OFF)
+
+if(HCP_ENABLE_TESTS)
+  enable_testing()
+endif()
   
+if(HCP_PYTHON OR HCP_JAVA OR HCP_OBJC)
   list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
-  add_subdirectory(c)
+endif()
+
+add_subdirectory(c)
+
+if(HCP_PYTHON OR HCP_JAVA OR HCP_OBJC)
   add_subdirectory(cpp)
-  if(APPLE)
+endif()
+
+if(APPLE AND HCP_OBJC)
     add_subdirectory(objective-c)
   endif()
+
+if(HCP_JAVA)
   add_subdirectory(java)
+endif()
+
+if(HCP_PYTHON)
   add_subdirectory(python)
+endif()
   
 #message(info ${LIBUV
 

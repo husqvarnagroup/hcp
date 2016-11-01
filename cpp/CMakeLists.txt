@@ -23,7 +23,7 @@ set_property(TARGET hcp_cpp PROPERTY POSITION_INDEPENDENT_CODE ON)
 #target_link_libraries(hcp_cpp PUBLIC ${LIBUV_LIBRARIES})
 #target_include_directories(hcp_cpp PUBLIC ${LIBUV_INCLUDE_DIRS})
 #target_compile_options(hcp_cpp PRIVATE -Wno-writable-strings)
-
+if(HCP_ENABLE_TESTS)
 add_library(catch INTERFACE)
 target_include_directories(catch INTERFACE lib/catch/include)
 
@@ -38,3 +38,4 @@ add_executable(hcp_vector_test test/test_hcp_vector.cpp)
 target_link_libraries(hcp_vector_test hcp_cpp catch)
 
   add_test(NAME HcpVectorTests COMMAND hcp_vector_test)
+endif()
