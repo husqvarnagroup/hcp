@@ -4,9 +4,10 @@ int main(int argc, char *argv[])
 {
     NSError* error = nil;
     
-    NSString* codecPath = @"/Users/jonas/dev/husqvarna/hcp2/cmake_xcode/echo_codec/Debug";
-    NSString* modelPath = @"/Users/jonas/dev/husqvarna/hcp2/echo_codec/models/echo.json";
+    NSString* codecPath = @"./../../echo_codec/Debug";
+    NSString* modelPath = @"./../../../echo_codec/model.json";
     NSString* model = [NSString stringWithContentsOfFile:modelPath encoding:NSUTF8StringEncoding error:&error];
+    
     if(error) {
         NSLog(@"An error occured: %@", error);
         return 1;

@@ -5,6 +5,7 @@
 #include <list>
 #include <vector>
 #include <uv.h>
+#include <string>
 
 extern "C" {
 #include "hcp_runtime.h"

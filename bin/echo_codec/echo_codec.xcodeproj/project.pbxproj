@@ -1,0 +1,1034 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 82DEE68BB8DE48BD960D290D /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				FAE5CDFE02B348B7AA7B1640 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		9A1277713A2C428DA63CDBFF /* RUN_TESTS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 853EAC2BB2B94B40A8369FF1 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
+			buildPhases = (
+				3F33B723C6504393B61618BE /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+			);
+			name = RUN_TESTS;
+			productName = RUN_TESTS;
+		};
+		D273E4EA9FC34F1AB7B3C8B0 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5FC885D5056249898EDDCAC4 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				AE2B33354FED45F88DFA0397 /* CMake Rules */,
+			);
+			dependencies = (
+				A30A69415C5F42208B5ABFFD /* PBXTargetDependency */,
+				2289B7FEC87849999EDC8FC8 /* PBXTargetDependency */,
+				A012A91F519443468054C984 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		1C99BCD55AE34695B197E924 /* /Users/olof/Repos/hcp/echo_codec/src/hcp_echo_codec.cpp */ = {isa = PBXBuildFile; fileRef = D96728A9B1D34AF39865CA21 /* /Users/olof/Repos/hcp/echo_codec/src/hcp_echo_codec.cpp */; };
+		30F95991D5F841DDA2945FC5 /* /Users/olof/Repos/hcp/echo_codec/include/hcp_echo_codec.h */ = {isa = PBXBuildFile; fileRef = 9951AA0BB9E54340BC07B07C /* /Users/olof/Repos/hcp/echo_codec/include/hcp_echo_codec.h */; };
+		6378734EA42240E4BC7641C1 /* /Users/olof/Repos/hcp/echo_codec/test/test_echo_codec.cpp */ = {isa = PBXBuildFile; fileRef = 4A1F70DA41E446E4A07E9313 /* /Users/olof/Repos/hcp/echo_codec/test/test_echo_codec.cpp */; };
+		A805299C09C54AA5AD0DD2E8 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 60BAE3A02FD3422A90E7D165 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */; };
+		E8D9F596A99C4C25AC5FE133 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 07837B90E9F8444C97E8621F /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		27F24B61DB4A469CB5DE4C84 = {
+			isa = PBXBuildStyle;
+		};
+		568D182B83184901ADB8A118 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		877AB91237804D07825E1336 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		8ADD62EAF2354200B17010AA /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		FDA05C873D6545D5A0F342F3 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		0A2E2789BEEE4BD7A24834E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6994657B68246C28ED1EDA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FCCDBEA07134FFBA7BAF343;
+			remoteInfo = ZERO_CHECK;
+		};
+		2F65D1AB84704E87A3BFA855 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6994657B68246C28ED1EDA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FCCDBEA07134FFBA7BAF343;
+			remoteInfo = ZERO_CHECK;
+		};
+		69E481DCFB18441FA13D3827 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6994657B68246C28ED1EDA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A36D14CB5676449AA6DE4486;
+			remoteInfo = echo_codec;
+		};
+		88DC27D14B6F4C27948F0DD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6994657B68246C28ED1EDA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FCCDBEA07134FFBA7BAF343;
+			remoteInfo = ZERO_CHECK;
+		};
+		D2FACE0DC1B947DB8DD9EB9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6994657B68246C28ED1EDA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A36D14CB5676449AA6DE4486;
+			remoteInfo = echo_codec;
+		};
+		D67820F705134F5FAADB93AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6994657B68246C28ED1EDA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABF4AE553C7647249DAC935D;
+			remoteInfo = echo_test;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07837B90E9F8444C97E8621F /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		1BA00D065AB740EDB500B006 /* echo_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = echo_test; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A1F70DA41E446E4A07E9313 /* /Users/olof/Repos/hcp/echo_codec/test/test_echo_codec.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = test_echo_codec.cpp; path = test/test_echo_codec.cpp; sourceTree = SOURCE_ROOT; };
+		60BAE3A02FD3422A90E7D165 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		6553417C783E4D0A804DBED0 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		9951AA0BB9E54340BC07B07C /* /Users/olof/Repos/hcp/echo_codec/include/hcp_echo_codec.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = hcp_echo_codec.h; path = include/hcp_echo_codec.h; sourceTree = SOURCE_ROOT; };
+		B0DFC56697BF45C4AD389DC8 /* echo_codec */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libecho_codec.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62F586EACC04F729F123AD0 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		D96728A9B1D34AF39865CA21 /* /Users/olof/Repos/hcp/echo_codec/src/hcp_echo_codec.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = hcp_echo_codec.cpp; path = src/hcp_echo_codec.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		035B7C968D8E4CF28B16FC3A /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				82619B8A591E4DF29576BF21 /* CMake Rules */,
+				6553417C783E4D0A804DBED0 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		0CBB8B925F22406F9F6AC2C2 /* echo_codec */ = {
+			isa = PBXGroup;
+			children = (
+				BE2C77C4124F4540B4B46141 /* Source Files */,
+				2B2AFE039AEE4B509799F242 /* Header Files */,
+				07837B90E9F8444C97E8621F /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */,
+			);
+			name = echo_codec;
+			sourceTree = "<group>";
+		};
+		20E1C8D82BA2479290CDF610 = {
+			isa = PBXGroup;
+			children = (
+				E22D85050B9C439AA4CDE8F8 /* Sources */,
+				BE1670F3180147A28120DA37 /* Resources */,
+				EAD619ADC5034868AAD812FC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2B2AFE039AEE4B509799F242 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				9951AA0BB9E54340BC07B07C /* /Users/olof/Repos/hcp/echo_codec/include/hcp_echo_codec.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		5162B4B849D34A79A134E8C2 /* echo_test */ = {
+			isa = PBXGroup;
+			children = (
+				625FAD052C7E4300BD21CFDC /* Source Files */,
+				60BAE3A02FD3422A90E7D165 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */,
+			);
+			name = echo_test;
+			sourceTree = "<group>";
+		};
+		625FAD052C7E4300BD21CFDC /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A1F70DA41E446E4A07E9313 /* /Users/olof/Repos/hcp/echo_codec/test/test_echo_codec.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		770A7EA9F960452CA7207117 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				B43284B59DB44FEFA76565C5 /* CMake Rules */,
+				B62F586EACC04F729F123AD0 /* /Users/olof/Repos/hcp/echo_codec/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		82619B8A591E4DF29576BF21 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		B43284B59DB44FEFA76565C5 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		BE1670F3180147A28120DA37 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BE2C77C4124F4540B4B46141 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				D96728A9B1D34AF39865CA21 /* /Users/olof/Repos/hcp/echo_codec/src/hcp_echo_codec.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		E22D85050B9C439AA4CDE8F8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5162B4B849D34A79A134E8C2 /* echo_test */,
+				0CBB8B925F22406F9F6AC2C2 /* echo_codec */,
+				770A7EA9F960452CA7207117 /* ALL_BUILD */,
+				035B7C968D8E4CF28B16FC3A /* ZERO_CHECK */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		EAD619ADC5034868AAD812FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0DFC56697BF45C4AD389DC8 /* echo_codec */,
+				1BA00D065AB740EDB500B006 /* echo_test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A36D14CB5676449AA6DE4486 /* echo_codec */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAA934A7150A47328E80BDC9 /* Build configuration list for PBXNativeTarget "echo_codec" */;
+			buildPhases = (
+				39B9FE5E361C4EA0A72B7D71 /* Sources */,
+				6203B01371114DF6BC2EDCCE /* CMake PostBuild Rules */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F20153E2C984423EB5F0525B /* PBXTargetDependency */,
+			);
+			name = echo_codec;
+			productName = echo_codec;
+			productReference = B0DFC56697BF45C4AD389DC8 /* echo_codec */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		ABF4AE553C7647249DAC935D /* echo_test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D9EE9303F6D42D1849BB42D /* Build configuration list for PBXNativeTarget "echo_test" */;
+			buildPhases = (
+				A48274DE218B4F11856DF2DF /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				665ADDF0C2FA4731A250752D /* PBXTargetDependency */,
+				3B697CCB5C7844B2BFA4B36B /* PBXTargetDependency */,
+			);
+			name = echo_test;
+			productName = echo_test;
+			productReference = 1BA00D065AB740EDB500B006 /* echo_test */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D6994657B68246C28ED1EDA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0810;
+			};
+			buildConfigurationList = D6725E741C064FDAAD899C78 /* Build configuration list for PBXProject "echo_codec" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				FDA05C873D6545D5A0F342F3 /* Debug */,
+				568D182B83184901ADB8A118 /* Release */,
+				877AB91237804D07825E1336 /* MinSizeRel */,
+				8ADD62EAF2354200B17010AA /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 20E1C8D82BA2479290CDF610;
+			projectDirPath = ../../echo_codec;
+			projectRoot = "";
+			targets = (
+				D273E4EA9FC34F1AB7B3C8B0 /* ALL_BUILD */,
+				9A1277713A2C428DA63CDBFF /* RUN_TESTS */,
+				0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */,
+				A36D14CB5676449AA6DE4486 /* echo_codec */,
+				ABF4AE553C7647249DAC935D /* echo_test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F33B723C6504393B61618BE /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/olof/Repos/hcp/bin/echo_codec -f /Users/olof/Repos/hcp/bin/echo_codec/CMakeScripts/RUN_TESTS_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		6203B01371114DF6BC2EDCCE /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/olof/Repos/hcp/bin/echo_codec -f /Users/olof/Repos/hcp/bin/echo_codec/CMakeScripts/echo_codec_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		9B06CA6114654DDEBE8C6741 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		AE2B33354FED45F88DFA0397 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/olof/Repos/hcp/bin/echo_codec -f /Users/olof/Repos/hcp/bin/echo_codec/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		BEDFC8E5C68B4FFF935EEE43 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		C4F59131DA9B4CE5B7742F04 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		FAE5CDFE02B348B7AA7B1640 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/olof/Repos/hcp/bin/echo_codec -f /Users/olof/Repos/hcp/bin/echo_codec/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		39B9FE5E361C4EA0A72B7D71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C99BCD55AE34695B197E924 /* /Users/olof/Repos/hcp/echo_codec/src/hcp_echo_codec.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A48274DE218B4F11856DF2DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6378734EA42240E4BC7641C1 /* /Users/olof/Repos/hcp/echo_codec/test/test_echo_codec.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2289B7FEC87849999EDC8FC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABF4AE553C7647249DAC935D /* echo_test */;
+			targetProxy = D67820F705134F5FAADB93AA /* PBXContainerItemProxy */;
+		};
+		3B697CCB5C7844B2BFA4B36B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A36D14CB5676449AA6DE4486 /* echo_codec */;
+			targetProxy = D2FACE0DC1B947DB8DD9EB9F /* PBXContainerItemProxy */;
+		};
+		665ADDF0C2FA4731A250752D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */;
+			targetProxy = 2F65D1AB84704E87A3BFA855 /* PBXContainerItemProxy */;
+		};
+		A012A91F519443468054C984 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A36D14CB5676449AA6DE4486 /* echo_codec */;
+			targetProxy = 69E481DCFB18441FA13D3827 /* PBXContainerItemProxy */;
+		};
+		A30A69415C5F42208B5ABFFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */;
+			targetProxy = 0A2E2789BEEE4BD7A24834E9 /* PBXContainerItemProxy */;
+		};
+		F20153E2C984423EB5F0525B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */;
+			targetProxy = 88DC27D14B6F4C27948F0DD9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07779472D32B4F0E8124B226 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",echo_codec_EXPORTS);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -fPIC '-std=gnu++14' -I/Users/olof/Repos/hcp/echo_codec/include -I/Users/olof/Repos/hcp/c/include   ";
+				OTHER_LDFLAGS = " -dynamiclib -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/c/MinSizeRel/libhcp.a";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = echo_codec;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		1486A28800D94C8296C55AD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec/build;
+			};
+			name = Release;
+		};
+		224C949B9C384B3887AEFC1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",echo_codec_EXPORTS);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -fPIC '-std=gnu++14' -I/Users/olof/Repos/hcp/echo_codec/include -I/Users/olof/Repos/hcp/c/include   ";
+				OTHER_LDFLAGS = " -dynamiclib -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/c/Release/libhcp.a";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = echo_codec;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		397487331DF043A0B9085C96 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		42E5B8F0D53240CAA8F9AFB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/olof/Repos/hcp/bin/echo_codec/Release;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++14' -I/Users/olof/Repos/hcp/echo_codec/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include -I/Users/olof/Repos/hcp/cpp/lib/catch/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/cpp/Release/libhcp_cpp.a /Users/olof/Repos/hcp/bin/echo_codec/Release/libecho_codec.dylib  /usr/local/lib/libuv.dylib /Users/olof/Repos/hcp/bin/c/Release/libhcp.a";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = echo_test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		4B73F12C8B994FBC9EE4DFBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		517ECF4C8BF044E4AA9CB54E /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		58A6D17E9BF345B48C02DFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		5A760D0629CD465694B02DC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		678B287D126B410882C43AF3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		8BF76EFE981A4A60A191E606 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",echo_codec_EXPORTS);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG -fPIC '-std=gnu++14' -I/Users/olof/Repos/hcp/echo_codec/include -I/Users/olof/Repos/hcp/c/include   ";
+				OTHER_LDFLAGS = " -dynamiclib -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/c/RelWithDebInfo/libhcp.a";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = echo_codec;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		9A87C67AE06547EEB93EFD6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec/build;
+			};
+			name = Debug;
+		};
+		A33B5E9160D84C65B3A04A9A /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		A65C944774B04F4EA667001F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		A9B4849D5F4B4F859F6EC8C3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/olof/Repos/hcp/bin/echo_codec/RelWithDebInfo;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=gnu++14' -I/Users/olof/Repos/hcp/echo_codec/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include -I/Users/olof/Repos/hcp/cpp/lib/catch/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/cpp/RelWithDebInfo/libhcp_cpp.a /Users/olof/Repos/hcp/bin/echo_codec/RelWithDebInfo/libecho_codec.dylib  /usr/local/lib/libuv.dylib /Users/olof/Repos/hcp/bin/c/RelWithDebInfo/libhcp.a";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = echo_test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		B3A81E3521774F30B8B07D08 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/olof/Repos/hcp/bin/echo_codec/MinSizeRel;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++14' -I/Users/olof/Repos/hcp/echo_codec/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include -I/Users/olof/Repos/hcp/cpp/lib/catch/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/cpp/MinSizeRel/libhcp_cpp.a /Users/olof/Repos/hcp/bin/echo_codec/MinSizeRel/libecho_codec.dylib  /usr/local/lib/libuv.dylib /Users/olof/Repos/hcp/bin/c/MinSizeRel/libhcp.a";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = echo_test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		C3D906EF299F4A4EBC2D03BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .dylib;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",echo_codec_EXPORTS);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_STYLE = DYNAMIC;
+				OTHER_CPLUSPLUSFLAGS = "   -fPIC '-std=gnu++14' -I/Users/olof/Repos/hcp/echo_codec/include -I/Users/olof/Repos/hcp/c/include   ";
+				OTHER_LDFLAGS = " -dynamiclib -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/c/Debug/libhcp.a";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = echo_codec;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		CD38536E14AA4B8AB431BDE2 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		CDDAF2CDF58D443390AC7D89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		D58925744B8843208F67FA19 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		D618F4FE9B1847969BB40B63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /Users/olof/Repos/hcp/bin/echo_codec/Debug;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++14' -I/Users/olof/Repos/hcp/echo_codec/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include -I/Users/olof/Repos/hcp/cpp/lib/catch/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/cpp/Debug/libhcp_cpp.a /Users/olof/Repos/hcp/bin/echo_codec/Debug/libecho_codec.dylib  /usr/local/lib/libuv.dylib /Users/olof/Repos/hcp/bin/c/Debug/libhcp.a";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = echo_test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		DFE3C9B2C4B147A8850747FA /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec/build;
+			};
+			name = MinSizeRel;
+		};
+		E1A76DA24024472FBC603A61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		FE7AFDB6443B476C9C5D544C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/olof/Repos/hcp/bin/echo_codec/build;
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5FC885D5056249898EDDCAC4 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1A76DA24024472FBC603A61 /* Debug */,
+				A65C944774B04F4EA667001F /* Release */,
+				A33B5E9160D84C65B3A04A9A /* MinSizeRel */,
+				397487331DF043A0B9085C96 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		82DEE68BB8DE48BD960D290D /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B73F12C8B994FBC9EE4DFBC /* Debug */,
+				CDDAF2CDF58D443390AC7D89 /* Release */,
+				D58925744B8843208F67FA19 /* MinSizeRel */,
+				517ECF4C8BF044E4AA9CB54E /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		853EAC2BB2B94B40A8369FF1 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A760D0629CD465694B02DC0 /* Debug */,
+				58A6D17E9BF345B48C02DFA7 /* Release */,
+				CD38536E14AA4B8AB431BDE2 /* MinSizeRel */,
+				678B287D126B410882C43AF3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9D9EE9303F6D42D1849BB42D /* Build configuration list for PBXNativeTarget "echo_test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D618F4FE9B1847969BB40B63 /* Debug */,
+				42E5B8F0D53240CAA8F9AFB7 /* Release */,
+				B3A81E3521774F30B8B07D08 /* MinSizeRel */,
+				A9B4849D5F4B4F859F6EC8C3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D6725E741C064FDAAD899C78 /* Build configuration list for PBXProject "echo_codec" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A87C67AE06547EEB93EFD6B /* Debug */,
+				1486A28800D94C8296C55AD1 /* Release */,
+				DFE3C9B2C4B147A8850747FA /* MinSizeRel */,
+				FE7AFDB6443B476C9C5D544C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FAA934A7150A47328E80BDC9 /* Build configuration list for PBXNativeTarget "echo_codec" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3D906EF299F4A4EBC2D03BD /* Debug */,
+				224C949B9C384B3887AEFC1F /* Release */,
+				07779472D32B4F0E8124B226 /* MinSizeRel */,
+				8BF76EFE981A4A60A191E606 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D6994657B68246C28ED1EDA2 /* Project object */;
+}

@@ -1,0 +1,21 @@
+{
+    "methods" : [
+    {
+                 "command" : "Call",
+                 "family" : "Basic",
+                 "inParams" : [
+                               {
+                               "name" : "param1",
+                               "type" : "uint32"
+                               }
+                 ],
+                 "outParams" : [
+                                {
+                                "name" : "param1",
+                                "type" : "uint32"
+                                }
+                 ],
+                 "protocol" : {}
+    }
+    ]
+}

@@ -2,7 +2,9 @@
 
 HCP is a cross platform protocol encoding library which enables product communication on any platform - from embedded systems to iOS, Android, Linux, Windows and MacOS.
 
+## Platform specific documentation
 
+* [Objective-C](./objective-c.md)
 
 ## Background
 
@@ -25,7 +27,12 @@ Nor the runtime or any codec uses any external library, not even the standard li
 
 ### The state
 
-Internally, HCP uses a state which is nothing more than a struct which holds the internal state of the runtime, loaded codecs and models*. In most cases, an application uses a single state, depending on the wrapper it might not even be exposed to the developer but is passed automatically when calling the wrapper library. One might consider using multiple states during unit tests since each state has a different memory area, allowing tests to be setup and teared down to ensure that no memory is reused between tests.
+Internally, HCP uses a state which is nothing more than a struct which holds the internal state of the runtime, loaded codecs and models*. In most cases, an application uses a single state, depending on the wrapper it might not even be exposed to the developer but is passed automatically when calling the wrapper library. *Wrapper implementors should never expose the state objects*, they should be considered as neccessary boilerplate that the end user shouldnt have to worry about.
+
+There are two cases where multiple states is neccessary:
+
+* Unit tests - To fully tear down and setup a new environment it is neccessary to release a state and create a new. The state holds all loaded *codecs* and models. Therefore it should be teared down (released) between each test suit.
+* Multiple threads - To minimize the amount of required memory when loading models, *codec instances* share the same object when reading and writing to input and output parameters. This works well within a single thread but *multiple threads must use different states*. Using the same state for multiple threads *WILL* result in that input and output results from operations will be corrupted as codecs write to the same *non threadsafe* memory instances.
 
 ### Memory model
 
@@ -445,3 +452,48 @@ Binary values can be enclosed in ", so this is also valid:
 ```JSON
 MainBoard.WriteMemoryArea(start:0xFFFF, data:"000A1E32508CB4FF");
 ```
+
+## Codec library
+
+A codec or codec library is a external binary (.so, .dll or .dynlib) which enables *hcp-requests* to be converted into bytes and bytes to be converted into a *result object*. From a codec library, multiple *codec instances* is created, each with its own memory buffer used when encoding and decoding bytes. Hcp was built around the design idea that *codec libraries* is dynamically loaded and added (plugin behavoir), platform independent and preferably developed and maintained by the product owner.
+
+### Tutorial
+
+In this tutorial we will cover how we intended codec libraries to be created.
+
+#### Required tools
+
+To test and run the codec library we will use the Node.JS wrapper located under /node. Make sure to download the latest *LTS version* of (Node.JS|<https://nodejs.org/en/download/>). For IDE and debugger we use (Visual Studio Code|<https://code.visualstudio.com/>).
+
+#### Folder structure
+
+All files for this tutorial is located under /codecs/example.
+
+* /include - Codec header files.
+* /src - Codec source files.
+* /test - Test scripts that we use when building the codec.
+* / - Build files (make and nmake files) to build the codec into a platform specific binary.
+* /resources - Images used for this tutorial.
+
+##### Makefile
+
+We begin by setting up a makefile.
+
+```Makefile
+
+CFLAGS := -fPIC -O3 -g -Wall -Werror
+CC := gcc
+NAME := example-codec
+
+lib: $(NAME).so
+
+$(NAME).so: $(NAME).o
+	$(CC) -shared -Wl,-soname,$(NAME).so $^ -o $@
+
+clean:
+	$(RM) *.o *.so*
+
+```
+##### Include file
+
+Codec libraries are required to export a function called *

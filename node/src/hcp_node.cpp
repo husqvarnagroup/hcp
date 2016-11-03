@@ -66,7 +66,9 @@ bool HcpState::hasModel(const size_t Id) const {
 }
 
 bool HcpState::hasLibrary(const std::string LibraryName) const {
-	for (auto i = 0; i < hcp_getCodecCount(); i++) {
+    const int count = hcp_getCodecCount();
+
+	for (auto i = 0; i < count; i++) {
 		auto name = std::string(hcp_getCodecName(i));
 
 		if(std::equal(name.begin(),name.end(), LibraryName.begin())) {
@@ -157,7 +159,9 @@ size_t HcpState::decode(const size_t CodecId, const unsigned char* source, const
 	dest->Set(String::NewFromUtf8(isolate, "method"), method);
 	dest->Set(String::NewFromUtf8(isolate, "outParams"), outParams);
 
-	for (auto i = 0; i < result.parameterCount; i++) {
+    const int count = (int)result.parameterCount;
+
+	for (auto i = 0; i < count; i++) {
 		auto p = &result.parameters[i];
 
 		Local<v8::Value> value;
@@ -251,7 +255,6 @@ void HcpState::decode(const FunctionCallbackInfo<Value>& args) {
 	auto id = args[0]->IntegerValue();
 	auto bytesToRead = args[2]->IntegerValue();
 	auto sourceData = reinterpret_cast<unsigned char*>(node::Buffer::Data(args[1]));
-	auto sourceLength = node::Buffer::Length(args[1]);
 
 	if (node::Buffer::Length(args[1]) == 0) {
 		isolate->ThrowException(Exception::SyntaxError(
@@ -366,8 +369,8 @@ size_t HcpState::newCodec(const std::string & LibraryName,const size_t ModelId) 
 		hcp_GetMessage(error, message, sizeof(message));
 		throw std::string(message);
 	}
-
-	_codecs.push_back({ id, ModelId, LibraryName });
+    
+	_codecs.push_back((CodecInstance){ id, ModelId, LibraryName });
 
 	return id;
 }
@@ -421,8 +424,9 @@ void HcpState::newCodec(const FunctionCallbackInfo<Value>& args) {
 std::list<std::string> HcpState::getLibraries() const {
 	std::list<std::string> libraries;
 
-	
-	for (auto i = 0; i < hcp_getCodecCount(); i++) {
+	const int count = (int)hcp_getCodecCount();
+
+	for (auto i = 0; i < count; i++) {
 		libraries.push_back(std::string(hcp_getCodecName(i)));
 	}
 

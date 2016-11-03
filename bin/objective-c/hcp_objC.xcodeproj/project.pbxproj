@@ -1,0 +1,1253 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 64B1636B0894422885F86127 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				E025D3FB97A44EA58B882849 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		9A1277713A2C428DA63CDBFF /* RUN_TESTS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A82AD6C6B29D4BED93443C13 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
+			buildPhases = (
+				127C275CB7864C3C9C8B2B63 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+			);
+			name = RUN_TESTS;
+			productName = RUN_TESTS;
+		};
+		D273E4EA9FC34F1AB7B3C8B0 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A849ABD37B9D430D95F472EB /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				42EA9C704E934E2899C7BC0D /* CMake Rules */,
+			);
+			dependencies = (
+				76D67E63BFA84B68BB3860FD /* PBXTargetDependency */,
+				1452D8CB69274C4DA29A6237 /* PBXTargetDependency */,
+				1CB0BD76C3234A4786C84C65 /* PBXTargetDependency */,
+				A0DCAE852DEF4ED0B4FBD08F /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		1A90DD766A914CABAEF2E09C /* /Users/olof/Repos/hcp/objective-c/include/hcp_objc_runtime.h */ = {isa = PBXBuildFile; fileRef = 1DC4664BA4304828A5D6BDD4 /* /Users/olof/Repos/hcp/objective-c/include/hcp_objc_runtime.h */; };
+		3431A2505D7449A4896700CB /* /Users/olof/Repos/hcp/objective-c/example/example.m */ = {isa = PBXBuildFile; fileRef = 5267F0AEF2AB450D807F2141 /* /Users/olof/Repos/hcp/objective-c/example/example.m */; };
+		44D6B7AEA8284016A3F52D85 /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.cpp */ = {isa = PBXBuildFile; fileRef = 424527A85F714BA78A409A1C /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.cpp */; };
+		64DE9F9B077D4B93A91C29C2 /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.hpp */ = {isa = PBXBuildFile; fileRef = 8087A65227C3403FADEDD698 /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.hpp */; };
+		6D72ED655342418E8005F9B1 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 3AB18EE6569244A7AEA80208 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */; };
+		918BECB0EE744813806CA33F /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example-CMakeForceLinker.cxx */ = {isa = PBXBuildFile; fileRef = D3532A12A09F4F5C86B37B60 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example-CMakeForceLinker.cxx */; };
+		95E4B17668CF47B68CADD438 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = AE881D73EDD34DE4AEC338D1 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */; };
+		9F59D0C393A0433A9F5A2396 /* /Users/olof/Repos/hcp/objective-c/src/runtime.m */ = {isa = PBXBuildFile; fileRef = E346CAD12ABF47018284188F /* /Users/olof/Repos/hcp/objective-c/src/runtime.m */; };
+		A2FF049FB10F46C59A7BF811 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = E3C213E7AC794CC89D368F91 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */; };
+		C1C7301DCE32438BBBD16A15 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_test.dir/Info.plist */ = {isa = PBXBuildFile; fileRef = 0BCA588305364421A5EAB866 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_test.dir/Info.plist */; };
+		EAB668889BDC4291B1BF706B /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example.dir/Info.plist */ = {isa = PBXBuildFile; fileRef = 96802977106442ABB410E8F8 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example.dir/Info.plist */; };
+		FB96099738CD4526823AF4DC /* /Users/olof/Repos/hcp/objective-c/test/test_hcp.mm */ = {isa = PBXBuildFile; fileRef = 733E4D007C30434D90A191F9 /* /Users/olof/Repos/hcp/objective-c/test/test_hcp.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		1EF77D37F0A04A85869765B0 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		843CD7AE1062425584FFC0F7 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		91D07A7C09F245CF8C9EC25E = {
+			isa = PBXBuildStyle;
+		};
+		9BBFB8DE7E804F43B62C9F98 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		E8B5596994B34665A12FB498 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		00E22480DBF747F6B19D68AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FCCDBEA07134FFBA7BAF343;
+			remoteInfo = ZERO_CHECK;
+		};
+		09446149921543A8A29396ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC73144FE36B45BA977952FB;
+			remoteInfo = objC_test;
+		};
+		30076E0B438D49549B3E89F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B330932990FE410EAB58BE77;
+			remoteInfo = hcp_objC;
+		};
+		4B66D0670E4141A2A5BB5214 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FCCDBEA07134FFBA7BAF343;
+			remoteInfo = ZERO_CHECK;
+		};
+		A465177594E74C6FA10DDA50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B330932990FE410EAB58BE77;
+			remoteInfo = hcp_objC;
+		};
+		AD88D8D4B6D5406BB5180643 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FCCDBEA07134FFBA7BAF343;
+			remoteInfo = ZERO_CHECK;
+		};
+		CBC436FC61A24DEE9F34507B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B330932990FE410EAB58BE77;
+			remoteInfo = hcp_objC;
+		};
+		F26314D379034536BF0A2D82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA045860DC3144FF92C1DE0A;
+			remoteInfo = objC_example;
+		};
+		F47620E4285D4625963C1F65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5439ADD2B22A47E88FA142F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FCCDBEA07134FFBA7BAF343;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0BCA588305364421A5EAB866 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_test.dir/Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; name = Info.plist; path = "../bin/objective-c/CMakeFiles/objC_test.dir/Info.plist"; sourceTree = SOURCE_ROOT; };
+		1DC4664BA4304828A5D6BDD4 /* /Users/olof/Repos/hcp/objective-c/include/hcp_objc_runtime.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = hcp_objc_runtime.h; path = include/hcp_objc_runtime.h; sourceTree = SOURCE_ROOT; };
+		3AB18EE6569244A7AEA80208 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		424527A85F714BA78A409A1C /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = objc_test_utils.cpp; path = test/objc_test_utils.cpp; sourceTree = SOURCE_ROOT; };
+		5267F0AEF2AB450D807F2141 /* /Users/olof/Repos/hcp/objective-c/example/example.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = example.m; path = example/example.m; sourceTree = SOURCE_ROOT; };
+		5A889FECE9E640D2BE0740D1 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		733E4D007C30434D90A191F9 /* /Users/olof/Repos/hcp/objective-c/test/test_hcp.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = test_hcp.mm; path = test/test_hcp.mm; sourceTree = SOURCE_ROOT; };
+		7C87A8B110E54AFFBC2CEFF7 /* objC_example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = objC_example; sourceTree = BUILT_PRODUCTS_DIR; };
+		8087A65227C3403FADEDD698 /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = objc_test_utils.hpp; path = test/objc_test_utils.hpp; sourceTree = SOURCE_ROOT; };
+		96802977106442ABB410E8F8 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example.dir/Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; name = Info.plist; path = "../bin/objective-c/CMakeFiles/objC_example.dir/Info.plist"; sourceTree = SOURCE_ROOT; };
+		AE881D73EDD34DE4AEC338D1 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		B07B54C8311A498BA6225A2B /* hcp_objC */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libhcp_objC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3532A12A09F4F5C86B37B60 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example-CMakeForceLinker.cxx */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = "objC_example-CMakeForceLinker.cxx"; path = "../bin/objective-c/CMakeFiles/objC_example-CMakeForceLinker.cxx"; sourceTree = SOURCE_ROOT; };
+		D838C8568DED44168E2A0390 /* objC_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = objC_test; sourceTree = BUILT_PRODUCTS_DIR; };
+		E346CAD12ABF47018284188F /* /Users/olof/Repos/hcp/objective-c/src/runtime.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = runtime.m; path = src/runtime.m; sourceTree = SOURCE_ROOT; };
+		E3C213E7AC794CC89D368F91 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		FA6B4C98C39C4D2D87DCB3E8 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		07ED5CCA364D4609826D8773 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0BCA588305364421A5EAB866 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_test.dir/Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2190EDCF3C0E4B678F4B000E /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		2F2EB2AD12534AE2A9516628 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D959CE637A4A49F9BA119D64 /* objC_test */,
+				6CFE2C23D90A4C38A45EECD1 /* objC_example */,
+				5AE08260C1D145D4AE9B4AE7 /* hcp_objC */,
+				BFD157C37EC24CB0AA020269 /* ALL_BUILD */,
+				567503E181FB43CB9B89A29E /* ZERO_CHECK */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		3630B8FED83849A6A04B1A35 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				E346CAD12ABF47018284188F /* /Users/olof/Repos/hcp/objective-c/src/runtime.m */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		48F04EE538A04009BB651B32 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4E70657167C141C3A21EF316 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				424527A85F714BA78A409A1C /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.cpp */,
+				733E4D007C30434D90A191F9 /* /Users/olof/Repos/hcp/objective-c/test/test_hcp.mm */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		5463CFF1C6A040BB9B3C57D4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B07B54C8311A498BA6225A2B /* hcp_objC */,
+				7C87A8B110E54AFFBC2CEFF7 /* objC_example */,
+				D838C8568DED44168E2A0390 /* objC_test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		567503E181FB43CB9B89A29E /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				9D0389C4BF3C4EDE86387FAB /* CMake Rules */,
+				FA6B4C98C39C4D2D87DCB3E8 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		5AE08260C1D145D4AE9B4AE7 /* hcp_objC */ = {
+			isa = PBXGroup;
+			children = (
+				3630B8FED83849A6A04B1A35 /* Source Files */,
+				C3B11F3D29FB4BB49EFA530A /* Header Files */,
+				E3C213E7AC794CC89D368F91 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */,
+			);
+			name = hcp_objC;
+			sourceTree = "<group>";
+		};
+		6736C1D7ACF34ECE9CF6AFC3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				96802977106442ABB410E8F8 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example.dir/Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6CFE2C23D90A4C38A45EECD1 /* objC_example */ = {
+			isa = PBXGroup;
+			children = (
+				8722EDB3336C461C90FB91F0 /* Source Files */,
+				6736C1D7ACF34ECE9CF6AFC3 /* Resources */,
+				AE881D73EDD34DE4AEC338D1 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */,
+			);
+			name = objC_example;
+			sourceTree = "<group>";
+		};
+		8722EDB3336C461C90FB91F0 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3532A12A09F4F5C86B37B60 /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example-CMakeForceLinker.cxx */,
+				5267F0AEF2AB450D807F2141 /* /Users/olof/Repos/hcp/objective-c/example/example.m */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		9D0389C4BF3C4EDE86387FAB /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		B2DC4CECFB9B423BBB40060B = {
+			isa = PBXGroup;
+			children = (
+				2F2EB2AD12534AE2A9516628 /* Sources */,
+				48F04EE538A04009BB651B32 /* Resources */,
+				5463CFF1C6A040BB9B3C57D4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BFD157C37EC24CB0AA020269 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				2190EDCF3C0E4B678F4B000E /* CMake Rules */,
+				5A889FECE9E640D2BE0740D1 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		C3B11F3D29FB4BB49EFA530A /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				1DC4664BA4304828A5D6BDD4 /* /Users/olof/Repos/hcp/objective-c/include/hcp_objc_runtime.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		D959CE637A4A49F9BA119D64 /* objC_test */ = {
+			isa = PBXGroup;
+			children = (
+				4E70657167C141C3A21EF316 /* Source Files */,
+				E0A0C487789A4C44BB9DCFE8 /* Header Files */,
+				07ED5CCA364D4609826D8773 /* Resources */,
+				3AB18EE6569244A7AEA80208 /* /Users/olof/Repos/hcp/objective-c/CMakeLists.txt */,
+			);
+			name = objC_test;
+			sourceTree = "<group>";
+		};
+		E0A0C487789A4C44BB9DCFE8 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				8087A65227C3403FADEDD698 /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.hpp */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B330932990FE410EAB58BE77 /* hcp_objC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 242DB53BE9244DB9BF177849 /* Build configuration list for PBXNativeTarget "hcp_objC" */;
+			buildPhases = (
+				A4E66C1403424C7EAA52CAA8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				949B54672794464EB258A794 /* PBXTargetDependency */,
+			);
+			name = hcp_objC;
+			productName = hcp_objC;
+			productReference = B07B54C8311A498BA6225A2B /* hcp_objC */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BC73144FE36B45BA977952FB /* objC_test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 555DC08E1C6C440D95C2B5A1 /* Build configuration list for PBXNativeTarget "objC_test" */;
+			buildPhases = (
+				8BA1F881E51C4EB0917A7CDB /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E439D80C50AA4B19AC5759A3 /* PBXTargetDependency */,
+				CE74E5DB60C1479187D374EA /* PBXTargetDependency */,
+			);
+			name = objC_test;
+			productName = objC_test;
+			productReference = D838C8568DED44168E2A0390 /* objC_test */;
+			productType = "com.apple.product-type.application";
+		};
+		FA045860DC3144FF92C1DE0A /* objC_example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49AE2C5720E44ACE9A8DB9E7 /* Build configuration list for PBXNativeTarget "objC_example" */;
+			buildPhases = (
+				87214CB339E04402985EA6AA /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7CD9D2F41864F678CC65C1D /* PBXTargetDependency */,
+				398CB19AA41940D895ADDA5C /* PBXTargetDependency */,
+			);
+			name = objC_example;
+			productName = objC_example;
+			productReference = 7C87A8B110E54AFFBC2CEFF7 /* objC_example */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5439ADD2B22A47E88FA142F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0810;
+			};
+			buildConfigurationList = 4C0B873AAFBD40329522B73D /* Build configuration list for PBXProject "hcp_objC" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				843CD7AE1062425584FFC0F7 /* Debug */,
+				9BBFB8DE7E804F43B62C9F98 /* Release */,
+				1EF77D37F0A04A85869765B0 /* MinSizeRel */,
+				E8B5596994B34665A12FB498 /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = B2DC4CECFB9B423BBB40060B;
+			projectDirPath = "../../objective-c";
+			projectRoot = "";
+			targets = (
+				D273E4EA9FC34F1AB7B3C8B0 /* ALL_BUILD */,
+				9A1277713A2C428DA63CDBFF /* RUN_TESTS */,
+				0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */,
+				B330932990FE410EAB58BE77 /* hcp_objC */,
+				FA045860DC3144FF92C1DE0A /* objC_example */,
+				BC73144FE36B45BA977952FB /* objC_test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		127C275CB7864C3C9C8B2B63 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/olof/Repos/hcp/bin/objective-c -f /Users/olof/Repos/hcp/bin/objective-c/CMakeScripts/RUN_TESTS_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		1D541552C01B4511B35E55D6 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		42EA9C704E934E2899C7BC0D /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/olof/Repos/hcp/bin/objective-c -f /Users/olof/Repos/hcp/bin/objective-c/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		591FDA8A08D14967AB5FF653 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		66051AC629D0423E81D52417 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		E025D3FB97A44EA58B882849 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/olof/Repos/hcp/bin/objective-c -f /Users/olof/Repos/hcp/bin/objective-c/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87214CB339E04402985EA6AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				918BECB0EE744813806CA33F /* /Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example-CMakeForceLinker.cxx */,
+				3431A2505D7449A4896700CB /* /Users/olof/Repos/hcp/objective-c/example/example.m */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BA1F881E51C4EB0917A7CDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D6B7AEA8284016A3F52D85 /* /Users/olof/Repos/hcp/objective-c/test/objc_test_utils.cpp */,
+				FB96099738CD4526823AF4DC /* /Users/olof/Repos/hcp/objective-c/test/test_hcp.mm */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4E66C1403424C7EAA52CAA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F59D0C393A0433A9F5A2396 /* /Users/olof/Repos/hcp/objective-c/src/runtime.m */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1452D8CB69274C4DA29A6237 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC73144FE36B45BA977952FB /* objC_test */;
+			targetProxy = 09446149921543A8A29396ED /* PBXContainerItemProxy */;
+		};
+		1CB0BD76C3234A4786C84C65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA045860DC3144FF92C1DE0A /* objC_example */;
+			targetProxy = F26314D379034536BF0A2D82 /* PBXContainerItemProxy */;
+		};
+		398CB19AA41940D895ADDA5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B330932990FE410EAB58BE77 /* hcp_objC */;
+			targetProxy = 30076E0B438D49549B3E89F6 /* PBXContainerItemProxy */;
+		};
+		76D67E63BFA84B68BB3860FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */;
+			targetProxy = AD88D8D4B6D5406BB5180643 /* PBXContainerItemProxy */;
+		};
+		949B54672794464EB258A794 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */;
+			targetProxy = 4B66D0670E4141A2A5BB5214 /* PBXContainerItemProxy */;
+		};
+		A0DCAE852DEF4ED0B4FBD08F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B330932990FE410EAB58BE77 /* hcp_objC */;
+			targetProxy = A465177594E74C6FA10DDA50 /* PBXContainerItemProxy */;
+		};
+		C7CD9D2F41864F678CC65C1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */;
+			targetProxy = 00E22480DBF747F6B19D68AC /* PBXContainerItemProxy */;
+		};
+		CE74E5DB60C1479187D374EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B330932990FE410EAB58BE77 /* hcp_objC */;
+			targetProxy = CBC436FC61A24DEE9F34507B /* PBXContainerItemProxy */;
+		};
+		E439D80C50AA4B19AC5759A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FCCDBEA07134FFBA7BAF343 /* ZERO_CHECK */;
+			targetProxy = F47620E4285D4625963C1F65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0071487A2BCE42C794BE6BE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_test.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "   -fobjc-arc '-std=gnu++14' -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include -I/Users/olof/Repos/hcp/cpp/lib/json/src -I/Users/olof/Repos/hcp/cpp/lib/catch/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/objective-c/Debug/libhcp_objC.a   /Users/olof/Repos/hcp/bin/cpp/Debug/libhcp_cpp.a /Users/olof/Repos/hcp/bin/c/Debug/libhcp.a /usr/local/lib/libuv.dylib -framework Foundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = objC_test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		083FF7E9A3A94D01816E25BD /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		0DD14C7D853F4BF89B4CA2D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c/build";
+			};
+			name = Release;
+		};
+		166DCFCD3247449BA47ABB79 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "       -DNDEBUG -fPIC -Wall -pedantic -Werror -Wextra -fobjc-arc -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = hcp_objC;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		169B9CEF5A814946972EB5F4 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c/build";
+			};
+			name = RelWithDebInfo;
+		};
+		2DD519AA53094A068014142F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "       -DNDEBUG -fobjc-arc -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG -fobjc-arc '-std=gnu++14' -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/objective-c/RelWithDebInfo/libhcp_objC.a /Users/olof/Repos/hcp/bin/cpp/RelWithDebInfo/libhcp_cpp.a /Users/olof/Repos/hcp/bin/c/RelWithDebInfo/libhcp.a /usr/local/lib/libuv.dylib -framework Foundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = objC_example;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		2FC246C97AA1453DA4DF4DDF /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_test.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -fobjc-arc '-std=gnu++14' -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include -I/Users/olof/Repos/hcp/cpp/lib/json/src -I/Users/olof/Repos/hcp/cpp/lib/catch/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/objective-c/MinSizeRel/libhcp_objC.a   /Users/olof/Repos/hcp/bin/cpp/MinSizeRel/libhcp_cpp.a /Users/olof/Repos/hcp/bin/c/MinSizeRel/libhcp.a /usr/local/lib/libuv.dylib -framework Foundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = objC_test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		3641438E6F694BE3A8445A26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		4D760CD92785426389A8F10E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		56C02C7799FA4DFE96956E29 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c/build";
+			};
+			name = MinSizeRel;
+		};
+		6120C13A6AE047C4B3809A74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		62B00C6D33D44CC09C379E3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "   -fobjc-arc -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_CPLUSPLUSFLAGS = "   -fobjc-arc '-std=gnu++14' -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/objective-c/Debug/libhcp_objC.a /Users/olof/Repos/hcp/bin/cpp/Debug/libhcp_cpp.a /Users/olof/Repos/hcp/bin/c/Debug/libhcp.a /usr/local/lib/libuv.dylib -framework Foundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = objC_example;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		6DD795FAC2E845CAA7B54F8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		8B7F8FF505B1486DB831B3B5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		8C7063F7821A4E479449D187 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_test.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -fobjc-arc '-std=gnu++14' -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include -I/Users/olof/Repos/hcp/cpp/lib/json/src -I/Users/olof/Repos/hcp/cpp/lib/catch/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/objective-c/Release/libhcp_objC.a   /Users/olof/Repos/hcp/bin/cpp/Release/libhcp_cpp.a /Users/olof/Repos/hcp/bin/c/Release/libhcp.a /usr/local/lib/libuv.dylib -framework Foundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = objC_test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		8D961154B9F24CA9AEAB82A7 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		9A02CE86E75A4773ABA6F78B /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_test.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG -fobjc-arc '-std=gnu++14' -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include -I/Users/olof/Repos/hcp/cpp/lib/json/src -I/Users/olof/Repos/hcp/cpp/lib/catch/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/objective-c/RelWithDebInfo/libhcp_objC.a   /Users/olof/Repos/hcp/bin/cpp/RelWithDebInfo/libhcp_cpp.a /Users/olof/Repos/hcp/bin/c/RelWithDebInfo/libhcp.a /usr/local/lib/libuv.dylib -framework Foundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = objC_test;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		AA7402FD21BD45628A20E8B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "    -DNDEBUG -fPIC -Wall -pedantic -Werror -Wextra -fobjc-arc -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = hcp_objC;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		C534B4E2738743C4866C23B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		C6F2F88829CB4DE78AAC3073 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "   -fPIC -Wall -pedantic -Werror -Wextra -fobjc-arc -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = hcp_objC;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		C82B860F25DE40CE8864DBC4 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		CB7A69B2DA7242DCB14DE09D /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		CB98E39B53614F7EB98003E3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D396A20C4DB34169A221DA75 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "    -DNDEBUG -fPIC -Wall -pedantic -Werror -Wextra -fobjc-arc -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = hcp_objC;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		DE925C52AEF94B838CEB913F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    -DNDEBUG -fobjc-arc -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -fobjc-arc '-std=gnu++14' -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/objective-c/Release/libhcp_objC.a /Users/olof/Repos/hcp/bin/cpp/Release/libhcp_cpp.a /Users/olof/Repos/hcp/bin/c/Release/libhcp.a /usr/local/lib/libuv.dylib -framework Foundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = objC_example;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		E132FC5BBDF3431F9B72D1D9 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/olof/Repos/hcp/bin/objective-c/CMakeFiles/objC_example.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "    -DNDEBUG -fobjc-arc -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -fobjc-arc '-std=gnu++14' -I/Users/olof/Repos/hcp/objective-c/include -I/Users/olof/Repos/hcp/cpp/include -I/Users/olof/Repos/hcp/c/include -isystem /usr/local/include   ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/olof/Repos/hcp/bin/objective-c/MinSizeRel/libhcp_objC.a /Users/olof/Repos/hcp/bin/cpp/MinSizeRel/libhcp_cpp.a /Users/olof/Repos/hcp/bin/c/MinSizeRel/libhcp.a /usr/local/lib/libuv.dylib -framework Foundation";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = objC_example;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		EE4F26626822443EB4086FAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		F2E9812583DD427381839B70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = "/Users/olof/Repos/hcp/bin/objective-c/build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		242DB53BE9244DB9BF177849 /* Build configuration list for PBXNativeTarget "hcp_objC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6F2F88829CB4DE78AAC3073 /* Debug */,
+				AA7402FD21BD45628A20E8B2 /* Release */,
+				D396A20C4DB34169A221DA75 /* MinSizeRel */,
+				166DCFCD3247449BA47ABB79 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		49AE2C5720E44ACE9A8DB9E7 /* Build configuration list for PBXNativeTarget "objC_example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62B00C6D33D44CC09C379E3B /* Debug */,
+				DE925C52AEF94B838CEB913F /* Release */,
+				E132FC5BBDF3431F9B72D1D9 /* MinSizeRel */,
+				2DD519AA53094A068014142F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4C0B873AAFBD40329522B73D /* Build configuration list for PBXProject "hcp_objC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2E9812583DD427381839B70 /* Debug */,
+				0DD14C7D853F4BF89B4CA2D2 /* Release */,
+				56C02C7799FA4DFE96956E29 /* MinSizeRel */,
+				169B9CEF5A814946972EB5F4 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		555DC08E1C6C440D95C2B5A1 /* Build configuration list for PBXNativeTarget "objC_test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0071487A2BCE42C794BE6BE2 /* Debug */,
+				8C7063F7821A4E479449D187 /* Release */,
+				2FC246C97AA1453DA4DF4DDF /* MinSizeRel */,
+				9A02CE86E75A4773ABA6F78B /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		64B1636B0894422885F86127 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DD795FAC2E845CAA7B54F8A /* Debug */,
+				EE4F26626822443EB4086FAF /* Release */,
+				CB7A69B2DA7242DCB14DE09D /* MinSizeRel */,
+				CB98E39B53614F7EB98003E3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A82AD6C6B29D4BED93443C13 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6120C13A6AE047C4B3809A74 /* Debug */,
+				C534B4E2738743C4866C23B5 /* Release */,
+				C82B860F25DE40CE8864DBC4 /* MinSizeRel */,
+				8D961154B9F24CA9AEAB82A7 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A849ABD37B9D430D95F472EB /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D760CD92785426389A8F10E /* Debug */,
+				3641438E6F694BE3A8445A26 /* Release */,
+				8B7F8FF505B1486DB831B3B5 /* MinSizeRel */,
+				083FF7E9A3A94D01816E25BD /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5439ADD2B22A47E88FA142F6 /* Project object */;
+}

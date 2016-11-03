@@ -8,7 +8,7 @@ TEST_CASE( "ObjC", "Hcp" ) {
     auto params = std::vector<std::string>{"uint8","sint8","uint16","sint16","uint32","sint32","uint64","sint64"};
     NSError* error = nil;
     
-    NSString* codecPath = @"/Users/jonas/dev/husqvarna/hcp2/cmake_xcode/echo_codec/Debug";
+    NSString* codecPath = @"./../../echo_codec/Debug";
 
     NSString* model = [NSString stringWithUTF8String:createModel(params).c_str()];
     REQUIRE(error == nullptr);
