@@ -1,12 +1,53 @@
-#include <assert.h>
-#include <hcp/runtime.hpp>
-#include <hcp/scan.hpp>
-#include <hcp/util.hpp>
 #include <hcp_scan.h>
-#include <regex>
 #include <string>
+extern "C" {
+#include <hcp_string.h>
+#include <hcp_runtime.h>
+}
+#include <memory>
+
+template <typename T> using unique_ptr_del = std::unique_ptr<T, void (*)(T*)>;
+
+using unique_void_ptr = std::unique_ptr<void, void (*)(void*)>;
+
+template <typename T> unique_void_ptr type_erase(unique_ptr_del<T> ptr)
+{
+    return unique_void_ptr{
+        ptr.release(), reinterpret_cast<void (*)(void*)>(ptr.get_deleter())};
+}
+
 #include <uv.h>
 
+bool hasExtension(const char* path, const char* extension) {
+	if (!path || !extension) {
+		return false;
+	}
+
+	hcp_Int pathLen = hcp_szStrLen((hcp_cszStr)path);
+	hcp_Int extLen = hcp_szStrLen((const hcp_szStr)extension);
+
+	if (extLen >= pathLen) {
+		return false;
+	}
+
+	const char* lhs = (const char*)((hcp_Size_t)path + (hcp_Size_t)pathLen);
+	const char* rhs = (const char*)((hcp_Size_t)extension + (hcp_Size_t)extLen);
+
+	while (rhs != extension) {
+		char expected = *(rhs--);
+		char actual = *(lhs--);
+
+		// ignore case, cast all to caps
+		expected = expected >= 97 && expected <= 122 ? (int)expected - 32 : expected;
+		actual = actual >= 97 && actual <= 122 ? (int)actual - 32 : actual;
+
+		if (expected != actual) {
+			return false;
+		}
+	}
+
+	return true;
+}
 using LoadCodec = hcp_tCodecLibrary*();
 struct tCodec {
     std::string path;
@@ -44,11 +85,9 @@ template <typename Op> void scanDir(const char* codecPath, Op op)
         // destination->name = codecName;
     };
     auto isLib = [](char const* name) -> bool {
-        std::regex dll("(.*)(\\.DLL)", std::regex::icase);
-        std::regex so("(.*)(\\.SO)", std::regex::icase);
-        std::regex dylib("(.*)(\\.DYLIB)", std::regex::icase);
-        return std::regex_match(name, dll) || std::regex_match(name, so) ||
-               std::regex_match(name, dylib);
+      return hasExtension(name,"DLL")
+        ||   hasExtension(name,"SO")
+        ||   hasExtension(name,"DYLIB");
     };
     uv_fs_t req;
     int numFiles = uv_fs_scandir(uv_default_loop(), &req, codecPath,
@@ -74,16 +113,6 @@ template <typename Op> void scanDir(const char* codecPath, Op op)
         loadLibrary(codec.path, &codec);
     }
 }
-
-std::vector<hcp::Library> scanDir(const char* codecPath)
-{
-    std::vector<hcp::Library> ret;
-    auto handle = [&](unique_void_ptr ptr, hcp_tCodecLibrary* codec) {
-        ret.emplace_back(std::move(ptr), codec);
-    };
-    return ret;
-}
-
 void hcp_Scan(char const* path, library_callback cb, void* ctx)
 {
     auto handle = [&](unique_void_ptr ptr, hcp_tCodecLibrary* codec) {
@@ -102,28 +131,3 @@ void hcp_ScanAndLoad(char const* path, hcp_tState* pState)
     };
     scanDir(path, handle);
 }
-hcp_Size_t hcp_getCodecCount(hcp_tState const* pState)
-{
-    return pState->libraries.header.length;
-}
-hcp_cszStr hcp_getCodecName(hcp_tState const* pState, const hcp_Size_t index)
-{
-    return begin(pState->libraries)[index].name;
-}
-
-void hcp_DestructError2(hcp_Error_t err)
-{
-    if (err) delete err;
-}
-hcp_cszStr hcp_GetMessage2(hcp_Error_t err) { return ""; }
-
-hcp_State_t hcp_NewState2(hcp_Error_t*)
-{
-    auto state = std::make_unique<hcp_tState>();
-    auto host = hcp::default_mem();
-    auto err = hcp_NewState(state.get(), &host);
-    assert(err == HCP_NOERROR);
-    return state.release();
-}
-void hcp_CloseState2(hcp_State_t state, hcp_Error_t*) { delete state; }
-

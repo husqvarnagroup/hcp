@@ -3,7 +3,7 @@ extern "C" {
 #include "hcp_vector.h"
 #include "hcp_string.h"
 }
-#include <iostream>
+#include <stdlib.h>
 
 
 /** Singleton instance set when calling create */
@@ -117,8 +117,6 @@ hcp::Runtime* hcp_init_runtime(hcp_cszStr codecPath) {
 
 	if (codecPath != nullptr && hcp_szStrLen(codecPath) > 0) {
 		if (!_r->scanDir(codecPath, &err)) {
-
-    std::cout << "failed: " << err << std::endl;
 
 		}
 	}

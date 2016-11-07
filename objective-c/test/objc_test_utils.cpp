@@ -9,7 +9,7 @@ std::string createModel(std::vector<std::string> const& types) {
         {"types",json::array({})},
         {"methods",json::array({})},
   };
-  auto method = [](auto& type) {
+  auto method = [](std::string const& type) {
       return json{
         {"command", "CallWith" + type},
         {"family", "Basic"},

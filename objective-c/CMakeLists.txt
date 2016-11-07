@@ -33,6 +33,7 @@ if(HCP_ENABLE_TESTS)
     test/objc_test_utils.hpp)
   target_link_libraries(objC_test hcp_objC json catch)
   add_dependencies(objC_test echo_codec)
+  set_property(TARGET objC_test PROPERTY CXX_STANDARD 11)
   add_test(NAME HcpObjCTests COMMAND objC_test)
 endif()
 

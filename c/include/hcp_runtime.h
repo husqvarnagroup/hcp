@@ -163,7 +163,7 @@ typedef void(*hcp_tUnlock)(const void* _pPtr, void* _pHostCtx);
  *					 [malloc] for dynamic memory allocation. Thread-safetey may also be\n
  *					 achived by implementing [lock] and [unlock] functions.
  */
-typedef struct {
+typedef struct hcp_tHost {
 	hcp_tTryLock lock;
 	hcp_tUnlock unlock;
 	hcp_tMemset memset_;
@@ -262,6 +262,19 @@ typedef struct {
 	 *	@return	Returns HCP_NOERROR if the instance was successfully created. Call [hcp_GetMessage] to resolve an error message otherwise.
 	 */
 	extern hcp_Int HCP_CALL hcp_CloseState(hcp_tState* pState);
+
+  /**
+   *	Returns the number of loaded codecs.
+   *	@return Returns the number of codecs loaded into the runtime.
+   */
+  HCP_API hcp_Size_t HCP_CALL hcp_getNumOfCodecs(hcp_tState const*);
+  /**
+   *	Returns the name of a codec at a specific index.
+   *	@return Returns a null pointer of the index is out of bounds or
+   *			no codec is laoded.
+   */
+  HCP_API hcp_cszStr HCP_CALL hcp_getCodecNameAtIndex(hcp_tState const*,
+                                               const hcp_Size_t index);
 
 #endif /* Match the re-definition guard */
 

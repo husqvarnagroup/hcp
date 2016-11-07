@@ -4,7 +4,6 @@ extern "C" {
 #include <hcp_types.h>
 #include <hcp_error.h>
 #include <hcp_codec.h>
-#include <hcp_state.h>
 }
 #include "hcp.h"
 

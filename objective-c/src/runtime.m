@@ -137,11 +137,18 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
 @implementation Hcp
 {
     hcp_tState* pState;
+    hcp_tHost host;
 }
 
 - (void)dealloc
 {
-    hcp_CloseState2(pState, NULL);
+    hcp_Int err = hcp_CloseState(pState);
+    if(err != HCP_NOERROR) {
+        char errStr[512];
+        hcp_GetMessage(err,errStr,512);
+        NSLog(@"%s", errStr);
+    }
+    host.free_(pState,0);
 }
 - (void)scanForCodecsInPath:(NSString *)path onError:(NSError *__autoreleasing *)error
 {
@@ -152,7 +159,15 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
 {
     self = [super init];
     if (self) {
-        pState = hcp_NewState2(NULL);
+        hcp_DefaultHost(&host);
+        pState = host.malloc_(hcp_SizeOfState(),0);
+        host.memset_(pState,0,hcp_SizeOfState(),0);
+        hcp_Int err = hcp_NewState(pState,&host);
+        if(err != HCP_NOERROR) {
+            char errStr[512];
+            hcp_GetMessage(err,errStr,512);
+            NSLog(@"%s", errStr);
+        }
     }
     return self;
 }
@@ -160,10 +175,10 @@ NSObject* convertHcpParameter(hcp_tParameter const* parameter)
 - (NSArray*)codecList
 {
     NSMutableArray* codecs = [NSMutableArray array];
-    int count = hcp_getCodecCount(pState);
+    int count = hcp_getNumOfCodecs(pState);
 
     for (int i = 0; i < count; ++i)
-        [codecs addObject:@(hcp_getCodecName(pState, i))];
+        [codecs addObject:@(hcp_getCodecNameAtIndex(pState, i))];
 
     return [NSArray arrayWithArray:codecs];
 }
