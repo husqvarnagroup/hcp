@@ -802,7 +802,7 @@ hcp_Size_t hcp_getNumOfCodecs(hcp_tState const* pState) {
     return pState->libraries.header.length;
 }
 hcp_cszStr hcp_getCodecNameAtIndex(hcp_tState const* pState, const hcp_Size_t index) {
-    return ((hcp_tCodecLibrary*)pState->libraries.header.length)[index].name;
+    return ((hcp_tCodecLibrary*)pState->libraries.header.values)[index].name;
 }
 void hcp_InitializeRuntime(hcp_tState* pState, hcp_tRuntime* R) {
 	hcp_Memset(pState, R, 0, sizeof(hcp_tRuntime));
