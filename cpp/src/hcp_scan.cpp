@@ -5,6 +5,7 @@ extern "C" {
 #include <hcp_runtime.h>
 }
 #include <memory>
+#include "uv.h"
 
 template <typename T> using unique_ptr_del = std::unique_ptr<T, void (*)(T*)>;
 
@@ -16,7 +17,6 @@ template <typename T> unique_void_ptr type_erase(unique_ptr_del<T> ptr)
         ptr.release(), reinterpret_cast<void (*)(void*)>(ptr.get_deleter())};
 }
 
-#include <uv.h>
 
 bool hasExtension(const char* path, const char* extension) {
 	if (!path || !extension) {
