@@ -1,0 +1,106 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.husqvarnagroup.connectivity</groupId>
+    <artifactId>Hcp</artifactId>
+    <version>0.0.1</version>
+    <relativePath>../..</relativePath>
+  </parent>
+    
+  <groupId>com.husqvarnagroup.connectivity</groupId>
+  <artifactId>HcpNative</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Hcp jni native</name>
+	
+	<packaging>so</packaging>
+
+    <dependencies>
+    <dependency>
+      <groupId>com.husqvarnagroup.connectivity</groupId>
+      <artifactId>libHcpCpp</artifactId>
+      <version>0.0.1</version>
+      <type>so</type>
+      <scope>runtime</scope>
+    </dependency><dependency>
+      <groupId>com.husqvarnagroup.connectivity</groupId>
+      <artifactId>libHcpC</artifactId>
+      <version>0.0.1</version>
+      <type>so</type>
+      <scope>runtime</scope>
+    </dependency>   
+    <dependency>
+      <groupId>com.husqvarnagroup.connectivity</groupId>
+      <artifactId>HcpCpp</artifactId>
+      <version>0.0.1</version>
+      <type>so</type>
+      <scope>compile</scope>
+    </dependency>   
+    <dependency>
+      <groupId>com.husqvarnagroup.connectivity</groupId>
+      <artifactId>HcpManaged</artifactId>
+      <version>0.0.1</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>   
+  </dependencies>
+
+	<build>
+		<plugins>
+		
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>native-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+          <!--  trigger javah -->          
+          <javahOS>darwin</javahOS>
+          
+          <compilerProvider>generic-classic</compilerProvider>
+					<compilerExecutable>cc</compilerExecutable>
+					
+					<linkerExecutable>cc</linkerExecutable>
+					<sources>
+						<source>
+							<directory>jni</directory>
+							<fileNames>
+								<fileName>hcp_jni.cpp</fileName>
+							</fileNames>
+						</source>
+					</sources>
+					
+					<compilerStartOptions>
+            <compilerStartOption> -c --std=c++14 -I/usr/local/include -I../../cpp/include -I../../c/include</compilerStartOption>
+					</compilerStartOptions>
+
+					<linkerStartOptions>
+            <linkerStartOption>-dynamiclib -lstdc++ -stdlib=libc++</linkerStartOption>
+					</linkerStartOptions>
+
+				</configuration>
+				
+				<executions>
+           <execution>
+             <id>javah</id>
+             <phase>generate-sources</phase>
+             <configuration>
+          <javahOS>darwin</javahOS>
+          <javahProvider>default</javahProvider>
+          <javahOutputDirectory>${project.build.directory}/custom-javah</javahOutputDirectory>
+          <workingDirectory>${basedir}</workingDirectory>
+          <javahOutputFileName>com_husqvarnagroup_connectivity_HcpJNI.h</javahOutputFileName>
+          <javahClassNames>
+            <javahClassName>com.husqvarnagroup.connectivity.HcpJNI</javahClassName>
+          </javahClassNames>
+             </configuration>
+             <goals>
+               <goal>javah</goal>
+             </goals>
+           </execution>
+        </executions>       
+				
+			</plugin>
+		</plugins>
+	</build>
+</project>
+

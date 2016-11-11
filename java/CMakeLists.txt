@@ -11,10 +11,10 @@ find_package(JNI REQUIRED)
 
 
   set(jni_src
-managed/src/com/husqvarnagroup/connectivity/HcpElement.java
-      managed/src/com/husqvarnagroup/connectivity/HcpJNI.java
-managed/src/com/husqvarnagroup/connectivity/HcpSerializer.java
-managed/src/com/husqvarnagroup/connectivity/HcpSerializerFactory.java
+managed/src/main/java/com/husqvarnagroup/connectivity/HcpElement.java
+      managed/src/main/java/com/husqvarnagroup/connectivity/HcpJNI.java
+managed/src/main/java/com/husqvarnagroup/connectivity/HcpSerializer.java
+managed/src/main/java/com/husqvarnagroup/connectivity/HcpSerializerFactory.java
      )
 
   add_jar(hcp_jni ${jni_src})
@@ -46,7 +46,7 @@ target_link_libraries(HcpJNI PUBLIC hcp hcp_cpp)
 #)
 
 add_jar(hcp_use_amg3 
-        SOURCES managed/src/com/husqvarnagroup/connectivity/test/UseAmg3.java
+  SOURCES managed/src/test/UseAmg3.java
         INCLUDE_JARS hcp_jni
         ENTRY_POINT com/husqvarnagroup/connectivity/test/UseAmg3
 #MANIFEST managed/src/com/husqvarnagroup/connectivity/test/MANIFEST.MF
